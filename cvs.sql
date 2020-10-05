@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `blbalance` (
 -- Dumping data for table boladas.blbalance: 1 rows
 /*!40000 ALTER TABLE `blbalance` DISABLE KEYS */;
 INSERT INTO `blbalance` (`id`, `current_balance`, `total_earning`, `total_withdrawal`) VALUES
-	(1, 0.00, 0.00, 0.00);
+	(1, 320.00, 320.00, 0.00);
 /*!40000 ALTER TABLE `blbalance` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.blblog
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `blblog` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table boladas.blblog: ~1 rows (approximately)
+-- Dumping data for table boladas.blblog: ~0 rows (approximately)
 /*!40000 ALTER TABLE `blblog` DISABLE KEYS */;
 INSERT INTO `blblog` (`id`, `author`, `title`, `description`, `image`, `tags`, `status`, `created_at`, `updated_at`) VALUES
 	(1, 1, 'First Blog', '<p>Consectetur adipisicing elitsed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo do consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla paria tur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<blockquote>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla paria tur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</blockquote><p>Elitsed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo do consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla paria tur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</p><p></p></p>\n', NULL, 'travel fun, love', 'publish', '2020-01-15 23:05:15', '2020-01-17 19:12:18');
@@ -150,9 +150,9 @@ CREATE TABLE IF NOT EXISTS `blcatagory_main` (
   `icon` varchar(300) NOT NULL DEFAULT 'fa-usd',
   `picture` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`cat_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
--- Dumping data for table boladas.blcatagory_main: 8 rows
+-- Dumping data for table boladas.blcatagory_main: 9 rows
 /*!40000 ALTER TABLE `blcatagory_main` DISABLE KEYS */;
 INSERT INTO `blcatagory_main` (`cat_id`, `cat_order`, `cat_name`, `slug`, `icon`, `picture`) VALUES
 	(1, 1, 'Veículos', 'veiculos', 'pe-7s-car', 'https://img.icons8.com/dusk/64/000000/traffic-jam.png'),
@@ -162,7 +162,8 @@ INSERT INTO `blcatagory_main` (`cat_id`, `cat_order`, `cat_name`, `slug`, `icon`
 	(6, 6, 'Empregos', 'empregos', 'pe-7s-portfolio', 'https://img.icons8.com/dusk/64/000000/find-matching-job.png'),
 	(7, 7, 'Serviços', 'servicos', 'pe-7s-tools', 'https://img.icons8.com/dusk/64/000000/services.png'),
 	(8, 8, 'Lazer', 'entertainment', 'pe-7s-film', 'https://img.icons8.com/dusk/64/000000/dancing.png'),
-	(4, 4, 'Imobiliária', 'imobiliaria', 'pe-7s-home', 'https://img.icons8.com/dusk/64/000000/real-estate.png');
+	(4, 4, 'Imobiliária', 'imobiliaria', 'pe-7s-home', 'https://img.icons8.com/dusk/64/000000/real-estate.png'),
+	(9, NULL, 'Agricultura e Comida', 'agricultura-comida', 'fa fa-shopping-basket', '');
 /*!40000 ALTER TABLE `blcatagory_main` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.blcatagory_sub
@@ -951,8 +952,12 @@ CREATE TABLE IF NOT EXISTS `bllogin_attempts` (
   `time` varchar(30) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- Dumping data for table boladas.bllogin_attempts: 0 rows
+-- Dumping data for table boladas.bllogin_attempts: 3 rows
 /*!40000 ALTER TABLE `bllogin_attempts` DISABLE KEYS */;
+INSERT INTO `bllogin_attempts` (`user_id`, `time`) VALUES
+	(3, '1601269286'),
+	(3, '1601269301'),
+	(3, '1601269307');
 /*!40000 ALTER TABLE `bllogin_attempts` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.bllogs
@@ -962,9 +967,9 @@ CREATE TABLE IF NOT EXISTS `bllogs` (
   `log_summary` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `log_details` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`log_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=60 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table boladas.bllogs: 9 rows
+-- Dumping data for table boladas.bllogs: 52 rows
 /*!40000 ALTER TABLE `bllogs` DISABLE KEYS */;
 INSERT INTO `bllogs` (`log_id`, `log_date`, `log_summary`, `log_details`) VALUES
 	(1, 1600714078, 'Cron Run', 'Ads closed: 0<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
@@ -975,7 +980,57 @@ INSERT INTO `bllogs` (`log_id`, `log_date`, `log_summary`, `log_details`) VALUES
 	(6, 1600772994, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
 	(7, 1600775959, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
 	(8, 1600777149, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
-	(9, 1600780921, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds');
+	(9, 1600780921, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(10, 1600782091, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(11, 1600856899, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(12, 1600881692, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(13, 1600882477, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(14, 1600883698, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(15, 1600884285, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(16, 1600884618, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(17, 1601267471, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(18, 1601268306, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(19, 1601268771, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(20, 1601270513, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(21, 1601272298, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(22, 1601288004, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(23, 1601299590, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(24, 1601304388, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(25, 1601304706, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(26, 1601309354, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(27, 1601310209, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(28, 1601310534, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(29, 1601320727, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(30, 1601321328, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(31, 1601321967, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(32, 1601322602, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(33, 1601323098, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(34, 1601392624, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(35, 1601475755, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(36, 1601476562, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(37, 1601477043, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(38, 1601477354, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(39, 1601477875, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(40, 1601478278, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(41, 1601480239, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(42, 1601480547, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(43, 1601572318, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(44, 1601574941, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(45, 1601749884, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(46, 1601750645, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(47, 1601750948, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(48, 1601751819, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(49, 1601754504, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(50, 1601803121, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(51, 1601803995, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(52, 1601806678, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(53, 1601807035, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(54, 1601808826, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(55, 1601831530, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(56, 1601831831, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(57, 1601832385, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(58, 1601832702, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(59, 1601878450, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds');
 /*!40000 ALTER TABLE `bllogs` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.blmessages
@@ -1017,12 +1072,12 @@ CREATE TABLE IF NOT EXISTS `bloptions` (
   `option_value` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`option_id`),
   UNIQUE KEY `option_name` (`option_name`)
-) ENGINE=MyISAM AUTO_INCREMENT=131 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=135 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table boladas.bloptions: 130 rows
+-- Dumping data for table boladas.bloptions: 134 rows
 /*!40000 ALTER TABLE `bloptions` DISABLE KEYS */;
 INSERT INTO `bloptions` (`option_id`, `option_name`, `option_value`) VALUES
-	(1, 'site_logo', 'classic-theme_logo.png'),
+	(1, 'site_logo', 'material-theme_logo.png'),
 	(2, 'site_title', 'Boladas'),
 	(3, 'meta_keywords', ''),
 	(4, 'meta_description', ''),
@@ -1042,7 +1097,7 @@ INSERT INTO `bloptions` (`option_id`, `option_name`, `option_value`) VALUES
 	(18, 'home_map_longitude', '77.20902120000005'),
 	(19, 'home_map_zoom', '4'),
 	(20, 'map_color', '#8080ff'),
-	(21, 'theme_color', '#1d63aa'),
+	(21, 'theme_color', '#01796f'),
 	(22, 'home_banner', 'bg.jpg'),
 	(23, 'contact_address', 'Maputo'),
 	(24, 'contact_phone', '8228722585'),
@@ -1051,10 +1106,10 @@ INSERT INTO `bloptions` (`option_id`, `option_name`, `option_value`) VALUES
 	(27, 'contact_longitude', '-73.86704922'),
 	(28, 'footer_text', 'Aenean sodales mattis augue. Morbi euismod, felis at volutpat volutpat, quam lectus porttitor massa, tur ex a neque pulvinar pulvinar.'),
 	(29, 'copyright_text', '2020; Boladas'),
-	(30, 'facebook_link', 'https://www.facebook.com/danger.hope'),
-	(31, 'twitter_link', 'https://www.twitter.com/thebylancer'),
-	(32, 'googleplus_link', 'https://plus.google.com/+bylancer'),
-	(33, 'youtube_link', 'https://www.youtube.com/user/ABylancer'),
+	(30, 'facebook_link', ''),
+	(31, 'twitter_link', ''),
+	(32, 'googleplus_link', ''),
+	(33, 'youtube_link', ''),
 	(34, 'facebook_app_id', ''),
 	(35, 'facebook_app_secret', ''),
 	(36, 'google_app_id', ''),
@@ -1083,10 +1138,10 @@ INSERT INTO `bloptions` (`option_id`, `option_name`, `option_value`) VALUES
 	(59, 'site_admin_logo', 'adminlogo.png'),
 	(60, 'site_favicon', 'favicon.png'),
 	(61, 'post_address_mode', '0'),
-	(62, 'post_tags_mode', '1'),
-	(63, 'post_auto_approve', '0'),
-	(64, 'post_watermark', '1'),
-	(65, 'max_image_upload', '3'),
+	(62, 'post_tags_mode', '0'),
+	(63, 'post_auto_approve', '1'),
+	(64, 'post_watermark', '0'),
+	(65, 'max_image_upload', '4'),
 	(66, 'post_premium_listing', '1'),
 	(67, 'post_desc_editor', '1'),
 	(68, 'email_template', '1'),
@@ -1124,7 +1179,7 @@ INSERT INTO `bloptions` (`option_id`, `option_name`, `option_value`) VALUES
 	(100, 'delete_expired', '0'),
 	(101, 'validation_time', '0'),
 	(102, 'cron_exec_time', '300'),
-	(103, 'cron_time', '1600780921'),
+	(103, 'cron_time', '1601878450'),
 	(104, 'external_code', ''),
 	(105, 'blog_enable', '1'),
 	(106, 'blog_banner', '1'),
@@ -1135,13 +1190,13 @@ INSERT INTO `bloptions` (`option_id`, `option_name`, `option_value`) VALUES
 	(111, 'testimonials_enable', '1'),
 	(112, 'show_testimonials_blog', '1'),
 	(113, 'show_testimonials_home', '1'),
-	(114, 'non_active_msg', '1'),
-	(115, 'non_active_allow', '0'),
+	(114, 'non_active_msg', '0'),
+	(115, 'non_active_allow', '1'),
 	(116, 'cookie_link', ''),
 	(117, 'cookie_consent', '1'),
 	(118, 'socket_host', 'localhost'),
 	(119, 'socket_port', '9300'),
-	(120, 'listing_view', 'list'),
+	(120, 'listing_view', 'grid'),
 	(121, 'map_type', 'openstreet'),
 	(122, 'specific_country', 'MZ'),
 	(123, 'site_url', 'http://localhost/dev/boladas/'),
@@ -1151,7 +1206,11 @@ INSERT INTO `bloptions` (`option_id`, `option_name`, `option_value`) VALUES
 	(127, 'termcondition_link', ''),
 	(128, 'privacy_link', ''),
 	(129, 'quickad_secret_file', '5ad47xjyj0'),
-	(130, 'purchase_key', 'nulled');
+	(130, 'purchase_key', 'nulled'),
+	(131, 'post_without_login', '0'),
+	(132, 'company_bank_info', 'Mpesa- 846872773'),
+	(133, 'stripe_publishable_key', ''),
+	(134, 'stripe_secret_key', '');
 /*!40000 ALTER TABLE `bloptions` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.blpages
@@ -1192,8 +1251,8 @@ CREATE TABLE IF NOT EXISTS `blpayments` (
 /*!40000 ALTER TABLE `blpayments` DISABLE KEYS */;
 INSERT INTO `blpayments` (`payment_id`, `payment_install`, `payment_title`, `payment_folder`, `payment_desc`) VALUES
 	(1, '0', 'Paypal', 'paypal', 'You will be redirected to paypal to complete payment.'),
-	(2, '1', 'Credit & Debit Card', 'stripe', 'Make an instant deposit using online payment service Stripe. Pay with your debit or credit card.'),
-	(3, '1', 'Bank Deposit (Offline Payment)', 'wire_transfer', NULL),
+	(2, '0', 'Credit & Debit Card', 'stripe', 'Make an instant deposit using online payment service Stripe. Pay with your debit or credit card.'),
+	(3, '1', 'M-Pesa', 'wire_transfer', NULL),
 	(4, '0', '2Checkout', '2checkout', NULL),
 	(5, '0', 'Paystack', 'paystack', 'You will be redirected to Paystack to complete payment.');
 /*!40000 ALTER TABLE `blpayments` ENABLE KEYS */;
@@ -1240,12 +1299,19 @@ CREATE TABLE IF NOT EXISTS `blproduct` (
   `hide` enum('0','1') NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
--- Dumping data for table boladas.blproduct: 1 rows
+-- Dumping data for table boladas.blproduct: 6 rows
 /*!40000 ALTER TABLE `blproduct` DISABLE KEYS */;
 INSERT INTO `blproduct` (`id`, `status`, `user_id`, `featured`, `urgent`, `highlight`, `product_name`, `slug`, `description`, `category`, `sub_category`, `price`, `negotiable`, `phone`, `hide_phone`, `location`, `city`, `state`, `country`, `latlong`, `screen_shot`, `tag`, `view`, `custom_fields`, `custom_types`, `custom_values`, `created_at`, `updated_at`, `expire_date`, `featured_exp_date`, `urgent_exp_date`, `highlight_exp_date`, `contact_phone`, `contact_email`, `contact_chat`, `admin_seen`, `emailed`, `hide`) VALUES
-	(1, 'expire', 2, '1', '1', '1', 'Quickad Classified Ads Php Script CMS', 'quickad-classified-ads-php-script-cms-1', '<h2><span style=\\"color: rgb(51, 51, 51); font-size: 16px;\\">Quickad AdsÃ‚Â <a href=\\"https://codecanyon.net/item/quickad-classified-ads-php-script/19960675\\">Php Classified Script</a></span><span style=\\"color: rgb(51, 51, 51); font-size: 16px;\\">Â is Premium Classified Php Script with fully responsive Material & Classic design. Built to be beautiful, fast and powerful. One-click setup User can easily set up this theme and easy to use and customized.</span></h2><p><span style=\\"color: rgb(84, 84, 84); font-size: 16px;\\">With the help of ourÂ <a href=\\"https://codecanyon.net/item/quickad-classified-ads-php-script/19960675\\" target=\\"_blank\\">best classified script</a>Â &Â <a href=\\"https://codecanyon.net/item/quickad-classified-ads-php-script/19960675\\" target=\\"_blank\\">jobs script</a>, you will be also showcasingÂ <a href=\\"https://codecanyon.net/item/quickad-classified-ads-php-script/19960675\\" target=\\"_blank\\">geo classified ads cms</a>Â orÂ <a href=\\"https://codecanyon.net/item/quickad-classified-ads-php-script/19960675\\" target=\\"_blank\\">PHP classified ads scripts</a>Â easily. This premium classified script will help you use a classifiedÃ‚Â <a href=\\"https://codentheme.com/category/php-scripts-php-code/\\" target=\\"_blank\\">PHP script</a>to deliver the necessary output in a short span of time. You can create an online classified jobs portal withÃ‚Â <a href=\\"https://www.bylancer.com/\\" target=\\"_blank\\">Quickad jobs classified scripts</a>. End user canÃ‚Â <a href=\\"https://classified.bylancer.com/\\" target=\\"_blank\\">post free classifieds</a>Â or make an ad to premium with various premium features.</span></p><p><span style=\\"font-size: 13px; color: rgb(135, 135, 135);\\">PriceÂ <span style=\\"color: rgb(35, 207, 95);\\">$69.00Â </span></span><span style=\\"font-size: 13px; color: rgb(135, 135, 135);\\">Total Sales (650+)</span></p><p><a target=\\"_blank\\" href=\\"https://bylancer.com/products/demo/classified/\\">LIVE DEMO</a>Â <a href=\\"https://codecanyon.net/item/quickad-classified-ads-php-script/19960675\\">BUY NOW</a>Â <a href=\\"https://bylancer.com/products/demo/classified/documentation/index.html\\">DOCUMENTATION</a></p><p>------------------------------------------------------------------------------------</p><p><b>Our Portfolio</b></p><ol><li><a href=\\"https://codecanyon.net/item/quickad-classified-ads-php-script/19960675\\" target=\\"_blank\\">Quickad Classified PHP Script Ads CMS</a></li><li><a href=\\"https://codecanyon.net/item/quickad-classified-native-android-app/23956447\\" target=\\"_blank\\">Quickad - Classified Native Android App</a></li><li><a href=\\"https://codentheme.com/item/bookmepro-wordpress-appointment-booking-scheduling-plugin/\\" target=\\"_blank\\">Bookme Pro - WordPress Appointment Booking and Scheduling Software</a></li><li><a href=\\"https://codecanyon.net/item/bookme-wordpress-booking-plugin/20926116\\" target=\\"_blank\\">Bookme - WordPress Appointment Booking Scheduling Plugin</a></li><li><a href=\\"https://codecanyon.net/item/wchat-fully-responsive-phpajax-chat/18047319\\" target=\\"_blank\\">Wchat - Fully Responsive PHP AJAX Chat Script</a></li><li><a href=\\"https://codentheme.com/item/wchat-free-chat-html-template/\\" target=\\"_blank\\">Wchat - Free Chat HTML Template</a></li><li><a href=\\"https://codecanyon.net/item/facebook-style-php-ajax-chat-zechat/16491266\\" target=\\"_blank\\">Zechat - Facebook Style Php Ajax Chat</a></li><li><a href=\\"https://themeforest.net/item/eagle-material-design-admin-template/20829964\\" target=\\"_blank\\">Eagle - Material+ Bootstrap Admin Template</a></li><li><a href=\\"https://codentheme.com/item/noddy-bootstrap-4-admin-template/\\" target=\\"_blank\\">Noddy Bootstrap 4 Admin Template</a></li><li><a href=\\"https://codentheme.com/item/newsmania-wordpress-news-magazine-theme/?ref=bylancer\\" target=\\"_blank\\">The Magazine - Responsive News WordPress Theme</a></li><li><a href=\\"https://codentheme.com/item/fashiony-wordpress-blog-magazine-theme/\\" target=\\"_blank\\">Fashiony - WordPress Blog & Magazine Theme</a></li><li><a href=\\"https://codentheme.com/item/electron-wordpress-blog-magazine-theme/\\" target=\\"_blank\\">Electron - Minimal Personal Blog WordPress Theme</a></li><li><a href=\\"https://codentheme.com/item/creative-modern-blog-html-template-electron/\\" target=\\"_blank\\">Electron - Free Blog Bootstrap Html Website Template</a></li><li><a href=\\"https://codentheme.com/item/mega-gdpr-compliance-toolkit-for-wordpress/\\" target=\\"_blank\\">Mega GDPR Compliance toolkit for WordPress</a></li><li><a href=\\"https://codentheme.com/item/spider-ajax-php-50-form-with-jquery-validation/\\" target=\\"_blank\\">Spider - PHP Ajax 50+ Form With Jquery Validation</a></li><li><a href=\\"https://codentheme.com/item/appui-free-responsive-html-vuejs-angularjs-admin-dashboard/\\" target=\\"_blank\\">AppUI - Free Bootstrap HTML, Vuejs & angularjs Admin Dashboard Template</a></li><li><a href=\\"https://codentheme.com/best-wordpress-appointment-booking-and-scheduling-plugin-2019/\\" target=\\"_blank\\">Best WordPress Appointment Booking Plugin</a></li><li><a href=\\"https://codentheme.com/free-wordpress-themes/\\" target=\\"_blank\\">Free Wordpress themes</a></li></ol>', 7, 33, 69, '0', '9799901707', '0', 'delhi', '1269515', 'IN.24', 'IN', '28.617603494866284,77.20727920532227', '1566644186_prequickad.jpg', 'Best php scripts, open classifieds, best classified script, classified ads cms quickad, classified demo, quickad classified ads php script, PHP Classified Scripts, Classified Ads Scripts, job portal scripts, best classified w', 17, '', '', '', '2019-08-24 16:29:46', '2019-08-24 13:53:05', 1569236386, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0');
+	(1, 'expire', 2, '1', '1', '1', 'Quickad Classified Ads Php Script CMS', 'quickad-classified-ads-php-script-cms-1', '<h2><span style=\\"color: rgb(51, 51, 51); font-size: 16px;\\">Quickad AdsÃ‚Â <a href=\\"https://codecanyon.net/item/quickad-classified-ads-php-script/19960675\\">Php Classified Script</a></span><span style=\\"color: rgb(51, 51, 51); font-size: 16px;\\">Â is Premium Classified Php Script with fully responsive Material & Classic design. Built to be beautiful, fast and powerful. One-click setup User can easily set up this theme and easy to use and customized.</span></h2><p><span style=\\"color: rgb(84, 84, 84); font-size: 16px;\\">With the help of ourÂ <a href=\\"https://codecanyon.net/item/quickad-classified-ads-php-script/19960675\\" target=\\"_blank\\">best classified script</a>Â &Â <a href=\\"https://codecanyon.net/item/quickad-classified-ads-php-script/19960675\\" target=\\"_blank\\">jobs script</a>, you will be also showcasingÂ <a href=\\"https://codecanyon.net/item/quickad-classified-ads-php-script/19960675\\" target=\\"_blank\\">geo classified ads cms</a>Â orÂ <a href=\\"https://codecanyon.net/item/quickad-classified-ads-php-script/19960675\\" target=\\"_blank\\">PHP classified ads scripts</a>Â easily. This premium classified script will help you use a classifiedÃ‚Â <a href=\\"https://codentheme.com/category/php-scripts-php-code/\\" target=\\"_blank\\">PHP script</a>to deliver the necessary output in a short span of time. You can create an online classified jobs portal withÃ‚Â <a href=\\"https://www.bylancer.com/\\" target=\\"_blank\\">Quickad jobs classified scripts</a>. End user canÃ‚Â <a href=\\"https://classified.bylancer.com/\\" target=\\"_blank\\">post free classifieds</a>Â or make an ad to premium with various premium features.</span></p><p><span style=\\"font-size: 13px; color: rgb(135, 135, 135);\\">PriceÂ <span style=\\"color: rgb(35, 207, 95);\\">$69.00Â </span></span><span style=\\"font-size: 13px; color: rgb(135, 135, 135);\\">Total Sales (650+)</span></p><p><a target=\\"_blank\\" href=\\"https://bylancer.com/products/demo/classified/\\">LIVE DEMO</a>Â <a href=\\"https://codecanyon.net/item/quickad-classified-ads-php-script/19960675\\">BUY NOW</a>Â <a href=\\"https://bylancer.com/products/demo/classified/documentation/index.html\\">DOCUMENTATION</a></p><p>------------------------------------------------------------------------------------</p><p><b>Our Portfolio</b></p><ol><li><a href=\\"https://codecanyon.net/item/quickad-classified-ads-php-script/19960675\\" target=\\"_blank\\">Quickad Classified PHP Script Ads CMS</a></li><li><a href=\\"https://codecanyon.net/item/quickad-classified-native-android-app/23956447\\" target=\\"_blank\\">Quickad - Classified Native Android App</a></li><li><a href=\\"https://codentheme.com/item/bookmepro-wordpress-appointment-booking-scheduling-plugin/\\" target=\\"_blank\\">Bookme Pro - WordPress Appointment Booking and Scheduling Software</a></li><li><a href=\\"https://codecanyon.net/item/bookme-wordpress-booking-plugin/20926116\\" target=\\"_blank\\">Bookme - WordPress Appointment Booking Scheduling Plugin</a></li><li><a href=\\"https://codecanyon.net/item/wchat-fully-responsive-phpajax-chat/18047319\\" target=\\"_blank\\">Wchat - Fully Responsive PHP AJAX Chat Script</a></li><li><a href=\\"https://codentheme.com/item/wchat-free-chat-html-template/\\" target=\\"_blank\\">Wchat - Free Chat HTML Template</a></li><li><a href=\\"https://codecanyon.net/item/facebook-style-php-ajax-chat-zechat/16491266\\" target=\\"_blank\\">Zechat - Facebook Style Php Ajax Chat</a></li><li><a href=\\"https://themeforest.net/item/eagle-material-design-admin-template/20829964\\" target=\\"_blank\\">Eagle - Material+ Bootstrap Admin Template</a></li><li><a href=\\"https://codentheme.com/item/noddy-bootstrap-4-admin-template/\\" target=\\"_blank\\">Noddy Bootstrap 4 Admin Template</a></li><li><a href=\\"https://codentheme.com/item/newsmania-wordpress-news-magazine-theme/?ref=bylancer\\" target=\\"_blank\\">The Magazine - Responsive News WordPress Theme</a></li><li><a href=\\"https://codentheme.com/item/fashiony-wordpress-blog-magazine-theme/\\" target=\\"_blank\\">Fashiony - WordPress Blog & Magazine Theme</a></li><li><a href=\\"https://codentheme.com/item/electron-wordpress-blog-magazine-theme/\\" target=\\"_blank\\">Electron - Minimal Personal Blog WordPress Theme</a></li><li><a href=\\"https://codentheme.com/item/creative-modern-blog-html-template-electron/\\" target=\\"_blank\\">Electron - Free Blog Bootstrap Html Website Template</a></li><li><a href=\\"https://codentheme.com/item/mega-gdpr-compliance-toolkit-for-wordpress/\\" target=\\"_blank\\">Mega GDPR Compliance toolkit for WordPress</a></li><li><a href=\\"https://codentheme.com/item/spider-ajax-php-50-form-with-jquery-validation/\\" target=\\"_blank\\">Spider - PHP Ajax 50+ Form With Jquery Validation</a></li><li><a href=\\"https://codentheme.com/item/appui-free-responsive-html-vuejs-angularjs-admin-dashboard/\\" target=\\"_blank\\">AppUI - Free Bootstrap HTML, Vuejs & angularjs Admin Dashboard Template</a></li><li><a href=\\"https://codentheme.com/best-wordpress-appointment-booking-and-scheduling-plugin-2019/\\" target=\\"_blank\\">Best WordPress Appointment Booking Plugin</a></li><li><a href=\\"https://codentheme.com/free-wordpress-themes/\\" target=\\"_blank\\">Free Wordpress themes</a></li></ol>', 7, 33, 69, '0', '9799901707', '0', 'delhi', '1269515', 'IN.24', 'IN', '28.617603494866284,77.20727920532227', '1566644186_prequickad.jpg', 'Best php scripts, open classifieds, best classified script, classified ads cms quickad, classified demo, quickad classified ads php script, PHP Classified Scripts, Classified Ads Scripts, job portal scripts, best classified w', 17, '', '', '', '2019-08-24 16:29:46', '2019-08-24 13:53:05', 1569236386, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(2, 'active', 3, '0', '0', '0', 'Toyotta Hiace Van', 'toyotta-hiace-van', '<p>Toyota Hiace Van&nbsp;</p><p>15 lugares</p><p>bom estado</p>', 1, 2, 50000, '0', '84822845', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1600883611_toyota.jpg', '', 4, NULL, NULL, NULL, '2020-09-23 19:54:02', '2020-09-23 19:54:02', 1603475642, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(3, 'active', 3, '0', '0', '0', 'Nissan Sierre', 'nissan-sierre', '<p>Nissan Sierre</p><p>4 Portas</p><p>Cabine</p>', 1, 2, 70000, '0', '846872773', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1600884379_nissan.jpg', '', 4, NULL, NULL, NULL, '2020-09-23 20:06:39', '2020-09-23 20:06:39', 1603476399, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(4, 'active', 3, '0', '0', '0', 'vending machine', 'vending-machine', '<p>vending machine<br></p>', 3, 12, 2000, '0', '84822845', '0', '', '1039854', 'MZ.04', 'MZ', '28.6139391,77.20902120000005', '1600884516_redboxhiringkioskambassadors1-851x452-2.png', '', 6, NULL, NULL, NULL, '2020-09-23 20:09:11', '2020-09-23 20:09:11', 1603476551, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(5, 'active', 3, '1', '1', '1', 'VEstido', 'vestido', '<p>Vestido</p>', 5, 48, 600, '0', '846872773', '0', '', '1039854', 'MZ.04', 'MZ', '28.6139391,77.20902120000005', '1601287391_1600715828img20200910120515110.jpg,1601287393_1600715828img20200910120515111.jpg', '', 14, NULL, NULL, NULL, '2020-09-28 12:03:32', '2020-09-28 12:03:32', 1603879412, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(6, 'active', 3, '1', '1', '1', 'Carro 4x4 Nissan', 'carro-4x4-nissan', '<p>Carro 4x4 Nissan<br></p><p>4portas</p><p>3.5</p>', 1, 2, 80000, '0', '822872285', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1601310050_nissan.jpg,1601310053_toyota.jpg', '', 52, NULL, NULL, NULL, '2020-09-28 18:23:16', '2020-09-28 18:23:16', 1603902196, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(7, 'active', 5, '0', '0', '0', 'Mota', 'mota', '<p>Mota para andar na cidade&nbsp;</p>', 1, 1, 35000, '0', '848451', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1601808707_mota.jpg', '', 9, NULL, NULL, NULL, '2020-10-04 12:52:17', '2020-10-04 12:52:17', 1604400737, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(8, 'active', 6, '0', '0', '0', 'Mota v4.5', 'mota-v4.5', '<p>Mota v4.5<br></p><p>Bom estado</p>', 1, 1, 20000, '0', '845544115', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1601879968_mota.jpg', '', 3, NULL, NULL, NULL, '2020-10-05 08:39:42', '2020-10-05 08:39:42', 1604471982, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0');
 /*!40000 ALTER TABLE `blproduct` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.blproduct_resubmit
@@ -1307,10 +1373,12 @@ CREATE TABLE IF NOT EXISTS `blpush_notification` (
   `type` varchar(255) DEFAULT NULL,
   `message` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table boladas.blpush_notification: 0 rows
+-- Dumping data for table boladas.blpush_notification: 1 rows
 /*!40000 ALTER TABLE `blpush_notification` DISABLE KEYS */;
+INSERT INTO `blpush_notification` (`id`, `sender_id`, `sender_name`, `owner_id`, `owner_name`, `product_id`, `product_title`, `type`, `message`) VALUES
+	(1, 0, '', 3, '', 2, 'Toyotta Hiace Van', 'ad_approve', 'Toyotta Hiace Van has been approved, Make it premium for more visibility.');
 /*!40000 ALTER TABLE `blpush_notification` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.blreviews
@@ -1323,10 +1391,12 @@ CREATE TABLE IF NOT EXISTS `blreviews` (
   `date` date DEFAULT NULL,
   `publish` int(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`reviewID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table boladas.blreviews: 0 rows
+-- Dumping data for table boladas.blreviews: 1 rows
 /*!40000 ALTER TABLE `blreviews` DISABLE KEYS */;
+INSERT INTO `blreviews` (`reviewID`, `productID`, `user_id`, `rating`, `comments`, `date`, `publish`) VALUES
+	(1, '5', 3, 5, 'Muito bom', '2020-09-28', 1);
 /*!40000 ALTER TABLE `blreviews` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.blsubadmin1
@@ -1563,10 +1633,14 @@ CREATE TABLE IF NOT EXISTS `blsubscriptions` (
   `recommended` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no',
   `discount_badge` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`sub_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table boladas.blsubscriptions: 0 rows
+-- Dumping data for table boladas.blsubscriptions: 3 rows
 /*!40000 ALTER TABLE `blsubscriptions` DISABLE KEYS */;
+INSERT INTO `blsubscriptions` (`sub_id`, `sub_title`, `sub_term`, `sub_amount`, `sub_image`, `group_id`, `pay_mode`, `active`, `recommended`, `discount_badge`) VALUES
+	(4, 'Premium', 'MONTHLY', 250.00, 'https://cdn.iconscout.com/icon/free/png-64/check-verified-successful-accept-tick-yes-success-2516.png', 2, 'one_time', 1, 'yes', ''),
+	(5, 'Standard', 'WEEKLY', 100.00, '', 1, 'one_time', 1, 'no', ''),
+	(6, 'Basic', 'DAILY', 25.00, '', 3, 'recurring', 1, 'yes', '');
 /*!40000 ALTER TABLE `blsubscriptions` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.bltestimonials
@@ -1870,10 +1944,16 @@ CREATE TABLE IF NOT EXISTS `bltransaction` (
   `transaction_method` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
--- Dumping data for table boladas.bltransaction: 0 rows
+-- Dumping data for table boladas.bltransaction: 4 rows
 /*!40000 ALTER TABLE `bltransaction` DISABLE KEYS */;
+INSERT INTO `bltransaction` (`id`, `product_name`, `product_id`, `seller_id`, `amount`, `featured`, `urgent`, `highlight`, `transaction_time`, `status`, `transaction_gatway`, `transaction_ip`, `transaction_description`, `transaction_method`) VALUES
+	(1, 'VEstido', 5, 3, 60.00, '1', '1', '1', 1601287855, 'success', 'wire_transfer', '::1', 'Pacote Destaque Urgente Realçar', 'Premium Ad'),
+	(2, 'Carro 4x4 Nissan', 6, 3, 60.00, '1', '1', '1', 1601310378, 'success', 'wire_transfer', '::1', 'Pacote Destaque Urgente Realçar', 'Premium Ad'),
+	(4, 'Standard Plano de associação', 5, 4, 100.00, '0', '0', '0', 2020, 'success', 'Admin', '::1', 'Standard Plano de associação', 'Subscription'),
+	(5, 'Premium Plano de associação', 4, 4, 250.00, '0', '0', '0', 1601754484, 'pending', 'wire_transfer', '::1', 'Premium Plano de associação', 'Subscription'),
+	(6, 'Standard Plano de associação', 5, 6, 100.00, '0', '0', '0', 2020, 'success', 'Admin', '::1', 'Standard Plano de associação', 'Subscription');
 /*!40000 ALTER TABLE `bltransaction` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.blupgrades
@@ -1899,10 +1979,13 @@ CREATE TABLE IF NOT EXISTS `blupgrades` (
   `date_canceled` datetime DEFAULT NULL,
   `date_created` timestamp NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`upgrade_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table boladas.blupgrades: 0 rows
+-- Dumping data for table boladas.blupgrades: 1 rows
 /*!40000 ALTER TABLE `blupgrades` DISABLE KEYS */;
+INSERT INTO `blupgrades` (`upgrade_id`, `sub_id`, `user_id`, `upgrade_lasttime`, `upgrade_expires`, `unique_id`, `invoice_id`, `paypal_subscription_id`, `paypal_profile_id`, `stripe_customer_id`, `stripe_subscription_id`, `authorizenet_subscription_id`, `billing_day`, `length`, `interval`, `trial_days`, `status`, `date_trial_ends`, `date_canceled`, `date_created`) VALUES
+	(7, 5, 4, 2020, 1602355954, '5f78c8724cfc6', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 'Active', NULL, NULL, '2020-10-04 00:22:34'),
+	(8, 5, 6, 2020, 1602484868, '5f7ac004de599', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 'Active', NULL, NULL, '2020-10-05 12:11:08');
 /*!40000 ALTER TABLE `blupgrades` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.bluser
@@ -1944,10 +2027,15 @@ CREATE TABLE IF NOT EXISTS `bluser` (
   `notify` enum('0','1') DEFAULT '0',
   `notify_cat` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
--- Dumping data for table boladas.bluser: 0 rows
+-- Dumping data for table boladas.bluser: 3 rows
 /*!40000 ALTER TABLE `bluser` DISABLE KEYS */;
+INSERT INTO `bluser` (`id`, `group_id`, `username`, `user_type`, `password_hash`, `forgot`, `confirm`, `email`, `status`, `view`, `created_at`, `updated_at`, `name`, `tagline`, `description`, `website`, `sex`, `phone`, `postcode`, `address`, `country`, `city`, `image`, `lastactive`, `facebook`, `twitter`, `googleplus`, `instagram`, `linkedin`, `youtube`, `oauth_provider`, `oauth_uid`, `oauth_link`, `online`, `notify`, `notify_cat`) VALUES
+	(3, 1, 'bobo', NULL, '$2y$13$2c05cqSeY0rUObrXJCAZb.Isong7rziRMg2Wd55p8SDXAdD/VUCAe', NULL, NULL, 'bobo@gmail.com', '1', NULL, '2020-09-22 15:36:57', '2020-09-28 07:02:03', 'bobo', NULL, 'Male', NULL, 'Male', NULL, NULL, NULL, 'Moçambique', NULL, 'bobo_13380137502.png', '2020-10-04 15:03:29', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL),
+	(4, 1, 'user', NULL, '$2y$13$JiGnk4MjuWAxZ0z3tII6fOuqGYPuHAPz/SBIP50on48YM/8xc8RQ6', NULL, NULL, 'user@email.com', '0', NULL, '2020-10-03 20:52:18', '2020-10-03 20:52:34', 'User', NULL, 'Male', NULL, 'Male', NULL, NULL, NULL, 'Moçambique', NULL, 'user_3806516952.png', '2020-10-04 00:35:21', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL),
+	(5, 1, 'bobo1', NULL, '$2y$13$2RgpT0Ot8W0j1BjLo4.dJ.V7YwCJfV2FPSquV1CMZPkgFeqcUK5QO', NULL, '08917796', 'dercio@gmail.com', '0', NULL, '2020-10-04 11:22:07', '2020-10-04 11:22:07', 'dede', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'India', 'Jodhpur', 'default_user.png', '2020-10-04 23:12:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL),
+	(6, 1, 'herve', NULL, '$2y$13$p4O.jLPiGkRzLx6Yb57fmevY.RTHW8XtUU3taeAbCbrT7ENenIJMK', NULL, '04765036', 'herve@gmail.com', '1', NULL, '2020-10-05 08:37:45', '2020-10-05 08:41:08', 'Herve', NULL, '', NULL, 'Male', NULL, NULL, NULL, 'Moçambique', 'Jodhpur', 'default_user.png', '2020-10-05 12:13:23', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL);
 /*!40000 ALTER TABLE `bluser` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.blusergroups
@@ -1967,12 +2055,14 @@ CREATE TABLE IF NOT EXISTS `blusergroups` (
   `show_on_home` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no',
   `show_in_home_search` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no',
   PRIMARY KEY (`group_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table boladas.blusergroups: 1 rows
+-- Dumping data for table boladas.blusergroups: 3 rows
 /*!40000 ALTER TABLE `blusergroups` DISABLE KEYS */;
 INSERT INTO `blusergroups` (`group_id`, `group_removable`, `group_name`, `ad_limit`, `ad_duration`, `urgent_project_fee`, `featured_project_fee`, `highlight_project_fee`, `featured_duration`, `urgent_duration`, `highlight_duration`, `top_search_result`, `show_on_home`, `show_in_home_search`) VALUES
-	(1, 0, 'Registerd users (Free)', 3, 30, 4.32, 1.25, 3.32, 10, 20, 30, 'no', 'no', 'no');
+	(1, 0, 'Registerd users (Free)', 10, 30, 25.00, 10.00, 25.00, 10, 20, 30, 'no', 'no', 'no'),
+	(2, 0, 'Premium', 50, 30, 0.00, 100.00, 150.00, 0, 0, 0, 'yes', 'yes', 'yes'),
+	(3, 0, 'Basic', 20, 30, 0.00, 0.00, 0.00, 0, 0, 0, 'yes', 'no', 'no');
 /*!40000 ALTER TABLE `blusergroups` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
