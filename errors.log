@@ -1,0 +1,8 @@
+[22-Sep-2020 14:19:09 Africa/Maputo] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\dev\boladas\includes\functions\func.users.php on line 162
+[22-Sep-2020 14:19:09 Africa/Maputo] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\dev\boladas\includes\functions\func.sqlquery.php on line 354
+[22-Sep-2020 14:19:09 Africa/Maputo] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\dev\boladas\includes\functions\func.users.php on line 162
+[22-Sep-2020 14:19:09 Africa/Maputo] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\dev\boladas\includes\functions\func.users.php on line 162
+[22-Sep-2020 14:19:09 Africa/Maputo] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\dev\boladas\includes\functions\func.users.php on line 162
+[22-Sep-2020 14:19:09 Africa/Maputo] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\dev\boladas\includes\functions\func.sqlquery.php on line 364
+[22-Sep-2020 14:19:09 Africa/Maputo] PHP Deprecated:  join(): Passing glue string after array is deprecated. Swap the parameters in C:\xampp\htdocs\dev\boladas\includes\sql_builder\idiorm.php on line 1358
+[22-Sep-2020 14:19:09 Africa/Maputo] PHP Deprecated:  join(): Passing glue string after array is deprecated. Swap the parameters in C:\xampp\htdocs\dev\boladas\includes\sql_builder\idiorm.php on line 1358

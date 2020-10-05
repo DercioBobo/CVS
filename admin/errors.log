@@ -1,0 +1,6 @@
+[22-Sep-2020 14:19:18 Africa/Maputo] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\dev\boladas\includes\functions\func.users.php on line 162
+[22-Sep-2020 14:19:18 Africa/Maputo] PHP Deprecated:  Function get_magic_quotes_gpc() is deprecated in C:\xampp\htdocs\dev\boladas\includes\functions\func.global.php on line 1284
+[22-Sep-2020 14:19:18 Africa/Maputo] PHP Deprecated:  Function get_magic_quotes_gpc() is deprecated in C:\xampp\htdocs\dev\boladas\includes\functions\func.global.php on line 1284
+[22-Sep-2020 14:19:18 Africa/Maputo] PHP Deprecated:  Function get_magic_quotes_gpc() is deprecated in C:\xampp\htdocs\dev\boladas\includes\functions\func.global.php on line 1284
+[22-Sep-2020 14:19:18 Africa/Maputo] PHP Deprecated:  Function get_magic_quotes_gpc() is deprecated in C:\xampp\htdocs\dev\boladas\includes\functions\func.global.php on line 1284
+[22-Sep-2020 14:19:18 Africa/Maputo] PHP Deprecated:  Function get_magic_quotes_gpc() is deprecated in C:\xampp\htdocs\dev\boladas\includes\functions\func.global.php on line 1284
