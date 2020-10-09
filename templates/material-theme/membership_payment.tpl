@@ -266,8 +266,8 @@
                                     <div class="payment-tab">
                                         <div class="payment-tab-trigger">
                                             <input name="payment_method_id" class="payment_method_id" id="{PAYMENT_TYPES.folder}" type="radio" value="{PAYMENT_TYPES.id}" data-name="offlinepayment">
-                                            <label for="{PAYMENT_TYPES.folder}">{LANG_BANK_DEPOST_OFF_PAY}</label>
-                                            <img class="payment-logo {PAYMENT_TYPES.folder}" src="{SITE_URL}includes/payments/{PAYMENT_TYPES.folder}/logo/logo.png" alt="">
+                                            <label for="{PAYMENT_TYPES.folder}">Pagamento via M-Pesa</label>
+                                            <img class="payment-logo {PAYMENT_TYPES.folder}" src="{SITE_URL}includes/payments/{PAYMENT_TYPES.folder}/logo/mpesa.png" alt="">
                                         </div>
 
                                         <div class="payment-tab-content">
@@ -276,7 +276,7 @@
                                                     <tbody>
                                                     <tr>
                                                         <td>
-                                                            <h5 class="PaymentMethod-heading">{LANG_BANK_ACCOUNT_DETAILS}</h5>
+                                                            <h5 class="PaymentMethod-heading">Detalhes do M-Pesa</h5>
                                                             <span class="PaymentMethod-info">{BANK_INFO}</span>
                                                         </td>
                                                     </tr>
@@ -286,7 +286,7 @@
                                                         <span class="PaymentMethod-info">
                                                             {LANG_MEMBERSHIPPLAN} : {ORDER_TITLE}<br>
                                                             {LANG_USERNAME}: {USERNAME}<br><br>
-                                                            {LANG_OFFLINE_CREDIT_NOTE}
+                                                            <!--{LANG_OFFLINE_CREDIT_NOTE} -->
                                                         </span>
                                                         </td>
                                                     </tr>
@@ -299,6 +299,14 @@
                                                     </tbody>
                                                 </table>
 
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="card-label form-group">
+                                                        <label for="stripeCardNumber">Número de Telemóvel</label>
+                                                        <input type="text" class="form-control" name="mpesanumer" placeholder="Número de Telemóvel" required autofocus/>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
