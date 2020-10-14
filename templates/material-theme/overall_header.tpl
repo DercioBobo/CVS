@@ -66,6 +66,7 @@
     <link rel='stylesheet' href='{SITE_URL}templates/{TPL_NAME}/assets/css/main-theme.css' type='text/css' />
     <link rel='stylesheet' href='{SITE_URL}templates/{TPL_NAME}/assets/materialize/css/materialize.css' type='text/css' />
     <link rel="stylesheet" href="{SITE_URL}templates/{TPL_NAME}/assets/css/membership.css" >
+    <link rel="stylesheet" href="{SITE_URL}templates/{TPL_NAME}/assets/loader/loader.css" >
     <!--Sweet Alert CSS -->
     <link href="{SITE_URL}templates/{TPL_NAME}/assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
 

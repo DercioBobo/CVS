@@ -306,10 +306,19 @@
                                             <div class="row">
                                                 <div class="col-xs-12">
                                                     <div class="card-label form-group">
+                                                        <label for="stripeCardNumber">Valor</label>
+                                                        <input type="text" class="form-control" id="valor" name="valor" placeholder="valor" required autofocus/>
+                                                    </div>
+                                                    <div class="card-label form-group">
                                                         <label for="stripeCardNumber">Número de Telemóvel</label>
-                                                        <input type="text" class="form-control" name="mpesanumer" placeholder="Número de Telemóvel" required autofocus/>
+                                                        <input type="text" class="form-control" id="mpesanumer" name="mpesanumer" placeholder="Número de Telemóvel" required autofocus/>
                                                     </div>
                                                 </div>
+
+                                                <div class="col-xs-12">
+                                                        <button type="button" class="btn btn-primary margin-top-55 subscribeNow" id="processar_mpesa" >Processar pagamento M-Pesa</button>
+                                                </div>
+
                                             </div>
 
                                         </div>
@@ -325,7 +334,6 @@
                             <!-- Payment Methods Accordion / End -->
                             <input type="hidden" name="token" value="{TOKEN}" />
                             <input type="hidden" name="upgrade" value="{UPGRADE}" />
-                            <button type="submit" name="Submit" class="btn btn-primary margin-top-55 subscribeNow" id="subscribeNow">{LANG_CONFIRM_PAY}</button>
                         </form>
 
                     </div>
@@ -358,6 +366,7 @@
 <!--end page-content-->
 
 
+
 {OVERALL_FOOTER}
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
@@ -374,8 +383,10 @@
     var LANG_INV_CVV = "{LANG_INV_CVV}";
     var LANG_FIELD_REQ = "{LANG_FIELD_REQ}";
     var LANG_CODE = "{LANG_CODE}";
+    var AMOUNT = "{AMOUNT}";
+    var APPPATH = "{SITEURL}";
 
-
+    $('#valor').val(AMOUNT);
 
     $(document).ready(function ()
     {
@@ -399,9 +410,114 @@
         });
     });
 
+    $('#processar_mpesa').on('click', function () {
+
+
+        console.log(APPPATH+AMOUNT);
+
+        var numero = $('#mpesanumer').val();
+
+        //  alert("vindo "+numero);
+
+        if(numero === ""){
+            swal({
+                title: "Número vazio!",
+                text: "Preencha todos campos obrigatórios!",
+                icon: "warning",
+                button: "Ok!"
+            });
+        }else{
+
+
+            $.ajax({
+                type: "POST",
+                url: APPPATH+'/mpesa-payment/',
+                data: {
+                    "nome": "",
+                    "numero": numero,
+                    "valor": $('#valor').val()
+
+                },
+                beforeSend: function(){
+console.log("A iniciar");
+                    $('#carregamento').css("display","block");
+
+                },
+                complete: function(){
+                    console.log("A finalizar");
+                    $('#carregamento').css("display","none");
+
+                },
+                success: function (response) {
+
+
+                    var result = JSON.parse(response);
+
+                    if(result.output_ResponseCode === 'INS-10'){
+
+                        swal({
+                            title: "Duplicate Transaction!",
+                            text: "Can't proceed with the request!",
+                            icon: "error",
+                            button: "Ok!"
+                        });
+
+                    }else if(result.output_ResponseCode === 'INS-0'){
+
+                        swal({
+                            title: "Request processed successfully!",
+                            text: "Transaction ID: "+ result.output_TransactionID,
+                            icon: "success",
+                            button: "Ok!"
+                        }, function(){
+
+                            $('#subscribeForm').append(result.botao);
+
+
+                            $('#subscribeForm').submit();
+
+                        });
+
+                    }else{
+
+                        swal({
+                            title: "Error!",
+                            text: "Unsuccessful request!",
+                            icon: "error",
+                            button: "Ok!"
+                        }, function () {
+
+
+                        });
+
+                    }
+
+
+
+
+                },
+                error: function () {
+
+                    alert("ocorreu um erro");
+
+                    return false;
+                }
+            });
+
+
+
+
+        }
+
+
+    });
+
+
 </script>
 
 <!-- Offline Payment Payment Method Check -->
+
+
 
 <script>
     $(document).ready(function ()

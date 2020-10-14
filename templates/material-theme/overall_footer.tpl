@@ -342,4 +342,9 @@ ELSEIF({LOGGED_IN} && '{ZECHAT_ON_OFF}'=='on'){
     <tr><td valign="middle"><div id="content"><img src="#"/></div></td></tr>
 </table>
 {:IF}
+
+<div id="carregamento" class="page">
+    <img src="{SITE_URL}templates/{TPL_NAME}/assets/loader.svg" class="img-load">
+</div>
+
 </body> </html>

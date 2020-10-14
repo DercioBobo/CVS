@@ -14,6 +14,8 @@ if(isset($_GET['i']) && trim($_GET['i']) == '')
     exit();
 }
 
+
+
 if(isset($_GET['status']) && $_GET['status'] == 'cancel') {
 
     $access_token = isset($_GET['access_token']) ? $_GET['access_token'] : 0;
@@ -32,6 +34,8 @@ if(isset($_GET['status']) && $_GET['status'] == 'cancel') {
 
 if(isset($_GET['i']) && isset($_GET['access_token']))
 {
+    $_SESSION['quickad'][$access_token]['mpesanumer'] = $_POST['mpesanumer'];
+
     $access_token = $_GET['access_token'];
     if(isset($_SESSION['quickad'][$access_token])){
         $payment_settings = ORM::for_table($config['db']['pre'].'payments')
@@ -54,6 +58,8 @@ if(isset($_POST['payment_method_id']))
     $payment_type = $_SESSION['quickad'][$access_token]['payment_type'];
     $_SESSION['quickad'][$access_token]['payment_mode'] = "one-time";
     $_SESSION['quickad'][$access_token]['plan_interval'] = "day";
+    $_SESSION['quickad'][$access_token]['mpesanumer'] = $_POST['mpesanumer'];
+
 
     if (isset($payment_type)) {
         $info = ORM::for_table($config['db']['pre'].'payments')
@@ -120,6 +126,7 @@ else if(isset($_GET['access_token'])) {
         $page->SetParameter ('ORDER_DESC', $trans_desc);
         $page->SetParameter ('PAYMENT_TYPE', $payment_type);
         $page->SetParameter ('AMOUNT', $amount);
+        $page->SetParameter ('SITEURL', SITEURL);
         $page->SetParameter ('TOKEN', $access_token);
         $page->SetParameter ('EMAIL', $email);
         $page->SetParameter ('COUNTRY_CODE', strtoupper(check_user_country()));
