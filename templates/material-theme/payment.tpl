@@ -287,7 +287,6 @@
                                                         <span class="PaymentMethod-info">
                                                             {LANG_MEMBERSHIPPLAN} : {ORDER_TITLE}<br>
                                                             {LANG_USERNAME}: {USERNAME}<br><br>
-                                                            Após a transferencia do valor, Mande o comprovativo para o whatsapp 846872773
                                                            <!-- {LANG_OFFLINE_CREDIT_NOTE} -->
                                                         </span>
                                                         </td>
@@ -311,7 +310,7 @@
                                                     </div>
                                                     <div class="card-label form-group">
                                                         <label for="stripeCardNumber">Número de Telemóvel</label>
-                                                        <input type="text" class="form-control" id="mpesanumer" name="mpesanumer" placeholder="Número de Telemóvel" required autofocus/>
+                                                        <input type="text" class="form-control"  maxlength="9" pattern="[0-9]{9}"  id="mpesanumer" name="mpesanumer" placeholder="84xxxxxxx" required autofocus/>
                                                     </div>
                                                 </div>
 
