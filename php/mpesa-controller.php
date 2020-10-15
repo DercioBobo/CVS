@@ -32,7 +32,7 @@ function send_notification ($nome, $numero,$valor)
     $url = 'https://api.sandbox.vm.co.mz:18352/ipg/v1x/c2bPayment/singleStage/';
     $fields = array(
         'input_TransactionReference'=> 'T'.rand(10000,99999).'C',
-        'input_CustomerMSISDN'=> $numero,
+        'input_CustomerMSISDN'=> '258'.$numero,
         'input_Amount'=> $valor,
         'input_ThirdPartyReference'=> 'BI7BA1',
         'input_ServiceProviderCode'=> '171717'

@@ -304,13 +304,13 @@
 
                                             <div class="row">
                                                 <div class="col-xs-12">
-                                                    <div class="card-label form-group">
+                                                    <div class="card-label form-group" hidden>
                                                         <label for="stripeCardNumber">Valor</label>
                                                         <input type="text" class="form-control" id="valor" name="valor" placeholder="valor" required autofocus/>
                                                     </div>
                                                     <div class="card-label form-group">
                                                         <label for="stripeCardNumber">Número de Telemóvel</label>
-                                                        <input type="text" class="form-control"  maxlength="12" pattern="[0-9]{9}"  id="mpesanumer" name="mpesanumer" placeholder="84xxxxxxx" required autofocus/>
+                                                        <input type="text" class="form-control"  maxlength="9" pattern="[0-9]{9}"  id="mpesanumer" name="mpesanumer" placeholder="84xxxxxxx" required autofocus/>
                                                     </div>
                                                 </div>
 
@@ -412,8 +412,6 @@
     $('#processar_mpesa').on('click', function () {
 
 
-        console.log(APPPATH+AMOUNT);
-
         var numero = $('#mpesanumer').val();
 
         //  alert("vindo "+numero);
@@ -434,15 +432,17 @@
                 data: {
                     "nome": "",
                     "numero": numero,
-                    "valor": $('#valor').val()
+                    "valor": AMOUNT
 
                 },
                 beforeSend: function(){
-console.log("A iniciar");
+
+                    console.log("A iniciar");
                     $('#carregamento').css("display","block");
 
                 },
                 complete: function(){
+
                     console.log("A finalizar");
                     $('#carregamento').css("display","none");
 
