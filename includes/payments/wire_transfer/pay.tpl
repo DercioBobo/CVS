@@ -72,19 +72,19 @@
 <div class="container">
     <div class="quickad-template">
         <div class="PaymentMethod-label">
-            <span><i class="fa fa-university" aria-hidden="true"></i> {LANG_BANK_DEPOSIT}</span>
+            <span>  Pagamento por M-Pesa</span>
         </div>
         <div class="PaymentMethod-content-inner">
             <div class="alert alert-success">
 
-                {LANG_OFFLINE_PAYMENT_REQUEST}
+                Recebemos a sua solicitação e o pagamento por M-Pesa. Aguarde pela confirmação do administrador para a activar os features.
             </div>
             <table class="default-table table-alt-row PaymentMethod-infoTable">
                 <tbody>
                 <tr>
                     <td>
-                        <h5 class="PaymentMethod-heading">{LANG_BANK_ACCOUNT_DETAILS}</h5>
-                        <span class="PaymentMethod-info">{BANK_INFO}</span>
+                        <!--<h5 class="PaymentMethod-heading">{LANG_BANK_ACCOUNT_DETAILS}</h5>
+                        <span class="PaymentMethod-info">{BANK_INFO}</span> -->
                     </td>
                 </tr>
                 <tr>
@@ -93,7 +93,7 @@
                         <span class="PaymentMethod-info">
                             {LANG_ORDER} : {ORDER_TITLE}<br>
                             {LANG_USERNAME}: {USERNAME}<br><br>
-                            {LANG_OFFLINE_CREDIT_NOTE}
+                           <!-- {LANG_OFFLINE_CREDIT_NOTE} -->
                         </span>
                     </td>
                 </tr>
@@ -105,7 +105,7 @@
                 </tr>
                 </tbody>
             </table>
-            <div style="text-align: right"><a href="{LINK_TRANSACTION}" class="btn btn-primary">{LANG_TRANSACTION}</a></div>
+            <div style="text-align: left"><a href="{LINK_TRANSACTION}" class="btn btn-primary">Transações Efectuadas</a></div>
         </div>
     </div>
 </div>

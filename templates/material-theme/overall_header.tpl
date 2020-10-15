@@ -305,7 +305,7 @@
                         <li><a href="{LINK_CONTACT}">{LANG_CONTACT}</a></li>
                         IF({LOGGED_IN}){
                         <li><a href="#" data-toggle="modal" data-target="#vendedorVerificadoModal" class="waves-effect pad-lr-10 modal-trigger">Torne-se Vendedor Verificado</a></li>
-                        <li><a href="{LINK_MEMBERSHIP}">Planos Premium</a></li>
+                   <!--     <li><a href="{LINK_MEMBERSHIP}">Planos Premium</a></li> -->
                         {:IF}
                     </ul>
                 </nav>

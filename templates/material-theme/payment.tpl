@@ -8,7 +8,7 @@
         </ul>
         <a href="{LINK_POST-AD}" class="postadinner"><span> <i class="fa fa-plus-circle"></i> {LANG_POST_AD}</span></a>
         <!--end breadcrumb-->
-        <section class="page-title center"><h1>{LANG_PAYMENT_METHOD}</h1></section>
+       <!-- <section class="page-title center"><h1>{LANG_PAYMENT_METHOD}</h1></section> -->
         <!--end page-title-->
         <section>
             <div class="row">
@@ -293,8 +293,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <h5 class="PaymentMethod-heading">{LANG_AMOUNT_TO_SEND}</h5>
-                                                            <span class="PaymentMethod-info">{CURRENCY_SIGN}{AMOUNT} {CURRENCY_CODE}</span>
+                                                            <h5 class="PaymentMethod-heading">Valor a transferir</h5>
+                                                            <span class="PaymentMethod-info">{AMOUNT} {CURRENCY_SIGN} </span>
                                                         </td>
                                                     </tr>
                                                     </tbody>
@@ -310,7 +310,7 @@
                                                     </div>
                                                     <div class="card-label form-group">
                                                         <label for="stripeCardNumber">Número de Telemóvel</label>
-                                                        <input type="text" class="form-control"  maxlength="9" pattern="[0-9]{9}"  id="mpesanumer" name="mpesanumer" placeholder="84xxxxxxx" required autofocus/>
+                                                        <input type="text" class="form-control"  maxlength="12" pattern="[0-9]{9}"  id="mpesanumer" name="mpesanumer" placeholder="84xxxxxxx" required autofocus/>
                                                     </div>
                                                 </div>
 
@@ -349,7 +349,7 @@
                         <ul>
                             <li>{LANG_TITLE} <span>{ORDER_TITLE}</span></li>
                             <li>{LANG_ORDER} <span>{ORDER_DESC}</span></li>
-                            <li class="total-costs">{LANG_TOTAL_COST} <span>{CURRENCY_SIGN}{AMOUNT} {CURRENCY_CODE}</span></li>
+                            <li class="total-costs">{LANG_TOTAL_COST} <span>{AMOUNT} {CURRENCY_SIGN}</span></li>
                         </ul>
 
                     </div>
