@@ -149,7 +149,7 @@
     </div>
 </div>
 
-<div class="modal" id="vendedorVerificadoModal">
+<div class="modal" id="precos">
     <i class="loading-icon fa fa-circle-o-notch fa-spin"></i>
     <div class="modal-dialog " role="document">
         <div class="modal-content">
@@ -161,9 +161,6 @@
             </div>
             <div class="modal-body">
             <div class="row">
-                <div class="col-md-12 img-center ">
-                    <img class="img-responsive img-modal" src="{SITE_URL}templates/{TPL_NAME}/img/verified.png">
-                </div>
 
                 <div class="col-md-6">
                     <ul class="list-group">
@@ -183,13 +180,79 @@
                 </div>
             </div>
             </div>
+        </div>
+        <!--end modal-content-->
+    </div>
+    <!--end modal-dialog-->
+</div>
+
+<div class="modal" id="vendedorVerificadoModal">
+    <i class="loading-icon fa fa-circle-o-notch fa-spin"></i>
+    <div class="modal-dialog " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <div class="section-title">
+                    <h2>Preencha o formulário para tornar-se verificado</h2>
+                    <a href="#" data-toggle="modal" data-target="#precos" class="waves-effect pad-lr-10 modal-trigger">Ver Tabela de Preços</a>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="ver_email">Email</label>
+                                <input type="email" class="form-control" id="ver_email" value="{EMAIL}" readonly placeholder="Email">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="ver_nome">Nome</label>
+                                <input type="email" class="form-control" id="ver_email" readonly  value="{AUTHORNAME}" placeholder="Nome Completo">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="ver_username">Username</label>
+                                <input type="text" class="form-control" id="ver_username"  value="{USERNAME}" readonly placeholder="Username">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="ver_contacto">Contacto</label>
+                                <input type="number" class="form-control" id="ver_contacto"   value="{PHONE}" readonly placeholder="Contacto">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="ver_bi">Scan do B.I Frente e Verso</label>
+                                <input type="file" class="form-control" id="ver_bi" >
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="ver_">Scan do Alvará (Se for loja)</label>
+                                <input type="file" class="form-control" id="ver_bi" >
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-primary">Submeter</button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
             <div class="modal-footer">
                 <div class="alert alert-info text-left" role="alert">
-                    <p>Os Documentos e comprovativos de pagamentos devem ser enviados por:</p>
-                       <ul>
-                           <li>email: info@csv.co.mz</li>
-                           <li> Whatsapp: 846872773</li>
-                       </ul>
+                    <p>Os Documentos e comprovativos de pagamentos podem ser enviados também por:</p>
+                    <ul>
+                        <li>email: info@csv.co.mz</li>
+                        <li> Whatsapp: 846872773</li>
+                    </ul>
 
                 </div>
             </div>

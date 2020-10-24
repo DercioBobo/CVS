@@ -275,7 +275,7 @@
                         </section>
 
                         IF("{ADSFOUND}"=="0"){
-                        <section><h4>:( No ads found.</h4></section>
+                        <section><h4>:( Nenhum Anúncio Encontrado</h4></section>
                         {:IF}
 
                         <section>

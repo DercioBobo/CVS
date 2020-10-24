@@ -29,11 +29,14 @@
                                 <input type="text" value="{NAME_FIELD}" id="name" name="name" onBlur="checkAvailabilityName()">
                             </div>
                             <span id="name-availability-status">IF("{NAME_ERROR}"!=""){ {NAME_ERROR} {:IF}</span>
+
                             <div class="input-field">
                                 <label for="username">{LANG_USERNAME}</label>
-                                <input type="text" value="{USERNAME_FIELD}" id="Rusername" name="username" onBlur="checkAvailabilityUsername()">
+                                <input type="text" value="{USERNAME_FIELD}" id="Rusername" name="username" required>
+                                <span id="user-availability-status">IF("{USERNAME_ERROR}"!=""){ {USERNAME_ERROR} {:IF}</span>
+
                             </div>
-                            <span id="user-availability-status">IF("{USERNAME_ERROR}"!=""){ {USERNAME_ERROR} {:IF}</span>
+
                             <div class="input-field">
                                 <label for="email">{LANG_EMAIL}</label>
                                 <input type="email" value="{EMAIL_FIELD}" name="email" id="email" onBlur="checkAvailabilityEmail()">
@@ -45,16 +48,6 @@
                                 <label for="password">{LANG_PASSWORD}</label>
                                 <input type="password" id="Rpassword" name="password" onBlur="checkAvailabilityPassword()">
                                 <span id="password-availability-status">IF("{PASSWORD_ERROR}"!=""){ {PASSWORD_ERROR} {:IF}</span>
-                            </div>
-
-                            <!--end input-field-->
-                            <div class="input-field">
-                                <div class="text-xs-center">
-                                    IF("{RECAPTCHA_MODE}"=="1"){
-                                    <div style="display: inline-block;" class="g-recaptcha" data-sitekey="{RECAPTCHA_PUBLIC_KEY}"></div>
-                                    {:IF}
-                                </div>
-                                <span>IF("{RECAPTCH_ERROR}"!=""){ {RECAPTCH_ERROR} {:IF}</span>
                             </div>
 
                             <div class="input-field center">

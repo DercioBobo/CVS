@@ -48,7 +48,8 @@
                                 </div>
                             </td>
                             <td class="dc">{TRANSACTIONS.premium}</td>
-                            <td class="dc"><span>{TRANSACTIONS.payment_by}</span></td>
+                            <!--<td class="dc"><span>{TRANSACTIONS.payment_by}</span></td>-->
+                            <td class="dc"><span>M-Pesa</span></td>
                             <td class="dc"><span>{TRANSACTIONS.time}</span></td>
                             <td class="dc">{TRANSACTIONS.status}</td>
                         </tr>

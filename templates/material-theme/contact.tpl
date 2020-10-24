@@ -32,7 +32,7 @@
                                 <strong>{LANG_LOCATION}</strong>
                                 <figure>{ADDRESS}</figure>
                                 <br>
-                                <strong>{LANG_PHONE-NO}</strong>
+                                <strong>{LANG_PHONE_NO}</strong>
                                 <figure><a href="tel:{PHONE}">{PHONE}</a></figure>
                                 <br>
                                 <strong>{LANG_EMAIL}</strong>

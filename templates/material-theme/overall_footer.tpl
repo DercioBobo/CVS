@@ -35,8 +35,7 @@
                         <div class="widget-body">
                             <ul class="list-unstyled">
                                 <li><i class="fa fa-angle-double-right"></i> <a href="{LINK_FAQ}">FAQs</a></li>
-                                <li><i class="fa fa-angle-double-right"></i> <a href="{LINK_REPORT}">{LANG_REPORT}</a></li>
-                                <li><i class="fa fa-angle-double-right"></i> <a href="{LINK_FEEDBACK}">{LANG_FEEDBACK}</a></li>
+                                <li><i class="fa fa-angle-double-right"></i> <a href="{LINK_REPORT}">Reportar Violação</a></li>
                                 <li><i class="fa fa-angle-double-right"></i> <a href="{LINK_CONTACT}">{LANG_CONTACT}</a></li>
                             </ul>
                         </div>
@@ -101,51 +100,6 @@
     </div>
 </footer>
 
-IF("{SWITCHER}"=="1"){
-<!--/styleswitch-->
-<div class="styleswitch">
-    <div class="styleswitch-lover">
-        <a href="#" class="toggler"><i class="fa fa-cog fa-spin"></i></a>
-        <h4>{LANG_CHANGE_COLOR}</h4>
-        <ul class="preset-list clearfix" id="styleswitch">
-            <li><a href="javascript: void(0)" title="switch styling" id="color1">#f44336</a></li>
-            <li><a href="javascript: void(0)" title="switch styling" id="color2">#E91E63</a></li>
-            <li><a href="javascript: void(0)" title="switch styling" id="color3">#9C27B0</a></li>
-            <li><a href="javascript: void(0)" title="switch styling" id="color4">#673AB7</a></li>
-            <li><a href="javascript: void(0)" title="switch styling" id="color5">#3F51B5</a></li>
-            <li><a href="javascript: void(0)" title="switch styling" id="color6">#2196F3</a></li>
-            <li><a href="javascript: void(0)" title="switch styling" id="color7">#03A9F4</a></li>
-            <li><a href="javascript: void(0)" title="switch styling" id="color8">#00BCD4</a></li>
-            <li><a href="javascript: void(0)" title="switch styling" id="color9">#009688</a></li>
-            <li><a href="javascript: void(0)" title="switch styling" id="color10">#4CAF50</a></li>
-            <li><a href="javascript: void(0)" title="switch styling" id="color11">#8BC34A</a></li>
-            <li><a href="javascript: void(0)" title="switch styling" id="color12">#CDDC39</a></li>
-            <li><a href="javascript: void(0)" title="switch styling" id="color13">#4611a7</a></li>
-            <li><a href="javascript: void(0)" title="switch styling" id="color14">#FFC107</a></li>
-            <li><a href="javascript: void(0)" title="switch styling" id="color15">#FF9800</a></li>
-            <li><a href="javascript: void(0)" title="switch styling" id="color16">#FF5722</a></li>
-            <li><a href="javascript: void(0)" title="switch styling" id="color17">#795548</a></li>
-            <li><a href="javascript: void(0)" title="switch styling" id="color18">#9E9E9E</a></li>
-            <li><a href="javascript: void(0)" title="switch styling" id="color19">#607D8B</a></li>
-            <li><a href="javascript: void(0)" title="switch styling" id="color20">#776B26</a></li>
-        </ul>
-
-        <br>
-        <h4>{LANG_CHANGE_THEME}</h4>
-        <div class="dropdown theme-dropdown" id="theme-dropdown">
-            <button class="btn dropdown-toggle btn-default-lite" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="false"><span id="selected_theme">Classic</span><span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
-                <li role="presentation" data-theme="thenext-theme"><a role="menuitem" tabindex="-1" rel="alternate" href="#">Next Theme</a></li>
-                <li role="presentation" data-theme="classic-theme"><a role="menuitem" tabindex="-1" rel="alternate" href="#">Classic Theme</a></li>
-                <li role="presentation" data-theme="material-theme"><a role="menuitem" tabindex="-1" rel="alternate" href="#">Material Theme</a></li>
-                <li role="presentation" data-theme="modern-theme"><a role="menuitem" tabindex="-1" rel="alternate" href="#">Modern Theme</a></li>
-            </ul>
-        </div>
-
-    </div>
-</div>
-{:IF}
 
 <!--/End:styleswitch-->
 <!--start footer section-->
