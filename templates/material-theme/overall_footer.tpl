@@ -105,6 +105,13 @@
 <!--start footer section-->
 </div> <!--end page-wrapper-->
 <a href="#page-header" class="to-top scroll" data-show-after-scroll="600"><i class="arrow_up"></i></a>
+
+<script>
+    $('.select_boladas').on("click",function(event){
+        event.stopPropagation();
+    });
+
+</script>
 <script>
     var session_uname = "{USERNAME}";
     var session_uid = "{USER_ID}";
@@ -146,9 +153,21 @@
     var LANG_GOT_MESSAGE = "{LANG_GOT_MESSAGE}";
 
 
-    $('.select_boladas').on("click",function(event){
-        event.stopPropagation();
-    });
+
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}
+        slides[slideIndex-1].style.display = "block";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
 
 </script>
 

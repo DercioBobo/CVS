@@ -7,7 +7,7 @@
                 <div class="container">
                     <div class="page-title center">
                         <h1 class="title">CVS</h1>
-                        <h2>Compra e Venda de Serviços Online</h2>
+                        <h2>Compras, Vendas e Serviços</h2>
 
                     </div>
 
@@ -20,7 +20,7 @@
                                         <div class="row">
                                             <div class="col-md-5 col-sm-5">
                                                 <div class="input-field">
-                                                    <input type="text" name="keywords" placeholder="O quê?" autocomplete="off">
+                                                    <input type="text" name="keywords" placeholder="O que procura?" autocomplete="off">
                                                 </div>
                                             </div>
                                             <div class="col-md-3 col-sm-3">
@@ -42,7 +42,7 @@
                                                     <select name="cat" class="meterialselect">
                                                         <option value="">{LANG_ALL_CATEGORIES}</option>
                                                         {LOOP: CATEGORY}
-                                                        <option value="{CATEGORY.id}" {CATEGORY.selected}>{CATEGORY.name}</option>
+                                                            <option value="{CATEGORY.id}" {CATEGORY.selected}>{CATEGORY.name}</option>
                                                         {/LOOP: CATEGORY}
                                                     </select>
                                                 </div>
@@ -74,12 +74,32 @@
         </div>
         <!--end wrapper-->
         <div class="background-wrapper">
-            <div class="bg-transfer opacity-30"><img src="{SITE_URL}storage/banner/{BANNER_IMAGE}" alt=""></div>
-            <div class="background-color background-color-black"></div>
+          <!--  <div class="bg-transfer opacity-30"><img src="{SITE_URL}storage/banner/{BANNER_IMAGE}" alt=""></div> -->
+            <div class="bg-transfer "><img src="{SITE_URL}storage/banner/{BANNER_IMAGE}" alt=""></div>
+           <!-- <div class="background-color background-color-black"></div> -->
         </div>
 
         <!--end background-wrapper-->
     </div>
+
+    <section class="">
+        <div class="slideshow-container">
+
+            <div id="bannerSlides" class="mySlides">
+                <img class="img-slide" src="{SITE_URL}storage/banner/slide1.jpg">
+            </div>
+
+            <div class="mySlides">
+                <img class="img-slide" src="{SITE_URL}storage/banner/slide2.jpg">
+            </div>
+            <div class="mySlides ">
+                <img class="img-slide" src="{SITE_URL}storage/banner/slide3.jpg">
+            </div>
+
+
+
+        </div>
+    </section>
 
 
     <section class="block bg-white">
@@ -94,42 +114,37 @@
             <div class="categories-list">
                 <div class="row">
 
-<!--Category display dynamically -->
+                    <!--Category display dynamically -->
 
                     <div class="col-md-3 col-sm-4 col-xs-6 back-category">
                         <a href="{LINK_POST-AD}">
-                        <div class="list-item min-height-150">
+                            <div class="list-item min-height-150">
 
-                            <div class="title">
-                                <div class="icon"><i class="fa fa-plus"></i></div>
-                                <h3><a href="{LINK_POST-AD}">Vender</a></h3>
+                                <div class="title">
+                                    <div class="icon"><i class="fa fa-plus"></i></div>
+                                    <h3><a href="{LINK_POST-AD}">Vender</a></h3>
+                                </div>
                             </div>
-                            <!--<div class="tse-scrollable catListing">
-                                    <div class="tse-content">
-                                        <ul>{CAT.sub_title}</ul>
-                                    </div>
-                                </div>-->
-                        </div>
                         </a>
                     </div>
                     {LOOP: CAT}
                         <div class="col-md-3 col-sm-4 col-xs-6 back-category">
                             <a href="{CAT.catlink}">
-                            <div class="list-item min-height-150">
-                                <div class="title">
-                                    <div class="icon"><i class="{CAT.icon}"></i></div>
-                                    <h3><a href="{CAT.catlink}">{CAT.main_title}</a></h3>
-                                </div>
-                                <!--<div class="tse-scrollable catListing">
+                                <div class="list-item min-height-150">
+                                    <div class="title">
+                                        <div class="icon"><i class="{CAT.icon}"></i></div>
+                                        <h3><a href="{CAT.catlink}">{CAT.main_title}</a></h3>
+                                    </div>
+                                    <!--<div class="tse-scrollable catListing">
                                     <div class="tse-content">
                                         <ul>{CAT.sub_title}</ul>
                                     </div>
                                 </div>-->
-                            </div>
+                                </div>
                             </a>
                         </div>
                     {/LOOP: CAT}
-<!--Category display dynamically-->
+                    <!--Category display dynamically-->
                 </div>
                 <!--end row-->
             </div>
@@ -154,56 +169,47 @@
             <!--end section-title-->
         </div>
         <div class="gallery featured container">
-            <div class="owl-carousel" data-owl-items="4" data-owl-loop="0" data-owl-auto-width="1" data-owl-nav="1" data-owl-dots="1" data-owl-nav-container="#premium-nav">
+            <div class="owl-carousel" data-owl-items="4" data-owl-loop="1" data-owl-auto-width="1" data-owl-nav="1" data-owl-dots="1" data-owl-nav-container="#premium-nav">
                 {LOOP: ITEM}
-                <div class="ribbon-pad">
-                    <div class="item mar-left-zero" data-id="1">
-                        <div class="premium">
-                            IF("{ITEM.featured}"=="1"){ <span class="listing-box-premium featured">{LANG_FEATURED}</span> {:IF}
-                            IF("{ITEM.urgent}"=="1"){ <span class="listing-box-premium urgent">{LANG_URGENT}</span> {:IF}
+                    <div class="ribbon-pad">
+                        <div class="item mar-left-zero" data-id="1">
+                            <div class="premium">
+                                IF("{ITEM.featured}"=="1"){ <span class="listing-box-premium featured">{LANG_FEATURED}</span> {:IF}
+                                IF("{ITEM.urgent}"=="1"){ <span class="listing-box-premium urgent">{LANG_URGENT}</span> {:IF}
+                                IF("{ITEM.highlight}"=="1"){ <span class="listing-box-premium highlight">{LANG_HIGHLIGHT}</span> {:IF}
 
-                            IF("{ITEM.highlight}"=="1"){ <span class="listing-box-premium highlight">{LANG_HIGHLIGHT}</span> {:IF}
-
-
-                        </div>
-                        <div class="ad-listing">
-                            <div class="description">
-                                <div class="label label-default"><a href="{ITEM.catlink}">{ITEM.category}</a></div>
-                                <h3 title="{ITEM.product_name}"><a href="{ITEM.link}">{ITEM.product_name}</a>
-                                    IF("{ITEM.sub_image}"!=""){
-                                    <img src="{ITEM.sub_image}" alt="{ITEM.sub_title}" title="{ITEM.sub_title}" style="width: 24px;display: inline-block;"/>
-                                    {:IF}
-                                </h3>
-                                <h4>{ITEM.location}</h4>
                             </div>
-                            <!--end description-->
-                            <div class="image bg-transfer"><img src="{SITE_URL}storage/products/thumb/{ITEM.picture}"></div>
-                            <!--end image-->
-                        </div>
-                        <div class="additional-info {ITEM.highlight_bg}">
-                            <ul class="icondetail">
-                                <li><i class="fa fa-th-list"></i> {LANG_SUB_CATEGORY} :
-                                    <a title="{ITEM.sub_category}" href="{ITEM.subcatlink}">{ITEM.sub_category}</a>
-                                </li>
-                                <li><i class="fa fa-map-marker"></i> {LANG_LOCATION} : {ITEM.location}</li>
-                                <li><i class="fa fa-calendar"></i> {LANG_POSTED_ON} : {ITEM.created_at} </li>
-
-                                <li><i class="fa fa-user"></i> {LANG_POSTED_BY} :
-                                    <a href="{ITEM.author_link}" target="_blank">{ITEM.username} </a>
-                                        IF("{ITEM.user_status}"=="1"){
-                                        <img data-toggle="tooltip" data-placement="top" title="Vendedor Verificado pela CVS" class="img-check" src="{SITE_URL}templates/{TPL_NAME}/img/check.svg">
+                            <div class="ad-listing">
+                                <div class="description">
+                                    <div class="label label-default"><a href="{ITEM.catlink}">{ITEM.category}</a></div>
+                                    <h3 title="{ITEM.product_name}"><a href="{ITEM.link}">{ITEM.product_name}</a>
+                                        IF("{ITEM.sub_image}"!=""){
+                                        <img src="{ITEM.sub_image}" alt="{ITEM.sub_title}" title="{ITEM.sub_title}" style="width: 24px;display: inline-block;"/>
                                         {:IF}
-                                   </li>
-                            </ul>
+                                    </h3>
+                                    <h4>{ITEM.location}</h4>
+                                </div>
+                                <!--end description-->
+                                <div class="image bg-transfer"><img src="{SITE_URL}storage/products/thumb/{ITEM.picture}"></div>
+                                <!--end image-->
+                            </div>
+                            <div class="additional-info {ITEM.highlight_bg}">
+                                <ul class="icondetail">
+                                    <li><i class="fa fa-th-list"></i> {LANG_SUB_CATEGORY} :
+                                        <a title="{ITEM.sub_category}" href="{ITEM.subcatlink}">{ITEM.sub_category}</a>
+                                    </li>
+                                    <li><i class="fa fa-map-marker"></i> {LANG_LOCATION} : {ITEM.location}</li>
+                                    <li><i class="fa fa-calendar"></i> {LANG_POSTED_ON} : {ITEM.created_at} </li>
+                                    <li><i class="fa fa-user"></i> {LANG_POSTED_BY} : <a href="{ITEM.author_link}" target="_blank">{ITEM.username}</a></li>
+                                </ul>
 
-                            <!--end controls-more-->
+                                <!--end controls-more-->
+                            </div>
+                            <!--end additional-info-->
                         </div>
-                        <!--end additional-info-->
+                        <!--end item-->
                     </div>
-                    <!--end item-->
-                </div>
                 {/LOOP: ITEM}
-
 
             </div>
         </div>
@@ -237,50 +243,44 @@
         <div class="gallery featured container">
             <div class="owl-carousel" data-owl-items="4" data-owl-loop="0" data-owl-auto-width="1" data-owl-nav="1" data-owl-dots="1" data-owl-nav-container="#latest-nav">
                 {LOOP: ITEM2}
-                <div class="ribbon-pad">
-                    <div class="item mar-left-zero" data-id="1">
-                        <div class="premium">
-                            IF("{ITEM2.featured}"=="1"){ <span class="listing-box-premium featured">{LANG_FEATURED}</span> {:IF}
-                            IF("{ITEM2.urgent}"=="1"){ <span class="listing-box-premium urgent">{LANG_URGENT}aa</span> {:IF}
+                    <div class="ribbon-pad">
+                        <div class="item mar-left-zero" data-id="1">
+                            <div class="premium">
+                                IF("{ITEM2.featured}"=="1"){ <span class="listing-box-premium featured">{LANG_FEATURED}</span> {:IF}
+                                IF("{ITEM2.urgent}"=="1"){ <span class="listing-box-premium urgent">{LANG_URGENT}</span> {:IF}
+                                IF("{ITEM2.highlight}"=="1"){ <span class="listing-box-premium highlight">{LANG_HIGHLIGHT}</span> {:IF}
 
-                            IF("{ITEM2.highlight}"=="1"){ <span class="listing-box-premium highlight">{LANG_HIGHLIGHT}</span> {:IF}
-
-                        </div>
-                        <div class="ad-listing">
-                            <div class="description">
-                                <div class="label label-default"><a href="{ITEM2.catlink}">{ITEM2.category}</a></div>
-                                <h3 title="{ITEM2.product_name}"><a href="{ITEM2.link}">{ITEM2.product_name}</a>
-                                    IF("{ITEM2.sub_image}"!=""){
-                                    <img src="{ITEM2.sub_image}" alt="{ITEM2.sub_title}" title="{ITEM2.sub_title}" style="width: 24px;display: inline-block;"/>
-                                    {:IF}
-                                </h3>
-                                <h4>{ITEM2.location}</h4>
                             </div>
-                            <!--end description-->
-                            <div class="image bg-transfer"><img  src="{SITE_URL}storage/products/thumb/{ITEM2.picture}"></div>
-                            <!--end image-->
-                        </div>
-                        <div class="additional-info {ITEM2.highlight_bg}">
-                            <ul class="icondetail">
-                                <li><i class="fa fa-th-list"></i> {LANG_SUB_CATEGORY} :
-                                    <a title="{ITEM2.sub_category}" href="{ITEM2.subcatlink}">{ITEM2.sub_category}</a>
-                                </li>
-                                <li><i class="fa fa-map-marker"></i> {LANG_LOCATION} : {ITEM2.location}</li>
-                                <li><i class="fa fa-calendar"></i> {LANG_POSTED_ON} : {ITEM2.created_at} </li>
-                                <li><i class="fa fa-user"></i> {LANG_POSTED_BY} :
-                                    <a href="{ITEM2.author_link}" target="_blank">{ITEM2.username}</a>
-                                    IF("{ITEM2.user_status}"=="1"){
-                                    <img data-toggle="tooltip" data-placement="top" title="Vendedor Verificado pela CVS" class="img-check" src="{SITE_URL}templates/{TPL_NAME}/img/check.svg">
-                                    {:IF}
-                                </li>
-                            </ul>
+                            <div class="ad-listing">
+                                <div class="description">
+                                    <div class="label label-default"><a href="{ITEM2.catlink}">{ITEM2.category}</a></div>
+                                    <h3 title="{ITEM2.product_name}"><a href="{ITEM2.link}">{ITEM2.product_name}</a>
+                                        IF("{ITEM2.sub_image}"!=""){
+                                        <img src="{ITEM2.sub_image}" alt="{ITEM2.sub_title}" title="{ITEM2.sub_title}" style="width: 24px;display: inline-block;"/>
+                                        {:IF}
+                                    </h3>
+                                    <h4>{ITEM2.location}</h4>
+                                </div>
+                                <!--end description-->
+                                <div class="image bg-transfer"><img src="{SITE_URL}storage/products/thumb/{ITEM2.picture}"></div>
+                                <!--end image-->
+                            </div>
+                            <div class="additional-info {ITEM2.highlight_bg}">
+                                <ul class="icondetail">
+                                    <li><i class="fa fa-th-list"></i> {LANG_SUB_CATEGORY} :
+                                        <a title="{ITEM2.sub_category}" href="{ITEM2.subcatlink}">{ITEM2.sub_category}</a>
+                                    </li>
+                                    <li><i class="fa fa-map-marker"></i> {LANG_LOCATION} : {ITEM2.location}</li>
+                                    <li><i class="fa fa-calendar"></i> {LANG_POSTED_ON} : {ITEM2.created_at} </li>
+                                    <li><i class="fa fa-user"></i> {LANG_POSTED_BY} : <a href="{ITEM2.author_link}" target="_blank">{ITEM2.username}</a></li>
+                                </ul>
 
-                            <!--end controls-more-->
+                                <!--end controls-more-->
+                            </div>
+                            <!--end additional-info-->
                         </div>
-                        <!--end additional-info-->
+                        <!--end item-->
                     </div>
-                    <!--end item-->
-                </div>
                 {/LOOP: ITEM2}
 
             </div>

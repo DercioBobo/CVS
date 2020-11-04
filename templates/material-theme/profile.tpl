@@ -53,7 +53,7 @@
                     <!--end subject-detail-->
                 </section>
                 <section>
-                    <h2>{FULLNAME} {LANG_LISTINGS}</h2>
+                    <h2> Publicações de {FULLNAME}  </h2>
                     <section>
                         <form action="#" id="filterForm" method="get">
                             <div class="search-results-controls clearfix">
@@ -64,9 +64,9 @@
                                 <input type="hidden" name="username" value="{USERNAME}">
                                 <!--end left-->
                                 <div class="pull-right">
-                                    <div class="input-group inputs-underline min-width-150px">
-                                        <select class="meterialselect" name="limit" onchange="this.form.submit()">
-                                            <option value="6">Limit Order</option>
+                                    <div class="input-group inputs-underline min-width-150px select_boladas">
+                                        <select class="meterialselect " name="limit" onchange="this.form.submit()">
+                                            <option value="6">Limitar a lista</option>
                                             <option value="10" IF("{LIMIT}"=="10"){ selected {:IF} >10</option>
                                             <option value="15" IF("{LIMIT}"=="15"){ selected {:IF} >15</option>
                                             <option value="20" IF("{LIMIT}"=="20"){ selected {:IF} >20</option>
@@ -77,12 +77,12 @@
                                 </div>
                                 <!--end right-->
                                 <div class="pull-right mar-right-20">
-                                    <div class="input-group inputs-underline min-width-150px">
-                                        <select class="meterialselect" name="sort" onchange="this.form.submit()">
-                                            <option value="">Sort by</option>
-                                            <option value="title" IF("{SORT}"=="title"){ selected {:IF} >Name </option>
-                                            <option value="price" IF("{SORT}"=="price"){ selected {:IF} >Price </option>
-                                            <option value="date" IF("{SORT}"=="date"){ selected {:IF} >Date </option>
+                                    <div class="input-group inputs-underline min-width-150px select_boladas">
+                                        <select class="meterialselect "  name="sort" onchange="this.form.submit()">
+                                            <option value="">Ordenar por</option>
+                                            <option value="title" IF("{SORT}"=="title"){ selected {:IF} >Nome </option>
+                                            <option value="price" IF("{SORT}"=="price"){ selected {:IF} >Preço </option>
+                                            <option value="date" IF("{SORT}"=="date"){ selected {:IF} >Data </option>
                                         </select>
                                     </div>
                                 </div>

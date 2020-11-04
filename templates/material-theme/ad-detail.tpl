@@ -161,7 +161,7 @@
                 <section id="send-message">
                     <div class="property-description detail-block">
                         <div class="detail-title">
-                            <h2 class="title-left">{LANG_EMAIL} to {ITEM_AUTHORUNAME}</h2>
+                            <h2 class="title-left">Enviar email para o dono da publicação - {ITEM_AUTHORUNAME}</h2>
                         </div>
 
                         <div class="alert alert-success" id="email_success" style="display: none">

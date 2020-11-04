@@ -610,3 +610,46 @@ table.uiGrid td {
     right: 0;
     top: 0;
 }
+
+
+* {box-sizing: border-box;}
+.mySlides {display: none;}
+
+/* Slideshow container */
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+.img-slide{
+    width:100%;
+    height:150px;
+    object-fit: contain;
+}
+/* Fading animation */
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 720px) {
+    .text {font-size: 11px}
+
+    .img-slide{
+        width:100%;
+        height:auto;
+    }
+}
