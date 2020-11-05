@@ -5,10 +5,22 @@
                 <div class="col-sm-3">
                     <div class="footer-widget widget-about" style="height: 165px;">
                         <div class="widget-top">
-                            <h3 class="widget-title">{SITE_TITLE}</h3>
+                            <h3 class="widget-title">{SITE_TITLE} (Compras, Vendas e Serviços)</h3>
                         </div>
                         <div class="widget-body">
                             <p>{FOOTER_TEXT}</p>
+                            <p>É um serviço de classificação, onde qualquer pessoa pode encontrar produtos e serviço que
+                                procura ou expor os seus produtos e serviços para interessados.</p>
+
+                            <h3 class="widget-title">Alphabit Limitada</h3>
+                            <p>
+                                É uma empresa moçambicana, a operar desde 2014 dedicado a transformação digital a oferta
+                                de serviços inovadores e que agregam valor aos nossos clientes e utilizadores</p>
+
+                           <!-- <a href="#"> <i class=" fa-2x fa fa-whatsapp"></i></a>
+                            <a href="#"> <i class=" fa-2x fa fa-facebook"></i></a>
+                            <a href="#"> <i class=" fa-2x fa fa-instagram"></i></a>
+                            -->
 
                         </div>
                     </div>
@@ -16,13 +28,16 @@
                 <div class="col-sm-3">
                     <div class="footer-widget widget-contact" style="height: 165px;">
                         <div class="widget-top">
-                            <h3 class="widget-title">{LANG_COMPANY}</h3>
+                            <h3 class="widget-title">Linha do cliente</h3>
                         </div>
                         <div class="widget-body">
                             <ul class="list-unstyled">
-                                IF("{ADDRESS}"!=""){ <li><i class="fa fa-location-arrow"></i> {ADDRESS}</li>{:IF}
-                                IF("{PHONE}"!=""){ <li><i class="fa fa-phone"></i> {PHONE}</li>{:IF}
-                                IF("{EMAIL}"!=""){ <li><i class="fa fa-envelope-o"></i> {EMAIL}</li>{:IF}
+                                IF("{ADDRESS}"!=""){
+                                <li><i class="fa fa-location-arrow"></i> {ADDRESS}</li>{:IF}
+                                IF("{PHONE}"!=""){
+                                <li><i class="fa fa-phone"></i> {PHONE}</li>{:IF}
+                                IF("{EMAIL}"!=""){
+                                <li><i class="fa fa-envelope-o"></i> {EMAIL}</li>{:IF}
                             </ul>
                         </div>
                     </div>
@@ -34,9 +49,16 @@
                         </div>
                         <div class="widget-body">
                             <ul class="list-unstyled">
-                                <li><i class="fa fa-angle-double-right"></i> <a href="{LINK_FAQ}">FAQs</a></li>
-                                <li><i class="fa fa-angle-double-right"></i> <a href="{LINK_REPORT}">Reportar Violação</a></li>
-                                <li><i class="fa fa-angle-double-right"></i> <a href="{LINK_CONTACT}">{LANG_CONTACT}</a></li>
+                                <li><i class="fa fa-angle-double-right"></i> <a href="{LINK_FAQ}">Perguntas
+                                        Frequentes</a></li>
+                                <li><i class="fa fa-angle-double-right"></i> <a href="{SITE_URL}termos">Termos e
+                                        Condições</a></li>
+                                <li><i class="fa fa-angle-double-right"></i> <a href="{LINK_FAQ}">Politica de
+                                        Privacidade</a></li>
+                                <li><i class="fa fa-angle-double-right"></i> <a href="{LINK_REPORT}">Reportar
+                                        Violação</a></li>
+                                <li><i class="fa fa-angle-double-right"></i> <a href="{LINK_CONTACT}">{LANG_CONTACT}</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -48,17 +70,20 @@
                         </div>
                         <div class="widget-body">
                             {LOOP: ITEM}
-                            <div class="media">
-                                <div class="media-left">
-                                    <a href="{ITEM.link}">
-                                        <img class="media-object" src="{SITE_URL}storage/products/thumb/{ITEM.picture}" alt="Thumb" width="85">
-                                    </a>
+                                <div class="media">
+                                    <div class="media-left">
+                                        <a href="{ITEM.link}">
+                                            <img class="media-object"
+                                                 src="{SITE_URL}storage/products/thumb/{ITEM.picture}" alt="Thumb"
+                                                 width="85">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading"><a href="{ITEM.link}">{ITEM.product_name}</a></h4>
+                                        <a href="{ITEM.link}" class="read">{LANG_READ_MORE} <i
+                                                    class="fa fa-caret-right"></i></a>
+                                    </div>
                                 </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading"><a href="{ITEM.link}">{ITEM.product_name}</a></h4>
-                                    <a href="{ITEM.link}" class="read">{LANG_READ_MORE} <i class="fa fa-caret-right"></i></a>
-                                </div>
-                            </div>
                             {/LOOP: ITEM}
 
                         </div>
@@ -77,10 +102,11 @@
                     <div class="navi">
                         <ul>
                             {LOOP: HTMLPAGE}
-                            <li><a href="{HTMLPAGE.link}">{HTMLPAGE.title}</a></li>
+                                <li><a href="{HTMLPAGE.link}">{HTMLPAGE.title}</a></li>
                             {/LOOP: HTMLPAGE}
-                            <li><a href="{LINK_SITEMAP}">{LANG_SITE_MAP}</a></li>
-                            IF("{COUNTRY_TYPE}"=="multi"){ <li><a href="{LINK_COUNTRY}">{LANG_COUNTRIES}</a></li>{:IF}
+
+                            IF("{COUNTRY_TYPE}"=="multi"){
+                            <li><a href="{LINK_COUNTRY}">{LANG_COUNTRIES}</a></li>{:IF}
                         </ul>
                     </div>
                 </div>
@@ -89,10 +115,19 @@
                 <div class="footer-col foot-social">
                     <p>
                         {LANG_FOLLOW_US}
-                        IF("{FACEBOOK_LINK}"!=""){ <a href="{FACEBOOK_LINK}" target="_blank"><i class="fa fa-facebook-square"></i></a>{:IF}
-                        IF("{TWITTER_LINK}"!=""){ <a href="{TWITTER_LINK}" target="_blank"><i class="fa fa-twitter-square"></i></a>{:IF}
-                        IF("{GOOGLEPLUS_LINK}"!=""){ <a href="{GOOGLEPLUS_LINK}" target="_blank"><i class="fa fa-google-plus-square"></i></a>{:IF}
-                        IF("{YOUTUBE_LINK}"!=""){ <a href="{YOUTUBE_LINK}" target="_blank"><i class="fa fa-youtube-square"></i></a>{:IF}
+                        IF("{FACEBOOK_LINK}"!=""){ <a href="{FACEBOOK_LINK}" target="_blank"><i
+                                    class="fa fa-facebook-square"></i></a>{:IF}
+                        IF("{TWITTER_LINK}"!=""){ <a href="{TWITTER_LINK}" target="_blank"><i
+                                    class="fa fa-twitter-square"></i></a>{:IF}
+                        IF("{GOOGLEPLUS_LINK}"!=""){ <a href="{GOOGLEPLUS_LINK}" target="_blank"><i
+                                    class="fa fa-whatsapp"></i></a>{:IF}
+                        IF("{YOUTUBE_LINK}"!=""){ <a href="{YOUTUBE_LINK}" target="_blank"><i
+                                    class="fa fa-youtube-square"></i></a>{:IF}
+                        <a href="{FACEBOOK_LINK}" target="_blank"><i
+                                    class="fa fa-facebook-square"></i></a>
+
+                        <a href="#" target="_blank"><i
+                                    class="fa fa-instagram"></i></a>
                     </p>
                 </div>
             </div>
@@ -107,7 +142,7 @@
 <a href="#page-header" class="to-top scroll" data-show-after-scroll="600"><i class="arrow_up"></i></a>
 
 <script>
-    $('.select_boladas').on("click",function(event){
+    $('.select_boladas').on("click", function (event) {
         event.stopPropagation();
     });
 
@@ -153,7 +188,6 @@
     var LANG_GOT_MESSAGE = "{LANG_GOT_MESSAGE}";
 
 
-
     var slideIndex = 0;
     showSlides();
 
@@ -165,8 +199,8 @@
         }
         slideIndex++;
         if (slideIndex > slides.length) {slideIndex = 1}
-        slides[slideIndex-1].style.display = "block";
-        setTimeout(showSlides, 2000); // Change image every 2 seconds
+            slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 15000); // Change image every 2 seconds
     }
 
 </script>
@@ -176,7 +210,8 @@
 <script type='text/javascript' src='{SITE_URL}templates/{TPL_NAME}/assets/js/jquery.fitvids.js'></script>
 <script type='text/javascript' src='{SITE_URL}templates/{TPL_NAME}/assets/js/owl.carousel.min.js'></script>
 <script type='text/javascript' src='{SITE_URL}templates/{TPL_NAME}/assets/js/jquery.nouislider.all.min.js'></script>
-<script type='text/javascript' src='{SITE_URL}templates/{TPL_NAME}/assets/js/jquery.trackpad-scroll-emulator.min.js'></script>
+<script type='text/javascript'
+        src='{SITE_URL}templates/{TPL_NAME}/assets/js/jquery.trackpad-scroll-emulator.min.js'></script>
 <script type='text/javascript' src='{SITE_URL}templates/{TPL_NAME}/assets/js/custom2.js'></script>
 <script type='text/javascript' src='{SITE_URL}templates/{TPL_NAME}/assets/js/custom.js'></script>
 <script type='text/javascript' src='{SITE_URL}templates/{TPL_NAME}/assets/materialize/js/materialize.js'></script>
@@ -186,7 +221,8 @@
 <script src="{SITE_URL}templates/{TPL_NAME}/assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
 
 <script type='text/javascript' src='{SITE_URL}templates/{TPL_NAME}/assets/js/user-ajax.js'></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script>
     /* THIS PORTION OF CODE IS ONLY EXECUTED WHEN THE USER THE LANGUAGE & THEME(CLIENT-SIDE) */
     $(function () {
@@ -195,7 +231,7 @@
             if (lang != null) {
                 var res = lang.substr(0, 2);
                 $('#selected_lang').html(res);
-                $.cookie('Quick_lang', lang,{ path: '/' });
+                $.cookie('Quick_lang', lang, {path: '/'});
                 location.reload();
             }
         });
@@ -204,18 +240,18 @@
             var theme = $(this).data('theme');
             var thm = theme.substr(0, theme.indexOf('-'));
             $('#selected_theme').html(thm);
-            $.cookie('Quick_theme', theme,{ path: '/' });
+            $.cookie('Quick_theme', theme, {path: '/'});
             location.reload();
         });
     });
-    $(document).ready(function(){
+    $(document).ready(function () {
         var lang = $.cookie('Quick_lang');
-        if (lang!=null) {
+        if (lang != null) {
             var res = lang.substr(0, 2);
             $('#selected_lang').html(res);
         }
         var theme = $.cookie('Quick_theme');
-        if (theme!=null) {
+        if (theme != null) {
             var thm = theme.substr(0, theme.indexOf('-'));
             $('#selected_theme').html(thm);
         }
@@ -225,20 +261,21 @@
 
 IF({LOGGED_IN} && '{QUICKCHAT_SOCKET_ON_OFF}'=='on'){
 <script>
-    var ws_protocol = window.location.href.indexOf("https://")==0?"wss":"ws";
+    var ws_protocol = window.location.href.indexOf("https://") == 0 ? "wss" : "ws";
     var ws_host = '{SOCKET_HOST}';
     var ws_port = '{SOCKET_PORT}';
-    var WEBSOCKET_URL = ws_protocol+'://'+ws_host+':'+ws_port+'/quickchat';
+    var WEBSOCKET_URL = ws_protocol + '://' + ws_host + ':' + ws_port + '/quickchat';
     var filename = "{QUICKCHAT_AJAX_SECRET_FILE}.php";
-    var plugin_directory = "plugins/quickchat-socket/"+filename;
+    var plugin_directory = "plugins/quickchat-socket/" + filename;
 </script>
-<link type="text/css" rel="stylesheet" media="all" href="{SITE_URL}plugins/quickchat-socket/assets/chatcss/chatbox.css"/>
+<link type="text/css" rel="stylesheet" media="all"
+      href="{SITE_URL}plugins/quickchat-socket/assets/chatcss/chatbox.css"/>
 <div id="quickchat-rtl"></div>
 <script>
     if ($("body").hasClass("rtl")) {
         $('#quickchat-rtl').append('<link rel="stylesheet" type="text/css" href="{SITE_URL}plugins/quickchat-socket/assets/chatcss/chatbox-rtl.css">');
         var rtl = true;
-    }else{
+    } else {
         var rtl = false;
     }
 </script>
@@ -251,15 +288,23 @@ IF({LOGGED_IN} && '{QUICKCHAT_SOCKET_ON_OFF}'=='on'){
 <script type="text/javascript" src="{SITE_URL}plugins/quickchat-socket/assets/chatjs/chatbox.js"></script>
 <script type="text/javascript" src="{SITE_URL}plugins/quickchat-socket/assets/chatjs/chatbox_custom.js"></script>
 <script type="text/javascript" src="{SITE_URL}plugins/quickchat-socket/plugins/uploader/plupload.full.min.js"></script>
-<script type="text/javascript" src="{SITE_URL}plugins/quickchat-socket/plugins/uploader/jquery.ui.plupload/jquery.ui.plupload.js"></script>
+<script type="text/javascript"
+        src="{SITE_URL}plugins/quickchat-socket/plugins/uploader/jquery.ui.plupload/jquery.ui.plupload.js"></script>
 <table id="lightbox" style="display: none;height: 100%">
-    <tr><td height="10px"><p><img src="{SITE_URL}plugins/quickchat-socket/plugins/images/close-icon-white.png" width="30px" style="cursor: pointer"/></p></td></tr>
-    <tr><td valign="middle"><div id="content"><img src="#"/></div></td></tr>
+    <tr>
+        <td height="10px"><p><img src="{SITE_URL}plugins/quickchat-socket/plugins/images/close-icon-white.png"
+                                  width="30px" style="cursor: pointer"/></p></td>
+    </tr>
+    <tr>
+        <td valign="middle">
+            <div id="content"><img src="#"/></div>
+        </td>
+    </tr>
 </table>
 ELSEIF({LOGGED_IN} && '{QUICKCHAT_AJAX_ON_OFF}'=='on'){
 <script>
     var filename = "{QUICKCHAT_AJAX_SECRET_FILE}.php";
-    var plugin_directory = "plugins/quickchat-ajax/"+filename;
+    var plugin_directory = "plugins/quickchat-ajax/" + filename;
 </script>
 <link type="text/css" rel="stylesheet" media="all" href="{SITE_URL}plugins/quickchat-ajax/assets/chatcss/chatbox.css"/>
 <div id="quickchat-rtl"></div>
@@ -267,7 +312,7 @@ ELSEIF({LOGGED_IN} && '{QUICKCHAT_AJAX_ON_OFF}'=='on'){
     if ($("body").hasClass("rtl")) {
         $('#quickchat-rtl').append('<link rel="stylesheet" type="text/css" href="{SITE_URL}plugins/quickchat-ajax/assets/chatcss/chatbox-rtl.css">');
         var rtl = true;
-    }else{
+    } else {
         var rtl = false;
     }
 </script>
@@ -278,16 +323,24 @@ ELSEIF({LOGGED_IN} && '{QUICKCHAT_AJAX_ON_OFF}'=='on'){
 <script type="text/javascript" src="{SITE_URL}plugins/quickchat-ajax/assets/chatjs/chatbox.js"></script>
 <script type="text/javascript" src="{SITE_URL}plugins/quickchat-ajax/assets/chatjs/chatbox_custom.js"></script>
 <script type="text/javascript" src="{SITE_URL}plugins/quickchat-ajax/plugins/uploader/plupload.full.min.js"></script>
-<script type="text/javascript" src="{SITE_URL}plugins/quickchat-ajax/plugins/uploader/jquery.ui.plupload/jquery.ui.plupload.js"></script>
+<script type="text/javascript"
+        src="{SITE_URL}plugins/quickchat-ajax/plugins/uploader/jquery.ui.plupload/jquery.ui.plupload.js"></script>
 <table id="lightbox" style="display: none;height: 100%">
-    <tr><td height="10px"><p><img src="{SITE_URL}plugins/quickchat-ajax/plugins/images/close-icon-white.png" width="30px" style="cursor: pointer"/></p></td></tr>
-    <tr><td valign="middle"><div id="content"><img src="#"/></div></td></tr>
+    <tr>
+        <td height="10px"><p><img src="{SITE_URL}plugins/quickchat-ajax/plugins/images/close-icon-white.png"
+                                  width="30px" style="cursor: pointer"/></p></td>
+    </tr>
+    <tr>
+        <td valign="middle">
+            <div id="content"><img src="#"/></div>
+        </td>
+    </tr>
 </table>
 
 ELSEIF({LOGGED_IN} && '{ZECHAT_ON_OFF}'=='on'){
 <script>
     var filename = "{ZECHAT_SECRET_FILE}.php";
-    var plugin_directory = "plugins/zechat/"+filename;
+    var plugin_directory = "plugins/zechat/" + filename;
 </script>
 <link type="text/css" rel="stylesheet" media="all" href="{SITE_URL}plugins/zechat/app/includes/chatcss/chat.css"/>
 <div id="zechat-rtl"></div>
@@ -295,7 +348,7 @@ ELSEIF({LOGGED_IN} && '{ZECHAT_ON_OFF}'=='on'){
     if ($("body").hasClass("rtl")) {
         $('#zechat-rtl').append('<link rel="stylesheet" type="text/css" href="{SITE_URL}plugins/zechat/app/includes/chatcss/chat-rtl.css">');
         var rtl = true;
-    }else{
+    } else {
         var rtl = false;
     }
 </script>
@@ -311,8 +364,15 @@ ELSEIF({LOGGED_IN} && '{ZECHAT_ON_OFF}'=='on'){
         src="{SITE_URL}plugins/zechat/app/plugins/uploader/jquery.ui.plupload/jquery.ui.plupload.js"></script>
 
 <table id="lightbox" style="display: none;height: 100%">
-    <tr><td height="10px"><p><img src="{SITE_URL}plugins/zechat/app/plugins/images/close-icon-white.png" width="30px" style="cursor: pointer"/></p></td></tr>
-    <tr><td valign="middle"><div id="content"><img src="#"/></div></td></tr>
+    <tr>
+        <td height="10px"><p><img src="{SITE_URL}plugins/zechat/app/plugins/images/close-icon-white.png" width="30px"
+                                  style="cursor: pointer"/></p></td>
+    </tr>
+    <tr>
+        <td valign="middle">
+            <div id="content"><img src="#"/></div>
+        </td>
+    </tr>
 </table>
 {:IF}
 

@@ -364,7 +364,7 @@
                 <nav class="navi main-nav">
                     <ul>
                         <li><a href="{LINK_INDEX1}">{LANG_HOME}</a></li>
-                        <li><a href="{LINK_LISTING}">{LANG_LISTING}</a></li>
+                        <li><a href="{LINK_LISTING}">Anúncios</a></li>
                         <li><a href="{LINK_CONTACT}">{LANG_CONTACT}</a></li>
                         IF({LOGGED_IN}){
                         <li><a href="#" data-toggle="modal" data-target="#vendedorVerificadoModal" class="waves-effect pad-lr-10 modal-trigger">Torne-se Vendedor Verificado</a></li>

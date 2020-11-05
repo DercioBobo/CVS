@@ -88,7 +88,7 @@
             <div id="bannerSlides" class="mySlides">
                 <img class="img-slide" src="{SITE_URL}storage/banner/slide1.jpg">
             </div>
-
+<!--
             <div class="mySlides">
                 <img class="img-slide" src="{SITE_URL}storage/banner/slide2.jpg">
             </div>
@@ -96,7 +96,7 @@
                 <img class="img-slide" src="{SITE_URL}storage/banner/slide3.jpg">
             </div>
 
-
+ -->
 
         </div>
     </section>
@@ -106,7 +106,7 @@
         <div class="container">
             <div class="section-title">
                 <div class="center">
-                    <h2>{LANG_BROWSE_LISTING}</h2>
+                    <h2>Navegue pelas categorias</h2>
                 </div>
             </div>
 
@@ -116,7 +116,7 @@
 
                     <!--Category display dynamically -->
 
-                    <div class="col-md-3 col-sm-4 col-xs-6 back-category">
+                   <!-- <div class="col-md-3 col-sm-4 col-xs-6 back-category">
                         <a href="{LINK_POST-AD}">
                             <div class="list-item min-height-150">
 
@@ -126,24 +126,110 @@
                                 </div>
                             </div>
                         </a>
+                    </div> -->
+                    <div class="col-md-3 col-sm-4 col-xs-6 back-category">
+                        <a href="{SITE_URL}category/servicos">
+                            <div class="list-item min-height-150">
+                                <div class="title">
+                                    <div class="icon"><i class="pe-7s-tools"></i></div>
+                                    <h3><a href="{SITE_URL}category/servicos">Serviços</a></h3>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                    {LOOP: CAT}
-                        <div class="col-md-3 col-sm-4 col-xs-6 back-category">
-                            <a href="{CAT.catlink}">
-                                <div class="list-item min-height-150">
-                                    <div class="title">
-                                        <div class="icon"><i class="{CAT.icon}"></i></div>
-                                        <h3><a href="{CAT.catlink}">{CAT.main_title}</a></h3>
-                                    </div>
-                                    <!--<div class="tse-scrollable catListing">
-                                    <div class="tse-content">
-                                        <ul>{CAT.sub_title}</ul>
-                                    </div>
-                                </div>-->
+
+                    <div class="col-md-3 col-sm-4 col-xs-6 back-category">
+                        <a href="{SITE_URL}category/vestuario">
+                            <div class="list-item min-height-150">
+                                <div class="title">
+                                    <div class="icon"><i class="pe-7s-drawer"></i></div>
+                                    <h3><a href="{SITE_URL}category/vestuario">Vestuario</a></h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-3 col-sm-4 col-xs-6 back-category">
+                        <a href="{SITE_URL}category/electronicos">
+                            <div class="list-item min-height-150">
+                                <div class="title">
+                                    <div class="icon"><i class="pe-7s-monitor"></i></div>
+                                    <h3><a href="{SITE_URL}category/electronicos">Electronicos</a></h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-3 col-sm-4 col-xs-6 back-category">
+                        <a href="{SITE_URL}category/veiculos">
+                            <div class="list-item min-height-150">
+                                <div class="title">
+                                    <div class="icon"><i class="pe-7s-car"></i></div>
+                                    <h3><a href="{SITE_URL}category/veiculos">Veículos</a></h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-3 col-sm-4 col-xs-6 back-category">
+                        <a href="{SITE_URL}category/empregos">
+                            <div class="list-item min-height-150">
+                                <div class="title">
+                                    <div class="icon"><i class="pe-7s-portfolio"></i></div>
+                                    <h3><a href="{SITE_URL}category/empregos">Empregos</a></h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-3 col-sm-4 col-xs-6 back-category">
+                        <a href="{SITE_URL}category/imobiliaria">
+                            <div class="list-item min-height-150">
+                                <div class="title">
+                                    <div class="icon"><i class="pe-7s-home"></i></div>
+                                    <h3><a href="{SITE_URL}category/imobiliaria">Imobiliária</a></h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-3 col-sm-4 col-xs-6 back-category">
+                        <a href="{SITE_URL}category/agricultura-comida">
+                            <div class="list-item min-height-150">
+                                <div class="title">
+                                    <div class="icon"><i class="pe-7s-shopbag"></i></div>
+                                    <h3><a href="{SITE_URL}category/agricultura-comida">Produtos Agrículos</a></h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-3 col-sm-4 col-xs-6 back-category">
+                        <a href="{LINK_LISTING}">
+                            <div class="list-item min-height-150">
+                                <div class="title">
+                                    <div class="icon"><i class="pe-7s-more"></i></div>
+                                    <h3><a href="{LINK_LISTING}">Todas Categorias</a></h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+
+
+                <!--   {LOOP: CAT}
+                          <div class="col-md-3 col-sm-4 col-xs-6 back-category">
+                              <a href="{CAT.catlink}">
+                                  <div class="list-item min-height-150">
+                                      <div class="title">
+                                          <div class="icon"><i class="{CAT.icon}"></i></div>
+                                          <h3><a href="{CAT.catlink}">{CAT.main_title}</a></h3>
+                                      </div>
                                 </div>
                             </a>
                         </div>
-                    {/LOOP: CAT}
+                    {/LOOP: CAT} -->
+
                     <!--Category display dynamically-->
                 </div>
                 <!--end row-->
@@ -202,6 +288,10 @@
                                     <li><i class="fa fa-calendar"></i> {LANG_POSTED_ON} : {ITEM.created_at} </li>
                                     <li><i class="fa fa-user"></i> {LANG_POSTED_BY} : <a href="{ITEM.author_link}" target="_blank">{ITEM.username}</a></li>
                                 </ul>
+
+                                <div class="ad-footer-tags">
+                                    IF("{ITEM.price}"!="0"){ <div class="price-tag">{ITEM.price}</div> {:IF}
+                                </div>
 
                                 <!--end controls-more-->
                             </div>
@@ -274,6 +364,10 @@
                                     <li><i class="fa fa-calendar"></i> {LANG_POSTED_ON} : {ITEM2.created_at} </li>
                                     <li><i class="fa fa-user"></i> {LANG_POSTED_BY} : <a href="{ITEM2.author_link}" target="_blank">{ITEM2.username}</a></li>
                                 </ul>
+
+                                <div class="ad-footer-tags">
+                                    IF("{ITEM2.price}"!="0"){ <div class="price-tag">{ITEM2.price}</div> {:IF}
+                                </div>
 
                                 <!--end controls-more-->
                             </div>
