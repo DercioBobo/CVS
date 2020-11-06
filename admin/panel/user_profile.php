@@ -55,22 +55,30 @@ if(check_user_upgrades($_GET['id']))
         <div class="user-btm-box">
             <!-- .row -->
             <div class="row text-center m-t-10">
-                <div class="col-md-6 b-r"><strong>Name</strong><p><?php echo $fetchuser['name'];?></p></div>
-                <div class="col-md-6"><strong>Memebership</strong><p><?php echo $memebership_title;?></p></div>
+                <div class="col-md-6 b-r"><strong>Nome</strong><p><?php echo $fetchuser['name'];?></p></div>
+                <div class="col-md-6"><strong>Plano</strong><p><?php echo $memebership_title;?></p></div>
             </div>
             <!-- /.row -->
             <hr>
             <!-- .row -->
             <div class="row text-center m-t-10">
-                <div class="col-md-6 b-r"><strong>Gender</strong><p><?php echo $fetchuser['sex'];?></p></div>
+                <div class="col-md-6 b-r"><strong>Genero</strong><p><?php echo $fetchuser['sex'];?></p></div>
                 <div class="col-md-6"><strong>Joined</strong><p><?php echo date('dS M g:iA', strtotime($fetchuser['created_at'])); ?></p></div>
             </div>
             <!-- /.row -->
             <hr>
             <!-- .row -->
             <div class="row text-center m-t-10">
-                <div class="col-md-6 b-r"><strong>Country</strong><p><?php echo $fetchuser['country'];?></p></div>
-                <div class="col-md-6"><strong>Phone</strong><p><?php echo $fetchuser['phone'];?></p></div>
+                <div class="col-md-6 b-r"><strong>País</strong><p><?php echo $fetchuser['country'];?></p></div>
+                <div class="col-md-6"><strong>Contacto</strong><p><?php echo $fetchuser['phone'];?></p></div>
+            </div>
+            <!-- /.row -->
+
+            <hr>
+            <!-- .row -->
+            <div class="row text-center m-t-10">
+                <div class="col-md-6 b-r"><strong>Scan do BI</strong><p><a href="#" target="_blank"><?php echo $fetchuser['country'];?> <i class="fa fa-download"></i> </a></p></div>
+                <div class="col-md-6"><strong>Scan do Alvará</strong><p><a href="#" target="_blank"><?php echo $fetchuser['country'];?> <i class="fa fa-download"></i> </a></p></div>
             </div>
             <!-- /.row -->
             <hr>

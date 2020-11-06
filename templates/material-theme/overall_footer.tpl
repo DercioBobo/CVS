@@ -53,10 +53,9 @@
                                         Frequentes</a></li>
                                 <li><i class="fa fa-angle-double-right"></i> <a href="{SITE_URL}termos">Termos e
                                         Condições</a></li>
-                                <li><i class="fa fa-angle-double-right"></i> <a href="{LINK_FAQ}">Politica de
+                                <li><i class="fa fa-angle-double-right"></i> <a href="{SITE_URL}politica">Politica de
                                         Privacidade</a></li>
-                                <li><i class="fa fa-angle-double-right"></i> <a href="{LINK_REPORT}">Reportar
-                                        Violação</a></li>
+                                <li><i class="fa fa-angle-double-right"></i> <a href="{LINK_REPORT}">Denúnciar Anúncio</a></li>
                                 <li><i class="fa fa-angle-double-right"></i> <a href="{LINK_CONTACT}">{LANG_CONTACT}</a>
                                 </li>
                             </ul>
@@ -146,6 +145,12 @@
         event.stopPropagation();
     });
 
+    $('#showmpesa').on("click",function () {
+        $('#mpesa').show();
+        $('#showmpesa').hide();
+
+    })
+
 </script>
 <script>
     var session_uname = "{USERNAME}";
@@ -200,7 +205,7 @@
         slideIndex++;
         if (slideIndex > slides.length) {slideIndex = 1}
             slides[slideIndex - 1].style.display = "block";
-        setTimeout(showSlides, 15000); // Change image every 2 seconds
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
     }
 
 </script>

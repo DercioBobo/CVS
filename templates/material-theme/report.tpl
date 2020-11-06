@@ -5,7 +5,7 @@
     <div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
         <div class="middle-container">
             <div class="middle-dabba">
-                <h1>{LANG_REPORTVIO}</h1>
+                <h1>Denúnciar Anúncio</h1>
                 <div id="post-form" style="padding:10px">
                     <form name="form1" method="post" action="" id="send">
 
@@ -26,7 +26,7 @@
                         <div class="input-field">
 
                             <select name="violation" class="meterialselect">
-                                <option>Select {LANG_VIOLATION} {LANG_TYPE}</option>
+                                <option>Selecione o tipo de denúncia</option>
                                 <option value="{LANG_POSTCONTACT}">{LANG_POSTCONTACT}</option>
                                 <option value="{LANG_ADVWEBSITE}">{LANG_ADVWEBSITE}</option>
                                 <option value="{LANG_FAKEPROJ}">{LANG_FAKEPROJ}</option>
@@ -35,7 +35,7 @@
                             </select>
                         </div>
                         <div class="input-field">
-                            <label for="username2">{LANG_USEROTHER}</label>
+                            <label for="username2">Nome do Anunciante</label>
                             <input name="username2" type="text" id="username2" value="{USERNAME2}" size="42">
                         </div>
                         <div class="input-field">
@@ -43,11 +43,11 @@
                             <input name="url" type="text" id="url" size="42" value="{REDIRECT_URL}">
                         </div>
                         <div class="input-field">
-                            <label for="details">{LANG_VIODETAILS} IF("{VIOL_ERROR}"!=""){<span class="redc">({VIOL_ERROR})</span>{:IF}</label>
+                            <label for="details">Detalhes IF("{VIOL_ERROR}"!=""){<span class="redc">({VIOL_ERROR})</span>{:IF}</label>
                             <textarea name="details" class="materialize-textarea" cols="32" rows="6" id="details">{DETAILS}</textarea></div>
                         </div>
                         <div class="input-field center">
-                            <input type="submit" name="Submit" class="btn btn-primary btn-rounded" value="{LANG_REPORTVIO}">
+                            <input type="submit" name="Submit" class="btn btn-primary btn-rounded" value="Reportar">
                         </div>
 
                     </form>

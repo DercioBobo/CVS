@@ -626,6 +626,11 @@ table.uiGrid td {
     height:150px;
     object-fit: contain;
 }
+
+.img-static{
+    width:100%;
+    height: auto;
+}
 /* Fading animation */
 .fade {
     -webkit-animation-name: fade;

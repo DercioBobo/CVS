@@ -200,28 +200,8 @@
             <div class="modal-body">
                 <div class="row">
                     <form>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="ver_email">Email</label>
-                                <input type="email" class="form-control" id="ver_email" value="{EMAIL}" readonly placeholder="Email">
-                            </div>
 
-                            <div class="form-group col-md-6">
-                                <label for="ver_nome">Nome</label>
-                                <input type="email" class="form-control" id="ver_email" readonly  value="{AUTHORNAME}" placeholder="Nome Completo">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="ver_username">Username</label>
-                                <input type="text" class="form-control" id="ver_username"  value="{USERNAME}" readonly placeholder="Username">
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="ver_contacto">Contacto</label>
-                                <input type="number" class="form-control" id="ver_contacto"   value="{PHONE}" readonly placeholder="Contacto">
-                            </div>
-                        </div>
-
-                        <div class="form-row">
+                        <div class="form-row" id="documents">
                             <div class="form-group col-md-6">
                                 <label for="ver_bi">Scan do B.I Frente e Verso</label>
                                 <input type="file" class="form-control" id="ver_bi" >
@@ -237,11 +217,29 @@
 
                         <div class="row">
                             <div class="col-md-6">
-                                <button type="submit" class="btn btn-primary">Submeter</button>
+                                <a href="#" id="showmpesa" class="btn btn-primary">Proceder ao Pagamento</a>
 
                             </div>
 
                         </div>
+
+
+                        <div class="row" id="mpesa" hidden>
+
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <label for="ver_contacto">Número M-Pesa</label>
+                                    <input type="number" class="form-control" id="ver_contacto"   value="{PHONE}"  placeholder="Número">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <button type="submit" class="btn btn-primary">Submeter</button>
+                                </div>
+
+                            </div>
+                        </div>
+
 
                     </form>
                 </div>

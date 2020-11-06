@@ -5,15 +5,15 @@
     <div class="container">
         <ol class="breadcrumb">
             <li><a href="{LINK_INDEX}">{LANG_HOME}</a></li>
-            <li class="active">Termos e Condições</li>
+            <li class="active">Politica de Privacidade</li>
         </ol>
         <section class="page-title">
-            <h1>Termos e Condições</h1>
+            <h1>Politica de Privacidade</h1>
 
-            <div class="container margin-top-20">
+            <div class="container margin-top-20 ">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>Terms of Use</h2>
+
                         These Terms and Conditions constitute an agreement (“Agreement”) between you (“you”, “your”, “user”, “Customer”) and the Company.Avocado gumbo artichoke ricebean groundnut tigernut. Daikon kakadu plum water spinach garbanzo eggplant fava bean chard rock melon carrot rutabaga water chestnut broccoli courgette onion.
 
                         <h2>Eligibility and Identity.</h2>
