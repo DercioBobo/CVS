@@ -255,7 +255,7 @@
             <!--end section-title-->
         </div>
         <div class="gallery featured container">
-            <div class="owl-carousel" data-owl-items="4" data-owl-loop="1" data-owl-auto-width="1" data-owl-nav="1" data-owl-dots="1" data-owl-nav-container="#premium-nav">
+            <div class="owl-carousel" data-owl-items="4" data-owl-loop="0" data-owl-auto-width="1" data-owl-nav="1" data-owl-dots="1" data-owl-nav-container="#premium-nav">
                 {LOOP: ITEM}
                     <div class="ribbon-pad">
                         <div class="item mar-left-zero" data-id="1">
