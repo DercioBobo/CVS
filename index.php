@@ -13,6 +13,8 @@ define("ROOTPATH", dirname(__FILE__));
 // Path to app folder.
 define("APPPATH", ROOTPATH."/php/");
 
+define("STORAGEPATH", ROOTPATH."/storage/");
+
 
 // Check if SSL enabled
 $protocol = isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] && $_SERVER["HTTPS"] != "off"
@@ -68,6 +70,7 @@ $router->map('GET|POST','/politica/?', 'politica.php');
 $router->map('GET|POST','/feedback/?', 'feedback.php');
 $router->map('GET|POST','/test/?', 'test.php');
 $router->map('GET|POST','/mpesa-payment/?', 'mpesa-controller.php');
+$router->map('GET|POST','/verificarUtilizador/?', 'verificado-controller.php');
 
 // Special (GET processing, etc)
 

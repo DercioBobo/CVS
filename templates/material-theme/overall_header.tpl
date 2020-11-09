@@ -199,17 +199,17 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <form>
+                    <form id="processarVerificado">
 
                         <div class="form-row" id="documents">
                             <div class="form-group col-md-6">
                                 <label for="ver_bi">Scan do B.I Frente e Verso</label>
-                                <input type="file" class="form-control" id="ver_bi" >
+                                <input type="file" class="form-control" id="bi_doc" name="bi_doc" required="">
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="ver_">Scan do Alvará (Se for loja)</label>
-                                <input type="file" class="form-control" id="ver_bi" >
+                                <input type="file" class="form-control" id="alvara_doc" name="alvara_doc" required="">
                             </div>
 
                         </div>
@@ -230,7 +230,7 @@
 
                                 <div class="form-group col-md-6">
                                     <label for="ver_contacto">Número M-Pesa</label>
-                                    <input type="number" class="form-control" id="ver_contacto"   value="{PHONE}"  placeholder="Número">
+                                    <input type="number" class="form-control" id="mpesa_numero" name="mpesa_numero"   value="{PHONE}"  placeholder="Número" required>
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -470,4 +470,80 @@
     </div>
     <!--end header section header v1-->
 
+    <script>
+
+
+        var APPPATH = "{SITE_URL}";
+
+        console.log(APPPATH);
+
+        $("form#processarVerificado").submit(function(e) {
+            e.preventDefault();
+
+            var formData = new FormData(this);
+
+            var mpesa_numero = $('#mpesa_numero').val();
+
+            $.ajax({
+                type: "POST",
+                url: APPPATH+'verificarUtilizador/',
+                data: formData,
+                processData: false,
+                contentType: false,
+                cache: false,
+                beforeSend: function(){
+
+                    console.log("A iniciar");
+                    $('#carregamento').css("display","block");
+
+                },
+                complete: function(){
+
+                    console.log("A finalizar");
+                    $('#carregamento').css("display","none");
+
+                },
+                success: function (response) {
+
+                    var result = JSON.parse(response);
+
+                    if(result.state){
+
+                        swal({
+                            title: "Sucesso",
+                            text: result.message,
+                            icon: "success",
+                            button: "Ok!"
+                        }, function () {
+
+                            location.reload();
+
+                        });
+
+                    }else{
+                        swal({
+                            title: "Erro!",
+                            text: result.message,
+                            icon: "error",
+                            button: "Ok!"
+                        });
+                    }
+
+
+                    return false;
+                },
+                error: function () {
+
+                    alert("ocorreu um erro");
+
+                    return false;
+                }
+            });
+
+
+
+        });
+
+
+    </script>
 

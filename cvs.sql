@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               10.4.13-MariaDB - mariadb.org binary distribution
+-- Server version:               10.4.11-MariaDB - mariadb.org binary distribution
 -- Server OS:                    Win64
 -- HeidiSQL Version:             11.0.0.5919
 -- --------------------------------------------------------
@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `bladmins` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.bladmins: 1 rows
+DELETE FROM `bladmins`;
 /*!40000 ALTER TABLE `bladmins` DISABLE KEYS */;
 INSERT INTO `bladmins` (`id`, `username`, `password_hash`, `name`, `email`, `image`, `permission`) VALUES
 	(1, 'admin', '$2y$13$R/dmZlAGj0kj5/7pJ0N2Le.SSjdTwUPgSPhU9q7I8jzLEEoUWJjsO', 'Admin', 'derciobob@gmail.com', '', '1');
@@ -47,6 +48,7 @@ CREATE TABLE IF NOT EXISTS `bladsense` (
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table boladas.bladsense: 4 rows
+DELETE FROM `bladsense`;
 /*!40000 ALTER TABLE `bladsense` DISABLE KEYS */;
 INSERT INTO `bladsense` (`id`, `slug`, `provider_name`, `large_track_code`, `tablet_track_code`, `phone_track_code`, `status`) VALUES
 	(1, 'top', 'Google AdSense', '<img src="//bylancer.com/products/classified-php-script/storage/adsense/ads-banner-top.jpg"/>', '', '', '0'),
@@ -65,6 +67,7 @@ CREATE TABLE IF NOT EXISTS `blbalance` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table boladas.blbalance: 1 rows
+DELETE FROM `blbalance`;
 /*!40000 ALTER TABLE `blbalance` DISABLE KEYS */;
 INSERT INTO `blbalance` (`id`, `current_balance`, `total_earning`, `total_withdrawal`) VALUES
 	(1, 320.00, 320.00, 0.00);
@@ -84,7 +87,8 @@ CREATE TABLE IF NOT EXISTS `blblog` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table boladas.blblog: ~1 rows (approximately)
+-- Dumping data for table boladas.blblog: ~0 rows (approximately)
+DELETE FROM `blblog`;
 /*!40000 ALTER TABLE `blblog` DISABLE KEYS */;
 INSERT INTO `blblog` (`id`, `author`, `title`, `description`, `image`, `tags`, `status`, `created_at`, `updated_at`) VALUES
 	(1, 1, 'First Blog', '<p>Consectetur adipisicing elitsed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo do consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla paria tur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<blockquote>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla paria tur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</blockquote><p>Elitsed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo do consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla paria tur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</p><p></p></p>\n', NULL, 'travel fun, love', 'publish', '2020-01-15 23:05:15', '2020-01-17 19:12:18');
@@ -101,6 +105,7 @@ CREATE TABLE IF NOT EXISTS `blblog_categories` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blblog_categories: ~2 rows (approximately)
+DELETE FROM `blblog_categories`;
 /*!40000 ALTER TABLE `blblog_categories` DISABLE KEYS */;
 INSERT INTO `blblog_categories` (`id`, `title`, `slug`, `position`, `active`) VALUES
 	(1, 'Fashion', 'fashion', 0, '1'),
@@ -116,6 +121,7 @@ CREATE TABLE IF NOT EXISTS `blblog_cat_relation` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blblog_cat_relation: ~2 rows (approximately)
+DELETE FROM `blblog_cat_relation`;
 /*!40000 ALTER TABLE `blblog_cat_relation` DISABLE KEYS */;
 INSERT INTO `blblog_cat_relation` (`id`, `blog_id`, `category_id`) VALUES
 	(1, 1, 1),
@@ -138,6 +144,7 @@ CREATE TABLE IF NOT EXISTS `blblog_comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blblog_comment: ~0 rows (approximately)
+DELETE FROM `blblog_comment`;
 /*!40000 ALTER TABLE `blblog_comment` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blblog_comment` ENABLE KEYS */;
 
@@ -153,6 +160,7 @@ CREATE TABLE IF NOT EXISTS `blcatagory_main` (
 ) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table boladas.blcatagory_main: 9 rows
+DELETE FROM `blcatagory_main`;
 /*!40000 ALTER TABLE `blcatagory_main` DISABLE KEYS */;
 INSERT INTO `blcatagory_main` (`cat_id`, `cat_order`, `cat_name`, `slug`, `icon`, `picture`) VALUES
 	(1, 1, 'Veículos', 'veiculos', 'pe-7s-car', 'https://img.icons8.com/dusk/64/000000/traffic-jam.png'),
@@ -181,6 +189,7 @@ CREATE TABLE IF NOT EXISTS `blcatagory_sub` (
 ) ENGINE=MyISAM AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table boladas.blcatagory_sub: 42 rows
+DELETE FROM `blcatagory_sub`;
 /*!40000 ALTER TABLE `blcatagory_sub` DISABLE KEYS */;
 INSERT INTO `blcatagory_sub` (`sub_cat_id`, `main_cat_id`, `sub_cat_name`, `slug`, `cat_order`, `photo_show`, `price_show`, `picture`) VALUES
 	(1, 1, 'Motas', 'motas', 0, '1', '1', ''),
@@ -239,6 +248,7 @@ CREATE TABLE IF NOT EXISTS `blcategory_translation` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- Dumping data for table boladas.blcategory_translation: 0 rows
+DELETE FROM `blcategory_translation`;
 /*!40000 ALTER TABLE `blcategory_translation` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blcategory_translation` ENABLE KEYS */;
 
@@ -265,6 +275,7 @@ CREATE TABLE IF NOT EXISTS `blcities` (
 ) ENGINE=MyISAM AUTO_INCREMENT=1088156 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blcities: 25 rows
+DELETE FROM `blcities`;
 /*!40000 ALTER TABLE `blcities` DISABLE KEYS */;
 INSERT INTO `blcities` (`id`, `country_code`, `name`, `asciiname`, `latitude`, `longitude`, `feature_class`, `feature_code`, `subadmin1_code`, `subadmin2_code`, `population`, `time_zone`, `active`, `created_at`, `updated_at`) VALUES
 	(1024552, 'MZ', 'Xai-Xai', 'Xai-Xai', -25.0519, 33.6442, 'P', 'PPLA', 'MZ.02', 'MZ.02.9408663', 127366, 'Africa/Maputo', 1, '2014-09-02 04:30:00', '2014-09-02 04:30:00'),
@@ -325,6 +336,7 @@ CREATE TABLE IF NOT EXISTS `blcountries` (
 ) ENGINE=MyISAM AUTO_INCREMENT=253 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blcountries: 252 rows
+DELETE FROM `blcountries`;
 /*!40000 ALTER TABLE `blcountries` DISABLE KEYS */;
 INSERT INTO `blcountries` (`id`, `code`, `latitude`, `longitude`, `iso3`, `iso_numeric`, `fips`, `name`, `asciiname`, `capital`, `area`, `population`, `continent_code`, `tld`, `currency_code`, `phone`, `postal_code_format`, `postal_code_regex`, `languages`, `neighbours`, `equivalent_fips_code`, `active`, `created_at`, `updated_at`) VALUES
 	(1, 'AD', NULL, NULL, 'AND', 20, 'AN', 'Andorra', 'Andorra', 'Andorra la Vella', 468, 84000, 'EU', '.ad', 'EUR', '376', 'AD###', '^(?:AD)*(d{3})$', 'ca', 'ES,FR', '', 0, NULL, NULL),
@@ -563,7 +575,8 @@ INSERT INTO `blcountries` (`id`, `code`, `latitude`, `longitude`, `iso3`, `iso_n
 	(234, 'UM', NULL, NULL, 'UMI', 581, '', 'United States Minor Outlying Islands', 'United States Minor Outlying Islands', '', 0, 0, 'OC', '.um', 'USD', '1', '', '', 'en-UM', '', '', 0, NULL, NULL),
 	(235, 'US', NULL, NULL, 'USA', 840, 'US', 'USA', 'United States', 'Washington', 9629091, 310232863, 'NA', '.us', 'USD', '1', '#####-####', '^d{5}(-d{4})?$', 'en-US,es-US,haw,fr', 'CA,MX,CU', '', 0, NULL, NULL),
 	(236, 'UY', NULL, NULL, 'URY', 858, 'UY', 'Uruguay', 'Uruguay', 'Montevideo', 176220, 3477000, 'SA', '.uy', 'UYU', '598', '#####', '^(d{5})$', 'es-UY', 'BR,AR', '', 0, NULL, NULL),
-	(237, 'UZ', NULL, NULL, 'UZB', 860, 'UZ', 'O\'zbekiston', 'Uzbekistan', 'Tashkent', 447400, 27865738, 'AS', '.uz', 'UZS', '998', '######', '^(d{6})$', 'uz,ru,tg', 'TM,AF,KG,TJ,KZ', '', 0, NULL, NULL),
+	(237, 'UZ', NULL, NULL, 'UZB', 860, 'UZ', 'O\'zbekiston', 'Uzbekistan', 'Tashkent', 447400, 27865738, 'AS', '.uz', 'UZS', '998', '######', '^(d{6})$', 'uz,ru,tg', 'TM,AF,KG,TJ,KZ', '', 0, NULL, NULL);
+INSERT INTO `blcountries` (`id`, `code`, `latitude`, `longitude`, `iso3`, `iso_numeric`, `fips`, `name`, `asciiname`, `capital`, `area`, `population`, `continent_code`, `tld`, `currency_code`, `phone`, `postal_code_format`, `postal_code_regex`, `languages`, `neighbours`, `equivalent_fips_code`, `active`, `created_at`, `updated_at`) VALUES
 	(238, 'VA', NULL, NULL, 'VAT', 336, 'VT', 'Vaticanum', 'Vatican', 'Vatican City', 0, 921, 'EU', '.va', 'EUR', '379', '#####', '^(d{5})$', 'la,it,fr', 'IT', '', 0, NULL, NULL),
 	(239, 'VC', NULL, NULL, 'VCT', 670, 'VC', 'Saint Vincent and the Grenadines', 'Saint Vincent and the Grenadines', 'Kingstown', 389, 104217, 'NA', '.vc', 'XCD', '+1-784', '', '', 'en-VC,fr', '', '', 0, NULL, NULL),
 	(240, 'VE', NULL, NULL, 'VEN', 862, 'VE', 'Venezuela', 'Venezuela', 'Caracas', 912050, 27223228, 'SA', '.ve', 'VEF', '58', '####', '^(d{4})$', 'es-VE', 'GY,BR,CO', '', 0, NULL, NULL),
@@ -602,6 +615,7 @@ CREATE TABLE IF NOT EXISTS `blcurrencies` (
 ) ENGINE=MyISAM AUTO_INCREMENT=171 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blcurrencies: 170 rows
+DELETE FROM `blcurrencies`;
 /*!40000 ALTER TABLE `blcurrencies` DISABLE KEYS */;
 INSERT INTO `blcurrencies` (`id`, `code`, `name`, `html_entity`, `font_arial`, `font_code2000`, `unicode_decimal`, `unicode_hex`, `in_left`, `decimal_places`, `decimal_separator`, `thousand_separator`, `created_at`, `updated_at`) VALUES
 	(1, 'AED', 'United Arab Emirates Dirham', '&#1583;.&#1573;', 'د.إ', 'د.إ', NULL, NULL, 0, 2, '.', ',', NULL, '2016-04-03 18:05:01'),
@@ -787,6 +801,7 @@ CREATE TABLE IF NOT EXISTS `blcustom_data` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- Dumping data for table boladas.blcustom_data: 0 rows
+DELETE FROM `blcustom_data`;
 /*!40000 ALTER TABLE `blcustom_data` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blcustom_data` ENABLE KEYS */;
 
@@ -812,6 +827,7 @@ CREATE TABLE IF NOT EXISTS `blcustom_fields` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blcustom_fields: 0 rows
+DELETE FROM `blcustom_fields`;
 /*!40000 ALTER TABLE `blcustom_fields` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blcustom_fields` ENABLE KEYS */;
 
@@ -823,6 +839,7 @@ CREATE TABLE IF NOT EXISTS `blcustom_options` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- Dumping data for table boladas.blcustom_options: 0 rows
+DELETE FROM `blcustom_options`;
 /*!40000 ALTER TABLE `blcustom_options` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blcustom_options` ENABLE KEYS */;
 
@@ -837,6 +854,7 @@ CREATE TABLE IF NOT EXISTS `blemailq` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blemailq: 0 rows
+DELETE FROM `blemailq`;
 /*!40000 ALTER TABLE `blemailq` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blemailq` ENABLE KEYS */;
 
@@ -856,6 +874,7 @@ CREATE TABLE IF NOT EXISTS `blfaq_entries` (
 ) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blfaq_entries: 23 rows
+DELETE FROM `blfaq_entries`;
 /*!40000 ALTER TABLE `blfaq_entries` DISABLE KEYS */;
 INSERT INTO `blfaq_entries` (`faq_id`, `translation_lang`, `translation_of`, `parent_id`, `faq_pid`, `faq_weight`, `faq_title`, `faq_content`, `active`) VALUES
 	(2, NULL, NULL, NULL, 2, 0, 'What is Quickad Classified?', 'Quickad Classified Ads Php Script is Premium Classified Php Script with fully responsive Material design. Built to be beautiful, fast and powerful. One click setup User can easily setup this theme and easy to use and customized.\n\n<h3>Features</h3>\n<ul>\n<li>Custom Fields</li>\n<li>Facebook Login</li>\n<li>Google+ Login</li>\n<li>2 Home layout</li>\n<li>Multi Theme Layout</li>\n<li>Material Design</li>\n<li>Fully Responsive</li>\n<li>Unlimited Colors</li>\n<li>Premium Submission</li>\n<li>Custom Widgets</li>\n<li>Paid Listing</li>\n<li>Featured &amp; Urgent Listing</li>\n<li>Grid View</li>\n<li>Listing View</li>\n<li>PayPal Integrated</li>\n<li>SEO optimized</li>\n<li>Google maps integrated</li>\n<li>Unlimited Colors Google Map</li>\n<li>Geo location support</li>\n<li>Bootstrap 3x</li>\n<li>Cross Browser support</li>\n<li>Email Notifications</li>\n<li>Well commented code.</li>\n<li>and much more.</li>\n</ul>', 1),
@@ -892,6 +911,7 @@ CREATE TABLE IF NOT EXISTS `blfavads` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- Dumping data for table boladas.blfavads: 0 rows
+DELETE FROM `blfavads`;
 /*!40000 ALTER TABLE `blfavads` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blfavads` ENABLE KEYS */;
 
@@ -906,6 +926,7 @@ CREATE TABLE IF NOT EXISTS `blfirebase_device_token` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- Dumping data for table boladas.blfirebase_device_token: 0 rows
+DELETE FROM `blfirebase_device_token`;
 /*!40000 ALTER TABLE `blfirebase_device_token` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blfirebase_device_token` ENABLE KEYS */;
 
@@ -922,6 +943,7 @@ CREATE TABLE IF NOT EXISTS `bllanguages` (
 ) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.bllanguages: 20 rows
+DELETE FROM `bllanguages`;
 /*!40000 ALTER TABLE `bllanguages` DISABLE KEYS */;
 INSERT INTO `bllanguages` (`id`, `code`, `direction`, `name`, `file_name`, `active`, `default`) VALUES
 	(1, 'en', 'ltr', 'English', 'english', 1, 1),
@@ -952,7 +974,8 @@ CREATE TABLE IF NOT EXISTS `bllogin_attempts` (
   `time` varchar(30) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- Dumping data for table boladas.bllogin_attempts: 3 rows
+-- Dumping data for table boladas.bllogin_attempts: 6 rows
+DELETE FROM `bllogin_attempts`;
 /*!40000 ALTER TABLE `bllogin_attempts` DISABLE KEYS */;
 INSERT INTO `bllogin_attempts` (`user_id`, `time`) VALUES
 	(3, '1601269286'),
@@ -960,7 +983,9 @@ INSERT INTO `bllogin_attempts` (`user_id`, `time`) VALUES
 	(3, '1601269307'),
 	(7, '1602362308'),
 	(7, '1602362325'),
-	(3, '1602600286');
+	(3, '1602600286'),
+	(3, '1604918211'),
+	(3, '1604918218');
 /*!40000 ALTER TABLE `bllogin_attempts` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.bllogs
@@ -970,9 +995,10 @@ CREATE TABLE IF NOT EXISTS `bllogs` (
   `log_summary` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `log_details` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`log_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=61 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=85 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table boladas.bllogs: 60 rows
+-- Dumping data for table boladas.bllogs: 79 rows
+DELETE FROM `bllogs`;
 /*!40000 ALTER TABLE `bllogs` DISABLE KEYS */;
 INSERT INTO `bllogs` (`log_id`, `log_date`, `log_summary`, `log_details`) VALUES
 	(1, 1600714078, 'Cron Run', 'Ads closed: 0<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
@@ -1043,7 +1069,22 @@ INSERT INTO `bllogs` (`log_id`, `log_date`, `log_summary`, `log_details`) VALUES
 	(66, 1602603778, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
 	(67, 1602606550, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
 	(68, 1602609900, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
-	(69, 1602671798, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds');
+	(69, 1602671992, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(70, 1602764053, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(71, 1602764667, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(72, 1604912019, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(73, 1604912419, 'Cron Run', 'Ads closed: 8<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(74, 1604912920, 'Cron Run', 'Ads closed: 8<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(75, 1604914090, 'Cron Run', 'Ads closed: 8<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(76, 1604914670, 'Cron Run', 'Ads closed: 8<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(77, 1604914993, 'Cron Run', 'Ads closed: 8<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(78, 1604915298, 'Cron Run', 'Ads closed: 8<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(79, 1604915891, 'Cron Run', 'Ads closed: 8<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(80, 1604918089, 'Cron Run', 'Ads closed: 8<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(81, 1604918661, 'Cron Run', 'Ads closed: 8<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(82, 1604921754, 'Cron Run', 'Ads closed: 8<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(83, 1604922406, 'Cron Run', 'Ads closed: 8<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(84, 1604923060, 'Cron Run', 'Ads closed: 8<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds');
 /*!40000 ALTER TABLE `bllogs` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.blmessages
@@ -1063,6 +1104,7 @@ CREATE TABLE IF NOT EXISTS `blmessages` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- Dumping data for table boladas.blmessages: 0 rows
+DELETE FROM `blmessages`;
 /*!40000 ALTER TABLE `blmessages` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blmessages` ENABLE KEYS */;
 
@@ -1075,6 +1117,7 @@ CREATE TABLE IF NOT EXISTS `blnotification` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blnotification: 0 rows
+DELETE FROM `blnotification`;
 /*!40000 ALTER TABLE `blnotification` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blnotification` ENABLE KEYS */;
 
@@ -1085,9 +1128,10 @@ CREATE TABLE IF NOT EXISTS `bloptions` (
   `option_value` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`option_id`),
   UNIQUE KEY `option_name` (`option_name`)
-) ENGINE=MyISAM AUTO_INCREMENT=135 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=136 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table boladas.bloptions: 134 rows
+-- Dumping data for table boladas.bloptions: 135 rows
+DELETE FROM `bloptions`;
 /*!40000 ALTER TABLE `bloptions` DISABLE KEYS */;
 INSERT INTO `bloptions` (`option_id`, `option_name`, `option_value`) VALUES
 	(1, 'site_logo', 'material-theme_logo.png'),
@@ -1192,7 +1236,7 @@ INSERT INTO `bloptions` (`option_id`, `option_name`, `option_value`) VALUES
 	(100, 'delete_expired', '0'),
 	(101, 'validation_time', '0'),
 	(102, 'cron_exec_time', '300'),
-	(103, 'cron_time', '1602671798'),
+	(103, 'cron_time', '1604923060'),
 	(104, 'external_code', ''),
 	(105, 'blog_enable', '1'),
 	(106, 'blog_banner', '1'),
@@ -1221,7 +1265,7 @@ INSERT INTO `bloptions` (`option_id`, `option_name`, `option_value`) VALUES
 	(129, 'quickad_secret_file', '5ad47xjyj0'),
 	(130, 'purchase_key', 'nulled'),
 	(131, 'post_without_login', '0'),
-	(132, 'company_bank_info', ''),
+	(132, 'company_bank_info', 'Mpesa- 846872773'),
 	(133, 'stripe_publishable_key', ''),
 	(134, 'stripe_secret_key', ''),
 	(135, 'm_pesa_token', 'A6/IqcoMDlKBix1N0p9hPdsWboXfehQW8pGJ4F1TQIWtNbqCybhgQ/vZozayodgz83eY/rQHhiJNS4sBQHGASSHqUVKI0TTqYazLHDblJFo+dMO8HOn1LoHEW0cioJktMSZYElQ75EtEAuXpsgmoB8niU/udTz9hCBPT9fQcindikoi0JxTFIB/l21HratfSzvS4f9LDJTHIscPX/S6WqQghWSihFHsmf7y4mI9jsw3uQ+oV6qyfvOIfSHq42tF/i38nM7OYESr97Nppv52MWnh6v1WOOk9OuUAwhGm9KF7CFXxuHdvx63Lxwwp6yHPNlJanAh8pMvFqI/G5H1qMATJ1gcwrMgmnx3L+0n+hG3vC27vLOQs7Z21EuWUt9iVhEP5vu/hdq/Oa6oHQM0IbkslAE1YZ2juj5pVXhL0whHwvzIY9Ift7OSFX7dfuYGeUu6fQRWH9g109l9V4cMOv5A+Osw9zF0Hc98N85C8Kt3+kDdfTtseWGWVWgUDFVLKSey/sEC3BQYDaECfMBckMwNMVVQGn3u76wl6eauKwlo4cmuGMB4kKnLEtAY4TbEf7YcT4YntCiqwOZG9PhkhrXyCPblGRuuwRK1JqClxX5JW+wm2FOEghgyFn78PWZQ4hiwYCoIyslS6UZWhpbZMHncl+dD8vcHtkdWTS/b4kpTQ=');
@@ -1248,6 +1292,7 @@ CREATE TABLE IF NOT EXISTS `blpages` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blpages: 0 rows
+DELETE FROM `blpages`;
 /*!40000 ALTER TABLE `blpages` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blpages` ENABLE KEYS */;
 
@@ -1262,6 +1307,7 @@ CREATE TABLE IF NOT EXISTS `blpayments` (
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table boladas.blpayments: 5 rows
+DELETE FROM `blpayments`;
 /*!40000 ALTER TABLE `blpayments` DISABLE KEYS */;
 INSERT INTO `blpayments` (`payment_id`, `payment_install`, `payment_title`, `payment_folder`, `payment_desc`) VALUES
 	(1, '0', 'Paypal', 'paypal', 'You will be redirected to paypal to complete payment.'),
@@ -1313,19 +1359,20 @@ CREATE TABLE IF NOT EXISTS `blproduct` (
   `hide` enum('0','1') NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
 
--- Dumping data for table boladas.blproduct: 8 rows
+-- Dumping data for table boladas.blproduct: 41 rows
+DELETE FROM `blproduct`;
 /*!40000 ALTER TABLE `blproduct` DISABLE KEYS */;
 INSERT INTO `blproduct` (`id`, `status`, `user_id`, `featured`, `urgent`, `highlight`, `product_name`, `slug`, `description`, `category`, `sub_category`, `price`, `negotiable`, `phone`, `hide_phone`, `location`, `city`, `state`, `country`, `latlong`, `screen_shot`, `tag`, `view`, `custom_fields`, `custom_types`, `custom_values`, `created_at`, `updated_at`, `expire_date`, `featured_exp_date`, `urgent_exp_date`, `highlight_exp_date`, `contact_phone`, `contact_email`, `contact_chat`, `admin_seen`, `emailed`, `hide`) VALUES
 	(1, 'expire', 2, '1', '1', '1', 'Quickad Classified Ads Php Script CMS', 'quickad-classified-ads-php-script-cms-1', '<h2><span style=\\"color: rgb(51, 51, 51); font-size: 16px;\\">Quickad AdsÃ‚Â <a href=\\"https://codecanyon.net/item/quickad-classified-ads-php-script/19960675\\">Php Classified Script</a></span><span style=\\"color: rgb(51, 51, 51); font-size: 16px;\\">Â is Premium Classified Php Script with fully responsive Material & Classic design. Built to be beautiful, fast and powerful. One-click setup User can easily set up this theme and easy to use and customized.</span></h2><p><span style=\\"color: rgb(84, 84, 84); font-size: 16px;\\">With the help of ourÂ <a href=\\"https://codecanyon.net/item/quickad-classified-ads-php-script/19960675\\" target=\\"_blank\\">best classified script</a>Â &Â <a href=\\"https://codecanyon.net/item/quickad-classified-ads-php-script/19960675\\" target=\\"_blank\\">jobs script</a>, you will be also showcasingÂ <a href=\\"https://codecanyon.net/item/quickad-classified-ads-php-script/19960675\\" target=\\"_blank\\">geo classified ads cms</a>Â orÂ <a href=\\"https://codecanyon.net/item/quickad-classified-ads-php-script/19960675\\" target=\\"_blank\\">PHP classified ads scripts</a>Â easily. This premium classified script will help you use a classifiedÃ‚Â <a href=\\"https://codentheme.com/category/php-scripts-php-code/\\" target=\\"_blank\\">PHP script</a>to deliver the necessary output in a short span of time. You can create an online classified jobs portal withÃ‚Â <a href=\\"https://www.bylancer.com/\\" target=\\"_blank\\">Quickad jobs classified scripts</a>. End user canÃ‚Â <a href=\\"https://classified.bylancer.com/\\" target=\\"_blank\\">post free classifieds</a>Â or make an ad to premium with various premium features.</span></p><p><span style=\\"font-size: 13px; color: rgb(135, 135, 135);\\">PriceÂ <span style=\\"color: rgb(35, 207, 95);\\">$69.00Â </span></span><span style=\\"font-size: 13px; color: rgb(135, 135, 135);\\">Total Sales (650+)</span></p><p><a target=\\"_blank\\" href=\\"https://bylancer.com/products/demo/classified/\\">LIVE DEMO</a>Â <a href=\\"https://codecanyon.net/item/quickad-classified-ads-php-script/19960675\\">BUY NOW</a>Â <a href=\\"https://bylancer.com/products/demo/classified/documentation/index.html\\">DOCUMENTATION</a></p><p>------------------------------------------------------------------------------------</p><p><b>Our Portfolio</b></p><ol><li><a href=\\"https://codecanyon.net/item/quickad-classified-ads-php-script/19960675\\" target=\\"_blank\\">Quickad Classified PHP Script Ads CMS</a></li><li><a href=\\"https://codecanyon.net/item/quickad-classified-native-android-app/23956447\\" target=\\"_blank\\">Quickad - Classified Native Android App</a></li><li><a href=\\"https://codentheme.com/item/bookmepro-wordpress-appointment-booking-scheduling-plugin/\\" target=\\"_blank\\">Bookme Pro - WordPress Appointment Booking and Scheduling Software</a></li><li><a href=\\"https://codecanyon.net/item/bookme-wordpress-booking-plugin/20926116\\" target=\\"_blank\\">Bookme - WordPress Appointment Booking Scheduling Plugin</a></li><li><a href=\\"https://codecanyon.net/item/wchat-fully-responsive-phpajax-chat/18047319\\" target=\\"_blank\\">Wchat - Fully Responsive PHP AJAX Chat Script</a></li><li><a href=\\"https://codentheme.com/item/wchat-free-chat-html-template/\\" target=\\"_blank\\">Wchat - Free Chat HTML Template</a></li><li><a href=\\"https://codecanyon.net/item/facebook-style-php-ajax-chat-zechat/16491266\\" target=\\"_blank\\">Zechat - Facebook Style Php Ajax Chat</a></li><li><a href=\\"https://themeforest.net/item/eagle-material-design-admin-template/20829964\\" target=\\"_blank\\">Eagle - Material+ Bootstrap Admin Template</a></li><li><a href=\\"https://codentheme.com/item/noddy-bootstrap-4-admin-template/\\" target=\\"_blank\\">Noddy Bootstrap 4 Admin Template</a></li><li><a href=\\"https://codentheme.com/item/newsmania-wordpress-news-magazine-theme/?ref=bylancer\\" target=\\"_blank\\">The Magazine - Responsive News WordPress Theme</a></li><li><a href=\\"https://codentheme.com/item/fashiony-wordpress-blog-magazine-theme/\\" target=\\"_blank\\">Fashiony - WordPress Blog & Magazine Theme</a></li><li><a href=\\"https://codentheme.com/item/electron-wordpress-blog-magazine-theme/\\" target=\\"_blank\\">Electron - Minimal Personal Blog WordPress Theme</a></li><li><a href=\\"https://codentheme.com/item/creative-modern-blog-html-template-electron/\\" target=\\"_blank\\">Electron - Free Blog Bootstrap Html Website Template</a></li><li><a href=\\"https://codentheme.com/item/mega-gdpr-compliance-toolkit-for-wordpress/\\" target=\\"_blank\\">Mega GDPR Compliance toolkit for WordPress</a></li><li><a href=\\"https://codentheme.com/item/spider-ajax-php-50-form-with-jquery-validation/\\" target=\\"_blank\\">Spider - PHP Ajax 50+ Form With Jquery Validation</a></li><li><a href=\\"https://codentheme.com/item/appui-free-responsive-html-vuejs-angularjs-admin-dashboard/\\" target=\\"_blank\\">AppUI - Free Bootstrap HTML, Vuejs & angularjs Admin Dashboard Template</a></li><li><a href=\\"https://codentheme.com/best-wordpress-appointment-booking-and-scheduling-plugin-2019/\\" target=\\"_blank\\">Best WordPress Appointment Booking Plugin</a></li><li><a href=\\"https://codentheme.com/free-wordpress-themes/\\" target=\\"_blank\\">Free Wordpress themes</a></li></ol>', 7, 33, 69, '0', '9799901707', '0', 'delhi', '1269515', 'IN.24', 'IN', '28.617603494866284,77.20727920532227', '1566644186_prequickad.jpg', 'Best php scripts, open classifieds, best classified script, classified ads cms quickad, classified demo, quickad classified ads php script, PHP Classified Scripts, Classified Ads Scripts, job portal scripts, best classified w', 17, '', '', '', '2019-08-24 16:29:46', '2019-08-24 13:53:05', 1569236386, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
-	(2, 'active', 3, '0', '0', '0', 'Toyotta Hiace Van', 'toyotta-hiace-van', '<p>Toyota Hiace Van&nbsp;</p><p>15 lugares</p><p>bom estado</p>', 1, 2, 50000, '0', '84822845', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1600883611_toyota.jpg', '', 4, NULL, NULL, NULL, '2020-09-23 19:54:02', '2020-09-23 19:54:02', 1603475642, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
-	(3, 'active', 3, '0', '0', '0', 'Nissan Sierre', 'nissan-sierre', '<p>Nissan Sierre</p><p>4 Portas</p><p>Cabine</p>', 1, 2, 70000, '0', '846872773', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1600884379_nissan.jpg', '', 4, NULL, NULL, NULL, '2020-09-23 20:06:39', '2020-09-23 20:06:39', 1603476399, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
-	(4, 'active', 3, '0', '0', '0', 'vending machine', 'vending-machine', '<p>vending machine<br></p>', 3, 12, 2000, '0', '84822845', '0', '', '1039854', 'MZ.04', 'MZ', '28.6139391,77.20902120000005', '1600884516_redboxhiringkioskambassadors1-851x452-2.png', '', 6, NULL, NULL, NULL, '2020-09-23 20:09:11', '2020-09-23 20:09:11', 1603476551, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
-	(5, 'active', 3, '1', '1', '1', 'VEstido', 'vestido', '<p>Vestido</p>', 5, 48, 600, '0', '846872773', '0', '', '1039854', 'MZ.04', 'MZ', '28.6139391,77.20902120000005', '1601287391_1600715828img20200910120515110.jpg,1601287393_1600715828img20200910120515111.jpg', '', 14, NULL, NULL, NULL, '2020-09-28 12:03:32', '2020-09-28 12:03:32', 1603879412, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
-	(6, 'active', 3, '1', '1', '1', 'Carro 4x4 Nissan', 'carro-4x4-nissan', '<p>Carro 4x4 Nissan<br></p><p>4portas</p><p>3.5</p>', 1, 2, 80000, '0', '822872285', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1601310050_nissan.jpg,1601310053_toyota.jpg', '', 52, NULL, NULL, NULL, '2020-09-28 18:23:16', '2020-09-28 18:23:16', 1603902196, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
-	(7, 'active', 5, '0', '0', '0', 'Mota', 'mota', '<p>Mota para andar na cidade&nbsp;</p>', 1, 1, 35000, '0', '848451', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1601808707_mota.jpg', '', 9, NULL, NULL, NULL, '2020-10-04 12:52:17', '2020-10-04 12:52:17', 1604400737, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
-	(8, 'active', 6, '0', '0', '0', 'Mota v4.5', 'mota-v4.5', '<p>Mota v4.5<br></p><p>Bom estado</p>', 1, 1, 20000, '0', '845544115', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1601879968_mota.jpg', '', 3, NULL, NULL, NULL, '2020-10-05 08:39:42', '2020-10-05 08:39:42', 1604471982, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(2, 'expire', 3, '0', '0', '0', 'Toyotta Hiace Van', 'toyotta-hiace-van', '<p>Toyota Hiace Van&nbsp;</p><p>15 lugares</p><p>bom estado</p>', 1, 2, 50000, '0', '84822845', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1600883611_toyota.jpg', '', 4, NULL, NULL, NULL, '2020-09-23 19:54:02', '2020-09-23 19:54:02', 1603475642, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(3, 'expire', 3, '0', '0', '0', 'Nissan Sierre', 'nissan-sierre', '<p>Nissan Sierre</p><p>4 Portas</p><p>Cabine</p>', 1, 2, 70000, '0', '846872773', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1600884379_nissan.jpg', '', 4, NULL, NULL, NULL, '2020-09-23 20:06:39', '2020-09-23 20:06:39', 1603476399, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(4, 'expire', 3, '0', '0', '0', 'vending machine', 'vending-machine', '<p>vending machine<br></p>', 3, 12, 2000, '0', '84822845', '0', '', '1039854', 'MZ.04', 'MZ', '28.6139391,77.20902120000005', '1600884516_redboxhiringkioskambassadors1-851x452-2.png', '', 6, NULL, NULL, NULL, '2020-09-23 20:09:11', '2020-09-23 20:09:11', 1603476551, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(5, 'expire', 3, '1', '1', '1', 'VEstido', 'vestido', '<p>Vestido</p>', 5, 48, 600, '0', '846872773', '0', '', '1039854', 'MZ.04', 'MZ', '28.6139391,77.20902120000005', '1601287391_1600715828img20200910120515110.jpg,1601287393_1600715828img20200910120515111.jpg', '', 14, NULL, NULL, NULL, '2020-09-28 12:03:32', '2020-09-28 12:03:32', 1603879412, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(6, 'expire', 3, '1', '1', '1', 'Carro 4x4 Nissan', 'carro-4x4-nissan', '<p>Carro 4x4 Nissan<br></p><p>4portas</p><p>3.5</p>', 1, 2, 80000, '0', '822872285', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1601310050_nissan.jpg,1601310053_toyota.jpg', '', 52, NULL, NULL, NULL, '2020-09-28 18:23:16', '2020-09-28 18:23:16', 1603902196, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(7, 'expire', 5, '0', '0', '0', 'Mota', 'mota', '<p>Mota para andar na cidade&nbsp;</p>', 1, 1, 35000, '0', '848451', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1601808707_mota.jpg', '', 9, NULL, NULL, NULL, '2020-10-04 12:52:17', '2020-10-04 12:52:17', 1604400737, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(8, 'expire', 6, '0', '0', '0', 'Mota v4.5', 'mota-v4.5', '<p>Mota v4.5<br></p><p>Bom estado</p>', 1, 1, 20000, '0', '845544115', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1601879968_mota.jpg', '', 3, NULL, NULL, NULL, '2020-10-05 08:39:42', '2020-10-05 08:39:42', 1604471982, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
 	(9, 'active', 3, '0', '0', '0', 'Motorila', 'motorila', '<p>assdsd</p>', 3, 10, 500, '0', '848898665', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1602599281_download.jpg', '', 1, NULL, NULL, NULL, '2020-10-13 16:28:35', '2020-10-13 16:28:35', 1605191315, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
 	(10, 'active', 3, '0', '0', '0', 'dss', 'dss', '<p>wd</p>', 1, 2, 5345, '0', '844443947', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1602599745_download.jpg', '', 1, NULL, NULL, NULL, '2020-10-13 16:36:09', '2020-10-13 16:36:09', 1605191769, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
 	(11, 'active', 3, '0', '0', '0', 'Maputo', 'maputo', '<p>fddsf</p>', 1, 1, 56, '0', '', '0', '', '1040938', 'MZ.02', 'MZ', '28.6139391,77.20902120000005', '1602600314_download.jpg', '', 1, NULL, NULL, NULL, '2020-10-13 16:45:37', '2020-10-13 16:45:37', 1605192337, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
@@ -1357,11 +1404,8 @@ INSERT INTO `blproduct` (`id`, `status`, `user_id`, `featured`, `urgent`, `highl
 	(37, 'active', 6, '0', '0', '0', 'Maputo', 'maputo-2', '<p>fsfdsf</p>', 2, 7, 23, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1602670256_download.jpg', '', 1, NULL, NULL, NULL, '2020-10-14 12:11:06', '2020-10-14 12:11:06', 1605262266, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
 	(38, 'active', 6, '0', '0', '0', '5464', '5464', '<p>hfghhcfh</p>', 2, 7, 76, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1602670767_download.jpg', '', 1, NULL, NULL, NULL, '2020-10-14 12:19:38', '2020-10-14 12:19:38', 1605262778, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
 	(39, 'active', 6, '0', '0', '0', 'Asdweef', 'asdweef', '<p>sghdhhdfh</p>', 2, 7, 1234354, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1602671228_download.jpg', '', 1, NULL, NULL, NULL, '2020-10-14 12:27:31', '2020-10-14 12:27:31', 1605263251, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
-	(40, 'active', 3, '0', '0', '0', 'Gás', 'gas', '<p>Gás</p>', 1, 1, 5000, '0', '845262', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1602671860_aaaa.jpg', '', 1, NULL, NULL, NULL, '2020-10-14 12:38:23', '2020-10-14 12:38:23', 1605263903, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
-	(41, 'active', 3, '0', '0', '0', 'dsad', 'dsad', '<p>dsa</p>', 1, 1, 12, '0', '232332', '0', '', '1039854', 'MZ.04', 'MZ', '28.6139391,77.20902120000005', '1602674488_images644x461-19870.jpg', '', 1, NULL, NULL, NULL, '2020-10-14 13:21:44', '2020-10-14 13:21:44', 1605266504, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
-	(42, 'active', 3, '0', '0', '0', 'dsad', 'dsad-1', '<p>56</p>', 1, 4, 12, '0', '232332', '0', '', '1033356', 'MZ.06', 'MZ', '28.6139391,77.20902120000005', '1602681154_images644x461-19870.jpg', '', 1, NULL, NULL, NULL, '2020-10-14 15:13:12', '2020-10-14 15:13:12', 1605273192, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
-	(43, 'active', 3, '0', '0', '0', 'dsad', 'dsad-2', '<p>sasaas</p>', 1, 3, 12, '0', '232332', '0', '', '1052373', 'MZ.05', 'MZ', '28.6139391,77.20902120000005', '1602681619_images644x461-19870.jpg', '', 1, NULL, NULL, NULL, '2020-10-14 15:20:47', '2020-10-14 15:20:47', 1605273647, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
-	(44, 'active', 3, '0', '0', '0', 'dsad', 'dsad-3', '<p>ssadasd</p>', 1, 4, 12, '0', '232332', '0', '', '1026014', 'MZ.08', 'MZ', '28.6139391,77.20902120000005', '1602683892_images644x461-19870.jpg', '', 1, NULL, NULL, NULL, '2020-10-14 15:58:30', '2020-10-14 15:58:30', 1605275910, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0');
+	(40, 'active', 3, '0', '0', '0', 'dgdsfgfdg', 'dgdsfgfdg', '<p>dsfgdxgdgfsdg</p>', 1, 1, 1000, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1602764310_download.jpg', '', 1, NULL, NULL, NULL, '2020-10-15 14:18:58', '2020-10-15 14:18:58', 1605356338, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(41, 'active', 3, '0', '0', '0', 'hgfjghkjgh545645', 'hgfjghkjgh545645', '<p>gfjgfhjg</p>', 2, 7, 1054, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1602764744_download.jpg', '', 1, NULL, NULL, NULL, '2020-10-15 14:40:30', '2020-10-15 14:40:30', 1605357630, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0');
 /*!40000 ALTER TABLE `blproduct` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.blproduct_resubmit
@@ -1408,6 +1452,7 @@ CREATE TABLE IF NOT EXISTS `blproduct_resubmit` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- Dumping data for table boladas.blproduct_resubmit: 0 rows
+DELETE FROM `blproduct_resubmit`;
 /*!40000 ALTER TABLE `blproduct_resubmit` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blproduct_resubmit` ENABLE KEYS */;
 
@@ -1426,6 +1471,7 @@ CREATE TABLE IF NOT EXISTS `blpush_notification` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table boladas.blpush_notification: 1 rows
+DELETE FROM `blpush_notification`;
 /*!40000 ALTER TABLE `blpush_notification` DISABLE KEYS */;
 INSERT INTO `blpush_notification` (`id`, `sender_id`, `sender_name`, `owner_id`, `owner_name`, `product_id`, `product_title`, `type`, `message`) VALUES
 	(1, 0, '', 3, '', 2, 'Toyotta Hiace Van', 'ad_approve', 'Toyotta Hiace Van has been approved, Make it premium for more visibility.');
@@ -1444,6 +1490,7 @@ CREATE TABLE IF NOT EXISTS `blreviews` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table boladas.blreviews: 1 rows
+DELETE FROM `blreviews`;
 /*!40000 ALTER TABLE `blreviews` DISABLE KEYS */;
 INSERT INTO `blreviews` (`reviewID`, `productID`, `user_id`, `rating`, `comments`, `date`, `publish`) VALUES
 	(1, '5', 3, 5, 'Muito bom', '2020-09-28', 1);
@@ -1465,6 +1512,7 @@ CREATE TABLE IF NOT EXISTS `blsubadmin1` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2358 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blsubadmin1: 11 rows
+DELETE FROM `blsubadmin1`;
 /*!40000 ALTER TABLE `blsubadmin1` DISABLE KEYS */;
 INSERT INTO `blsubadmin1` (`id`, `code`, `country_code`, `name`, `asciiname`, `active`) VALUES
 	(2347, 'MZ.09', 'MZ', 'Zambézia', 'Zambezia', 1),
@@ -1498,6 +1546,7 @@ CREATE TABLE IF NOT EXISTS `blsubadmin2` (
 ) ENGINE=MyISAM AUTO_INCREMENT=25543 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blsubadmin2: 168 rows
+DELETE FROM `blsubadmin2`;
 /*!40000 ALTER TABLE `blsubadmin2` DISABLE KEYS */;
 INSERT INTO `blsubadmin2` (`id`, `code`, `country_code`, `subadmin1_code`, `name`, `asciiname`, `active`) VALUES
 	(25375, 'MZ.07.1027397', 'MZ', 'MZ.07', 'Circunscrição de Sanga', 'Circunscricao de Sanga', 1),
@@ -1686,6 +1735,7 @@ CREATE TABLE IF NOT EXISTS `blsubscriptions` (
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blsubscriptions: 3 rows
+DELETE FROM `blsubscriptions`;
 /*!40000 ALTER TABLE `blsubscriptions` DISABLE KEYS */;
 INSERT INTO `blsubscriptions` (`sub_id`, `sub_title`, `sub_term`, `sub_amount`, `sub_image`, `group_id`, `pay_mode`, `active`, `recommended`, `discount_badge`) VALUES
 	(4, 'Premium', 'MONTHLY', 250.00, 'https://cdn.iconscout.com/icon/free/png-64/check-verified-successful-accept-tick-yes-success-2516.png', 2, 'one_time', 1, 'yes', ''),
@@ -1704,6 +1754,7 @@ CREATE TABLE IF NOT EXISTS `bltestimonials` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.bltestimonials: ~3 rows (approximately)
+DELETE FROM `bltestimonials`;
 /*!40000 ALTER TABLE `bltestimonials` DISABLE KEYS */;
 INSERT INTO `bltestimonials` (`id`, `name`, `designation`, `content`, `image`) VALUES
 	(1, 'Tony Stark', 'Social Marketing', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla paria tur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', NULL),
@@ -1725,6 +1776,7 @@ CREATE TABLE IF NOT EXISTS `bltime_zones` (
 ) ENGINE=MyISAM AUTO_INCREMENT=248 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.bltime_zones: 247 rows
+DELETE FROM `bltime_zones`;
 /*!40000 ALTER TABLE `bltime_zones` DISABLE KEYS */;
 INSERT INTO `bltime_zones` (`id`, `country_code`, `time_zone_id`, `gmt`, `dst`, `raw`) VALUES
 	(1, 'AD', 'Europe/Andorra', 1, 2, 1),
@@ -1994,47 +2046,16 @@ CREATE TABLE IF NOT EXISTS `bltransaction` (
   `transaction_method` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
--- Dumping data for table boladas.bltransaction: 5 rows
+-- Dumping data for table boladas.bltransaction: 4 rows
+DELETE FROM `bltransaction`;
 /*!40000 ALTER TABLE `bltransaction` DISABLE KEYS */;
 INSERT INTO `bltransaction` (`id`, `product_name`, `product_id`, `seller_id`, `amount`, `featured`, `urgent`, `highlight`, `transaction_time`, `status`, `transaction_gatway`, `transaction_ip`, `transaction_description`, `transaction_method`) VALUES
 	(1, 'VEstido', 5, 3, 60.00, '1', '1', '1', 1601287855, 'success', 'wire_transfer', '::1', 'Pacote Destaque Urgente Realçar', 'Premium Ad'),
 	(2, 'Carro 4x4 Nissan', 6, 3, 60.00, '1', '1', '1', 1601310378, 'success', 'wire_transfer', '::1', 'Pacote Destaque Urgente Realçar', 'Premium Ad'),
 	(4, 'Standard Plano de associação', 5, 4, 100.00, '0', '0', '0', 2020, 'success', 'Admin', '::1', 'Standard Plano de associação', 'Subscription'),
-	(42, 'dsad', 43, 3, 35.00, '1', '1', '0', 1602683782, 'pending', 'wire_transfer', '::1', 'Pacote Destaque Urgente', 'Premium Ad'),
-	(6, 'Standard Plano de associação', 5, 6, 100.00, '0', '0', '0', 2020, 'success', 'Admin', '::1', 'Standard Plano de associação', 'Subscription'),
-	(41, 'dsad', 42, 3, 35.00, '1', '1', '0', 1602681342, 'pending', 'wire_transfer', '::1', 'Pacote Destaque Urgente', 'Premium Ad'),
-	(40, 'dsad', 41, 3, 35.00, '1', '1', '0', 1602680899, 'pending', 'wire_transfer', '::1', 'Pacote Destaque Urgente', 'Premium Ad'),
-	(39, 'Gás', 40, 3, 35.00, '1', '1', '0', 1602674087, 'pending', 'wire_transfer', '::1', 'Pacote Destaque Urgente', 'Premium Ad'),
-	(11, 'Premium Plano de associação', 4, 3, 250.00, '0', '0', '0', 1602413908, 'pending', 'wire_transfer', '::1', 'Premium Plano de associação', 'Subscription'),
-	(12, 'Premium Plano de associação', 4, 3, 250.00, '0', '0', '0', 1602423528, 'pending', 'wire_transfer', '::1', 'Premium Plano de associação', 'Subscription'),
-	(13, 'Premium Plano de associação', 4, 3, 250.00, '0', '0', '0', 1602423602, 'pending', 'wire_transfer', '::1', 'Premium Plano de associação', 'Subscription'),
-	(14, 'Motorila', 9, 3, 60.00, '1', '1', '1', 1602599334, 'pending', 'wire_transfer', '::1', 'Pacote Destaque Urgente Realçar', 'Premium Ad'),
-	(15, 'Maputo', 11, 3, 60.00, '1', '1', '1', 1602600356, 'pending', 'wire_transfer', '::1', 'Pacote Destaque Urgente Realçar', 'Premium Ad'),
-	(16, 'Aleusaa', 14, 6, 35.00, '1', '1', '0', 1602601524, 'pending', 'wire_transfer', '::1', 'Pacote Destaque Urgente', 'Premium Ad'),
-	(17, 'ewrewr', 15, 6, 35.00, '1', '1', '0', 1602606395, 'pending', 'wire_transfer', '::1', 'Pacote Destaque Urgente', 'Premium Ad'),
-	(18, 'dsdsadsa', 16, 6, 35.00, '1', '1', '0', 1602606591, 'pending', 'wire_transfer', '::1', 'Pacote Destaque Urgente', 'Premium Ad'),
-	(19, 'scsfsafsf', 17, 6, 10.00, '1', '0', '0', 1602607718, 'pending', 'wire_transfer', '::1', 'Pacote Destaque', 'Premium Ad'),
-	(20, 'safsafsa', 18, 6, 10.00, '1', '0', '0', 1602607891, 'pending', 'wire_transfer', '::1', 'Pacote Destaque', 'Premium Ad'),
-	(21, 'adadasd', 19, 6, 10.00, '1', '0', '0', 1602608867, 'pending', 'wire_transfer', '::1', 'Pacote Destaque', 'Premium Ad'),
-	(22, 'fsdfsdf', 20, 6, 35.00, '1', '1', '0', 1602608947, 'pending', 'wire_transfer', '::1', 'Pacote Destaque Urgente', 'Premium Ad'),
-	(23, 'rwerewr', 21, 6, 25.00, '0', '0', '1', 1602609081, 'pending', 'wire_transfer', '::1', 'Pacote Realçar', 'Premium Ad'),
-	(24, 'sgdsgsda', 22, 6, 25.00, '0', '1', '0', 1602609230, 'pending', 'wire_transfer', '::1', 'Pacote Urgente', 'Premium Ad'),
-	(25, 'fdfdsf', 23, 6, 35.00, '1', '0', '1', 1602610401, 'pending', 'wire_transfer', '::1', 'Pacote Destaque Realçar', 'Premium Ad'),
-	(26, 'rwerwer', 24, 6, 60.00, '1', '1', '1', 1602610457, 'pending', 'wire_transfer', '::1', 'Pacote Destaque Urgente Realçar', 'Premium Ad'),
-	(27, '4545', 25, 6, 50.00, '0', '1', '1', 1602611127, 'pending', 'wire_transfer', '::1', 'Pacote Urgente Realçar', 'Premium Ad'),
-	(28, '4234324', 26, 6, 10.00, '1', '0', '0', 1602611255, 'pending', 'wire_transfer', '::1', 'Pacote Destaque', 'Premium Ad'),
-	(29, 'ddsg', 27, 6, 35.00, '1', '0', '1', 1602611370, 'pending', 'wire_transfer', '::1', 'Pacote Destaque Realçar', 'Premium Ad'),
-	(30, 'dfsafas', 29, 6, 10.00, '1', '0', '0', 1602625084, 'pending', 'wire_transfer', '::1', 'Pacote Destaque', 'Premium Ad'),
-	(31, 'sdafdsf', 30, 6, 25.00, '0', '0', '1', 1602625332, 'pending', 'wire_transfer', '::1', 'Pacote Realçar', 'Premium Ad'),
-	(32, 'Qual', 31, 6, 35.00, '1', '0', '1', 1602625551, 'pending', 'wire_transfer', '::1', 'Pacote Destaque Realçar', 'Premium Ad'),
-	(33, 'affdsfas', 32, 6, 10.00, '1', '0', '0', 1602625871, 'pending', 'wire_transfer', '::1', 'Pacote Destaque', 'Premium Ad'),
-	(34, 'fagasg', 33, 6, 50.00, '0', '1', '1', 1602626473, 'pending', 'wire_transfer', '::1', 'Pacote Urgente Realçar', 'Premium Ad'),
-	(35, 'saF', 34, 6, 10.00, '1', '0', '0', 1602626588, 'pending', 'wire_transfer', '::1', 'Pacote Destaque', 'Premium Ad'),
-	(36, 'dgsffasf', 36, 6, 60.00, '1', '1', '1', 1602670064, 'pending', 'wire_transfer', '::1', 'Pacote Destaque Urgente Realçar', 'Premium Ad'),
-	(37, 'Maputo', 37, 6, 10.00, '1', '0', '0', 1602670604, 'pending', 'wire_transfer', '::1', 'Pacote Destaque', 'Premium Ad'),
-	(38, 'Asdweef', 39, 6, 35.00, '1', '1', '0', 1602671426, 'pending', 'wire_transfer', '::1', 'Pacote Destaque Urgente', 'Premium Ad');
+	(6, 'Standard Plano de associação', 5, 6, 100.00, '0', '0', '0', 2020, 'success', 'Admin', '::1', 'Standard Plano de associação', 'Subscription');
 /*!40000 ALTER TABLE `bltransaction` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.blupgrades
@@ -2062,7 +2083,8 @@ CREATE TABLE IF NOT EXISTS `blupgrades` (
   PRIMARY KEY (`upgrade_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table boladas.blupgrades: 2 rows
+-- Dumping data for table boladas.blupgrades: 0 rows
+DELETE FROM `blupgrades`;
 /*!40000 ALTER TABLE `blupgrades` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blupgrades` ENABLE KEYS */;
 
@@ -2077,6 +2099,8 @@ CREATE TABLE IF NOT EXISTS `bluser` (
   `confirm` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `status` enum('0','1','2') DEFAULT NULL,
+  `bi_doc` varchar(255) DEFAULT NULL,
+  `alvara_doc` varchar(255) DEFAULT NULL,
   `view` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -2105,16 +2129,17 @@ CREATE TABLE IF NOT EXISTS `bluser` (
   `notify` enum('0','1') DEFAULT '0',
   `notify_cat` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
--- Dumping data for table boladas.bluser: 4 rows
+-- Dumping data for table boladas.bluser: 5 rows
+DELETE FROM `bluser`;
 /*!40000 ALTER TABLE `bluser` DISABLE KEYS */;
-INSERT INTO `bluser` (`id`, `group_id`, `username`, `user_type`, `password_hash`, `forgot`, `confirm`, `email`, `status`, `view`, `created_at`, `updated_at`, `name`, `tagline`, `description`, `website`, `sex`, `phone`, `postcode`, `address`, `country`, `city`, `image`, `lastactive`, `facebook`, `twitter`, `googleplus`, `instagram`, `linkedin`, `youtube`, `oauth_provider`, `oauth_uid`, `oauth_link`, `online`, `notify`, `notify_cat`) VALUES
-	(3, 1, 'bobo', NULL, '$2y$13$2c05cqSeY0rUObrXJCAZb.Isong7rziRMg2Wd55p8SDXAdD/VUCAe', NULL, NULL, 'bobo@gmail.com', '1', NULL, '2020-09-22 15:36:57', '2020-09-28 07:02:03', 'bobo', NULL, 'Male', NULL, 'Male', NULL, NULL, NULL, 'Moçambique', NULL, 'bobo_13380137502.png', '2020-10-14 16:09:52', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL),
-	(4, 1, 'user', NULL, '$2y$13$JiGnk4MjuWAxZ0z3tII6fOuqGYPuHAPz/SBIP50on48YM/8xc8RQ6', NULL, NULL, 'user@email.com', '0', NULL, '2020-10-03 20:52:18', '2020-10-03 20:52:34', 'User', NULL, 'Male', NULL, 'Male', NULL, NULL, NULL, 'Moçambique', NULL, 'user_3806516952.png', '2020-10-04 00:35:21', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL),
-	(5, 1, 'bobo1', NULL, '$2y$13$2RgpT0Ot8W0j1BjLo4.dJ.V7YwCJfV2FPSquV1CMZPkgFeqcUK5QO', NULL, '08917796', 'dercio@gmail.com', '0', NULL, '2020-10-04 11:22:07', '2020-10-04 11:22:07', 'dede', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'India', 'Jodhpur', 'default_user.png', '2020-10-04 23:12:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL),
-	(6, 1, 'herve', NULL, '$2y$13$p4O.jLPiGkRzLx6Yb57fmevY.RTHW8XtUU3taeAbCbrT7ENenIJMK', NULL, '04765036', 'herve@gmail.com', '1', NULL, '2020-10-05 08:37:45', '2020-10-05 08:41:08', 'Herve', NULL, '', NULL, 'Male', NULL, NULL, NULL, 'Moçambique', 'Jodhpur', 'default_user.png', '2020-10-13 19:25:12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL),
-	(7, 1, 'hjonas', NULL, '$2y$13$/D3T2U9iMxh92FztiX.Qb.ObMEG2J.GRpgQ8IQLpilJplRoC0F2H2', NULL, '82049382', 'hvjonas@gmail.com', '0', NULL, '2020-10-10 22:31:55', '2020-10-10 22:31:55', 'Helio Jonas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'India', 'Jodhpur', 'default_user.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL);
+INSERT INTO `bluser` (`id`, `group_id`, `username`, `user_type`, `password_hash`, `forgot`, `confirm`, `email`, `status`, `bi_doc`, `alvara_doc`, `view`, `created_at`, `updated_at`, `name`, `tagline`, `description`, `website`, `sex`, `phone`, `postcode`, `address`, `country`, `city`, `image`, `lastactive`, `facebook`, `twitter`, `googleplus`, `instagram`, `linkedin`, `youtube`, `oauth_provider`, `oauth_uid`, `oauth_link`, `online`, `notify`, `notify_cat`) VALUES
+	(3, 1, 'bobo', NULL, '$2y$13$2c05cqSeY0rUObrXJCAZb.Isong7rziRMg2Wd55p8SDXAdD/VUCAe', NULL, NULL, 'bobo@gmail.com', '1', '1604923276download (1).jpg', '1604923276download.jpg', NULL, '2020-09-22 15:36:57', '2020-09-28 07:02:03', 'bobo', NULL, 'Male', NULL, 'Male', NULL, NULL, NULL, 'Moçambique', NULL, 'bobo_13380137502.png', '2020-11-09 14:01:18', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL),
+	(4, 1, 'user', NULL, '$2y$13$JiGnk4MjuWAxZ0z3tII6fOuqGYPuHAPz/SBIP50on48YM/8xc8RQ6', NULL, NULL, 'user@email.com', '0', NULL, NULL, NULL, '2020-10-03 20:52:18', '2020-10-03 20:52:34', 'User', NULL, 'Male', NULL, 'Male', NULL, NULL, NULL, 'Moçambique', NULL, 'user_3806516952.png', '2020-10-04 00:35:21', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL),
+	(5, 1, 'bobo1', NULL, '$2y$13$2RgpT0Ot8W0j1BjLo4.dJ.V7YwCJfV2FPSquV1CMZPkgFeqcUK5QO', NULL, '08917796', 'dercio@gmail.com', '0', NULL, NULL, NULL, '2020-10-04 11:22:07', '2020-10-04 11:22:07', 'dede', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'India', 'Jodhpur', 'default_user.png', '2020-10-04 23:12:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL),
+	(6, 1, 'herve', NULL, '$2y$13$p4O.jLPiGkRzLx6Yb57fmevY.RTHW8XtUU3taeAbCbrT7ENenIJMK', NULL, '04765036', 'herve@gmail.com', '1', NULL, NULL, NULL, '2020-10-05 08:37:45', '2020-10-05 08:41:08', 'Herve', NULL, '', NULL, 'Male', NULL, NULL, NULL, 'Moçambique', 'Jodhpur', 'default_user.png', '2020-10-13 19:25:12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL),
+	(7, 1, 'hjonas', NULL, '$2y$13$/D3T2U9iMxh92FztiX.Qb.ObMEG2J.GRpgQ8IQLpilJplRoC0F2H2', NULL, '82049382', 'hvjonas@gmail.com', '0', NULL, NULL, NULL, '2020-10-10 22:31:55', '2020-10-10 22:31:55', 'Helio Jonas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'India', 'Jodhpur', 'default_user.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL);
 /*!40000 ALTER TABLE `bluser` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.blusergroups
@@ -2137,6 +2162,7 @@ CREATE TABLE IF NOT EXISTS `blusergroups` (
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blusergroups: 3 rows
+DELETE FROM `blusergroups`;
 /*!40000 ALTER TABLE `blusergroups` DISABLE KEYS */;
 INSERT INTO `blusergroups` (`group_id`, `group_removable`, `group_name`, `ad_limit`, `ad_duration`, `urgent_project_fee`, `featured_project_fee`, `highlight_project_fee`, `featured_duration`, `urgent_duration`, `highlight_duration`, `top_search_result`, `show_on_home`, `show_in_home_search`) VALUES
 	(1, 0, 'Registerd users (Free)', 50, 30, 25.00, 10.00, 25.00, 10, 20, 30, 'no', 'no', 'no'),
