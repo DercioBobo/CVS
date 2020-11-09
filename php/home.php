@@ -192,6 +192,7 @@ $page->SetParameter('MAP_COLOR', $config['map_color']);
 $page->SetParameter('ZOOM', $config['home_map_zoom']);
 $page->SetParameter('DEFAULT_COUNTRY', get_countryName_by_sortname($sortname));
 $page->SetParameter('SPECIFIC_COUNTRY', $sortname);
+$page->SetParameter ('SITEURL', SITEURL);
 
 
 // Get Cron Job Settings

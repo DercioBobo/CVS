@@ -578,6 +578,22 @@ function update_lastactive(){
     }
 }
 
+function update_verificado_docs($bi, $alvara){
+
+    global $config;
+
+    if(isset($_SESSION['user']['id']))
+    {
+        $person = ORM::for_table($config['db']['pre'].'user')->find_one($_SESSION['user']['id']);
+        $person->set_expr('bi_doc', "'$bi'");
+        $person->set_expr('alvara_doc', "'$alvara'");
+        $state = $person->save();
+
+    }
+
+    return $state;
+}
+
 function send_forgot_email($to,$id)
 {
     global $config,$lang,$link;
