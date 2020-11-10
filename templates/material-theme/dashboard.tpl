@@ -115,26 +115,33 @@
                                     </div>
                                     <!--end input-field-->
                                 </div>
-                                <div class="col-md-6 col-sm-6">
+                                <!--<div class="col-md-6 col-sm-6" >
                                     <div class="input-field">
                                         <label for="postcode">{LANG_POSTCODE}</label>
                                         <input type="text" name="postcode" id="postcode" value="{POSTCODE}">
                                     </div>
+                                    -->
                                     <!--end input-field-->
                                 </div>
+
                                 <div class="col-md-6 col-sm-6">
                                     <div class="input-field">
                                         <label for="address">{LANG_ADDRESS}</label>
                                         <input type="text" id="address" rows="1" name="address" value="{ADDRESS}"/>
                                     </div>
                                 </div>
+
                                 <!--end col-md-6-->
+
+                            <!--
                                 <div class="col-md-6 col-sm-6">
                                     <div class="input-field">
                                         <label for="city">{LANG_CITY}</label>
                                         <input type="text" id="city" rows="1" name="city" value="{CITY}"/>
                                     </div>
                                 </div>
+
+                                -->
                                 <!--end col-md-6-->
                                 <div class="col-md-6 col-sm-6">
                                     <div class="input-field">
@@ -147,11 +154,15 @@
                                     </div>
                                 </div>
                                 <!--end col-md-6-->
+
+                            <!--
                                 <div class="col-md-6 col-sm-6">
                                     <div class="input-field">
                                         <label for="heading">{LANG_PROFILE_TAGLINE}</label>
                                         <input type="text" name="heading" id="heading" value="{AUTHORTAGLINE}">
                                     </div>
+
+                                    -->
                                     <!--end input-field-->
                                 </div>
                                 <!--end col-md-12-->
@@ -174,18 +185,21 @@
                                     <!--end input-field-->
                                 </div>
                                 <!--end col-md-6-->
+                                <!--
                                 <div class="col-md-6 col-sm-6">
                                     <div class="input-field">
                                         <label for="twitter">Twitter</label>
                                         <input type="text" name="twitter" id="twitter" value="{TWITTER}">
                                     </div>
+
+                                    -->
                                     <!--end input-field-->
                                 </div>
                                 <!--end col-md-6-->
                                 <div class="col-md-6 col-sm-6">
                                     <div class="input-field">
-                                        <label for="googleplus">Google+</label>
-                                        <input type="text" name="googleplus" id="googleplus" value="{GOOGLEPLUS}">
+                                        <label for="googleplus">Linkdn</label>
+                                        <input type="text" name="googleplus" id="googleplus" value="Linkdn">
                                     </div>
                                     <!--end input-field-->
                                 </div>
@@ -205,17 +219,22 @@
                                     <!--end input-field-->
                                 </div>
                                 <!--end col-md-6-->
-                                <div class="col-md-6 col-sm-6">
+                            <!--
+                            <div class="col-md-6 col-sm-6">
                                     <div class="input-field">
                                         <label for="youtube">Youtube</label>
                                         <input type="text" name="youtube" id="youtube" value="{YOUTUBE}">
                                     </div>
+
+                                    -->
                                     <!--end input-field-->
                                 </div>
                                 <!--end col-md-6-->
                             </div>
                             <!--end row-->
                         </section>
+
+<!--
                         <div>
                             <h3>{LANG_NEWSLETTER}</h3>
                             <div class="row form-group">
@@ -238,6 +257,8 @@
 
                             </div>
                         </div>
+
+                        -->
                         <section class="center">
                             <div class="input-field">
                                 <input type="submit" class="btn btn-primary btn-rounded" name="submit" value="{LANG_UPDATE}">
