@@ -91,7 +91,7 @@
                             {/LOOP: ERRORS}
                         </section>
                         <section>
-                            <h3>{LANG_ABOUT_YOU}</h3>
+                            <h3>Meu Perfil</h3>
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="input-field">
@@ -162,11 +162,13 @@
                                         <input type="text" name="heading" id="heading" value="{AUTHORTAGLINE}">
                                     </div>
 
-                                    -->
-                                    <!--end input-field-->
+
                                 </div>
-                                <!--end col-md-12-->
+
                             </div>
+                -->
+                            <!--end col-md-12-->
+                <!--end input-field-->
                             <!--end row-->
                             <div class="input-field col s12">
                                 <label for="content">{LANG_ABOUT_ME}</label>
@@ -191,18 +193,23 @@
                                         <label for="twitter">Twitter</label>
                                         <input type="text" name="twitter" id="twitter" value="{TWITTER}">
                                     </div>
+                                </div>
 
                                     -->
-                                    <!--end input-field-->
-                                </div>
                                 <!--end col-md-6-->
+
+                         <!--
                                 <div class="col-md-6 col-sm-6">
                                     <div class="input-field">
                                         <label for="googleplus">Linkdn</label>
                                         <input type="text" name="googleplus" id="googleplus" value="Linkdn">
                                     </div>
-                                    <!--end input-field-->
+
+
                                 </div>
+
+                                    -->
+                            <!--end input-field-->
                                 <!--end col-md-6-->
                                 <div class="col-md-6 col-sm-6">
                                     <div class="input-field">
@@ -211,6 +218,7 @@
                                     </div>
                                     <!--end input-field-->
                                 </div>
+
                                 <div class="col-md-6 col-sm-6">
                                     <div class="input-field">
                                         <label for="linkedin">Linked In</label>
@@ -226,11 +234,13 @@
                                         <input type="text" name="youtube" id="youtube" value="{YOUTUBE}">
                                     </div>
 
-                                    -->
-                                    <!--end input-field-->
+
                                 </div>
-                                <!--end col-md-6-->
+
                             </div>
+                                    -->
+                                <!--end input-field-->
+                                <!--end col-md-6-->
                             <!--end row-->
                         </section>
 
