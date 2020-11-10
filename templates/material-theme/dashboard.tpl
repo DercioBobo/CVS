@@ -76,6 +76,7 @@
                                     <h2>{AUTHORNAME}</h2>
                                     <a href="{LINK_ACCOUNT_SETTING}" class="btn btn-default btn-rounded scroll btn-xs">{LANG_ACCOUNT_SETTING}</a>
                                     <hr>
+                                    Carregue a foto e clique no botão abaixo actualizar
                                   <!--  <figure>
                                         <div class="pull-left"><strong>{LANG_JOIN_DATE} :</strong></div>
                                         <div class="pull-right">{JOIN_DATE}</div>
@@ -218,14 +219,17 @@
                                     </div>
                                     <!--end input-field-->
                                 </div>
-
+<!--
                                 <div class="col-md-6 col-sm-6">
                                     <div class="input-field">
                                         <label for="linkedin">Linked In</label>
                                         <input type="text" name="linkedin" id="linkedin" value="{LINKEDIN}">
                                     </div>
-                                    <!--end input-field-->
+
                                 </div>
+
+                                -->
+                                <!--end input-field-->
                                 <!--end col-md-6-->
                             <!--
                             <div class="col-md-6 col-sm-6">
