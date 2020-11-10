@@ -6,7 +6,7 @@
             <li><a href="{LINK_INDEX}">{LANG_HOME}</a></li>
             <li class="active">{LANG_PROFILE}</li>
         </ol>
-        <a href="{LINK_POST-AD}" class="postadinner"><span> <i class="fa fa-plus-circle"></i> {LANG_POST_AD}</span></a>
+        <a href="{LINK_POST-AD}" class="postadinner"><span> <i class="fa fa-plus-circle"></i>  Publique um Anúncio</span></a>
         <div class="row">
             <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
                 <section class="page-title">
@@ -22,7 +22,7 @@
                         </div>
                         <div class="description">
                             <section class="name">
-                                <h2>{USERNAME}
+                                <h2>{FULLNAME}
                                     IF("{SUB_IMAGE}"!=""){
                                     <img src="{SUB_IMAGE}" alt="{SUB_TITLE}" title="{SUB_TITLE}" width="28px"/>
                                     {:IF}
@@ -41,7 +41,6 @@
                             <section class="social social-links">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
                             </section>
                             <!--end social-->
                         </div>

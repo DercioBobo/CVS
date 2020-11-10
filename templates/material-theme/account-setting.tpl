@@ -5,7 +5,7 @@
             <li><a href="{LINK_INDEX}">{LANG_HOME}</a></li>
             <li class="active"><a>{LANG_ACCOUNT_SETTING}</a></li>
         </ul>
-        <a href="{LINK_POST-AD}" class="postadinner"><span> <i class="fa fa-plus-circle"></i> {LANG_POST_AD}</span></a>
+        <a href="{LINK_POST-AD}" class="postadinner"><span> <i class="fa fa-plus-circle"></i>  Publique um Anúncio</span></a>
         <!--end breadcrumb-->
         <section class="page-title center"><h1>{LANG_SETTING}</h1></section>
         <!--end page-title-->
@@ -64,7 +64,7 @@
                                 <!--end input-field-->
                                 <div class="input-field">
                                     <label for="username">{LANG_USERNAME}</label>
-                                    <input type="text" name="username" id="username" value="{USERNAME_FIELD}" onBlur="checkAvailabilityUsername()">
+                                    <input type="text" name="username" id="username" value="{USERNAME_FIELD}" >
                                 </div>
                                 <span id="user-availability-status">IF("{USERNAME_ERROR}"!=""){ {USERNAME_ERROR} {:IF}</span>
                                 <!--end input-field-->

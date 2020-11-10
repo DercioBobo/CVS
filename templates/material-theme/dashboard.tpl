@@ -4,7 +4,7 @@
     <div class="container">
         <ul class="breadcrumb bcstyle2">
             <li><a href="{LINK_INDEX}">{LANG_HOME}</a></li>
-            <li class="active"><a>{LANG_DASHBOARD}</a></li>
+            <li class="active"><a>Painel de Controle</a></li>
         </ul>
         <a href="{LINK_POST-AD}" class="postadinner"><span> <i class="fa fa-plus-circle"></i> Publique um Anúncio</span></a>
         <!--end breadcrumb-->
@@ -76,7 +76,7 @@
                                     <h2>{AUTHORNAME}</h2>
                                     <a href="{LINK_ACCOUNT_SETTING}" class="btn btn-default btn-rounded scroll btn-xs">{LANG_ACCOUNT_SETTING}</a>
                                     <hr>
-                                    Carregue a foto e clique no botão abaixo actualizar
+                                    <small>Carregue a foto e clique no botão abaixo actualizar</small>
                                   <!--  <figure>
                                         <div class="pull-left"><strong>{LANG_JOIN_DATE} :</strong></div>
                                         <div class="pull-right">{JOIN_DATE}</div>
@@ -111,7 +111,7 @@
                                 <!--end col-md-6-->
                                 <div class="col-md-6 col-sm-6">
                                     <div class="input-field">
-                                        <label for="phone">{LANG_PHONE}</label>
+                                        <label for="phone">Telefone</label>
                                         <input type="text" name="phone" id="Phone" value="{PHONE}">
                                     </div>
                                     <!--end input-field-->

@@ -476,7 +476,7 @@
                                             </div>
                                             <label class="btn border-left-zero label-adon">
                                                 <input type="checkbox" name="negotiable" id="negotiable"
-                                                       class="FacebookSignUpModal-radio" value="1">{LANG_NEGOTIATE}
+                                                       class="FacebookSignUpModal-radio" value="1">Negociavel
                                             </label>
                                         </div>
                                     </div>
@@ -508,7 +508,7 @@
                                 </li>
                                 <li>
                                     <fieldset class="PagePostProject-fieldset">
-                                        <legend class="PagePostProject-legend">{LANG_CITY} *</legend>
+                                        <legend class="PagePostProject-legend">Província *</legend>
                                         <ol>
                                             <li class="form-step">
                                                 <select id="postadcity" name="city" class="large-input focusable-field" lang="ar">
