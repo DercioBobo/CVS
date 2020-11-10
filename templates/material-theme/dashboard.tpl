@@ -6,9 +6,9 @@
             <li><a href="{LINK_INDEX}">{LANG_HOME}</a></li>
             <li class="active"><a>{LANG_DASHBOARD}</a></li>
         </ul>
-        <a href="{LINK_POST-AD}" class="postadinner"><span> <i class="fa fa-plus-circle"></i> {LANG_POST_AD}</span></a>
+        <a href="{LINK_POST-AD}" class="postadinner"><span> <i class="fa fa-plus-circle"></i> Publique um Anúncio</span></a>
         <!--end breadcrumb-->
-        <section class="page-title center"><h1>{LANG_DASHBOARD}</h1></section>
+        <section class="page-title center"><h1>Painel de Controle</h1></section>
         <!--end page-title-->
         <section>
             <div class="row">
@@ -16,7 +16,7 @@
                     <div class="inner-box">
                         <div class="user-panel-sidebar">
                             <div class="collapse-box">
-                                <h5 class="collapse-title no-border"> {LANG_MY_CLASSIFIED} <a class="pull-right" data-toggle="collapse" href="#MyClassified"><i class="fa fa-angle-down"></i></a></h5>
+                                <h5 class="collapse-title no-border"> Meu Perfil <a class="pull-right" data-toggle="collapse" href="#MyClassified"><i class="fa fa-angle-down"></i></a></h5>
                                 <div id="MyClassified" class="panel-collapse collapse in">
                                     <ul class="acc-list">
                                         <li class="active"><a href="{LINK_DASHBOARD}" class="waves-effect"><i class="fa fa-home"></i> {LANG_DASHBOARD} </a></li>
