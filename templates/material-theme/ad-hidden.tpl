@@ -23,8 +23,8 @@
                                         <li><a href="{LINK_DASHBOARD}" class="waves-effect"><i class="fa fa-home"></i> {LANG_DASHBOARD} </a></li>
                                         <li><a href="{LINK_PROFILE}/{USERNAME}" class="waves-effect"><i class="fa fa-user"></i> {LANG_PROFILE_PUBLIC}</a></li>
                                         <li><a href="{LINK_POST-AD}" class="waves-effect"><i class="fa fa-pencil"></i> {LANG_POST_AD}</a></li>
-                                        <li><a href="{LINK_MEMBERSHIP}" class="waves-effect"><i
-                                                        class="fa fa-shopping-bag"></i> {LANG_MEMBERSHIP} </a></li>
+                                        <!--<li><a href="{LINK_MEMBERSHIP}" class="waves-effect"><i
+                                                        class="fa fa-shopping-bag"></i> {LANG_MEMBERSHIP} </a></li>-->
                                     </ul>
                                 </div>
                             </div>
@@ -33,7 +33,7 @@
                                 <div id="MyAds" class="panel-collapse collapse in">
                                     <ul class="acc-list">
                                         <li><a href="{LINK_MYADS}" class="waves-effect"><i class="fa fa-book"></i> {LANG_MY_ADS} <span class="badge">{MYADS}</span> </a></li>
-                                        <li><a href="{LINK_FAVADS}" class="waves-effect"><i class="fa fa-heart"></i> {LANG_FAVOURITE_ADS} <span class="badge">{FAVORITEADS}</span> </a></li>
+                                        <!--<li><a href="{LINK_FAVADS}" class="waves-effect"><i class="fa fa-heart"></i> {LANG_FAVOURITE_ADS} <span class="badge">{FAVORITEADS}</span> </a></li>-->
                                         <li><a href="{LINK_PENDINGADS}" class="waves-effect"><i class="fa fa-flag"></i> {LANG_PENDING_ADS} <span class="badge">{PENDINGADS}</span></a></li>
                                         <li class="active"><a href="{LINK_HIDDENADS}" class="waves-effect"><i class="fa fa-flag"></i> {LANG_HIDDEN_ADS} <span class="badge">{HIDDENADS}</span></a></li>
                                         <li><a href="{LINK_RESUBMITADS}" class="waves-effect"><i class="fa fa-flag"></i> {LANG_RESUBMITED_ADS} <span class="badge">{RESUBMITADS}</span></a></li>
@@ -44,6 +44,11 @@
                                 <h5 class="collapse-title no-border"> {LANG_MY_ACCOUNT} <a class="pull-right" data-toggle="collapse" href="#account"><i class="fa fa-angle-down"></i></a></h5>
                                 <div id="account" class="panel-collapse collapse in">
                                     <ul class="acc-list">
+                                        IF("{USERSTATUS}"=="0"){
+                                        <li><a href="{LINK_ACCOUNT_VERIFICATION}" class="waves-effect"><i class="fa  fa-check-circle-o"></i> {LANG_ACCOUNT_VERIFICATION}</a></li>
+                                        ELSEIF("{USERSTATUS}"!="0"){
+                                        <li><a href="{LINK_ACCOUNT_VERIFICATION_DETAILS}" class="waves-effect"><i class="fa  fa-check-circle-o"></i> {LANG_ACCOUNT_VERIFICATION}</a></li>
+                                        {:IF}
                                         <li><a href="{LINK_TRANSACTION}" class="waves-effect"><i class="fa fa-money"></i> {LANG_TRANSACTION}</a></li>
                                         <li><a href="{LINK_ACCOUNT_SETTING}" class="waves-effect"><i class="fa fa-cog"></i> {LANG_ACCOUNT_SETTING} </a></li>
                                         <li><a href="{LINK_LOGOUT}" class="waves-effect"><i class="fa fa-unlock"></i> {LANG_LOGOUT} </a></li>

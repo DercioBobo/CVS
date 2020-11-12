@@ -88,139 +88,79 @@ if(isset($_SESSION['admin']['id'])){
                         <li class="nav-item nav-drawer-header">Apps</li>
 
                         <li class="nav-item">
-                            <a href="index.php"><i class="ion-ios-speedometer-outline"></i> Dashboard</a>
+                            <a href="index.php"><i class="ion-ios-speedometer-outline"></i> Painel</a>
                         </li>
 
                         <li class="nav-item nav-drawer-header">Management</li>
 
                         <li class="nav-item nav-item-has-subnav">
-                            <a href="#"><i class="ion-image"></i> Ads</a>
+                            <a href="#"><i class="ion-image"></i> Anúncios</a>
                             <ul class="nav nav-subnav">
-                                <li><a href="post_active.php">Active Ads</a></li>
-                                <li><a href="post_pending.php">Pending Ads</a></li>
-                                <li><a href="post_hidden.php">Hidden by user</a></li>
-                                <li><a href="post_resubmit.php">Resubmited Ads</a></li>
-                                <li><a href="post_expire.php">Expire Ads</a></li>
-                                <li><a href="posts.php">All Ads List</a></li>
+                                <li><a href="post_active.php">Anúncios Activos</a></li>
+                                <li><a href="post_pending.php">Anúncios Pendentes</a></li>
+                                <li><a href="post_hidden.php">Anúncios Ocultados</a></li>
+                                <li><a href="post_resubmit.php">Anúncios Resubmitidos</a></li>
+                                <li><a href="post_expire.php">Anúncios Expirados</a></li>
+                                <li><a href="posts.php">Todos Anúncios</a></li>
                             </ul>
                         </li>
                         <li class="nav-item nav-item-has-subnav">
-                            <a href="#"><i class="ion-bag"></i> Membership <span class="label label-warning">Negocio</span></a>
+                            <a href="#"><i class="ion-bag"></i> Planos <span class="label label-warning">Negocio</span></a>
                             <ul class="nav nav-subnav">
                                 <li><a href="membership_plan.php">Planos</a></li>
                                 <li><a href="membership_package.php">Pacotes</a></li>
                                 <li><a href="upgrades.php">Upgrades</a></li>
-                                <li><a href="cron_logs.php">Cron Logs</a></li>
-                                <li><a href="payment_methods.php">Metodos de Pagamento</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="category.php"><i class="ion-ios-list-outline"></i> Category</a>
+                            <a href="category.php"><i class="ion-ios-list-outline"></i> Categorias</a>
                         </li>
-                        <li class="nav-item hidden" >
-                            <a href="custom_field.php"><i class="ion-android-options"></i> Custom Fields <span class="label label-info">Unique</span></a>
-                        </li>
-                        <li class="nav-item hidden">
-                            <a href="review.php"><i class="ion-android-star-half"></i> Review</a>
-                        </li>
-                        <li class="nav-item nav-item-has-subnav hidden">
-                            <a href="#"><i class="fa fa-weixin"></i> Chat </a>
-                            <ul class="nav nav-subnav">
-                                <li><a href="chating.php">Messages</a></li>
-                                <li><a href="chat_setting.php">Setting</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item hidden">
-                            <a href="themes.php"><i class="fa fa-television"></i> Change Theme</a>
-                        </li>
+
                         <li class="nav-item">
                             <a href="email-template.php"><i class="ion-ios-email"></i> Email Template </a>
                         </li>
-                        <div class="hidden">
-                        <li class="nav-item nav-drawer-header hidden">International</li>
-                        <li class="nav-item">
-                            <a href="languages.php"><i class="fa fa-language"></i> Languages <span class="label label-info">Unique</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="currency.php"><i class="fa fa-money"></i> Currencies</a>
-                        </li>
+
+
                         <li class="nav-item">
                             <a href="loc_countries.php"><i class="ion-ios-location-outline"></i> Countries</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="timezones.php"><i class="ion-clock"></i> Time Zones</a>
-                        </li>
-                        </div>
+
 
                         <li class="nav-item nav-drawer-header">Settings</li>
 
 
                         <li class="nav-item nav-item-has-subnav">
-                            <a href="#"><i class="ion-android-settings"></i> Setting</a>
+                            <a href="#"><i class="ion-android-settings"></i> Configurações</a>
                             <ul class="nav nav-subnav">
                                 <li><a href="setting.php">General</a></li>
-                                <li class="hidden"><a href="setting.php#quickad_logo_watermark">Logo / Watermark</a></li>
-                                <li class="hidden"><a href="setting.php#quickad_live_location">Live Location Setting</a></li>
-                                <li class="hidden"><a href="setting.php#quickad_android">Android App Setting</a></li>
-                                <li class="hidden"><a href="setting.php#quickad_push_notification">App Push Notification</a></li>
-                                <li class="hidden"><a href="setting.php#quickad_blog">Blog Setting <span class="label label-success">New</span></a></li>
-                                <li class="hidden"><a href="setting.php#quickad_testimonials">Testimonials Setting <span class="label label-success">New</span></a></li>
-                                <li class="hidden"><a href="setting.php#quickad_international">International</a></li>
+                                <li class=""><a href="setting.php#quickad_logo_watermark">Logo / Watermark</a></li>
                                 <li><a href="setting.php#quickad_email">Email Setting</a></li>
                                 <li class="hidden"><a href="setting.php#quickad_theme_setting">Theme Setting</a></li>
                                 <li><a href="setting.php#quickad_frontend_submission">Ad Post Setting</a></li>
                                 <li class="hidden"><a href="setting.php#quickad_social_login_setting">Social Login Setting</a></li>
                                 <li class="hidden"><a href="setting.php#quickad_recaptcha">Google reCAPTCHA</a></li>
-                                <li class="hidden"><a href="setting.php#quickad_purchase_code">Purchase Code</a></li>
-                                <li  class="hidden"><a href="xml_manage.php">XML Manage</a></li>
-                                <li class="hidden"><a href="themes.php">Change Theme</a></li>
                             </ul>
                         </li>
 
-                        <div class="hidden">
-                        <li class="nav-item nav-drawer-header">Content</li>
-                        <li class="nav-item nav-item-has-subnav">
-                            <a href="#"><i class="ion-ios-paper-outline"></i> Blog <span class="label label-success">New</span></a>
-                            <ul class="nav nav-subnav">
-                                <li><a href="blog.php">All Blog</a></li>
-                                <li><a href="blog-new.php">Add New</a></li>
-                                <li><a href="blog-cat.php">Categories</a></li>
-                                <li><a href="blog-comments.php">Comments</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="testimonials.php"><i class="ion-document"></i> Testimonials <span class="label label-success">New</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages.php"><i class="ion-ios-browsers-outline"></i> Pages</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="faq_entries.php"><i class="ion-clipboard"></i> FAQ</a>
-                        </li>
-                        </div>
+
+
 
                         <li class="nav-item">
-                            <a href="transactions.php"><i class="ion-arrow-graph-up-right"></i> Transactions</a>
+                            <a href="transactions.php"><i class="ion-arrow-graph-up-right"></i> Transações</a>
                         </li>
-                        <div class="hidden">
+
                         <li class="nav-item">
-                            <a href="advertising.php"><i class="ion-ios-monitor-outline"></i> Advertising</a>
+                            <a href="advertising.php"><i class="ion-ios-monitor-outline"></i> Publicidade</a>
                         </li>
-                        </div>
-                        <li class="nav-item nav-drawer-header">Account</li>
+
+                        <li class="nav-item nav-drawer-header">Contas</li>
                         <li class="nav-item">
-                            <a href="users.php"><i class="ion-ios-people"></i> Users</a>
+                            <a href="users.php"><i class="ion-ios-people"></i> Utilizadores</a>
                         </li>
                         <li class="nav-item">
                             <a href="admins.php"><i class="ion-android-contact"></i> Admin</a>
                         </li>
 
-                        <li class="nav-item hidden">
-                            <a href="update.php"><i class="ion-ios-list-outline"></i>Update <span class="label label-info">Unique</span></a>
-                        </li>
-                        <li class="nav-item hidden">
-                            <a href="plugins.php"><i class="ion-ios-list-outline"></i>Plugins <span class="label label-success">New</span></a>
-                        </li>
                         <li class="nav-item">
                             <a href="logout.php"><i class="ion-ios-people-outline"></i> Logout</a>
                         </li>
@@ -228,9 +168,8 @@ if(isset($_SESSION['admin']['id'])){
                 </nav>
                 <!-- End drawer navigation -->
 
-                <div class="drawer-footer hidden">
-                    <p class="copyright"><a href="https://bylancer.com" target="_blank">Quickad By Bylancer</a> &copy;</p>
-                    <p class="copyright">Version : <?php echo $config['version']; ?></p>
+                <div class="drawer-footer ">
+                    <p class="copyright"><a href="https://bylancer.com" target="_blank">CVS By Alphabit</a> &copy;</p>
                 </div>
             </div>
             <!-- End drawer scroll area -->
@@ -257,10 +196,6 @@ if(isset($_SESSION['admin']['id'])){
                         <span class="navbar-page-title">Admin Panel</span>
                     </div>
                     <div class="collapse navbar-collapse" id="header-navbar-collapse">
-                        <ul id="main-menu" class="nav navbar-nav navbar-left hidden">
-                            <li><a href="https://bylancer.com/products/demo/classified/documentation/index.html" target="_blank">Documentation</a></li>
-                            <li><a href="plugins.php">Plugins</a></li>
-                        </ul>
                         <!-- .navbar-left -->
 
                         <ul class="nav navbar-nav navbar-right navbar-toolbar hidden-sm hidden-xs">

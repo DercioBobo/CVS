@@ -6,12 +6,9 @@
             <li><a href="{LINK_INDEX}">{LANG_HOME}</a></li>
             <li class="active">{LANG_PROFILE}</li>
         </ol>
-        <a href="{LINK_POST-AD}" class="postadinner"><span> <i class="fa fa-plus-circle"></i>  Publique um Anúncio</span></a>
+        <a href="{LINK_POST-AD}" class="postadinner"><span> <i class="fa fa-plus-circle"></i> {LANG_POST_AD}</span></a>
         <div class="row">
             <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
-                <section class="page-title">
-                    <h1> {FULLNAME}</h1>
-                </section>
                 <!--end section-title-->
                 <section>
                     <div class="subject-detail">
@@ -23,6 +20,11 @@
                         <div class="description">
                             <section class="name">
                                 <h2>{FULLNAME}
+                                    IF("{STATUS}"=="1"){
+                                    <img data-toggle="tooltip" data-placement="top" title="Vendedor Verificado pela CVS"
+                                         class="img-check" src="{SITE_URL}templates/{TPL_NAME}/img/check.svg">
+                                    {:IF}
+
                                     IF("{SUB_IMAGE}"!=""){
                                     <img src="{SUB_IMAGE}" alt="{SUB_TITLE}" title="{SUB_TITLE}" width="28px"/>
                                     {:IF}
@@ -33,14 +35,23 @@
                             <!--end description-->
                             <section class="contacts">
                                 <figure class="social-links"><i class="fa fa-user"></i>{USERNAME}</figure>
+                                IF("{PHONE}"!=""){
                                 <figure class="social-links"><i class="fa fa-phone"></i>{PHONE}</figure>
+                                {:IF}
                                 <figure class="social-links"><a href="mailto:{EMAIL}"><i class="fa fa-envelope"></i>{EMAIL}</a></figure>
+                                IF("{ADDRESS}"!=""){
                                 <figure class="social-links"><i class="fa fa-map-marker"></i>{ADDRESS}</figure>
+                                {:IF}
                             </section>
                             <!--end contacts-->
                             <section class="social social-links">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                IF("{FACEBOOK}"!=""){
+                                <a href="facebook.com/{FACEBOOK}"><i class="fa fa-facebook"></i></a>
+                                {:IF}
+
+                                IF("{INSTAGRAM}"!=""){
+                                <a href="instagram.com/{INSTAGRAM}"><i class="fa fa-instagram"></i></a>
+                                {:IF}
                             </section>
                             <!--end social-->
                         </div>
@@ -117,7 +128,12 @@
                                                     </li>
                                                     <li><i class="fa fa-map-marker"></i> {LANG_LOCATION} : {ITEM.location}</li>
                                                     <li><i class="fa fa-calendar"></i> {LANG_POSTED_ON} : {ITEM.created_at}</li>
-                                                    <li><i class="fa fa-user"></i> {LANG_POSTED_BY} : <a href="{ITEM.author_link}" target="_blank">{ITEM.username}</a></li>
+                                                    <li><i class="fa fa-user"></i> {LANG_POSTED_BY} : <a href="{ITEM.author_link}" target="_blank">{ITEM.username}</a>
+                                                        IF("{STATUS}"=="1"){
+                                                        <img data-toggle="tooltip" data-placement="top" title="Vendedor Verificado pela CVS"
+                                                             class="img-check" src="{SITE_URL}templates/{TPL_NAME}/img/check.svg">
+                                                        {:IF}
+                                                    </li>
                                                 </ul>
 
                                                 <div class="ad-footer-tags">

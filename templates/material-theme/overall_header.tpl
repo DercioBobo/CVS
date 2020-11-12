@@ -186,79 +186,6 @@
     <!--end modal-dialog-->
 </div>
 
-<div class="modal" id="vendedorVerificadoModal">
-    <i class="loading-icon fa fa-circle-o-notch fa-spin"></i>
-    <div class="modal-dialog " role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <div class="section-title">
-                    <h2>Preencha o formulário para tornar-se verificado</h2>
-                    <a href="#" data-toggle="modal" data-target="#precos" class="waves-effect pad-lr-10 modal-trigger">Ver Tabela de Preços</a>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <form id="processarVerificado">
-
-                        <div class="form-row" id="documents">
-                            <div class="form-group col-md-6">
-                                <label for="ver_bi">Scan do B.I Frente e Verso</label>
-                                <input type="file" class="form-control" id="bi_doc" name="bi_doc" required="">
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="ver_">Scan do Alvará (Se for loja)</label>
-                                <input type="file" class="form-control" id="alvara_doc" name="alvara_doc" required="">
-                            </div>
-
-                        </div>
-
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <a href="#" id="showmpesa" class="btn btn-primary">Proceder ao Pagamento</a>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="row" id="mpesa" hidden>
-
-                            <div class="form-row">
-
-                                <div class="form-group col-md-6">
-                                    <label for="ver_contacto">Número M-Pesa</label>
-                                    <input type="number" class="form-control" id="mpesa_numero" name="mpesa_numero"   value="{PHONE}"  placeholder="Número" required>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <button type="submit" class="btn btn-primary">Submeter</button>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                    </form>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="alert alert-info text-left" role="alert">
-                    <p>Os Documentos e comprovativos de pagamentos podem ser enviados também por:</p>
-                    <ul>
-                        <li>email: info@csv.co.mz</li>
-                        <li> Whatsapp: 846872773</li>
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-        <!--end modal-content-->
-    </div>
-    <!--end modal-dialog-->
-</div>
 <div class="modal" id="loginPopUp">
     <i class="loading-icon fa fa-circle-o-notch fa-spin"></i>
     <div class="modal-dialog width-400px" role="document">
@@ -349,7 +276,7 @@
             <div class="header-left">
                 <div class="logo">
                     <a href="{LINK_INDEX}">
-                        <img src="{SITE_URL}storage/logo/material-theme_logo.png" alt="logo">
+                        <img class="cvs_logo" src="{SITE_URL}storage/logo/material-theme_logo.png" alt="logo">
                     </a>
                 </div>
                 IF("{COUNTRY_TYPE}"=="multi"){
@@ -364,8 +291,8 @@
                         <li><a href="{LINK_INDEX1}">{LANG_HOME}</a></li>
                         <li><a href="{LINK_LISTING}">Anúncios</a></li>
                         <li><a href="{LINK_CONTACT}">{LANG_CONTACT}</a></li>
-                        IF({LOGGED_IN}){
-                        <li><a href="#" data-toggle="modal" data-target="#vendedorVerificadoModal" class="waves-effect pad-lr-10 modal-trigger">Torne-se Vendedor Verificado</a></li>
+                        IF({LOGGED_IN} && "{USERSTATUS}"!="1"){
+                        <li><a href="{LINK_ACCOUNT_VERIFICATION}" class="waves-effect pad-lr-10 ">Verificar minha conta</a></li>
                    <!--     <li><a href="{LINK_MEMBERSHIP}">Planos Premium</a></li> -->
                         {:IF}
                     </ul>

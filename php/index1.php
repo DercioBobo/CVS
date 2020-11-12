@@ -54,7 +54,7 @@ foreach ($result as $info) {
 
 // Output to template
 $page = new HtmlTemplate ('templates/'.$config['tpl_name'].'/index.tpl');
-$page->SetParameter ('OVERALL_HEADER', create_header($lang['HOME_IMAGE']));
+$page->SetParameter ('OVERALL_HEADER', create_header($lang['HOME']));
 $page->SetLoop ('ITEM', $item);
 $page->SetLoop ('ITEM2', $item2);
 $page->SetParameter('POST_PREMIUM_LISTING', count($item));

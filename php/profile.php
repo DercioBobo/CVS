@@ -110,6 +110,7 @@ if(isset($_GET['username'])){
         $user_tagline = $get_userdata['tagline'];
         $user_about = stripslashes(nl2br($get_userdata['description']));
         $user_sex = $get_userdata['sex'];
+        $user_status = $get_userdata['status'];
         $user_city = $get_userdata['city'];
         $user_address = $get_userdata['address'];
         $user_website = $get_userdata['website'];
@@ -251,6 +252,7 @@ FROM `".$config['db']['pre']."product`
         $page->SetParameter ('CAT_DROPDOWN',$cat_dropdown);
         $page->SetParameter ('PROFILEVISIT', $user_view);
         $page->SetParameter ('FULLNAME', $user_name);
+        $page->SetParameter ('STATUS', $user_status);
         $page->SetParameter ('EMAIL', $user_email);
         $page->SetParameter ('CITY', $user_city);
         $page->SetParameter ('TAGLINE', $user_tagline);

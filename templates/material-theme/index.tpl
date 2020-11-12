@@ -128,11 +128,11 @@
                         </a>
                     </div> -->
                     <div class="col-md-3 col-sm-4 col-xs-6 back-category">
-                        <a href="{SITE_URL}category/servicos">
+                        <a href="{SITE_URL}category/mobiles-tablets">
                             <div class="list-item min-height-150">
                                 <div class="title">
-                                    <div class="icon"><i class="pe-7s-tools"></i></div>
-                                    <h3><a href="{SITE_URL}category/servicos">Serviços</a></h3>
+                                    <div class="icon"><i class="pe-7s-phone"></i></div>
+                                    <h3><a href="{SITE_URL}category/mobiles-tablets">Telemóveis</a></h3>
                                 </div>
                             </div>
                         </a>
@@ -276,7 +276,9 @@
                                     <h4>{ITEM.location}</h4>
                                 </div>
                                 <!--end description-->
-                                <div class="image bg-transfer"><img src="{SITE_URL}storage/products/thumb/{ITEM.picture}"></div>
+                                <a class="image bg-transfer" href="{ITEM.link}">
+                                    <img src="{SITE_URL}storage/products/thumb/{ITEM.picture}">
+                                </a>
                                 <!--end image-->
                             </div>
                             <div class="additional-info {ITEM.highlight_bg}">
@@ -286,7 +288,12 @@
                                     </li>
                                     <li><i class="fa fa-map-marker"></i> {LANG_LOCATION} : {ITEM.location}</li>
                                     <li><i class="fa fa-calendar"></i> {LANG_POSTED_ON} : {ITEM.created_at} </li>
-                                    <li><i class="fa fa-user"></i> {LANG_POSTED_BY} : <a href="{ITEM.author_link}" target="_blank">{ITEM.username}</a></li>
+                                    <li><i class="fa fa-user"></i> {LANG_POSTED_BY} : <a href="{ITEM.author_link}" target="_blank">{ITEM.username}</a>
+                                        IF("{ITEM.user_status}"=="1"){
+                                        <img data-toggle="tooltip" data-placement="top" title="Vendedor Verificado pela CVS" class="img-check" src="{SITE_URL}templates/{TPL_NAME}/img/check.svg">
+                                        {:IF}
+                                    </li>
+
                                 </ul>
 
                                 <div class="ad-footer-tags">
@@ -320,11 +327,11 @@
     <!--end block-->
 
 
-    <section class="block background-is-dark" style="background: #8e8e89;">
+    <section class="block background-is-dark" style="background: #f5f5f5;">
         <div class="container">
             <div class="section-title vertical-aligned-elements">
-                <div class="element text-align-right">
-                    <h2 class="invisible-on-mobile pull-left featured-ads-label">{LANG_LATEST_ADS}</h2>
+                <div class="element text-align-right custom_color">
+                    <h2 class="invisible-on-mobile pull-left featured-ads-label custom_color ">{LANG_LATEST_ADS}</h2>
                     <div id="latest-nav" class="gallery-nav"></div>
                 </div>
             </div>
@@ -352,7 +359,9 @@
                                     <h4>{ITEM2.location}</h4>
                                 </div>
                                 <!--end description-->
-                                <div class="image bg-transfer"><img src="{SITE_URL}storage/products/thumb/{ITEM2.picture}"></div>
+                                <a class="image bg-transfer" href="{ITEM2.link}">
+                                   <img src="{SITE_URL}storage/products/thumb/{ITEM2.picture}">
+                                </a>
                                 <!--end image-->
                             </div>
                             <div class="additional-info {ITEM2.highlight_bg}">
@@ -362,7 +371,11 @@
                                     </li>
                                     <li><i class="fa fa-map-marker"></i> {LANG_LOCATION} : {ITEM2.location}</li>
                                     <li><i class="fa fa-calendar"></i> {LANG_POSTED_ON} : {ITEM2.created_at} </li>
-                                    <li><i class="fa fa-user"></i> {LANG_POSTED_BY} : <a href="{ITEM2.author_link}" target="_blank">{ITEM2.username}</a></li>
+                                    <li><i class="fa fa-user"></i> {LANG_POSTED_BY} : <a href="{ITEM2.author_link}" target="_blank">{ITEM2.username}</a>
+                                        IF("{ITEM2.user_status}"=="1"){
+                                        <img data-toggle="tooltip" data-placement="top" title="Vendedor Verificado pela CVS" class="img-check" src="{SITE_URL}templates/{TPL_NAME}/img/check.svg">
+                                        {:IF}
+                                    </li>
                                 </ul>
 
                                 <div class="ad-footer-tags">
@@ -398,6 +411,25 @@
 
 
 {OVERALL_FOOTER}
+
+<script>
+
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}
+            slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 10000); // Change image every 2 seconds
+    }
+
+</script>
 
 
 

@@ -24,21 +24,12 @@ require_once('includes.php');
                                     <div id="quickad-sidebar" class="col-sm-4">
                                         <ul class="quickad-nav" role="tablist">
                                             <li class="quickad-nav-item active" data-target="#quickad_settings_general" data-toggle="tab">General</li>
-                                            <li class="quickad-nav-item" data-target="#quickad_logo_watermark" data-toggle="tab">Logo / Watermark</li>
-                                            <li class="quickad-nav-item hidden" data-target="#quick_map" data-toggle="tab">Map</li>
-                                            <li class="quickad-nav-item hidden" data-target="#quickad_live_location" data-toggle="tab">Live Location Setting</li>
-                                            <li class="quickad-nav-item hidden" data-target="#quickad_android" data-toggle="tab">Android App Setting</li>
-                                            <li class="quickad-nav-item hidden" data-target="#quickad_push_notification" data-toggle="tab">App Push Notification</li>
-                                            <li class="quickad-nav-item hidden" data-target="#quickad_blog" data-toggle="tab">Blog Setting</li>
-                                            <li class="quickad-nav-item hidden" data-target="#quickad_testimonials" data-toggle="tab">Testimonials Setting</li>
-                                            <li class="quickad-nav-item hidden" data-target="#quickad_international" data-toggle="tab">International</li>
+                                            <li class="quickad-nav-item" data-target="#quickad_logo_watermark" data-toggle="tab">Logotipo / Watermark</li>
+                                            <li class="quickad-nav-item " data-target="#quick_map" data-toggle="tab">Map</li>
                                             <li class="quickad-nav-item" data-target="#quickad_email" data-toggle="tab">Email Setting</li>
-
                                             <li class="quickad-nav-item" data-target="#quickad_theme_setting" data-toggle="tab">Theme Setting</li>
                                             <li class="quickad-nav-item" data-target="#quickad_frontend_submission" data-toggle="tab">Ad Post Setting</li>
-                                            <li class="quickad-nav-item hidden" data-target="#quickad_social_login_setting" data-toggle="tab">Social Login Setting</li>
-                                            <li class="quickad-nav-item hidden" data-target="#quickad_recaptcha" data-toggle="tab">Google reCAPTCHA</li>
-                                            <li class="quickad-nav-item hidden" data-target="#quickad_purchase_code" data-toggle="tab">Purchase Code</li>
+                                            <li class="quickad-nav-item " data-target="#quickad_social_login_setting" data-toggle="tab">Social Login Setting</li>
                                         </ul>
                                     </div>
 
@@ -102,21 +93,21 @@ require_once('includes.php');
                                                                 </select>
                                                             </div>
 
-                                                            <div class="form-group">
+                                                            <div class="form-group hidden">
                                                                 <label for="delete_expired">Cron job run time (In seconds)</label>
                                                                 <p class="help-block">Please enter time in seconds for example: 60 = 1 minutes<br>
                                                                     3600 = 1 Hour.</p>
                                                                 <input name="cron_exec_time" class="form-control" type="text" id="cron_exec_time" value="<?php echo $config['cron_exec_time']; ?>">
                                                             </div>
 
-                                                            <div class="form-group">
+                                                            <div class="form-group hidden">
                                                                 <label for="site_title">Show/hide Verify Email Message to Non-active Users</label>
                                                                 <select name="non_active_msg" id="non_active_msg" class="form-control">
                                                                     <option value="1" <?php if(get_option("non_active_msg") == '1'){ echo "selected"; } ?>>Show</option>
                                                                     <option value="0" <?php if(get_option("non_active_msg") == '0'){ echo "selected"; } ?>>Hide</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="form-group">
+                                                            <div class="form-group hidden">
                                                                 <label for="site_title">Allow Non-active users to post ad</label>
                                                                 <p class="help-block">When disallow, an error message will be shown to non-active users to verify their email address.</p>
                                                                 <select name="non_active_allow" id="non_active_allow" class="form-control">
@@ -167,25 +158,25 @@ require_once('includes.php');
                                                             </div>
 
 
-                                                            <div class="form-group">
+                                                            <div class="form-group hidden">
                                                                 <label>Term & Condition Page Link:</label>
                                                                 <div>
                                                                     <input name="termcondition_link" type="text" class="form-control" value="<?php echo get_option("termcondition_link"); ?>">
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group">
+                                                            <div class="form-group hidden">
                                                                 <label>Privacy Page Link:</label>
                                                                 <div>
                                                                     <input name="privacy_link" type="text" class="form-control" value="<?php echo get_option("privacy_link"); ?>">
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group">
+                                                            <div class="form-group hidden">
                                                                 <label>Cookie Policy Page Link:</label>
                                                                 <div>
                                                                     <input name="cookie_link" type="text" class="form-control" value="<?php echo get_option("cookie_link"); ?>">
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group">
+                                                            <div class="form-group hidden">
                                                                 <label for="cookie_consent">Show/hide Cookie Consent Box</label>
                                                                 <select name="cookie_consent" class="form-control" id="userthemesel">
                                                                     <option value="1" <?php if(get_option("cookie_consent") == 1){ echo "selected"; } ?>>Show</option>
@@ -863,7 +854,7 @@ require_once('includes.php');
 
                                                     <div class="tab-pane" id="quickad_theme_setting">
                                                         <form method="post" action="ajax_sidepanel.php?action=SaveSettings" id="#quickad_theme_setting">
-                                                            <div class="form-group">
+                                                            <div class="form-group hidden">
                                                                 <label for="contact_validation">Phone/Email Login user show/hide</label>
                                                                 <p class="help-block">Phone number / Email-Id, show only logged in user or show to Publicly.</p>
                                                                 <select name="contact_validation" id="contact_validation" class="form-control">
@@ -872,7 +863,7 @@ require_once('includes.php');
                                                                 </select>
                                                             </div>
 
-                                                            <div class="form-group">
+                                                            <div class="form-group hidden">
                                                                 <label for="listing_view">Search Listing (List/Grid) view</label>
                                                                 <select name="listing_view" id="listing_view" class="form-control">
                                                                     <option value="list" <?php if(get_option('listing_view') == 'list'){ echo "selected"; } ?>>List View</option>
@@ -927,7 +918,7 @@ require_once('includes.php');
                                                                     <input name="copyright_text" type="text" class="form-control" value="<?php echo $config['copyright_text']; ?>">
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group">
+                                                            <div class="form-group hidden">
                                                                 <label class="">Footer Text:</label>
                                                                 <div>
                                                                     <textarea name="footer_text" class="form-control"><?php echo $config['footer_text']; ?></textarea>
@@ -939,25 +930,25 @@ require_once('includes.php');
                                                                     <input name="facebook_link" type="text" class="form-control" value="<?php echo $config['facebook_link']; ?>">
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group">
+                                                            <div class="form-group hidden">
                                                                 <label>Footer Twitter Page Link:</label>
                                                                 <div>
                                                                     <input name="twitter_link" type="text" class="form-control" value="<?php echo $config['twitter_link']; ?>">
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group">
+                                                            <div class="form-group hidden">
                                                                 <label>Footer Pinterest Page Link:</label>
                                                                 <div>
                                                                     <input name="googleplus_link" type="text" class="form-control" value="<?php echo $config['googleplus_link']; ?>">
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group">
+                                                            <div class="form-group hidden">
                                                                 <label>Footer Youtube Page/Video Link:</label>
                                                                 <div>
                                                                     <input name="youtube_link" type="text" class="form-control" value="<?php echo $config['youtube_link']; ?>">
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group">
+                                                            <div class="form-group hidden">
                                                                 <label>External Javascript or Css In header:</label>
                                                                 <p class="help-block">You can add Any javascript code and style css. Like Google Analytics code. This code will paste on head part.</p>
                                                                 <div>
@@ -977,7 +968,7 @@ require_once('includes.php');
                                                             <div class="form-group">
                                                                 <h4>Modify Post form fields</h4>
                                                             </div>
-                                                            <div class="form-group">
+                                                            <div class="form-group hidden">
                                                                 <label>Post Without Login :</label>
                                                                 <div>
                                                                     <select name="post_without_login" class="form-control">
@@ -990,7 +981,7 @@ require_once('includes.php');
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group">
+                                                            <div class="form-group hidden">
                                                                 <label>Ads Auto Approve :</label>
                                                                 <div>
                                                                     <select name="post_auto_approve" class="form-control">
@@ -999,7 +990,6 @@ require_once('includes.php');
                                                                     </select>
                                                                 </div>
                                                             </div>
-
 
                                                             <div class="form-group">
                                                                 <label>Premium Listing Option :</label>
@@ -1010,12 +1000,14 @@ require_once('includes.php');
                                                                     </select>
                                                                 </div>
                                                             </div>
+
                                                             <div class="form-group">
                                                                 <label>Max Image upload :</label>
                                                                 <div>
                                                                     <input name="max_image_upload" type="number" class="form-control" value="<?php echo get_option("max_image_upload"); ?>">
                                                                 </div>
                                                             </div>
+
                                                             <div class="form-group">
                                                                 <label>Watermark :</label>
                                                                 <div>
@@ -1025,7 +1017,8 @@ require_once('includes.php');
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group">
+
+                                                            <div class="form-group hidden">
                                                                 <label>Description Editor :</label>
                                                                 <div>
                                                                     <select name="post_desc_editor" class="form-control">
@@ -1034,7 +1027,7 @@ require_once('includes.php');
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group">
+                                                            <div class="form-group hidden">
                                                                 <label>Address Field :</label>
                                                                 <div>
                                                                     <select name="post_address_mode" class="form-control">
@@ -1043,7 +1036,7 @@ require_once('includes.php');
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group">
+                                                            <div class="form-group hidden">
                                                                 <label>Tags Field :</label>
                                                                 <div>
                                                                     <select name="post_tags_mode" class="form-control">

@@ -548,6 +548,8 @@ function get_user_data($username=null,$userid=null){
         $userinfo['online']     = $info['online'];
         $userinfo['created_at'] = timeAgo($info['created_at']);
         $userinfo['updated_at'] = $info['updated_at'];
+        $userinfo['bi_doc'] = $info['bi_doc'];
+        $userinfo['alvara_doc'] = $info['alvara_doc'];
 
         $userinfo['facebook']   = $info['facebook'];
         $userinfo['twitter']    = $info['twitter'];

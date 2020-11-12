@@ -33,6 +33,7 @@ if(checkloggedin())
         $page->SetParameter ('LASTACTIVE', $author_lastactive);
         $page->SetParameter ('EMAIL', $ses_userdata['email']);
         $page->SetParameter ('PHONE', $ses_userdata['phone']);
+        $page->SetParameter ('USERSTATUS', $ses_userdata['status']);
         $page->SetParameter ('POSTCODE', $ses_userdata['postcode']);
         $page->SetParameter ('ADDRESS', $ses_userdata['address']);
         $page->SetParameter ('CITY', $ses_userdata['city']);

@@ -6,9 +6,9 @@
             <li><a href="{LINK_INDEX}">{LANG_HOME}</a></li>
             <li class="active"><a>Painel de Controle</a></li>
         </ul>
-        <a href="{LINK_POST-AD}" class="postadinner"><span> <i class="fa fa-plus-circle"></i> Publique um Anúncio</span></a>
+        <a href="{LINK_POST-AD}" class="postadinner"><span> <i class="fa fa-plus-circle"></i>  {LANG_POST_AD}</span></a>
         <!--end breadcrumb-->
-        <section class="page-title center"><h1>Painel de Controle</h1></section>
+        <section class="page-title center"><h2>Painel de Controle</h2></section>
         <!--end page-title-->
         <section>
             <div class="row">
@@ -16,14 +16,14 @@
                     <div class="inner-box">
                         <div class="user-panel-sidebar">
                             <div class="collapse-box">
-                                <h5 class="collapse-title no-border"> Meu Perfil <a class="pull-right" data-toggle="collapse" href="#MyClassified"><i class="fa fa-angle-down"></i></a></h5>
+                                <h5 class="collapse-title no-border"> {LANG_MY_CLASSIFIED} <a class="pull-right" data-toggle="collapse" href="#MyClassified"><i class="fa fa-angle-down"></i></a></h5>
                                 <div id="MyClassified" class="panel-collapse collapse in">
                                     <ul class="acc-list">
                                         <li class="active"><a href="{LINK_DASHBOARD}" class="waves-effect"><i class="fa fa-home"></i> {LANG_DASHBOARD} </a></li>
                                         <li><a href="{LINK_PROFILE}/{USERNAME}" class="waves-effect"><i class="fa fa-user"></i> {LANG_PROFILE_PUBLIC}</a></li>
                                         <li><a href="{LINK_POST-AD}" class="waves-effect"><i class="fa fa-pencil"></i> {LANG_POST_AD}</a></li>
-                                        <li><a href="{LINK_MEMBERSHIP}" class="waves-effect"><i
-                                                        class="fa fa-shopping-bag"></i> Plano Premium </a></li>
+                                        <!--<li><a href="{LINK_MEMBERSHIP}" class="waves-effect"><i
+                                                        class="fa fa-shopping-bag"></i> Plano Premium </a></li> -->
                                     </ul>
                                 </div>
                             </div>
@@ -32,7 +32,7 @@
                                 <div id="MyAds" class="panel-collapse collapse in">
                                     <ul class="acc-list">
                                         <li><a href="{LINK_MYADS}" class="waves-effect"><i class="fa fa-book"></i> {LANG_MY_ADS}<span class="badge">{MYADS}</span> </a></li>
-                                        <li><a href="{LINK_FAVADS}" class="waves-effect"><i class="fa fa-heart"></i> {LANG_FAVOURITE_ADS} <span class="badge">{FAVORITEADS}</span> </a></li>
+                                        <!--<li><a href="{LINK_FAVADS}" class="waves-effect"><i class="fa fa-heart"></i> {LANG_FAVOURITE_ADS} <span class="badge">{FAVORITEADS}</span> </a></li>-->
                                         <li><a href="{LINK_PENDINGADS}" class="waves-effect"><i class="fa fa-flag"></i> {LANG_PENDING_APPROVAL}<span class="badge">{PENDINGADS}</span></a></li>
                                         <li><a href="{LINK_HIDDENADS}" class="waves-effect"><i class="fa fa-flag"></i> {LANG_HIDDEN_ADS} <span class="badge">{HIDDENADS}</span></a></li>
                                         <li><a href="{LINK_EXPIREADS}" class="waves-effect"><i class="fa fa-calendar-times-o"></i> {LANG_EXPIRE_ADS} <span class="badge">{EXPIREADS}</span></a>
@@ -44,6 +44,11 @@
                                 <h5 class="collapse-title no-border"> {LANG_MY_ACCOUNT} <a class="pull-right" data-toggle="collapse" href="#account"><i class="fa fa-angle-down"></i></a></h5>
                                 <div id="account" class="panel-collapse collapse in">
                                     <ul class="acc-list">
+                                        IF("{USERSTATUS}"=="0"){
+                                        <li><a href="{LINK_ACCOUNT_VERIFICATION}" class="waves-effect"><i class="fa  fa-check-circle-o"></i> {LANG_ACCOUNT_VERIFICATION}</a></li>
+                                        ELSEIF("{USERSTATUS}"!="0"){
+                                        <li><a href="{LINK_ACCOUNT_VERIFICATION_DETAILS}" class="waves-effect"><i class="fa  fa-check-circle-o"></i> {LANG_ACCOUNT_VERIFICATION}</a></li>
+                                        {:IF}
                                         <li><a href="{LINK_ACCOUNT_SETTING}" class="waves-effect"><i class="fa fa-cog"></i> {LANG_ACCOUNT_SETTING}</a></li>
                                         <li><a href="{LINK_LOGOUT}" class="waves-effect"><i class="fa fa-unlock"></i> {LANG_LOGOUT}</a></li>
 

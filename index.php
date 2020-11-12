@@ -60,6 +60,8 @@ $router->map('GET|POST','/hidden/[*:page]?/?', 'ad-hidden.php');
 $router->map('GET|POST','/resubmission/[*:page]?/?', 'ad-resubmission.php');
 $router->map('GET|POST','/transaction/?', 'transaction.php');
 $router->map('GET|POST','/account-setting/?', 'account-setting.php');
+$router->map('GET|POST','/account-verification/?', 'account-verification.php');
+$router->map('GET|POST','/account-verification-details/?', 'account-verification-details.php');
 $router->map('GET|POST','/report/?', 'report.php');
 $router->map('GET|POST','/contact/?', 'contact.php');
 $router->map('GET|POST','/sitemap/?', 'sitemap.php');

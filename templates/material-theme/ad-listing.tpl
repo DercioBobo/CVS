@@ -9,7 +9,7 @@
         </ol>
         <div class="row">
             <div class="col-xs-12 text-right">
-            <a href="{LINK_POST-AD}" class="postadinner"><span> <i class="fa fa-plus-circle"></i> Publicar um Anúncio</span></a>
+            <a href="{LINK_POST-AD}" class="postadinner"><span> <i class="fa fa-plus-circle"></i> {LANG_POST_AD}</span></a>
             </div>
         </div>
         <form method="get" name="locationForm" id="LocationForm">
@@ -171,9 +171,9 @@
                                                         <h4>{ITEM.location}</h4>
                                                     </div>
                                                     <!--end description-->
-                                                    <div class="image bg-transfer">
-                                                        <img src="{SITE_URL}storage/products/thumb/{ITEM.picture}" alt="{ITEM.product_name}">
-                                                    </div>
+                                                    <a class="image bg-transfer" href="{ITEM.link}">
+                                                        <img src="{SITE_URL}storage/products/thumb/{ITEM.picture}">
+                                                    </a>
                                                     <!--end image-->
                                                 </div>
                                                 <div class="additional-info {ITEM.highlight_bg}">
@@ -191,13 +191,6 @@
                                                     </ul>
 
                                                     <div class="ad-footer-tags">
-                                                        <div class="add-to-fav">
-                                                            <a href="#" data-toggle="tooltip" data-placement="top" data-original-title='IF("{ITEM.favorite}"=="1"){ {LANG_REMOVE_FAVOURITE} {:IF}
-                                                            IF("{ITEM.favorite}"!="1"){ {LANG_ADD_FAVOURITE} {:IF}' data-item-id="{ITEM.id}" data-userid="{USER_ID}" data-action="setFavAd" class="fav_{ITEM.id}">
-                                                            IF("{ITEM.favorite}"=="1"){ <i class="fa fa-heart"></i> {:IF}
-                                                            IF("{ITEM.favorite}"!="1"){ <i class="fa fa-heart-o"></i> {:IF}
-                                                            </a>
-                                                        </div>
                                                         IF("{ITEM.price}"!="0"){ <div class="price-tag">{ITEM.price}</div> {:IF}
                                                     </div>
                                                     <!--end controls-more-->
@@ -252,13 +245,6 @@
                                                     </ul>
                                                     {:IF}
                                                     <div class="ad-footer-tags">
-                                                        <div class="add-to-fav">
-                                                            <a href="#" data-toggle="tooltip" data-placement="top" data-original-title='IF("{ITEM2.favorite}"=="1"){ {LANG_REMOVE_FAVOURITE} {:IF}
-                                                            IF("{ITEM2.favorite}"!="1"){ {LANG_ADD_FAVOURITE} {:IF}' data-item-id="{ITEM2.id}" data-userid="{USER_ID}" data-action="setFavAd" class='fav_{ITEM2.id}'>
-                                                            IF("{ITEM2.favorite}"=="1"){ <i class="fa fa-heart"></i> {:IF}
-                                                            IF("{ITEM2.favorite}"!="1"){ <i class="fa fa-heart-o"></i> {:IF}
-                                                            </a>
-                                                        </div>
                                                         IF("{ITEM2.price}"!="0"){ <div class="price-tag">{ITEM2.price}</div> {:IF}
                                                     </div>
                                                 </div>
