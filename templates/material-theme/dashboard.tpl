@@ -16,41 +16,67 @@
                     <div class="inner-box">
                         <div class="user-panel-sidebar">
                             <div class="collapse-box">
-                                <h5 class="collapse-title no-border"> {LANG_MY_CLASSIFIED} <a class="pull-right" data-toggle="collapse" href="#MyClassified"><i class="fa fa-angle-down"></i></a></h5>
+                                <h5 class="collapse-title no-border"> {LANG_MY_CLASSIFIED} <a class="pull-right"
+                                                                                              data-toggle="collapse"
+                                                                                              href="#MyClassified"><i
+                                                class="fa fa-angle-down"></i></a></h5>
                                 <div id="MyClassified" class="panel-collapse collapse in">
                                     <ul class="acc-list">
-                                        <li class="active"><a href="{LINK_DASHBOARD}" class="waves-effect"><i class="fa fa-home"></i> {LANG_DASHBOARD} </a></li>
-                                        <li><a href="{LINK_PROFILE}/{USERNAME}" class="waves-effect"><i class="fa fa-user"></i> {LANG_PROFILE_PUBLIC}</a></li>
-                                        <li><a href="{LINK_POST-AD}" class="waves-effect"><i class="fa fa-pencil"></i> {LANG_POST_AD}</a></li>
+                                        <li class="active"><a href="{LINK_DASHBOARD}" class="waves-effect"><i
+                                                        class="fa fa-home"></i> {LANG_DASHBOARD} </a></li>
+                                        <li><a href="{LINK_PROFILE}/{USERNAME}" class="waves-effect"><i
+                                                        class="fa fa-user"></i> {LANG_PROFILE_PUBLIC}</a></li>
+                                        <li><a href="{LINK_POST-AD}" class="waves-effect"><i
+                                                        class="fa fa-pencil"></i> {LANG_POST_AD}</a></li>
                                         <!--<li><a href="{LINK_MEMBERSHIP}" class="waves-effect"><i
                                                         class="fa fa-shopping-bag"></i> Plano Premium </a></li> -->
                                     </ul>
                                 </div>
                             </div>
-                            <div class="collapse-box"><h5 class="collapse-title"> {LANG_MY_ADS} <a class="pull-right" data-toggle="collapse" href="#MyAds"><i class="fa fa-angle-down"></i></a></h5>
+                            <div class="collapse-box"><h5 class="collapse-title"> {LANG_MY_ADS} <a class="pull-right"
+                                                                                                   data-toggle="collapse"
+                                                                                                   href="#MyAds"><i
+                                                class="fa fa-angle-down"></i></a></h5>
 
                                 <div id="MyAds" class="panel-collapse collapse in">
                                     <ul class="acc-list">
-                                        <li><a href="{LINK_MYADS}" class="waves-effect"><i class="fa fa-book"></i> {LANG_MY_ADS}<span class="badge">{MYADS}</span> </a></li>
+                                        <li><a href="{LINK_MYADS}" class="waves-effect"><i
+                                                        class="fa fa-book"></i> {LANG_MY_ADS}<span
+                                                        class="badge">{MYADS}</span> </a></li>
                                         <!--<li><a href="{LINK_FAVADS}" class="waves-effect"><i class="fa fa-heart"></i> {LANG_FAVOURITE_ADS} <span class="badge">{FAVORITEADS}</span> </a></li>-->
-                                        <li><a href="{LINK_PENDINGADS}" class="waves-effect"><i class="fa fa-flag"></i> {LANG_PENDING_APPROVAL}<span class="badge">{PENDINGADS}</span></a></li>
-                                        <li><a href="{LINK_HIDDENADS}" class="waves-effect"><i class="fa fa-flag"></i> {LANG_HIDDEN_ADS} <span class="badge">{HIDDENADS}</span></a></li>
-                                        <li><a href="{LINK_EXPIREADS}" class="waves-effect"><i class="fa fa-calendar-times-o"></i> {LANG_EXPIRE_ADS} <span class="badge">{EXPIREADS}</span></a>
-                                        <li><a href="{LINK_RESUBMITADS}" class="waves-effect"><i class="fa fa-flag"></i> {LANG_RESUBMITED_ADS} <span class="badge">{RESUBMITADS}</span></a></li>
+                                        <!--<li><a href="{LINK_PENDINGADS}" class="waves-effect"><i class="fa fa-flag"></i> {LANG_PENDING_APPROVAL}<span class="badge">{PENDINGADS}</span></a></li> -->
+                                        <li><a href="{LINK_HIDDENADS}" class="waves-effect"><i
+                                                        class="fa fa-flag"></i> {LANG_HIDDEN_ADS} <span
+                                                        class="badge">{HIDDENADS}</span></a></li>
+                                        <li><a href="{LINK_EXPIREADS}" class="waves-effect"><i
+                                                        class="fa fa-calendar-times-o"></i> {LANG_EXPIRE_ADS} <span
+                                                        class="badge">{EXPIREADS}</span></a>
+                                        <li><a href="{LINK_RESUBMITADS}" class="waves-effect"><i
+                                                        class="fa fa-flag"></i> {LANG_RESUBMITED_ADS} <span
+                                                        class="badge">{RESUBMITADS}</span></a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="collapse-box">
-                                <h5 class="collapse-title no-border"> {LANG_MY_ACCOUNT} <a class="pull-right" data-toggle="collapse" href="#account"><i class="fa fa-angle-down"></i></a></h5>
+                                <h5 class="collapse-title no-border"> {LANG_MY_ACCOUNT} <a class="pull-right"
+                                                                                           data-toggle="collapse"
+                                                                                           href="#account"><i
+                                                class="fa fa-angle-down"></i></a></h5>
                                 <div id="account" class="panel-collapse collapse in">
                                     <ul class="acc-list">
                                         IF("{USERSTATUS}"=="0"){
-                                        <li><a href="{LINK_ACCOUNT_VERIFICATION}" class="waves-effect"><i class="fa  fa-check-circle-o"></i> {LANG_ACCOUNT_VERIFICATION}</a></li>
+                                        <li><a href="{LINK_ACCOUNT_VERIFICATION}" class="waves-effect"><i
+                                                        class="fa  fa-check-circle-o"></i> {LANG_ACCOUNT_VERIFICATION}
+                                            </a></li>
                                         ELSEIF("{USERSTATUS}"!="0"){
-                                        <li><a href="{LINK_ACCOUNT_VERIFICATION_DETAILS}" class="waves-effect"><i class="fa  fa-check-circle-o"></i> {LANG_ACCOUNT_VERIFICATION}</a></li>
+                                        <li><a href="{LINK_ACCOUNT_VERIFICATION_DETAILS}" class="waves-effect"><i
+                                                        class="fa  fa-check-circle-o"></i> {LANG_ACCOUNT_VERIFICATION}
+                                            </a></li>
                                         {:IF}
-                                        <li><a href="{LINK_ACCOUNT_SETTING}" class="waves-effect"><i class="fa fa-cog"></i> {LANG_ACCOUNT_SETTING}</a></li>
-                                        <li><a href="{LINK_LOGOUT}" class="waves-effect"><i class="fa fa-unlock"></i> {LANG_LOGOUT}</a></li>
+                                        <li><a href="{LINK_ACCOUNT_SETTING}" class="waves-effect"><i
+                                                        class="fa fa-cog"></i> {LANG_ACCOUNT_SETTING}</a></li>
+                                        <li><a href="{LINK_LOGOUT}" class="waves-effect"><i
+                                                        class="fa fa-unlock"></i> {LANG_LOGOUT}</a></li>
 
                                     </ul>
                                 </div>
@@ -79,10 +105,11 @@
                                 <div class="description clearfix">
                                     <h3>&nbsp;</h3>
                                     <h2>{AUTHORNAME}</h2>
-                                    <a href="{LINK_ACCOUNT_SETTING}" class="btn btn-default btn-rounded scroll btn-xs">{LANG_ACCOUNT_SETTING}</a>
+                                    <a href="{LINK_ACCOUNT_SETTING}"
+                                       class="btn btn-default btn-rounded scroll btn-xs">{LANG_ACCOUNT_SETTING}</a>
                                     <hr>
                                     <small>Carregue a foto e clique no botão abaixo actualizar</small>
-                                  <!--  <figure>
+                                    <!--  <figure>
                                         <div class="pull-left"><strong>{LANG_JOIN_DATE} :</strong></div>
                                         <div class="pull-right">{JOIN_DATE}</div>
                                     </figure> -->
@@ -93,7 +120,7 @@
                         <!--end user-details-->
                         <section>
                             {LOOP: ERRORS}
-                            <article class="byMsg byMsgError" id="formErrors">! {ERRORS.message}</article>
+                                <article class="byMsg byMsgError" id="formErrors">! {ERRORS.message}</article>
                             {/LOOP: ERRORS}
                         </section>
                         <section>
@@ -121,14 +148,6 @@
                                     </div>
                                     <!--end input-field-->
                                 </div>
-                                <!--<div class="col-md-6 col-sm-6" >
-                                    <div class="input-field">
-                                        <label for="postcode">{LANG_POSTCODE}</label>
-                                        <input type="text" name="postcode" id="postcode" value="{POSTCODE}">
-                                    </div>
-                                    -->
-                                    <!--end input-field-->
-                                </div>
 
                                 <div class="col-md-6 col-sm-6">
                                     <div class="input-field">
@@ -137,54 +156,35 @@
                                     </div>
                                 </div>
 
-                                <!--end col-md-6-->
-
-                            <!--
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="input-field">
-                                        <label for="city">{LANG_CITY}</label>
-                                        <input type="text" id="city" rows="1" name="city" value="{CITY}"/>
-                                    </div>
-                                </div>
-
-                                -->
-                                <!--end col-md-6-->
                                 <div class="col-md-6 col-sm-6">
                                     <div class="input-field">
                                         <select name="country" class="meterialselect">
                                             {LOOP: COUNTRY}
-                                                <option value="{COUNTRY.asciiname}" IF("{COUNTRY}"=="{COUNTRY.asciiname}"){ selected {:IF}>{COUNTRY.asciiname}</option>
+                                                <option value="{COUNTRY.asciiname}" IF(
+                                                "{COUNTRY}"=="{COUNTRY.asciiname}"){ selected {:IF}>{COUNTRY.asciiname}</option>
                                             {/LOOP: COUNTRY}
                                         </select>
                                         <label>{LANG_COUNTRY}</label>
                                     </div>
                                 </div>
-                                <!--end col-md-6-->
 
-                            <!--
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="input-field">
-                                        <label for="heading">{LANG_PROFILE_TAGLINE}</label>
-                                        <input type="text" name="heading" id="heading" value="{AUTHORTAGLINE}">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="input-field ">
+                                        <label for="content">{LANG_ABOUT_ME}</label>
+                                        <textarea class="materialize-textarea" id="content" rows="2"
+                                                  name="content">{AUTHORABOUT}</textarea>
                                     </div>
-
-
                                 </div>
+                                <!--end input-field-->
 
                             </div>
-                -->
-                            <!--end col-md-12-->
-                <!--end input-field-->
-                            <!--end row-->
-                            <div class="input-field col s12">
-                                <label for="content">{LANG_ABOUT_ME}</label>
-                                <textarea class="materialize-textarea" id="content" rows="2" name="content">{AUTHORABOUT}</textarea>
-                            </div>
-                            <!--end input-field-->
+
                         </section>
-                        <section><h3>{LANG_SOCIAL_NETWORKS}</h3>
+                        <section>
+
 
                             <div class="row">
+                                <h3>{LANG_SOCIAL_NETWORKS}</h3>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="input-field">
                                         <label for="facebook">Facebook</label>
@@ -193,30 +193,6 @@
                                     <!--end input-field-->
                                 </div>
                                 <!--end col-md-6-->
-                                <!--
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="input-field">
-                                        <label for="twitter">Twitter</label>
-                                        <input type="text" name="twitter" id="twitter" value="{TWITTER}">
-                                    </div>
-                                </div>
-
-                                    -->
-                                <!--end col-md-6-->
-
-                         <!--
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="input-field">
-                                        <label for="googleplus">Linkdn</label>
-                                        <input type="text" name="googleplus" id="googleplus" value="Linkdn">
-                                    </div>
-
-
-                                </div>
-
-                                    -->
-                            <!--end input-field-->
-                                <!--end col-md-6-->
                                 <div class="col-md-6 col-sm-6">
                                     <div class="input-field">
                                         <label for="instagram">Instagram</label>
@@ -224,63 +200,13 @@
                                     </div>
                                     <!--end input-field-->
                                 </div>
-<!--
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="input-field">
-                                        <label for="linkedin">Linked In</label>
-                                        <input type="text" name="linkedin" id="linkedin" value="{LINKEDIN}">
-                                    </div>
-
-                                </div>
-
-                                -->
-                                <!--end input-field-->
-                                <!--end col-md-6-->
-                            <!--
-                            <div class="col-md-6 col-sm-6">
-                                    <div class="input-field">
-                                        <label for="youtube">Youtube</label>
-                                        <input type="text" name="youtube" id="youtube" value="{YOUTUBE}">
-                                    </div>
-
-
-                                </div>
-
                             </div>
-                                    -->
-                                <!--end input-field-->
-                                <!--end col-md-6-->
-                            <!--end row-->
                         </section>
 
-<!--
-                        <div>
-                            <h3>{LANG_NEWSLETTER}</h3>
-                            <div class="row form-group">
-                                <label class="col-md-1 label-title">&nbsp; </label>
-                                <div class="col-md-11">
-                                    <div class="checkbox checkbox-inline checkbox-primary ">
-                                        <input type="checkbox" name="notify" id="notify" value="1" onchange="NotifyValueChanged()" IF("{NOTIFY}"=="1"){ checked {:IF}>
-                                        <label for="notify">{LANG_NOTIFYEMAIL}</label>
-                                    </div>
-                                    <div class="skills" style="margin: 0 25px">
-                                        {LOOP: CATEGORY}
-                                            <div class="checkbox checkbox-inline checkbox-primary">
-                                                <input type="checkbox" name="choice[{CATEGORY.id}]" id="{CATEGORY.id}" value="{CATEGORY.id}" {CATEGORY.selected}>
-                                                <label for="{CATEGORY.id}">{CATEGORY.name}</label>
-                                            </div>
-                                            <br>
-                                        {/LOOP: CATEGORY}
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        -->
                         <section class="center">
                             <div class="input-field">
-                                <input type="submit" class="btn btn-primary btn-rounded" name="submit" value="{LANG_UPDATE}">
+                                <input type="submit" class="btn btn-primary btn-rounded" name="submit"
+                                       value="{LANG_UPDATE}">
                             </div>
                             <!--end input-field-->
                         </section>
@@ -298,12 +224,12 @@
 
 {OVERALL_FOOTER}
 <script type="text/javascript">
-    function NotifyValueChanged()
-    {
-        if($('#notify').is(":checked"))
+    function NotifyValueChanged() {
+        if ($('#notify').is(":checked"))
             $(".skills").show();
         else
             $(".skills").hide();
     }
+
     NotifyValueChanged();
 </script>

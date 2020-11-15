@@ -11,13 +11,13 @@
                 <div class="middle-dabba">
                     <h1>{LANG_LOGIN_HERE}</h1>
 
-               <!--     <div class="social-signup" style="padding-bottom: 20px;">
+                  <div class="social-signup" style="padding-bottom: 20px;">
                         <div class="row">
                             <div class="col-xs-6"><a class="loginBtn loginBtn--facebook" onclick="fblogin()"><i class="fa fa-facebook"></i> <span>Facebook</span></a></div>
                             <div class="col-xs-6"><a class="loginBtn loginBtn--google" onclick="gmlogin()"><i class="fa fa-google-plus"></i> <span>Google+</span></a></div>
                         </div>
                         <div class="clear"></div>
-                    </div> -->
+                    </div>
 
                     <div id="post-form" style="padding:10px">
                         IF("{ERROR}"!=""){

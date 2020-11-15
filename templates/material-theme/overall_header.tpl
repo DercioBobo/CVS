@@ -196,6 +196,13 @@
                     <h2>{LANG_LOGIN}</h2>
                 </div>
             </div>
+            <div class="socialLoginHere">
+                <div class="row text-center">
+                    <div class="col-xs-6"><a class="loginBtn loginBtn--facebook" onclick="fblogin()"><i class="fa fa-facebook"></i> <span>Facebook</span></a></div>
+                    <div class="col-xs-6"><a class="loginBtn loginBtn--google" onclick="gmlogin()"><i class="fa fa-google-plus"></i> <span>Google+</span></a></div>
+                </div>
+                <div class="clear"></div>
+            </div>
             <div id="login-status" class="info-notice" style="display: none;margin-bottom: 20px">
                 <div class="content-wrapper">
                     <div id="login-detail">
@@ -206,27 +213,27 @@
             </div>
             <form action="ajaxlogin" id="lg-form">
                 <div class="modal-body">
-                <form class="form inputs-underline">
-                    <div class="form-group">
-                        <label for="username">{LANG_USERNAME} / {LANG_EMAIL}</label>
-                        <input type="email" class="form-control" id="username" placeholder="{LANG_USERNAME} / {LANG_EMAIL}">
-                    </div>
-                    <!--end form-group-->
-                    <div class="form-group">
-                        <label for="password">{LANG_PASSWORD}</label>
-                        <input type="password" class="form-control" id="password" placeholder="{LANG_PASSWORD}">
-                    </div>
-                    <div class="form-group center">
-                        <button id="login" type="button" class="btn btn-primary width-100">{LANG_LOGIN}</button>
-                    </div>
-                    <!--end form-group-->
-                </form>
+                    <form class="form inputs-underline">
+                        <div class="form-group">
+                            <label for="username">{LANG_USERNAME} / {LANG_EMAIL}</label>
+                            <input type="email" class="form-control" id="username" placeholder="{LANG_USERNAME} / {LANG_EMAIL}">
+                        </div>
+                        <!--end form-group-->
+                        <div class="form-group">
+                            <label for="password">{LANG_PASSWORD}</label>
+                            <input type="password" class="form-control" id="password" placeholder="{LANG_PASSWORD}">
+                        </div>
+                        <div class="form-group center">
+                            <button id="login" type="button" class="btn btn-primary width-100">{LANG_LOGIN}</button>
+                        </div>
+                        <!--end form-group-->
+                    </form>
 
-                <hr>
+                    <hr>
 
-                <a href="{LINK_LOGIN}?fstart=1">{LANG_FORGOTPASS}?</a>
-                <!--end form-->
-            </div>
+                    <a href="{LINK_LOGIN}?fstart=1">{LANG_FORGOTPASS}?</a>
+                    <!--end form-->
+                </div>
                 <!--end modal-body-->
             </form>
         </div>
@@ -325,8 +332,8 @@
                                 <li><a href="{LINK_PROFILE}/{USERNAME}" class="waves-effect"> <i class="fa fa-user"></i>Meu Perfil</a></li>
                                 <li><a href="{LINK_POST-AD}" class="waves-effect"> <i class="fa fa-plus-circle"></i>{LANG_POST_FREE_AD}</a></li>
                                 <li><a href="{LINK_MYADS}" class="waves-effect"> <i class="fa fa-building"></i>Meus Anúncios</a></li>
-                                <li><a href="{LINK_FAVADS}" class="waves-effect"> <i class="fa fa-heart"></i>Anúncios Favoritos</a></li>
-                                <li><a href="{LINK_PENDINGADS}" class="waves-effect"> <i class="fa fa-clock-o"></i>Pendentes Pendentes</a></li>
+                                <!--<li><a href="{LINK_FAVADS}" class="waves-effect"> <i class="fa fa-heart"></i>Anúncios Favoritos</a></li>-->
+                               <!-- <li><a href="{LINK_PENDINGADS}" class="waves-effect"> <i class="fa fa-clock-o"></i>Pendentes Pendentes</a></li> -->
                                 <li><a href="{LINK_LOGOUT}" class="waves-effect"> <i class="fa fa-sign-out"></i>{LANG_LOGOUT}</a></li>
                             </ul>
                         </div>

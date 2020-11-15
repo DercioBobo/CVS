@@ -24,7 +24,7 @@ if (checkloggedin()) {
     if(!$config['non_active_allow']){
         $user_data = get_user_data(null,$_SESSION['user']['id']);
         if($user_data['status'] == 0){
-            message($lang['NOTIFY'],$lang['EMAIL_VERIFY_MSG']);
+            message($lang['NOTIFY'],$lang['ACCOUNT_VERIFICATION_MSG']);
             exit();
         }
     }

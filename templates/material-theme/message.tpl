@@ -5,9 +5,12 @@
         <div class="middle-dabba">
             <h1>{HEADING}!</h1>
             <p>{MESSAGE}</p>
+
             <p id="stylish" class="plan1">
             <button onClick="window.location.href='javascript:history.back();'" class="btn btn-primary waves-effect">{LANG_BACK}</button>
-
+                IF("{MESSAGE}" == "{LANG_ACCOUNT_VERIFICATION_MSG}"){
+                <a href="{LINK_ACCOUNT_VERIFICATION}"  class="btn btn-primary btn-xs link">{LANG_ACCOUNT_VERIFICATION}</a>
+                {:IF}
             </p>
         </div>
     </div>

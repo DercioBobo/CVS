@@ -341,7 +341,7 @@
                             <div class="PagePostProject-logo">
                                 <!-- LOGO HERE -->
                                 <a href="{LINK_INDEX}">
-                                    <img class="img-responsive" src="{SITE_URL}storage/logo/{SITE_LOGO}" alt="Logo">
+                                    <img class="img-responsive" width="150" src="{SITE_URL}storage/logo/{SITE_LOGO}" alt="Logo">
                                 </a>
                                 IF("{COUNTRY_TYPE}"=="multi"){
                                 <button class="flag-menu country-flag btn btn-default" id="#selectCountry" data-toggle="modal" data-target="#selectCountry" style="margin-left: 20px">

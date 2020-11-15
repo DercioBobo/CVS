@@ -114,9 +114,9 @@
                                         <div class="input-group inputs-underline min-width-150px select_boladas">
                                             <select class="meterialselect" name="filter" onchange="this.form.submit()">
                                                 <option value="">Todos</option>
-                                                <option value="free" IF("{FILTER}"=="free"){ selected {:IF} >{LANG_FREE_ADS}</option>
+                                                <option value="free" IF("{FILTER}"=="free"){ selected {:IF} >Anúncios Normais</option>
                                               <!--  <option value="urgent" IF("{FILTER}"=="urgent"){ selected {:IF} >{LANG_URGENT_ADS}</option> -->
-                                                <option value="featured" IF("{FILTER}"=="featured"){ selected {:IF} >Anúncios Verificados</option>
+                                                <option value="premium" IF("{FILTER}"=="premium"){ selected {:IF} >Anúncios Premium</option>
                                            <!--     <option value="highlight" IF("{FILTER}"=="highlight"){ selected {:IF} >{LANG_HIGHLIGHT_ADS}</option> -->
                                             </select>
                                         </div>
