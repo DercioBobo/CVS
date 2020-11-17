@@ -299,6 +299,10 @@ Author: zeunix
 	width: 100%;
 }
 
+.fullw{
+	width: max-content !important;
+}
+
 /* Layout footer */
 .app-layout-footer {
 	background-color: #fff;

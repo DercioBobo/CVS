@@ -180,6 +180,11 @@
                                 </div>
 
                                 <div class="form-row" id="mpesa" hidden>
+                                    <div class="form-row margin-top-20" >
+                                        <div class="alert alert-info text-left">
+                                            <p>Introduza o seu número de telefone de Mpesa e receberas uma solicitação para realizar pagamento. Será cobrado uma um valor de 200 Mts para realizar a verificação.</p>
+                                        </div>
+                                    </div>
 
                                     <div class="form-group col-md-12">
                                         <input type="number" class="form-control" id="mpesa_numero"
@@ -196,8 +201,8 @@
                                         <p>Os Documentos e comprovativos de pagamentos podem ser enviados também
                                             por:</p>
                                         <ul>
-                                            <li>email: info@csv.co.mz</li>
-                                            <li> Whatsapp: 846872773</li>
+                                            <li>email: compras_vendas_servicos@cvs.co.mz</li>
+                                            <li> Whatsapp: 82 524 6055</li>
                                         </ul>
 
                                     </div>

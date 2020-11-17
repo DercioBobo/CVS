@@ -254,15 +254,17 @@
             </div>
             <!--end section-title-->
         </div>
+
         <div class="gallery featured container">
-            <div class="owl-carousel" data-owl-items="4" data-owl-loop="0" data-owl-auto-width="1" data-owl-nav="1" data-owl-dots="1" data-owl-nav-container="#premium-nav">
+
+
+
+            <div class="owl-carousel" data-owl-items="4" data-owl-loop="1" data-owl-auto-width="1" data-owl-nav="1" data-owl-dots="1" data-owl-nav-container="#premium-nav">
                 {LOOP: ITEM}
                     <div class="ribbon-pad">
                         <div class="item mar-left-zero" data-id="1">
                             <div class="premium">
-                                IF("{ITEM.featured}"=="1"){ <span class="listing-box-premium featured">{LANG_FEATURED}</span> {:IF}
-                                IF("{ITEM.urgent}"=="1"){ <span class="listing-box-premium urgent">{LANG_URGENT}</span> {:IF}
-                                IF("{ITEM.highlight}"=="1"){ <span class="listing-box-premium highlight">{LANG_HIGHLIGHT}</span> {:IF}
+                                IF("{ITEM.featured}"=="1" || "{ITEM.urgent}"=="1" || "{ITEM.highlight}"=="1"){ <span class="listing-box-premium urgent">Destaque</span> {:IF}
 
                             </div>
                             <div class="ad-listing">
@@ -327,6 +329,8 @@
     <!--end block-->
 
 
+
+
     <section class="block background-is-dark" style="background: #f5f5f5;">
         <div class="container">
             <div class="section-title vertical-aligned-elements">
@@ -343,9 +347,8 @@
                     <div class="ribbon-pad">
                         <div class="item mar-left-zero" data-id="1">
                             <div class="premium">
-                                IF("{ITEM2.featured}"=="1"){ <span class="listing-box-premium featured">{LANG_FEATURED}</span> {:IF}
-                                IF("{ITEM2.urgent}"=="1"){ <span class="listing-box-premium urgent">{LANG_URGENT}</span> {:IF}
-                                IF("{ITEM2.highlight}"=="1"){ <span class="listing-box-premium highlight">{LANG_HIGHLIGHT}</span> {:IF}
+                                IF("{ITEM2.featured}"=="1" || "{ITEM2.urgent}"=="1" || "{ITEM2.highlight}"=="1"){ <span class="listing-box-premium urgent">Destaque</span> {:IF}
+
 
                             </div>
                             <div class="ad-listing">
@@ -408,6 +411,7 @@
     </section>
     <!--end block-->
 </div>
+
 
 
 {OVERALL_FOOTER}

@@ -73,6 +73,9 @@
                                                         class="fa  fa-check-circle-o"></i> {LANG_ACCOUNT_VERIFICATION}
                                             </a></li>
                                         {:IF}
+                                        <li><a href="{LINK_TRANSACTION}" class="waves-effect"><i
+                                                        class="fa fa-money"></i> {LANG_TRANSACTION}</a></li>
+
                                         <li><a href="{LINK_ACCOUNT_SETTING}" class="waves-effect"><i
                                                         class="fa fa-cog"></i> {LANG_ACCOUNT_SETTING}</a></li>
                                         <li><a href="{LINK_LOGOUT}" class="waves-effect"><i

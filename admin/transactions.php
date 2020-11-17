@@ -9,7 +9,7 @@ require_once('includes.php');
     <!-- Page Content -->
     <div class="container-fluid p-y-md">
         <!-- Partial Table -->
-        <div class="card">
+        <div class="card fullw">
             <div class="card-header">
                 <h4>Transactions</h4>
             </div>

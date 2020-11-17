@@ -115,16 +115,16 @@
                                             </td>
                                             <td class="price-td width-16-per">
                                                 <div>
-                                                    IF("{STATUS}"=="0"){ <span
+                                                    IF("{USERSTATUS}"=="0"){ <span
                                                             class="label label-warning">{LANG_PENDING}</span>{:IF}
-                                                    IF("{STATUS}"=="1"){ <span
+                                                    IF("{USERSTATUS}"=="1"){ <span
                                                             class="label label-success">{LANG_APPROVED}</span> {:IF}
-                                                    IF("{status}"=="rejected"){ <span
+                                                    IF("{USERSTATUS}"=="rejected"){ <span
                                                             class="label label-danger">{ITEM.status}</span> {:IF}
                                                 </div>
                                             </td>
                                             <td class="price-td width-16-per">
-                                                500Mt
+                                                {AMOUNT}
 
                                             </td>
 
@@ -159,17 +159,6 @@
                                     </tr>
                                     </tbody>
                                 </table>
-                                <!-- Pagination -->
-                                <div class="mt30 clearfix">
-                                    <ul class="pagination pull-right">
-                                        {LOOP: PAGES}
-                                            IF("{PAGES.current}"=="0"){
-                                            <li><a href="{PAGES.link}">{PAGES.title}</a> </li>{:IF}
-                                            IF("{PAGES.current}"=="1"){
-                                            <li class="active"> <a>{PAGES.title}</a> </li>{:IF}
-                                        {/LOOP: PAGES}
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                     </section>

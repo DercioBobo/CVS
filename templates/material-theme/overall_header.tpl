@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="{LANG_CODE}" dir="{LANGUAGE_DIRECTION}">
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DC61TMFCS8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-DC61TMFCS8');
+    </script>
     <title>
         IF("{PAGE_TITLE}"!=""){
         {PAGE_TITLE} -
@@ -44,6 +53,7 @@
         }
         .highlight-premium-ad{ background: #ffedc0 !important;}
     </style>
+
     <script>
         var themecolor = '{THEME_COLOR}';
         var mapcolor = '{MAP_COLOR}';

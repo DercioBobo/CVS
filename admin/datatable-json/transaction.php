@@ -125,7 +125,8 @@ foreach ($queryRecords as $row) {
     $row3 = '<td>'.$config['currency_sign'].' '.$amount.'</td>';
     $row4 = '<td>'.$premium.'</td>';
     $row5 = '<td>'.$status.'</td>';
-    $row6 = '<td>'.$payment_method.'</td>';
+//    $row6 = '<td>'.$payment_method.'</td>';
+    $row6 = '<td>'.'Mpesa'.'</td>';
     $row7 = '<td>'.$transaction_time.'</td>';
     $row8 = '<td>'.$msisdn.'</td>';
     $row9 = '<td>'.$mp_transaction_id.'</td>';
