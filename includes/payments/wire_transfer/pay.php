@@ -36,7 +36,11 @@ if (isset($_SESSION['quickad'][$access_token]['payment_type'])) {
                 transaction_ip = '" . encode_ip($_SERVER, $_ENV) . "',
                 transaction_time = '" . time() . "',
                 transaction_description = '" . validate_input($trans_desc) . "',
-                transaction_method = 'Subscription'
+                transaction_method = 'Subscription',
+                    msisdn = '" . $_SESSION['mp_numero'] . "',
+                mp_transaction_id = '" . $_SESSION['mp_transactionID'] . "',
+                mp_conversation_id = '" . $_SESSION['mp_conversationID'] . "',
+                mp_response_desc = '" . $_SESSION['mp_respondeDesc'] . "'
                 ";
         } else {
 
@@ -51,7 +55,7 @@ if (isset($_SESSION['quickad'][$access_token]['payment_type'])) {
                     product_name = '" . validate_input($title) . "',
                     product_id = '$item_pro_id',
                     seller_id = '" . $user_id . "',
-                    status = 'pending',
+                    status = 'success',
                     amount = '$amount',
                     featured = '$item_featured',
                     urgent = '$item_urgent',
@@ -60,7 +64,11 @@ if (isset($_SESSION['quickad'][$access_token]['payment_type'])) {
                     transaction_ip = '" . encode_ip($_SERVER, $_ENV) . "',
                     transaction_time = '" . time() . "',
                     transaction_description = '" . validate_input($trans_desc) . "',
-                    transaction_method = 'Premium Ad'
+                    transaction_method = 'Premium Ad',
+                    msisdn = '" . $_SESSION['mp_numero'] . "',
+                mp_transaction_id = '" . $_SESSION['mp_transactionID'] . "',
+                mp_conversation_id = '" . $_SESSION['mp_conversationID'] . "',
+                mp_response_desc = '" . $_SESSION['mp_respondeDesc'] . "'
                     ";
 
         }

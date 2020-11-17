@@ -23,6 +23,15 @@ $button = "<button type='submit' name='Submit' class='btn btn-primary margin-top
 
 $result = json_decode($result, TRUE);
 
+if(strcmp($result["output_ResponseCode"],'INS-0')==0){
+
+    $_SESSION["mp_numero"] = '258'.$numero;
+    $_SESSION["mp_transactionID"] = $result["output_TransactionID"];
+    $_SESSION["mp_conversationID"] = $result["output_ConversationID"];
+    $_SESSION["mp_respondeDesc"] = $result["output_ResponseDesc"];
+
+}
+
 $result ["botao"] = $button;
 
 echo json_encode($result);

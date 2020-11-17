@@ -30,6 +30,10 @@ require_once('includes.php');
                             <th class="sortingNone">Status</th>
                             <th class="sortingNone">Pay Method</th>
                             <th class="sortingNone">Time</th>
+                            <th class="sortingNone">MSISDN</th>
+                            <th class="sortingNone">Transaction ID</th>
+                            <th class="sortingNone">Conversation ID</th>
+                            <th class="sortingNone">Response Desc.</th>
                             <th>Action</th>
                         </tr>
                         </thead>

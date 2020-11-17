@@ -19,7 +19,11 @@ $columns = array(
     4 =>'featured',
     5 =>'transaction_gatway',
     6 =>'status',
-    7 =>'transaction_time'
+    7 =>'transaction_time',
+    8 =>'msisdn',
+    9 =>'mp_transaction_id',
+    10 =>'mp_conversation_id',
+    11 =>'mp_response_desc',
 );
 
 $where = $sqlTot = $sqlRec = "";
@@ -66,6 +70,12 @@ foreach ($queryRecords as $row) {
     $highlight = $row['highlight'];
     $t_status = $row['status'];
     $transaction_time = date('d M Y', $row['transaction_time']);
+
+    $msisdn = $row['msisdn'];
+    $mp_transaction_id = $row['mp_transaction_id'];
+    $mp_conversation_id = $row['mp_conversation_id'];
+    $mp_response = $row['mp_response_desc'];
+
     $tans_link = '';
     $premium = '';
     if($row['transaction_method'] == 'Subscription'){
@@ -117,7 +127,11 @@ foreach ($queryRecords as $row) {
     $row5 = '<td>'.$status.'</td>';
     $row6 = '<td>'.$payment_method.'</td>';
     $row7 = '<td>'.$transaction_time.'</td>';
-    $row8 = '<td class="text-center">
+    $row8 = '<td>'.$msisdn.'</td>';
+    $row9 = '<td>'.$mp_transaction_id.'</td>';
+    $row10 = '<td>'.$mp_conversation_id.'</td>';
+    $row11 = '<td>'.$mp_response.'</td>';
+    $row12 = '<td class="text-center">
                 <div class="btn-group">
                     <a href="#" data-url="panel/transaction_edit.php?id='.$id.'" data-toggle="slidePanel" class="btn btn-xs btn-default"> <i class="ion-edit"></i> Edit</a>
                     <a href="javacript:void(0)" class="btn btn-xs btn-danger item-js-delete" data-ajax-action="deleteTransaction"> <i class="ion-close"></i></a>
@@ -134,7 +148,11 @@ foreach ($queryRecords as $row) {
         5 => $row5,
         6 => $row6,
         7 => $row7,
-        8 => $row8
+        8 => $row8,
+        9 => $row9,
+        10 => $row10,
+        11 => $row11,
+        12 => $row12
     );
     $data[] = $value;
 }

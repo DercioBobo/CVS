@@ -449,14 +449,15 @@
                 },
                 success: function (response) {
 
+                    console.log(response);
 
                     var result = JSON.parse(response);
 
                     if(result.output_ResponseCode === 'INS-10'){
 
                         swal({
-                            title: "Duplicate Transaction!",
-                            text: "Can't proceed with the request!",
+                            title: "Transação duplicada!",
+                            text: "Não foi possível prosseguir!",
                             icon: "error",
                             button: "Ok!"
                         });
@@ -464,8 +465,8 @@
                     }else if(result.output_ResponseCode === 'INS-0'){
 
                         swal({
-                            title: "Request processed successfully!",
-                            text: "Transaction ID: "+ result.output_TransactionID,
+                            title: "Transação concluída com sucesso!",
+                            text: "Transação ID: "+ result.output_TransactionID,
                             icon: "success",
                             button: "Ok!"
                         }, function(){
@@ -480,8 +481,8 @@
                     }else{
 
                         swal({
-                            title: "Error!",
-                            text: "Unsuccessful request!",
+                            title: "Erro!",
+                            text: "Transação terminada sem sucesso!",
                             icon: "error",
                             button: "Ok!"
                         }, function () {
