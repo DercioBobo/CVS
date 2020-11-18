@@ -248,7 +248,7 @@
         <div class="container">
             <div class="section-title vertical-aligned-elements">
                 <div class="element text-align-right">
-                    <h2 class="invisible-on-mobile pull-left featured-ads-label">{LANG_PREMIUM_ADS}</h2>
+                    <h2 class="invisible-on-mobile pull-left featured-ads-label">{LANG_HIGHLIGHT_ADS}</h2>
                     <div id="premium-nav" class="gallery-nav"></div>
                 </div>
             </div>
@@ -321,7 +321,7 @@
 
         <div class="row">
             <div class="col-xs-12 text-center">
-                <a href="{LINK_LISTING}?filter=premium" class="btn  btn-info btn-rounded"><span>  Ver Mais Anúncios Premium <i class="fa fa-arrow-circle-o-right"></i></span></a>
+                <a href="{LINK_LISTING}?filter=premium" class="btn  btn-info btn-rounded"><span>  {LANG_HIGHLIGHT_ADS_MORE} <i class="fa fa-arrow-circle-o-right"></i></span></a>
             </div>
         </div>
         <!--end background-wrapper-->

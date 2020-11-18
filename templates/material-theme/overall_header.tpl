@@ -159,42 +159,6 @@
     </div>
 </div>
 
-<div class="modal" id="precos">
-    <i class="loading-icon fa fa-circle-o-notch fa-spin"></i>
-    <div class="modal-dialog " role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <div class="section-title">
-                    <h2>Passos Para Ser Tornar-se Vendedor Verificado</h2>
-                </div>
-            </div>
-            <div class="modal-body">
-            <div class="row">
-
-                <div class="col-md-6">
-                    <ul class="list-group">
-                        <li class="list-group-item active">Individual</li>
-                        <li class="list-group-item">Scan do B.I Frente e Verso</li>
-                        <li class="list-group-item">Pagamento de 200 Mt Válido por 6 Meses</li>
-                    </ul>
-                </div>
-
-                <div class="col-md-6">
-                    <ul class="list-group">
-                        <li class="list-group-item active">Empresas / Lojas</li>
-                        <li class="list-group-item">Scan do B.I do dono Frente e Verso</li>
-                        <li class="list-group-item">Licença comercial / alvará</li>
-                        <li class="list-group-item">Pagamento de 250 Mt Válido por 6 Meses</li>
-                    </ul>
-                </div>
-            </div>
-            </div>
-        </div>
-        <!--end modal-content-->
-    </div>
-    <!--end modal-dialog-->
-</div>
 
 <div class="modal" id="loginPopUp">
     <i class="loading-icon fa fa-circle-o-notch fa-spin"></i>

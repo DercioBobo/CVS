@@ -25,7 +25,7 @@
         <section class="block">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3 col-sm-3">
+                    <div class="col-md-4 col-sm-6">
                         <h3>{LANG_CONTACT_INFORMATION}</h3>
                         <div class="box">
                             <address>
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <!--end col-md-3-->
-                    <div class="col-md-9 col-sm-9">
+                    <div class="col-md-8 col-sm-6">
                         <h3>{LANG_ENQUIRY_FORM}</h3>
                         <form method="post">
                             <div class="row">

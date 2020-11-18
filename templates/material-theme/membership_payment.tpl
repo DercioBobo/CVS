@@ -276,8 +276,8 @@
                                                     <tbody>
                                                     <tr>
                                                         <td>
-                                                            <h5 class="PaymentMethod-heading">Detalhes do M-Pesa</h5>
-                                                            <span class="PaymentMethod-info">{BANK_INFO}</span>
+                                                            <h5 class="PaymentMethod-heading">Detalhes de Pagamento M-Pesa</h5>
+                                                            <span class="PaymentMethod-info">{BANK_INFO}</span>-->
                                                         </td>
                                                     </tr>
                                                     <tr>

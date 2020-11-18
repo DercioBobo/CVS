@@ -267,7 +267,7 @@
                                     <div class="payment-tab">
                                         <div class="payment-tab-trigger">
                                             <input name="payment_method_id" class="payment_method_id" id="{PAYMENT_TYPES.folder}" type="radio" value="{PAYMENT_TYPES.id}" data-name="offlinepayment">
-                                            <label for="{PAYMENT_TYPES.folder}">M-Pesa / Conta Movel</label>
+                                            <label for="{PAYMENT_TYPES.folder}">M-Pesa</label>
                                             <img class="payment-logo {PAYMENT_TYPES.folder}" src="{SITE_URL}includes/payments/{PAYMENT_TYPES.folder}/logo/mpesa.png" alt="">
                                         </div>
 

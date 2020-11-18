@@ -1197,7 +1197,7 @@ function transfer($url,$msg,$page_title=''){
 	echo "<td width=\"100%\" align=\"center\" id=alt1>\n";
 	echo $msg . "<br><br>\n";
 	echo "<div><img src=\"" . $config['site_url'] . "loading.gif\"/></div><br><br>\n";
-	echo "(<a href='" . $url . "'>Or click here if you do not wish to wait</a>)</td>\n";
+	echo "(<a href='" . $url . "'>Ou clique aqui se não deseja espera</a>)</td>\n";
 	echo "</tr>\n";
 	echo "</table>\n";
 	echo "</td>\n";

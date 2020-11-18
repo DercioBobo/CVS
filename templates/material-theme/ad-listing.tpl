@@ -9,7 +9,8 @@
         </ol>
         <div class="row">
             <div class="col-xs-12 text-right">
-            <a href="{LINK_POST-AD}" class="postadinner"><span> <i class="fa fa-plus-circle"></i> {LANG_POST_AD}</span></a>
+                <a href="{LINK_POST-AD}" class="postadinner"><span> <i
+                                class="fa fa-plus-circle"></i> {LANG_POST_AD}</span></a>
             </div>
         </div>
         <form method="get" name="locationForm" id="LocationForm">
@@ -37,7 +38,7 @@
                                 <select name="cat" class="meterialselect">
                                     <option value="">{LANG_ALL_CATEGORIES}</option>
                                     {LOOP: CATEGORY}
-                                    <option value="{CATEGORY.id}" {CATEGORY.selected}>{CATEGORY.name}</option>
+                                        <option value="{CATEGORY.id}" {CATEGORY.selected}>{CATEGORY.name}</option>
                                     {/LOOP: CATEGORY}
                                 </select>
                             </div>
@@ -60,7 +61,8 @@
 
 
                             <div class="input-field">
-                                <button type="submit" name="Submit" class="btn btn-primary pull-right">{LANG_SEARCH_NOW}<i class="fa fa-search"></i></button>
+                                <button type="submit" name="Submit" class="btn btn-primary pull-right">{LANG_SEARCH_NOW}
+                                    <i class="fa fa-search"></i></button>
                             </div>
                             <!--end input-field-->
                         </section>
@@ -70,58 +72,77 @@
                 <!--end col-md-3-->
                 <div class="col-md-9 col-sm-9">
                     <section>
-                      <!--  <h2>{LANG_MY_LISTINGS}</h2> -->
+                        <!--  <h2>{LANG_MY_LISTINGS}</h2> -->
                         <section>
                             <form action="#" id="filterForm" method="get">
                                 <div class="search-results-controls clearfix">
                                     <div class="pull-left">
-                                        <span id="grid" class="circle-icon cursor-point active"><i class="fa fa-th icon-white"></i></span>
-                                        <span id="list" class="circle-icon cursor-point"><i class="fa fa-bars"></i></span>
+                                        <span id="grid" class="circle-icon cursor-point active"><i
+                                                    class="fa fa-th icon-white"></i></span>
+                                        <span id="list" class="circle-icon cursor-point"><i
+                                                    class="fa fa-bars"></i></span>
                                     </div>
                                     <input type="hidden" name="subcat" value="{SUBCAT}">
                                     <!--end left-->
-                                    <div class="pull-right">
-                                        <div class="input-group inputs-underline min-width-150px select_boladas" >
+                                    <div class="sort-drop pull-right">
+                                        <div class="pull-right mar-right-20">
+                                            <div class="input-group inputs-underline min-width-150px select_boladas">
 
-                                            <select class="meterialselect" name="limit" onchange="this.form.submit()">
-                                                <option value="6">{LANG_LIMIT_ORDER}</option>
-                                                <option value="10" IF("{LIMIT}"=="10"){ selected {:IF} >10</option>
-                                                <option value="15" IF("{LIMIT}"=="15"){ selected {:IF} >15</option>
-                                                <option value="20" IF("{LIMIT}"=="20"){ selected {:IF} >20</option>
-                                                <option value="25" IF("{LIMIT}"=="25"){ selected {:IF} >25</option>
-                                                <option value="30" IF("{LIMIT}"=="30"){ selected {:IF} >30</option>
-                                            </select>
+                                                <select class="meterialselect" name="limit"
+                                                        onchange="this.form.submit()">
+                                                    <option value="6">{LANG_LIMIT_ORDER}</option>
+                                                    <option value="10" IF(
+                                                    "{LIMIT}"=="10"){ selected {:IF} >10</option>
+                                                    <option value="15" IF(
+                                                    "{LIMIT}"=="15"){ selected {:IF} >15</option>
+                                                    <option value="20" IF(
+                                                    "{LIMIT}"=="20"){ selected {:IF} >20</option>
+                                                    <option value="25" IF(
+                                                    "{LIMIT}"=="25"){ selected {:IF} >25</option>
+                                                    <option value="30" IF(
+                                                    "{LIMIT}"=="30"){ selected {:IF} >30</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!--end right-->
-                                    <div class="pull-right mar-right-20">
-                                        <div class="input-group inputs-underline min-width-150px select_boladas">
-                                            <select class="meterialselect" name="sort" onchange="this.form.submit()">
-                                                <option value="">{LANG_SORT_BY}</option>
-                                                <option value="title" IF("{SORT}"=="title"){ selected {:IF} >{LANG_NAME} </option>
-                                                <option value="price" IF("{SORT}"=="price"){ selected {:IF} >{LANG_PRICE} </option>
-                                                <option value="date" IF("{SORT}"=="date"){ selected {:IF} >{LANG_DATE} </option>
-                                            </select>
+                                        <!--end right-->
+                                        <div class="pull-right mar-right-20">
+                                            <div class="input-group inputs-underline min-width-150px select_boladas">
+                                                <select class="meterialselect" name="sort"
+                                                        onchange="this.form.submit()">
+                                                    <option value="">{LANG_SORT_BY}</option>
+                                                    <option value="title" IF(
+                                                    "{SORT}"=="title"){ selected {:IF} >{LANG_NAME} </option>
+                                                    <option value="price" IF(
+                                                    "{SORT}"=="price"){ selected {:IF} >{LANG_PRICE} </option>
+                                                    <option value="date" IF(
+                                                    "{SORT}"=="date"){ selected {:IF} >{LANG_DATE} </option>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    IF("{POST_PREMIUM_LISTING}"=="0"){
-                                    <style>
-                                        #premium_filter{ display: none !important;}
-                                    </style>
-                                    {:IF}
-                                    <!--end right-->
-                                    <div class="pull-right mar-right-20" id="premium_filter">
-                                        <div class="input-group inputs-underline min-width-150px select_boladas">
-                                            <select class="meterialselect" name="filter" onchange="this.form.submit()">
-                                                <option value="">Todos</option>
-                                                <option value="free" IF("{FILTER}"=="free"){ selected {:IF} >Anúncios Normais</option>
-                                              <!--  <option value="urgent" IF("{FILTER}"=="urgent"){ selected {:IF} >{LANG_URGENT_ADS}</option> -->
-                                                <option value="premium" IF("{FILTER}"=="premium"){ selected {:IF} >Anúncios Premium</option>
-                                           <!--     <option value="highlight" IF("{FILTER}"=="highlight"){ selected {:IF} >{LANG_HIGHLIGHT_ADS}</option> -->
-                                            </select>
+                                        IF("{POST_PREMIUM_LISTING}"=="0"){
+                                        <style>
+                                            #premium_filter {
+                                                display: none !important;
+                                            }
+                                        </style>
+                                        {:IF}
+                                        <!--end right-->
+                                        <div class="pull-right mar-right-20" id="premium_filter">
+                                            <div class="input-group inputs-underline min-width-150px select_boladas">
+                                                <select class="meterialselect" name="filter"
+                                                        onchange="this.form.submit()">
+                                                    <option value="">Todos</option>
+                                                    <option value="free" IF(
+                                                    "{FILTER}"=="free"){ selected {:IF} >Anúncios Normais</option>
+                                                    <!--  <option value="urgent" IF("{FILTER}"=="urgent"){ selected {:IF} >{LANG_URGENT_ADS}</option> -->
+                                                    <option value="premium" IF(
+                                                    "{FILTER}"=="premium"){ selected {:IF} >Anúncios Premium</option>
+                                                    <!--     <option value="highlight" IF("{FILTER}"=="highlight"){ selected {:IF} >{LANG_HIGHLIGHT_ADS}</option> -->
+                                                </select>
+                                            </div>
                                         </div>
+                                        <!--end right-->
                                     </div>
-                                    <!--end right-->
                                 </div>
                                 <!--end search-results-controls-->
                             </form>
@@ -134,7 +155,8 @@
                                         <ul>
                                             {LOOP: SUBCATLIST}
                                                 <li class="alert alert-dismissable fade in">
-                                                    <a href="{SUBCATLIST.link}"><span class="count"> {SUBCATLIST.name} ({SUBCATLIST.adcount})</span></a>
+                                                    <a href="{SUBCATLIST.link}"><span
+                                                                class="count"> {SUBCATLIST.name} ({SUBCATLIST.adcount})</span></a>
                                                 </li>
                                             {/LOOP: SUBCATLIST}
 
@@ -149,57 +171,69 @@
                                 <div class="searchresult grid hideresult" style="display: none;">
                                     <div class="row">
                                         {LOOP: ITEM}
-                                        <div class="col-md-4 col-sm-4">
-                                            <div class="item" data-id="{ITEM.id}">
-                                                <div class="premium">
-                                                    IF("{ITEM.featured}"=="1"){ <span class="listing-box-premium featured">{LANG_FEATURED}</span> {:IF}
-                                                    IF("{ITEM.urgent}"=="1"){ <span class="listing-box-premium urgent">{LANG_URGENT}</span> {:IF}
-                                                    IF("{ITEM.highlight}"=="1"){ <span class="listing-box-premium highlight">{LANG_HIGHLIGHT}</span> {:IF}
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="item" data-id="{ITEM.id}">
+                                                    <div class="premium">
+                                                        IF("{ITEM.featured}"=="1" || "{ITEM.urgent}"=="1" ||
+                                                        "{ITEM.highlight}"=="1"){ <span
+                                                                class="listing-box-premium urgent">Destaque</span> {:IF}
 
-                                                </div>
-                                                <div class="ad-listing">
-                                                    <div class="description">
-
-                                                        <a href="{ITEM.catlink}"><div class="label label-default">{ITEM.category}</div></a>
-
-                                                        <h3 title="{ITEM.product_name}">
-                                                            <a href="{ITEM.link}">{ITEM.product_name}</a>
-                                                            IF("{ITEM.sub_image}"!=""){
-                                                            <img src="{ITEM.sub_image}" width="24px" alt="{ITEM.sub_title}" title="{ITEM.sub_title}"/>
-                                                            {:IF}
-                                                        </h3>
-                                                        <h4>{ITEM.location}</h4>
                                                     </div>
-                                                    <!--end description-->
-                                                    <a class="image bg-transfer" href="{ITEM.link}">
-                                                        <img src="{SITE_URL}storage/products/thumb/{ITEM.picture}">
-                                                    </a>
-                                                    <!--end image-->
-                                                </div>
-                                                <div class="additional-info {ITEM.highlight_bg}">
-                                                    <ul class="icondetail">
-                                                        <li><i class="fa fa-th-list"></i> {LANG_SUB_CATEGORY} :
-                                                            <a title="{ITEM.sub_category}" href="{ITEM.subcatlink}">{ITEM.sub_category}</a>
-                                                        </li>
-                                                        <li><i class="fa fa-map-marker"></i> {LANG_LOCATION} : {ITEM.city}, {ITEM.country}</li>
-                                                        <li><i class="fa fa-calendar"></i> {LANG_POSTED_ON} : {ITEM.created_at}</li>
-                                                        <li><i class="fa fa-user"></i> {LANG_POSTED_BY} : <a href="{ITEM.author_link}" target="_blank">{ITEM.username}</a>
-                                                            IF("{ITEM.user_status}"=="1"){
-                                                            <img data-toggle="tooltip" data-placement="top" title="Vendedor Verificado pela CVS" class="img-check" src="{SITE_URL}templates/{TPL_NAME}/img/check.svg">
-                                                            {:IF}
-                                                        </li>
-                                                    </ul>
+                                                    <div class="ad-listing">
+                                                        <div class="description">
 
-                                                    <div class="ad-footer-tags">
-                                                        IF("{ITEM.price}"!="0"){ <div class="price-tag">{ITEM.price}</div> {:IF}
+                                                            <a href="{ITEM.catlink}">
+                                                                <div class="label label-default">{ITEM.category}</div>
+                                                            </a>
+
+                                                            <h3 title="{ITEM.product_name}">
+                                                                <a href="{ITEM.link}">{ITEM.product_name}</a>
+                                                                IF("{ITEM.sub_image}"!=""){
+                                                                <img src="{ITEM.sub_image}" width="24px"
+                                                                     alt="{ITEM.sub_title}" title="{ITEM.sub_title}"/>
+                                                                {:IF}
+                                                            </h3>
+                                                            <h4>{ITEM.location}</h4>
+                                                        </div>
+                                                        <!--end description-->
+                                                        <a class="image bg-transfer" href="{ITEM.link}">
+                                                            <img src="{SITE_URL}storage/products/thumb/{ITEM.picture}">
+                                                        </a>
+                                                        <!--end image-->
                                                     </div>
-                                                    <!--end controls-more-->
+                                                    <div class="additional-info {ITEM.highlight_bg}">
+                                                        <ul class="icondetail">
+                                                            <li><i class="fa fa-th-list"></i> {LANG_SUB_CATEGORY} :
+                                                                <a title="{ITEM.sub_category}"
+                                                                   href="{ITEM.subcatlink}">{ITEM.sub_category}</a>
+                                                            </li>
+                                                            <li><i class="fa fa-map-marker"></i> {LANG_LOCATION}
+                                                                : {ITEM.city}, {ITEM.country}</li>
+                                                            <li><i class="fa fa-calendar"></i> {LANG_POSTED_ON}
+                                                                : {ITEM.created_at}</li>
+                                                            <li><i class="fa fa-user"></i> {LANG_POSTED_BY} : <a
+                                                                        href="{ITEM.author_link}"
+                                                                        target="_blank">{ITEM.username}</a>
+                                                                IF("{ITEM.user_status}"=="1"){
+                                                                <img data-toggle="tooltip" data-placement="top"
+                                                                     title="Vendedor Verificado pela CVS"
+                                                                     class="img-check"
+                                                                     src="{SITE_URL}templates/{TPL_NAME}/img/check.svg">
+                                                                {:IF}
+                                                            </li>
+                                                        </ul>
+
+                                                        <div class="ad-footer-tags">
+                                                            IF("{ITEM.price}"!="0"){
+                                                            <div class="price-tag">{ITEM.price}</div> {:IF}
+                                                        </div>
+                                                        <!--end controls-more-->
+                                                    </div>
+                                                    <!--end additional-info-->
                                                 </div>
-                                                <!--end additional-info-->
+                                                <!--end item-->
                                             </div>
-                                            <!--end item-->
-                                        </div>
-                                        <!--<end col-md-4-->
+                                            <!--<end col-md-4-->
                                         {/LOOP: ITEM}
                                     </div>
                                     <!--end row-->
@@ -207,53 +241,62 @@
                                 <div class="searchresult list hideresult" style="display: none;">
                                     <div class="row">
                                         {LOOP: ITEM2}
-                                        <div class="item item-row" data-id="{ITEM2.id}">
-                                            <div class="premium">
-                                                IF("{ITEM2.featured}"=="1"){ <span class="listing-box-premium featured">{LANG_FEATURED}</span> {:IF}
-                                                IF("{ITEM2.urgent}"=="1"){ <span class="listing-box-premium urgent">{LANG_URGENT}</span> {:IF}
-                                                IF("{ITEM2.highlight}"=="1"){ <span class="listing-box-premium highlight">{LANG_HIGHLIGHT}</span> {:IF}
+                                            <div class="item item-row" data-id="{ITEM2.id}">
+                                                <div class="premium">
+                                                    IF("{ITEM.featured}"=="1" || "{ITEM.urgent}"=="1" ||
+                                                    "{ITEM.highlight}"=="1"){ <span class="listing-box-premium urgent">Destaque</span> {:IF}
 
-                                            </div>
-                                            <div class="ad-listing">
-                                                <div class="image bg-transfer">
-
-                                                    <figure><a href="{ITEM2.catlink}"><div class="label-featured label label-default">{ITEM2.category}</div></a></figure>
-
-                                                    <img src="{SITE_URL}storage/products/thumb/{ITEM2.picture}" alt="{ITEM2.product_name}">
                                                 </div>
+                                                <div class="ad-listing">
+                                                    <div class="image bg-transfer">
 
-                                                <!--end image-->
+                                                        <figure><a href="{ITEM2.catlink}">
+                                                                <div class="label-featured label label-default">{ITEM2.category}</div>
+                                                            </a></figure>
 
-                                                <div class="description {ITEM2.highlight_bg}">
-                                                    <h3 title="{ITEM2.product_name}">
-                                                        <a href="{ITEM2.link}">{ITEM2.product_name}</a>
-                                                        IF("{ITEM2.sub_image}"!=""){
-                                                        <img src="{ITEM2.sub_image}" width="24px" alt="{ITEM2.sub_title}" title="{ITEM2.sub_title}"/>
-                                                        {:IF}
-                                                    </h3>
-                                                    <ul class="icondetail">
-                                                        <li><i class="fa fa-th-list"></i> {LANG_SUB_CATEGORY} :
-                                                            <a title="{ITEM2.sub_category}" href="{ITEM2.subcatlink}">{ITEM2.sub_category}</a>
-                                                        </li>
-                                                        <li><i class="fa fa-map-marker"></i> {LANG_LOCATION} : {ITEM2.city}, {ITEM2.country}</li>
-                                                        <li><i class="fa fa-calendar"></i> {LANG_POSTED_ON} : {ITEM2.created_at}</li>
-                                                        <li><i class="fa fa-user"></i> {LANG_POSTED_BY} : <a href="{ITEM2.author_link}" target="_blank">{ITEM2.username}</a></li>
-                                                    </ul>
-                                                    IF("{ITEM2.showtag}"=="1"){
-                                                    <ul class="tags">
-                                                        {ITEM2.tag}
-                                                    </ul>
-                                                    {:IF}
-                                                    <div class="ad-footer-tags">
-                                                        IF("{ITEM2.price}"!="0"){ <div class="price-tag">{ITEM2.price}</div> {:IF}
+                                                        <img src="{SITE_URL}storage/products/thumb/{ITEM2.picture}"
+                                                             alt="{ITEM2.product_name}">
                                                     </div>
+
+                                                    <!--end image-->
+
+                                                    <div class="description {ITEM2.highlight_bg}">
+                                                        <h3 title="{ITEM2.product_name}">
+                                                            <a href="{ITEM2.link}">{ITEM2.product_name}</a>
+                                                            IF("{ITEM2.sub_image}"!=""){
+                                                            <img src="{ITEM2.sub_image}" width="24px"
+                                                                 alt="{ITEM2.sub_title}" title="{ITEM2.sub_title}"/>
+                                                            {:IF}
+                                                        </h3>
+                                                        <ul class="icondetail">
+                                                            <li><i class="fa fa-th-list"></i> {LANG_SUB_CATEGORY} :
+                                                                <a title="{ITEM2.sub_category}"
+                                                                   href="{ITEM2.subcatlink}">{ITEM2.sub_category}</a>
+                                                            </li>
+                                                            <li><i class="fa fa-map-marker"></i> {LANG_LOCATION}
+                                                                : {ITEM2.city}, {ITEM2.country}</li>
+                                                            <li><i class="fa fa-calendar"></i> {LANG_POSTED_ON}
+                                                                : {ITEM2.created_at}</li>
+                                                            <li><i class="fa fa-user"></i> {LANG_POSTED_BY} : <a
+                                                                        href="{ITEM2.author_link}"
+                                                                        target="_blank">{ITEM2.username}</a></li>
+                                                        </ul>
+                                                        IF("{ITEM2.showtag}"=="1"){
+                                                        <ul class="tags">
+                                                            {ITEM2.tag}
+                                                        </ul>
+                                                        {:IF}
+                                                        <div class="ad-footer-tags">
+                                                            IF("{ITEM2.price}"!="0"){
+                                                            <div class="price-tag">{ITEM2.price}</div> {:IF}
+                                                        </div>
+                                                    </div>
+                                                    <!--end description-->
+
                                                 </div>
-                                                <!--end description-->
 
                                             </div>
-
-                                        </div>
-                                        <!--end item.row-->
+                                            <!--end item.row-->
                                         {/LOOP: ITEM2}
                                     </div>
                                 </div>
@@ -268,8 +311,10 @@
                             <div class="center">
                                 <ul class="pagination center">
                                     {LOOP: PAGES}
-                                    IF("{PAGES.current}"=="0"){ <li><a href="{PAGES.link}">{PAGES.title}</a> </li>{:IF}
-                                    IF("{PAGES.current}"=="1"){ <li class="active"> <a>{PAGES.title}</a> </li>{:IF}
+                                        IF("{PAGES.current}"=="0"){
+                                        <li><a href="{PAGES.link}">{PAGES.title}</a> </li>{:IF}
+                                        IF("{PAGES.current}"=="1"){
+                                        <li class="active"> <a>{PAGES.title}</a> </li>{:IF}
                                     {/LOOP: PAGES}
                                 </ul>
                             </div>
@@ -293,7 +338,7 @@
         }
     });
 
-    $('.select_boladas').on("click",function(event){
+    $('.select_boladas').on("click", function (event) {
         event.stopPropagation();
     });
 

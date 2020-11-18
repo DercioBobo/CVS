@@ -20,9 +20,8 @@
                     <h1>{ITEM_TITLE}
                         <span class="label-wrap hidden-sm hidden-xs">
 
-                        IF("{ITEM_FEATURED}"=="1"){ <span class="label featured"> {LANG_FEATURED}</span> {:IF}
-                        IF("{ITEM_URGENT}"=="1"){ <span class="label urgent"> {LANG_URGENT}</span> {:IF}
-                        IF("{ITEM_HIGHLIGHT}"=="1"){ <span class="label highlight"> {LANG_HIGHLIGHT}</span> {:IF}
+                              IF("{ITEM_FEATURED}"=="1" || "{ITEM_URGENT}"=="1" || "{ITEM_HIGHLIGHT}"=="1"){ <span class="label urgent">Destaque</span> {:IF}
+
                     </span>
                     </h1>
                     <ul class="info-list">
@@ -305,6 +304,10 @@
 
                     {LOOP: ITEM}
                         <div class="item">
+                            <div class="premium">
+                                IF("{ITEM.featured}"=="1" || "{ITEM.urgent}"=="1" || "{ITEM.highlight}"=="1"){ <span class="listing-box-premium urgent">Destaque</span> {:IF}
+
+                            </div>
                             <a href="{ITEM.link}" class="ad-listing">
                                 <div class="description">
                                     <div class="label label-default">{ITEM.category}</div>

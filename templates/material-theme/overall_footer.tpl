@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
-                    <div class="footer-widget widget-about" style="height: 165px;">
+                    <div class="footer-widget widget-about">
                         <div class="widget-top">
                             <h3 class="widget-title">{SITE_TITLE} (Compras, Vendas e Serviços)</h3>
                         </div>
@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="footer-widget widget-contact" style="height: 165px;">
+                    <div class="footer-widget widget-contact">
                         <div class="widget-top">
                             <h3 class="widget-title">Linha do cliente</h3>
                         </div>
@@ -37,13 +37,13 @@
                                 IF("{PHONE}"!=""){
                                 <li><i class="fa fa-phone"></i> {PHONE}</li>{:IF}
                                 IF("{EMAIL}"!=""){
-                                <li><i class="fa fa-envelope-o"></i> {EMAIL}</li>{:IF}
+                                <li class="email-cvs"><i class="fa fa-envelope-o "></i> {EMAIL}</li>{:IF}
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="footer-widget widget-contact" style="height: 165px;">
+                    <div class="footer-widget widget-contact">
                         <div class="widget-top">
                             <h3 class="widget-title">{LANG_HELP} &amp; {LANG_SUPPORT}</h3>
                         </div>

@@ -570,7 +570,7 @@
                                                                                             </label>
                                                                                             <div class="UpgradeListing-tags">
                                                                                                 <span class="UpgradeListing-promoTag promotion-tag has-no-icon promotion-featured">
-                                                                                                    {LANG_FEATURED}
+                                                                                                   Semanal
                                                                                                 </span>
                                                                                             </div>
                                                                                         </div>
@@ -582,7 +582,7 @@
 
                                                                                     <td class="UpgradeListing-price js-upgrade-price">
                                                                                         <div id="priced_featured_upgrade_block" class="UpgradeListing-price-value">
-                                                                                            <span id="featured-upgrade-price">{CURRENCY_SIGN}{FEATURED_FEE} {LANG_FOR} {FEATURED_DURATION} {LANG_DAYS}</span>
+                                                                                            <span id="featured-upgrade-price">{FEATURED_FEE} {CURRENCY_SIGN} {LANG_FOR} {FEATURED_DURATION} {LANG_DAYS}</span>
                                                                                         </div>
                                                                                     </td>
                                                                                 </tr>
@@ -598,7 +598,7 @@
                                                                                             </label>
                                                                                             <div class="UpgradeListing-tags">
                                                                                                                     <span class="UpgradeListing-promoTag promotion-tag has-no-icon promotion-assisted">
-                                                                                                                        {LANG_URGENT}
+                                                                                                                       Mensal
                                                                                                                     </span>
                                                                                             </div>
                                                                                         </div>
@@ -611,7 +611,7 @@
 
                                                                                     <td class="UpgradeListing-price js-upgrade-price">
                                                                                         <div id="priced_urgent_upgrade_block" class="UpgradeListing-price-value">
-                                                                                            <span id="urgent-upgrade-price">{CURRENCY_SIGN}{URGENT_FEE} {LANG_FOR} {URGENT_DURATION} {LANG_DAYS}</span>
+                                                                                            <span id="urgent-upgrade-price">{URGENT_FEE} {CURRENCY_SIGN} {LANG_FOR} {URGENT_DURATION} {LANG_DAYS}</span>
                                                                                         </div>
                                                                                     </td>
                                                                                 </tr>
@@ -628,7 +628,7 @@
                                                                                             </label>
                                                                                             <div class="UpgradeListing-tags">
                                                                                                                     <span class="UpgradeListing-promoTag promotion-tag has-no-icon promotion-private">
-                                                                                                                        {LANG_HIGHLIGHT}
+                                                                                                                        Priorizada
                                                                                                                     </span>
                                                                                             </div>
                                                                                         </div>
@@ -642,7 +642,7 @@
                                                                                     <td class="UpgradeListing-price js-upgrade-price">
 
                                                                                         <div id="priced_private_upgrade_block" class="UpgradeListing-price-value">
-                                                                                            <span id="private-upgrade-price">{CURRENCY_SIGN}{HIGHLIGHT_FEE} {LANG_FOR} {HIGHLIGHT_DURATION} {LANG_DAYS}</span>
+                                                                                            <span id="private-upgrade-price">{HIGHLIGHT_FEE} {CURRENCY_SIGN} {LANG_FOR} {HIGHLIGHT_DURATION} {LANG_DAYS}</span>
                                                                                         </div>
                                                                                     </td>
                                                                                 </tr>

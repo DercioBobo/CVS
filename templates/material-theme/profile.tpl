@@ -71,6 +71,7 @@
                                 <input type="hidden" name="username" value="{USERNAME}">
                                 <!--end left-->
                                 <div class="pull-right">
+                                <div class="pull-right mar-right-20">
                                     <div class="input-group inputs-underline min-width-150px select_boladas">
                                         <select class="meterialselect " name="limit" onchange="this.form.submit()">
                                             <option value="6">Limitar a lista</option>
@@ -93,6 +94,7 @@
                                         </select>
                                     </div>
                                 </div>
+                                </div>
                                 <!--end right-->
                             </div>
                             <!--end search-results-controls-->
@@ -105,6 +107,10 @@
                                     {LOOP: ITEM}
                                     <div class="col-md-4 col-sm-4">
                                         <div class="item" data-id="{ITEM.id}">
+                                            <div class="premium">
+                                                IF("{ITEM.featured}"=="1" || "{ITEM.urgent}"=="1" || "{ITEM.highlight}"=="1"){ <span class="listing-box-premium urgent">Destaque</span> {:IF}
+
+                                            </div>
                                             <div class="ad-listing">
                                                 <div class="description">
 
@@ -154,6 +160,10 @@
                                 <div class="row">
                                     {LOOP: ITEM2}
                                     <div class="item item-row" data-id="{ITEM2.id}">
+                                        <div class="premium">
+                                            IF("{ITEM2.featured}"=="1" || "{ITEM2.urgent}"=="1" || "{ITEM2.highlight}"=="1"){ <span class="listing-box-premium urgent">Destaque</span> {:IF}
+
+                                        </div>
                                         <div class="ad-listing">
                                             <div class="image bg-transfer">
 

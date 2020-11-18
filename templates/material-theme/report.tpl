@@ -23,14 +23,19 @@
                             <label for="username">{LANG_YUSERNAME}</label>
                             <input name="username" type="text" id="username" value="{USERNAME}" >
                         </div>
-                        <div class="input-field">
+                        <div class="input-field  select_boladas">
 
                             <select name="violation" class="meterialselect">
                                 <option>Selecione o tipo de denúncia</option>
-                                <option value="{LANG_POSTCONTACT}">{LANG_POSTCONTACT}</option>
-                                <option value="{LANG_ADVWEBSITE}">{LANG_ADVWEBSITE}</option>
-                                <option value="{LANG_FAKEPROJ}">{LANG_FAKEPROJ}</option>
-                                <option value="{LANG_ABNORMALBID}">{LANG_ABNORMALBID}</option>
+                                <option value="{LANG_REPORT_1}">{LANG_REPORT_1}</option>
+                                <option value="{LANG_REPORT_2}">{LANG_REPORT_2}</option>
+                                <option value="{LANG_REPORT_3}">{LANG_REPORT_3}</option>
+                                <option value="{LANG_REPORT_4}">{LANG_REPORT_4}</option>
+                                <option value="{LANG_REPORT_5}">{LANG_REPORT_5}</option>
+                                <option value="{LANG_REPORT_6}">{LANG_REPORT_6}</option>
+                                <option value="{LANG_REPORT_7}">{LANG_REPORT_7}</option>
+                                <option value="{LANG_REPORT_8}">{LANG_REPORT_8}</option>
+                                <option value="{LANG_REPORT_9}">{LANG_REPORT_9}</option>
                                 <option value="{LANG_OTHER}">{LANG_OTHER}</option>
                             </select>
                         </div>
