@@ -18,10 +18,7 @@
             <!--end section-title-->
         </div>
         <!--end container-->
-        <section>
-            <div class="map height-400px" id="singleListingMap" data-latitude="{LATITUDE}" data-longitude="{LONGITUDE}" data-map-icon="fa fa-marker" style="height: 400px"></div>
-            <!--end map-->
-        </section>
+
         <section class="block">
             <div class="container">
                 <div class="row">
@@ -45,7 +42,7 @@
                         <h3>{LANG_ENQUIRY_FORM}</h3>
                         <form method="post">
                             <div class="row">
-                                <div class="col-md-4 col-sm-4">
+                                <div class="col-md-6 col-sm-6">
                                     <div class="input-field">
                                         <label for="name">{LANG_NAME}</label>
                                         <input type="text" name="name" id="name" required="">
@@ -53,7 +50,7 @@
                                     <!--end input-field-->
                                 </div>
                                 <!--end col-md-4-->
-                                <div class="col-md-4 col-sm-4">
+                                <div class="col-md-6 col-sm-6">
                                     <div class="input-field">
                                         <label for="email">{LANG_EMAIL}</label>
                                         <input type="email" name="email" id="email" required="">
@@ -61,13 +58,14 @@
                                     <!--end input-field-->
                                 </div>
                                 <!--end col-md-4-->
-                                <div class="col-md-4 col-sm-4">
+                              <!--  <div class="col-md-4 col-sm-4">
                                     <div class="input-field">
                                         <label for="subject">{LANG_SUBJECT}</label>
                                         <input type="text" name="subject" id="subject" required="">
                                     </div>
-                                    <!--end input-field-->
+
                                 </div>
+                            -->
                                 <!--end col-md-4-->
                                 <div class="col-md-12 col-sm-12">
                                     <div class="input-field">

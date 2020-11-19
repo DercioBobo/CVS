@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="{LANG_CODE}" dir="{LANGUAGE_DIRECTION}">
 <head>
@@ -130,7 +132,7 @@
         $(document).ready(function() {
             setTimeout(function(){
                 $('body').addClass('loaded');
-            }, 3000);
+            }, 100);
 
         });
     </script>
@@ -340,9 +342,13 @@
                         <header class="PagePostProject-header">
                             <div class="PagePostProject-logo">
                                 <!-- LOGO HERE -->
+
                                 <a href="{LINK_INDEX}">
                                     <img class="img-responsive" width="150" src="{SITE_URL}storage/logo/{SITE_LOGO}" alt="Logo">
                                 </a>
+                                <p></p>
+
+
                                 IF("{COUNTRY_TYPE}"=="multi"){
                                 <button class="flag-menu country-flag btn btn-default" id="#selectCountry" data-toggle="modal" data-target="#selectCountry" style="margin-left: 20px">
                                     <img src="{SITE_URL}includes/assets/plugins/flags/images/{USER_COUNTRY}.png" style="float: left;">
@@ -359,10 +365,12 @@
                             </div>
 
                             <div id="ad_post_title">
+                                <a class=" pull-right btn btn-info" href="{LINK_INDEX}"> Voltar ao {LANG_HOME} </a>
                                 <h1 class="PagePostProject-header-title">{LANG_POST_ADVERTISE}</h1>
                                 <p class="PagePostProject-header-desc">
                                    <!-- {LANG_POST_ADVERTISE_QUTO} -->
                                 </p>
+
                             </div>
                         </header>
 

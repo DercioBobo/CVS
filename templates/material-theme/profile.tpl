@@ -41,6 +41,10 @@
                                 <figure class="social-links"><a href="mailto:{EMAIL}"><i class="fa fa-envelope"></i>{EMAIL}</a></figure>
                                 IF("{ADDRESS}"!=""){
                                 <figure class="social-links"><i class="fa fa-map-marker"></i>{ADDRESS}</figure>
+
+                                {:IF}
+                                IF("{CITY}"!=""){
+                                <figure class="social-links"><i class="fa fa-map-marker"></i>{CITY}</figure>
                                 {:IF}
                             </section>
                             <!--end contacts-->

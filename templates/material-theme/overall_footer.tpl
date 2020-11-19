@@ -122,10 +122,10 @@
                                     class="fa fa-whatsapp"></i></a>{:IF}
                         IF("{YOUTUBE_LINK}"!=""){ <a href="{YOUTUBE_LINK}" target="_blank"><i
                                     class="fa fa-youtube-square"></i></a>{:IF}
-                        <a href="{FACEBOOK_LINK}" target="_blank"><i
+                        <a href="https://facebook.com/alphabit.lda.77" target="_blank"><i
                                     class="fa fa-facebook-square"></i></a>
 
-                        <a href="#" target="_blank"><i
+                        <a href="https://instagram.com/alphabit.lda.77" target="_blank"><i
                                     class="fa fa-instagram"></i></a>
                     </p>
                 </div>

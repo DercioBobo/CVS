@@ -304,7 +304,24 @@
                         </section>
 
                         IF("{ADSFOUND}"=="0"){
-                        <section><h4>:( Nenhum Anúncio Encontrado</h4></section>
+                        <section><h4> Ups ... Não encontramos nenhum anúncio que corresponda à sua pesquisa.
+                                <p>Considere as seguintes ações:</p> </h4>
+
+                                <ul>
+                                    <li> Verifique a ortografia do termo de pesquisa</li>
+                                    <li> Use menos palavras-chave</li>
+                                    <li>Use palavras-chave diferentes</li>
+                                    <li>Envie-nos uma mensagem com as suas palavras-chave, e avisaremos assim que for publicado na plataforma um anúncio | <a href="{LINK_CONTACT}"> Contacte-nos</a> </li>
+
+                                </ul>
+
+
+
+
+
+
+
+                            </h4></section>
                         {:IF}
 
                         <section>
