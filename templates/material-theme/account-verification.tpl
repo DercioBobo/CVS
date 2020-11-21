@@ -168,7 +168,7 @@
                                 </div>
 
                                 <div class="text-center">
-                                    <button type="button" class="btn btn-danger margin-top-20" id="showmpesa"> Pagar com
+                                    <button type="button" class="btn btn-danger margin-top-20" id="showmpesa" hidden> Pagar com
                                         M-Pesa
                                         <img width="20" src="{SITE_URL}includes/payments/wire_transfer/logo/mpesa.png">
                                     </button>

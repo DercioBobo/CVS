@@ -170,13 +170,14 @@
                     <h2>{LANG_LOGIN}</h2>
                 </div>
             </div>
-            <div class="socialLoginHere">
+          <!--  <div class="socialLoginHere">
                 <div class="row text-center">
                     <div class="col-xs-6"><a class="loginBtn loginBtn--facebook" onclick="fblogin()"><i class="fa fa-facebook"></i> <span>Facebook</span></a></div>
                     <div class="col-xs-6"><a class="loginBtn loginBtn--google" onclick="gmlogin()"><i class="fa fa-google-plus"></i> <span>Google+</span></a></div>
                 </div>
                 <div class="clear"></div>
             </div>
+            -->
             <div id="login-status" class="info-notice" style="display: none;margin-bottom: 20px">
                 <div class="content-wrapper">
                     <div id="login-detail">
