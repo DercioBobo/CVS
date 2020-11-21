@@ -77,8 +77,8 @@ if(check_user_upgrades($_GET['id']))
             <hr>
             <!-- .row -->
             <div class="row text-center m-t-10">
-                <div class="col-md-6 b-r"><strong>Scan do BI</strong><p><a href="<?php echo ($fetchuser['bi_doc'] != NULL) ? '../storage/docs/'.$fetchuser['bi_doc'] : "#";?>" target="_blank"><?php echo ($fetchuser['bi_doc'] != NULL) ? $fetchuser['bi_doc'] : "Documento não submetido";?> <i class="fa fa-download"></i> </a></p></div>
-                <div class="col-md-6"><strong>Scan do Alvará</strong><p><a href="<?php echo ($fetchuser['alvara_doc'] != NULL) ? '../storage/docs/'.$fetchuser['alvara_doc'] : "#";?>" target="_blank"><?php echo ($fetchuser['alvara_doc'] != NULL) ? $fetchuser['alvara_doc'] : "Documento não submetido";?> <i class="fa fa-download"></i> </a></p></div>
+                <div class="col-md-6 b-r"><strong>Documento 1</strong><p><a href="<?php echo ($fetchuser['bi_doc'] != NULL) ? '../storage/docs/'.$fetchuser['bi_doc'] : "#";?>" target="_blank"><?php echo ($fetchuser['bi_doc'] != NULL) ? $fetchuser['bi_doc'] : "Documento não submetido";?> <i class="fa fa-download"></i> </a></p></div>
+                <div class="col-md-6"><strong>Documento 2</strong><p><a href="<?php echo ($fetchuser['alvara_doc'] != NULL) ? '../storage/docs/'.$fetchuser['alvara_doc'] : "#";?>" target="_blank"><?php echo ($fetchuser['alvara_doc'] != NULL) ? $fetchuser['alvara_doc'] : "Documento não submetido";?> <i class="fa fa-download"></i> </a></p></div>
             </div>
             <!-- /.row -->
             <hr>

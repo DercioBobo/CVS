@@ -282,7 +282,7 @@
                     </div>
 
                     <div class="mySlides ">
-                        <a href="{LINK_REPORT}">
+                        <a href="#">
                             <img class="img-slide" src="{SITE_URL}storage/banner/slide3.jpg">
                         </a>
                     </div>

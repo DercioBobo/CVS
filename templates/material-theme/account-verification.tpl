@@ -201,8 +201,8 @@
                                         <p>Os Documentos e comprovativos de pagamentos podem ser enviados também
                                             por:</p>
                                         <ul>
-                                            <li>email: compras_vendas_servicos@cvs.co.mz</li>
-                                            <li> Whatsapp: 82 524 6055</li>
+                                            <li>email: cvs@alphabit.co.mz</li>
+                                            <li> Whatsapp: +258 87 114 1111</li>
                                         </ul>
 
                                     </div>
