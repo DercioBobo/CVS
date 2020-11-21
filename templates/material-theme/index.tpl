@@ -139,22 +139,22 @@
                     </div>
 
                     <div class="col-md-3 col-sm-4 col-xs-6 back-category">
-                        <a href="{SITE_URL}category/vestuario">
+                        <a href="{SITE_URL}category/moda">
                             <div class="list-item min-height-150">
                                 <div class="title">
-                                    <div class="icon"><i class="pe-7s-drawer"></i></div>
-                                    <h3><a href="{SITE_URL}category/vestuario">Vestuario</a></h3>
+                                    <div class="icon"><i class="pe-7s-gift"></i></div>
+                                    <h3><a href="{SITE_URL}category/moda">Moda</a></h3>
                                 </div>
                             </div>
                         </a>
                     </div>
 
                     <div class="col-md-3 col-sm-4 col-xs-6 back-category">
-                        <a href="{SITE_URL}category/electronicos">
+                        <a href="{SITE_URL}category/tecnologia">
                             <div class="list-item min-height-150">
                                 <div class="title">
                                     <div class="icon"><i class="pe-7s-monitor"></i></div>
-                                    <h3><a href="{SITE_URL}category/electronicos">Electronicos</a></h3>
+                                    <h3><a href="{SITE_URL}category/electronicos">Tecnologia</a></h3>
                                 </div>
                             </div>
                         </a>
@@ -176,7 +176,7 @@
                             <div class="list-item min-height-150">
                                 <div class="title">
                                     <div class="icon"><i class="pe-7s-portfolio"></i></div>
-                                    <h3><a href="{SITE_URL}category/empregos">Empregos</a></h3>
+                                    <h3><a href="{SITE_URL}category/freelancer">Freelancer</a></h3>
                                 </div>
                             </div>
                         </a>
