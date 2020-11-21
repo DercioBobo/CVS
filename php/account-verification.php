@@ -153,8 +153,14 @@ if(checkloggedin())
     $page->SetParameter ('LASTACTIVE', $author_lastactive);
     $page->SetLoop ('HTMLPAGE', get_html_pages());
     $page->SetParameter('COPYRIGHT_TEXT', get_option("copyright_text"));
+    $page->SetParameter('VERIFICATION_FEE', get_option("verification_fee"));
+    $page->SetParameter('CONTACT_PHONE', get_option("contact_phone"));
+    $page->SetParameter('CONTACT_EMAIL', get_option("contact_email"));
     $page->SetParameter ('OVERALL_FOOTER', create_footer());
     $page->CreatePageEcho();
+
+
+
 }
 else{
     error($lang['PAGE_NOT_FOUND'], __LINE__, __FILE__, 1);

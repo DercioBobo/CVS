@@ -550,6 +550,8 @@ function get_user_data($username=null,$userid=null){
         $userinfo['updated_at'] = $info['updated_at'];
         $userinfo['bi_doc'] = $info['bi_doc'];
         $userinfo['alvara_doc'] = $info['alvara_doc'];
+        $userinfo['verify_enddate'] = $info['verify_enddate'];
+        $userinfo['verify_startdate'] = $info['verify_startdate'];
 
         $userinfo['facebook']   = $info['facebook'];
         $userinfo['twitter']    = $info['twitter'];
@@ -580,15 +582,21 @@ function update_lastactive(){
     }
 }
 
-function update_verificado_docs($bi, $alvara){
+function update_verificado_docs($bi){
 
     global $config;
 
     if(isset($_SESSION['user']['id']))
     {
+
+        $verification_validate_months = get_option("verification_validate_months");
+        $data_actual= date("Y-m-d");
+        $end_date = date('Y-m-d', strtotime('+'.$verification_validate_months.' months', strtotime($data_actual)));
+
         $person = ORM::for_table($config['db']['pre'].'user')->find_one($_SESSION['user']['id']);
         $person->set_expr('bi_doc', "'$bi'");
-        $person->set_expr('alvara_doc', "'$alvara'");
+        $person->set_expr('verify_startdate', "'$data_actual'");
+        $person->set_expr('verify_enddate', "'$end_date'");
         $state = $person->save();
 
     }

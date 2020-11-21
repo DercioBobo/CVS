@@ -17,7 +17,7 @@ $nome = $_REQUEST["nome"];
 $numero = $_REQUEST["numero"];
 $valor = $_REQUEST["valor"];
 
-$result = send_notification($nome,$numero,$valor);
+$result = send_notification_mpesa($numero,$valor);
 $text = $lang['CONFIRM_PAY'];
 $button = "<button type='submit' name='Submit' class='btn btn-primary margin-top-55 subscribeNow' id='subscribeNow'>$text</button>";
 
@@ -36,7 +36,7 @@ $result ["botao"] = $button;
 
 echo json_encode($result);
 
-function send_notification ($nome, $numero,$valor)
+function send_notification_mpesa ($numero,$valor)
 {
     $url = 'https://api.sandbox.vm.co.mz:18352/ipg/v1x/c2bPayment/singleStage/';
     $fields = array(

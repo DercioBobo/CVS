@@ -124,7 +124,7 @@
                                                 </div>
                                             </td>
                                             <td class="price-td width-16-per">
-                                                {AMOUNT}
+                                                {VERIFICATION_FEE}
 
                                             </td>
 
@@ -134,10 +134,7 @@
                                                                 target="_blank"> {DOC1} <i class="fa fa-download"> </i>
                                                         </a> </strong></div>{:IF}
                                                 <p></p>
-                                                IF("{DOC2}"){
-                                                <div><strong><a href="{SITE_URL}storage/docs/{DOC2}"
-                                                                target="_blank"> {DOC2} <i class="fa fa-download"> </i></a>
-                                                    </strong></div>{:IF}
+
 
 
                                             </td>

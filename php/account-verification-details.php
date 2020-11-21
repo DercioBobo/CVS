@@ -147,12 +147,13 @@ if(checkloggedin())
     $page->SetParameter ('USERSTATUS', ucfirst($ses_userdata['status']));
     $page->SetParameter ('DOC1', ucfirst($ses_userdata['bi_doc']));
     $page->SetParameter ('DOC2', ucfirst($ses_userdata['alvara_doc']));
-    $page->SetParameter ('VALID', ucfirst($ses_userdata['updated_at']));
-    $page->SetParameter ('UPDATED', ucfirst($ses_userdata['created_at']));
+    $page->SetParameter ('VALID', ucfirst($ses_userdata['verify_enddate']));
+    $page->SetParameter ('UPDATED', ucfirst($ses_userdata['verify_startdate']));
     $page->SetParameter ('AUTHORIMG', $author_image);
     $page->SetParameter ('LASTACTIVE', $author_lastactive);
     $page->SetLoop ('HTMLPAGE', get_html_pages());
     $page->SetParameter('COPYRIGHT_TEXT', get_option("copyright_text"));
+    $page->SetParameter('VERIFICATION_FEE', get_option("verification_fee"));
     $page->SetParameter ('OVERALL_FOOTER', create_footer());
     $page->CreatePageEcho();
 }

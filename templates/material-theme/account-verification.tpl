@@ -130,10 +130,10 @@
                             <form id="processarVerificado" class="margin-top-10">
 
                                 <div class="form-row">
-                                    <div class="col-md-6 form-group">
+                                    <div class="col-md-12 form-group">
                                         <div class="input-field select_boladas">
-                                            <select name="document_type" class="meterialselect ">
-                                                <option>Selecione o tipo de documento</option>
+                                            <select id="document_type1" name="document_type1" class="meterialselect" required>
+                                                <option value="0">Selecione o tipo de documento</option>
                                                 <option value="BI">BI</option>
                                                 <option value="Passaporte">Passaporte</option>
                                                 <option value="Carta_de_Condução">Carta de Condução</option>
@@ -143,27 +143,11 @@
                                         </div>
 
                                         <div class="input-field">
-                                            <input type="file" id="bi_doc" name="bi_doc">
+                                            <input type="file" id="bi_doc" name="bi_doc" required>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6 form-group">
-                                        <div class="input-field select_boladas">
-                                            <select name="document_type" class="meterialselect ">
-                                                <option>Selecione outro tipo de documento</option>
-                                                <option value="BI">BI</option>
-                                                <option value="Passaporte">Passaporte</option>
-                                                <option value="Carta_de_Condução">Carta de Condução</option>
-                                                <option value="DIRE">DIRE</option>
-                                                <option value="{LANG_OTHER}">{LANG_OTHER}</option>
-                                            </select>
-                                        </div>
 
-                                        <div class="input-field">
-                                            <input type="file" id="alvara_doc" name="alvara_doc">
-                                        </div>
-
-                                    </div>
 
                                 </div>
 
@@ -182,14 +166,14 @@
                                 <div class="form-row" id="mpesa" hidden>
                                     <div class="form-row margin-top-20" >
                                         <div class="alert alert-info text-left">
-                                            <p>Introduza o seu número de telefone de Mpesa e receberas uma solicitação para realizar pagamento. Será cobrado uma um valor de 200 Mts para realizar a verificação.</p>
+                                            <p>Introduza o seu número de telefone de Mpesa e receberas uma solicitação para realizar pagamento. Será cobrado uma um valor de {VERIFICATION_FEE} Mts para realizar a verificação.</p>
                                         </div>
-                                    </div>a
+                                    </div>
 
                                     <div class="form-group col-md-12">
-                                        <input type="number" class="form-control" id="mpesa_numero"
-                                               name="mpesa_numero"
-                                               value="{PHONE}" placeholder="Número">
+                                        <input type="text" class="form-control" id="mpesa_numero"
+                                               name="mpesa_numero" maxlength="9" pattern="[0-9]{9}"
+                                               placeholder="Número">
 
                                         <button type="submit" class="btn btn-primary">Submeter</button>
                                     </div>
@@ -201,8 +185,8 @@
                                         <p>Os Documentos e comprovativos de pagamentos podem ser enviados também
                                             por:</p>
                                         <ul>
-                                            <li>email: cvs@alphabit.co.mz</li>
-                                            <li> Whatsapp: +258 87 114 1111</li>
+                                            <li>email: {CONTACT_EMAIL}</li>
+                                            <li> Whatsapp: {CONTACT_PHONE}</li>
                                         </ul>
 
                                     </div>
@@ -235,78 +219,108 @@
         $('#showmpesa').hide();
         $('#offline').hide();
         $('#showoffline').show();
+        $("#mpesa_numero").prop('required',true);
 
-    })
+
+    });
     $('#showoffline').on("click", function () {
         $('#offline').show();
         $('#showoffline').hide();
         $('#showmpesa').show();
         $('#mpesa').hide();
+        $("#mpesa_numero").prop('required',false);
 
-    })
+    });
 
     $("form#processarVerificado").submit(function (e) {
         e.preventDefault();
 
         var formData = new FormData(this);
 
-        var mpesa_numero = $('#mpesa_numero').val();
+        var document_type1 = formData.get('document_type1');
 
-        $.ajax({
-            type: "POST",
-            url: APPPATH + 'verificarUtilizador/',
-            data: formData,
-            processData: false,
-            contentType: false,
-            cache: false,
-            beforeSend: function () {
+        if(document_type1 !== '0'){
 
-                console.log("A iniciar");
-                $('#carregamento').css("display", "block");
-
-            },
-            complete: function () {
-
-                console.log("A finalizar");
-                $('#carregamento').css("display", "none");
-
-            },
-            success: function (response) {
-
-                var result = JSON.parse(response);
-
-                if (result.state) {
-
-                    swal({
-                        title: "Sucesso",
-                        text: result.message,
-                        icon: "success",
-                        button: "Ok!"
-                    }, function () {
-
-                        location.reload();
-
-                    });
-
-                } else {
-                    swal({
-                        title: "Erro!",
-                        text: result.message,
-                        icon: "error",
-                        button: "Ok!"
-                    });
-                }
+            if(formData.get('bi_doc') !== '') {
 
 
-                return false;
-            },
-            error: function () {
+                var mpesa_numero = $('#mpesa_numero').val();
 
-                alert("ocorreu um erro");
+                $.ajax({
+                    type: "POST",
+                    url: APPPATH + 'verificarUtilizador/',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    beforeSend: function () {
 
-                return false;
+                        console.log("A iniciar");
+                        $('#carregamento').css("display", "block");
+
+                    },
+                    complete: function () {
+
+                        console.log("A finalizar");
+                        $('#carregamento').css("display", "none");
+
+                    },
+                    success: function (response) {
+
+                        var result = JSON.parse(response);
+
+                        if (result.state) {
+
+                            swal({
+                                title: "Sucesso",
+                                text: result.message,
+                                icon: "success",
+                                button: "Ok!"
+                            }, function () {
+
+                                window.location.href = 'account-verification-details';
+
+                            });
+
+                        } else {
+                            swal({
+                                title: "Erro!",
+                                text: result.message,
+                                icon: "error",
+                                button: "Ok!"
+                            });
+                        }
+
+
+                        return false;
+                    },
+                    error: function () {
+
+                        alert("ocorreu um erro");
+
+                        return false;
+                    }
+                });
+
+            }else{
+                swal({
+                    title: "Erro!",
+                    text: 'Por favor, carregue o '+document_type1+'.',
+                    icon: "warning",
+                    button: "Ok!"
+                });
             }
-        });
+
+        }else{
+            swal({
+                title: "Erro!",
+                text: 'Precisa indicar pelomenos um documento',
+                icon: "warning",
+                button: "Ok!"
+            });
+        }
+
+
 
 
     });
