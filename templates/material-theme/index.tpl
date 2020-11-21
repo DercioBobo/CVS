@@ -142,8 +142,8 @@
                         <a href="{SITE_URL}category/vestuario">
                             <div class="list-item min-height-150">
                                 <div class="title">
-                                    <div class="icon"><i class="pe-7s-drawer"></i></div>
-                                    <h3><a href="{SITE_URL}category/vestuario">Vestuario</a></h3>
+                                    <div class="icon"><i class="pe-7s-gift"></i></div>
+                                    <h3><a href="{SITE_URL}category/vestuario">Moda</a></h3>
                                 </div>
                             </div>
                         </a>
@@ -153,7 +153,7 @@
                         <a href="{SITE_URL}category/electronicos">
                             <div class="list-item min-height-150">
                                 <div class="title">
-                                    <div class="icon"><i class="pe-7s-monitor"></i></div>
+                                    <div class="icon"><i class="pe-7s-phone"></i></div>
                                     <h3><a href="{SITE_URL}category/electronicos">Electronicos</a></h3>
                                 </div>
                             </div>
@@ -176,7 +176,7 @@
                             <div class="list-item min-height-150">
                                 <div class="title">
                                     <div class="icon"><i class="pe-7s-portfolio"></i></div>
-                                    <h3><a href="{SITE_URL}category/empregos">Empregos</a></h3>
+                                    <h3><a href="{SITE_URL}category/freelancer">Freelancer</a></h3>
                                 </div>
                             </div>
                         </a>
