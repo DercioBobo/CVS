@@ -51,7 +51,7 @@
                                         <h4 class="panel-title">
                                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                                 <i class="more-less glyphicon glyphicon-plus"></i>
-                                                2.	ANÚNCIOS
+                                                2.	Anúncios
                                             </a>
                                         </h4>
                                     </div>
@@ -80,7 +80,7 @@
                                         <h4 class="panel-title">
                                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                                 <i class="more-less glyphicon glyphicon-plus"></i>
-                                                3.	VERIFICAÇÃO DA CONTA
+                                                3.	Verificação da Conta
                                             </a>
                                         </h4>
                                     </div>
