@@ -13,31 +13,169 @@
             <div class="container margin-top-20 ">
                 <div class="row">
                     <div class="col-md-12">
-
-                        These Terms and Conditions constitute an agreement (“Agreement”) between you (“you”, “your”, “user”, “Customer”) and the Company.Avocado gumbo artichoke ricebean groundnut tigernut. Daikon kakadu plum water spinach garbanzo eggplant fava bean chard rock melon carrot rutabaga water chestnut broccoli courgette onion.
-
-                        <h2>Eligibility and Identity.</h2>
-                        To be eligible to use our Services, you must be at least 13 years old. Sorrel jícama tomato silver beet wattle seed black-eyed pea garlic fennel tigernut okra beetroot shallot. Soko shallot melon dandelion bamboo shoot chickpea soybean pumpkin kakadu plum parsley ricebean grape courgette courgette jícama tatsoi. Black-eyed pea gourd tomatillo arugula cucumber celery mustard black-eyed pea cauliflower soybean rutabaga turnip groundnut.
-
-                        <h2>Termination</h2>
-                        You may terminate this Agreement at any time by ceasing all use of the Services and by notifying us. The Company may terminate this Agreement, at any time, without notice to you, if it believes, in its sole judgment, that you have breached or may breach any term or condition of this Agreement. Fennel garlic melon broccoli kohlrabi dulse black-eyed pea chicory watercress shallot bamboo shoot cucumber rutabaga ricebean gourd chickweed gumbo. Burdock fennel sorrel cress collard greens tomato tigernut salad chickweed yarrow water spinach catsear earthnut pea cabbage dulse potato. Onion courgette bitterleaf rutabaga tomatillo tigernut groundnut courgette water spinach tomato. Celery ricebean cabbage salsify caulie watercress cress collard greens potato chard gourd pea sprouts cucumber dulse gram. Leek summer purslane tatsoi catsear celtuce broccoli rabe onion zucchini.
-
-                        <h2>Use of Services & Account</h2>
-                        You represent and warrant that you possess the legal right and ability to enter into this Agreement. You agree not to use the Materials, Content, Services, and your Account for any unlawful or abusive purpose or in any way which interferes with our ability to provide Services to our customers, or which damages our property. Chickpea gourd coriander daikon zucchini lettuce tomatillo sierra leone bologi maize parsnip grape melon kohlrabi welsh onion. Celery wakame corn garlic courgette silver beet cabbage gram amaranth jícama bitterleaf. Ricebean bunya nuts prairie turnip water chestnut artichoke cauliflower watercress gourd cabbage okra broccoli rabe. Burdock leek sorrel radicchio azuki bean collard greens winter purslane broccoli rabe gourd water chestnut pumpkin gumbo. Azuki bean green bean kohlrabi kombu aubergine salsify lotus root turnip lentil radicchio nori eggplant sorrel.
-
-                        <h2>Modification to Service</h2>
-                        The Company may change, suspend, or discontinue all or any part of the Service at any time, with or without reason. You acknowledge that the operation of the Service may from time to time encounter technical or other problems and may not necessarily continue uninterrupted or without technical or other errors and The Company shall not be responsible to you or others for any such interruptions, errors or problems or an outright discontinuance of the Service.
-
-                        <h2>Intellectual Property Ownership</h2>
-                        All Materials, Services, Accounts, and content, including, but not limited to, policy information, text, software, music, sound, photographs, video, graphics, the arrangement of text and images, commercially produced information, and other material contained on the Site or through the Services (“Content”), are provided by The Company unless indicated otherwise. Welsh onion tigernut broccoli asparagus brussels sprout jícama eggplant earthnut pea cress chickpea gourd zucchini. Radicchio lentil cucumber groundnut endive kohlrabi winter purslane. Seakale plantain quandong celtuce shallot fennel seakale epazote groundnut dandelion.
-
-                        <h2>Privacy</h2>
-                        Please see our <a href="privacy-policy.html">Privacy Policy</a> as set forth on the site.
-
-                        <h2>About These Terms</h2>
-                        <p>These Terms and Conditions are just a sample and are not legally binding. Real Terms of Services do not (usually) contain vegetables...</p>
+                        <div class="container demo">
+                            Este documento denominado POLTICAS DE PRIVACIDADE é parte integrante dos Termos de Uso e Condições de Navegação da página www.cvs.co.mz e tem como objectivo definir as regras sobre a obtenção, utilização e armazenamento dos dados e informações recolhidas dos utilizadores bem como o registo das suas actividades na página.
 
 
+                            <div class="panel-group margin-top-20" id="accordion" role="tablist" aria-multiselectable="true">
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingOne">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                <i class="more-less glyphicon glyphicon-plus"></i>
+                                                1.	Definições
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                        <div class="panel-body">
+                                            Na presente, são aplicáveis as seguintes definições:
+                                            <ul>
+                                                <li class="margin-top-20">
+                                                    <b class="bold">Clientes:</b> Indivíduos que requisitam produtos e serviços do www.cvs.co.mz
+                                                </li>
+
+                                                <li class="margin-top-20">
+                                                    <b>Utilizadores:</b> qualquer indivíduo que aceda à página www.cvs.co.mz
+                                                </li>
+
+                                                <li class="margin-top-20">
+                                                    <b>Área Restrita:</b> Secção da página imediatamente acedida após a introdução da senha;
+                                                </li>
+
+                                                <li class="margin-top-20">
+                                                    <b>Área Restrita:</b> Secção da página imediatamente acedida após a introdução da senha;
+                                                </li>
+
+                                                <li class="margin-top-20">
+                                                    <b>Cookies:</b>  Arquivos enviados pelo servidor do CVS para o computador do utilizador cuja finalidade é identificar o computador e obter dador relevantes para a personalização da navegação do utilizador no CVS, de acordo com o seu perfil.
+                                                </li>
+
+                                                <li class="margin-top-20">
+                                                    <b>Plataforma:</b>   Terminologia utilizada para definir o site www.cvs.co.mz
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingTwo">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                <i class="more-less glyphicon glyphicon-plus"></i>
+
+                                                2. Obtenção dos dados e informações:
+
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                        <div class="panel-body">
+                                            O CVS irá obter informações dos utilizadores quando estes:
+                                            <ul>
+                                                <li>Registarem-se no CVS;</li>
+
+                                                <li class="margin-top-20">Se tiver usado qualquer serviço pago para publicitar estes anúncios, não terá qualquer reembolso em caso de remoção.</li>
+
+                                                <li class="margin-top-20">Interagirem com as diversas funcionalidades da plataforma que requisitem o fornecimento de dados e informações;</li>
+
+                                                <li class="margin-top-20">Realizar pagamentos através da plataforma;</li>
+
+                                                <li class="margin-top-20">Interagirem com a equipa do CVS para fornecimento de dados relevantes a realização da entrega.</li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingThree">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                <i class="more-less glyphicon glyphicon-plus"></i>
+                                                3. Armazenamento dos Dados e Informações:
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                        <div class="panel-body">
+                                            <ul>
+                                                <li>Os dados e informações obtidos dos utilizadores, com excepção dos dados relativos aos cartões de crédito, débito ou outra informação de carácter financeiro, serão armazenados no servidor da Alphabit Limitada.</li>
+
+                                                <li class="margin-top-20">A CVS assegura o armazenamento seguro de toda a informação, sendo esta acedida apenas por pessoal qualificado do CVS e respeitando as boas práticas internacionais de protecção de informação.
+                                                    Contudo, tal responsabilidade não se estende a eventuais danos e/ou prejuízos resultantes de falhas, infecções por vírus ou invasões nos equipamentos individuais dos utilizadores.
+                                                </li>
+
+                                                <li class="margin-top-20">Será cobrado uma taxa de verificação de conta, de forma a cobrir com os encargos de verificação manual dos documentos do anunciante. </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading4">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                                <i class="more-less glyphicon glyphicon-plus"></i>
+                                                4. Cookies
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+                                        <div class="panel-body">
+                                            <ul>
+                                                <li>A CVS poderá fazer o uso de cookies, cabendo ao utilizador configurar o seu navegador de Internet, caso deseje bloqueá-los. Nesta hipótese, algumas funcionalidades do Portal poderão ser limitadas.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading5">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                                <i class="more-less glyphicon glyphicon-plus"></i>
+                                                5. Disposições Gerais:
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+                                        <div class="panel-body">
+                                            <ul>
+                                                <li>As disposições constantes desta Política de Privacidade poderão ser actualizadas ou modificadas a qualquer momento, cabendo ao utilizador verificá-la sempre que efectuar o acesso a plataforma.</li>
+
+                                                <li class="margin-top-20">Em caso de qualquer dúvida com relação às disposições constantes desta Política de Privacidade o utilizador deverá entrar em contacto através das plataformas de comunicações disponíveis no portal.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading6">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                                                <i class="more-less glyphicon glyphicon-plus"></i>
+                                                6. Lei Aplicável e Jurisdição
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+                                        <div class="panel-body">
+                                            <ul>
+                                                <li>A presente Política de Privacidade será interpretada segundo a legislação Moçambicana, no idioma português, sendo eleito o Foro Judicial da Cidade de Maputo, com expressa renúncia de qualquer outro, por mais privilegiado que seja, para dirimir qualquer dúvida, pendência ou litígio oriundo deste documento </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div><!-- panel-group -->
+
+
+                        </div><!-- container -->
                     </div>
                 </div>
             </div>
