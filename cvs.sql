@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               10.4.13-MariaDB - mariadb.org binary distribution
+-- Server version:               10.4.11-MariaDB - mariadb.org binary distribution
 -- Server OS:                    Win64
 -- HeidiSQL Version:             11.0.0.5919
 -- --------------------------------------------------------
@@ -11,39 +11,46 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+
+-- Dumping database structure for boladas
+CREATE DATABASE IF NOT EXISTS `boladas` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `boladas`;
+
 -- Dumping structure for table boladas.bladmins
 CREATE TABLE IF NOT EXISTS `bladmins` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(40) DEFAULT NULL,
-  `password_hash` varchar(200) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `image` varchar(255) NOT NULL DEFAULT 'default_user.png',
-  `permission` enum('0','1') NOT NULL DEFAULT '1',
+  `username` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password_hash` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'default_user.png',
+  `permission` enum('0','1') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.bladmins: 1 rows
+DELETE FROM `bladmins`;
 /*!40000 ALTER TABLE `bladmins` DISABLE KEYS */;
-INSERT IGNORE INTO `bladmins` (`id`, `username`, `password_hash`, `name`, `email`, `image`, `permission`) VALUES
+INSERT INTO `bladmins` (`id`, `username`, `password_hash`, `name`, `email`, `image`, `permission`) VALUES
 	(1, 'admin', '$2y$13$R/dmZlAGj0kj5/7pJ0N2Le.SSjdTwUPgSPhU9q7I8jzLEEoUWJjsO', 'Admin', 'derciobob@gmail.com', '', '1');
 /*!40000 ALTER TABLE `bladmins` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.bladsense
 CREATE TABLE IF NOT EXISTS `bladsense` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `slug` longtext DEFAULT NULL,
-  `provider_name` varchar(255) DEFAULT NULL,
-  `large_track_code` longtext DEFAULT NULL,
-  `tablet_track_code` longtext DEFAULT NULL,
-  `phone_track_code` longtext DEFAULT NULL,
-  `status` enum('0','1') NOT NULL DEFAULT '0',
+  `slug` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `provider_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `large_track_code` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tablet_track_code` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone_track_code` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` enum('0','1') COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.bladsense: 4 rows
+DELETE FROM `bladsense`;
 /*!40000 ALTER TABLE `bladsense` DISABLE KEYS */;
-INSERT IGNORE INTO `bladsense` (`id`, `slug`, `provider_name`, `large_track_code`, `tablet_track_code`, `phone_track_code`, `status`) VALUES
+INSERT INTO `bladsense` (`id`, `slug`, `provider_name`, `large_track_code`, `tablet_track_code`, `phone_track_code`, `status`) VALUES
 	(1, 'top', 'Google AdSense', '<img src="//bylancer.com/products/classified-php-script/storage/adsense/ads-banner-top.jpg"/>', '', '', '0'),
 	(2, 'bottom', 'Google AdSense', '<img src="//bylancer.com/products/classified-php-script/storage/adsense/ads-banner-bottom.png"/>', '', '', '0'),
 	(3, 'left_sidebar', 'Google AdSense', '<img src="//bylancer.com/products/classified-php-script/storage/adsense/ads-banner-left.png"/>', '', '', '0'),
@@ -57,11 +64,12 @@ CREATE TABLE IF NOT EXISTS `blbalance` (
   `total_earning` double(9,2) DEFAULT NULL,
   `total_withdrawal` double(9,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table boladas.blbalance: 1 rows
+DELETE FROM `blbalance`;
 /*!40000 ALTER TABLE `blbalance` DISABLE KEYS */;
-INSERT IGNORE INTO `blbalance` (`id`, `current_balance`, `total_earning`, `total_withdrawal`) VALUES
+INSERT INTO `blbalance` (`id`, `current_balance`, `total_earning`, `total_withdrawal`) VALUES
 	(1, 520.00, 520.00, 0.00);
 /*!40000 ALTER TABLE `blbalance` ENABLE KEYS */;
 
@@ -69,35 +77,37 @@ INSERT IGNORE INTO `blbalance` (`id`, `current_balance`, `total_earning`, `total
 CREATE TABLE IF NOT EXISTS `blblog` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `author` int(10) DEFAULT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  `description` mediumtext DEFAULT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  `tags` text DEFAULT NULL,
-  `status` enum('publish','pending') NOT NULL DEFAULT 'publish',
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tags` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('publish','pending') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'publish',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table boladas.blblog: ~1 rows (approximately)
+-- Dumping data for table boladas.blblog: ~0 rows (approximately)
+DELETE FROM `blblog`;
 /*!40000 ALTER TABLE `blblog` DISABLE KEYS */;
-INSERT IGNORE INTO `blblog` (`id`, `author`, `title`, `description`, `image`, `tags`, `status`, `created_at`, `updated_at`) VALUES
+INSERT INTO `blblog` (`id`, `author`, `title`, `description`, `image`, `tags`, `status`, `created_at`, `updated_at`) VALUES
 	(2, 0, NULL, NULL, NULL, NULL, 'publish', NULL, NULL);
 /*!40000 ALTER TABLE `blblog` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.blblog_categories
 CREATE TABLE IF NOT EXISTS `blblog_categories` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `title` varchar(50) DEFAULT NULL,
-  `slug` varchar(50) DEFAULT NULL,
+  `title` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `slug` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `position` int(10) NOT NULL DEFAULT 0,
-  `active` enum('0','1') NOT NULL DEFAULT '1',
+  `active` enum('0','1') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blblog_categories: ~2 rows (approximately)
+DELETE FROM `blblog_categories`;
 /*!40000 ALTER TABLE `blblog_categories` DISABLE KEYS */;
-INSERT IGNORE INTO `blblog_categories` (`id`, `title`, `slug`, `position`, `active`) VALUES
+INSERT INTO `blblog_categories` (`id`, `title`, `slug`, `position`, `active`) VALUES
 	(1, 'Fashion', 'fashion', 0, '1'),
 	(2, 'Lifestyle', 'lifestyle', 1, '1');
 /*!40000 ALTER TABLE `blblog_categories` ENABLE KEYS */;
@@ -108,11 +118,12 @@ CREATE TABLE IF NOT EXISTS `blblog_cat_relation` (
   `blog_id` int(10) DEFAULT NULL,
   `category_id` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blblog_cat_relation: ~2 rows (approximately)
+DELETE FROM `blblog_cat_relation`;
 /*!40000 ALTER TABLE `blblog_cat_relation` DISABLE KEYS */;
-INSERT IGNORE INTO `blblog_cat_relation` (`id`, `blog_id`, `category_id`) VALUES
+INSERT INTO `blblog_cat_relation` (`id`, `blog_id`, `category_id`) VALUES
 	(1, 1, 1),
 	(2, 1, 2);
 /*!40000 ALTER TABLE `blblog_cat_relation` ENABLE KEYS */;
@@ -122,17 +133,18 @@ CREATE TABLE IF NOT EXISTS `blblog_comment` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `blog_id` int(10) DEFAULT NULL,
   `user_id` int(10) DEFAULT NULL,
-  `is_admin` enum('0','1') NOT NULL DEFAULT '0',
-  `name` text DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `comment` mediumtext NOT NULL,
+  `is_admin` enum('0','1') COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `name` tinytext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `comment` text COLLATE utf8_unicode_ci NOT NULL,
   `created_at` datetime DEFAULT NULL,
-  `active` enum('0','1') NOT NULL DEFAULT '1',
+  `active` enum('0','1') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
   `parent` int(10) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blblog_comment: ~0 rows (approximately)
+DELETE FROM `blblog_comment`;
 /*!40000 ALTER TABLE `blblog_comment` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blblog_comment` ENABLE KEYS */;
 
@@ -140,16 +152,17 @@ CREATE TABLE IF NOT EXISTS `blblog_comment` (
 CREATE TABLE IF NOT EXISTS `blcatagory_main` (
   `cat_id` int(11) NOT NULL AUTO_INCREMENT,
   `cat_order` int(10) DEFAULT NULL,
-  `cat_name` varchar(300) DEFAULT NULL,
-  `slug` varchar(150) DEFAULT NULL,
-  `icon` varchar(300) NOT NULL DEFAULT 'fa-usd',
-  `picture` varchar(300) DEFAULT NULL,
+  `cat_name` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `slug` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `icon` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'fa-usd',
+  `picture` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`cat_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table boladas.blcatagory_main: 8 rows
+DELETE FROM `blcatagory_main`;
 /*!40000 ALTER TABLE `blcatagory_main` DISABLE KEYS */;
-INSERT IGNORE INTO `blcatagory_main` (`cat_id`, `cat_order`, `cat_name`, `slug`, `icon`, `picture`) VALUES
+INSERT INTO `blcatagory_main` (`cat_id`, `cat_order`, `cat_name`, `slug`, `icon`, `picture`) VALUES
 	(8, 8, 'Lazer', 'entertainment', 'pe-7s-film', 'https://img.icons8.com/dusk/64/000000/dancing.png'),
 	(5, 5, 'Moda', 'moda', 'pe-7s-drawer', 'https://img.icons8.com/dusk/64/000000/home-page.png'),
 	(3, 3, 'Tecnologia', 'tecnologia', 'pe-7s-monitor', 'https://img.icons8.com/dusk/64/000000/tv.png'),
@@ -164,19 +177,20 @@ INSERT IGNORE INTO `blcatagory_main` (`cat_id`, `cat_order`, `cat_name`, `slug`,
 CREATE TABLE IF NOT EXISTS `blcatagory_sub` (
   `sub_cat_id` int(11) NOT NULL AUTO_INCREMENT,
   `main_cat_id` int(11) DEFAULT NULL,
-  `sub_cat_name` varchar(255) DEFAULT NULL,
-  `slug` varchar(150) DEFAULT NULL,
+  `sub_cat_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `slug` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `cat_order` mediumint(8) DEFAULT NULL,
-  `photo_show` enum('0','1') NOT NULL DEFAULT '1',
-  `price_show` enum('0','1') NOT NULL DEFAULT '1',
-  `picture` longtext DEFAULT NULL,
+  `photo_show` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
+  `price_show` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
+  `picture` mediumtext CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`sub_cat_id`),
   UNIQUE KEY `id` (`sub_cat_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table boladas.blcatagory_sub: 45 rows
+DELETE FROM `blcatagory_sub`;
 /*!40000 ALTER TABLE `blcatagory_sub` DISABLE KEYS */;
-INSERT IGNORE INTO `blcatagory_sub` (`sub_cat_id`, `main_cat_id`, `sub_cat_name`, `slug`, `cat_order`, `photo_show`, `price_show`, `picture`) VALUES
+INSERT INTO `blcatagory_sub` (`sub_cat_id`, `main_cat_id`, `sub_cat_name`, `slug`, `cat_order`, `photo_show`, `price_show`, `picture`) VALUES
 	(1, 1, 'Motas', 'motas', 0, '1', '1', ''),
 	(2, 1, 'Carros', 'carros', 2, '1', '1', ''),
 	(3, 1, 'Veiculos Comercias', 'commercial-vehicles', 3, '1', '1', ''),
@@ -228,42 +242,44 @@ INSERT IGNORE INTO `blcatagory_sub` (`sub_cat_id`, `main_cat_id`, `sub_cat_name`
 CREATE TABLE IF NOT EXISTS `blcategory_translation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `translation_id` int(1) DEFAULT NULL,
-  `lang_code` varchar(10) DEFAULT NULL,
-  `category_type` varchar(22) DEFAULT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  `slug` varchar(150) DEFAULT NULL,
+  `lang_code` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `category_type` varchar(22) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `slug` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- Dumping data for table boladas.blcategory_translation: 0 rows
+DELETE FROM `blcategory_translation`;
 /*!40000 ALTER TABLE `blcategory_translation` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blcategory_translation` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.blcities
 CREATE TABLE IF NOT EXISTS `blcities` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `country_code` varchar(2) DEFAULT NULL COMMENT 'ISO-3166 2-letter country code, 2 characters',
-  `name` varchar(200) DEFAULT NULL COMMENT 'name of geographical point (utf8) varchar(200)',
-  `asciiname` varchar(200) DEFAULT NULL COMMENT 'name of geographical point in plain ascii characters, varchar(200)',
+  `country_code` varchar(2) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'ISO-3166 2-letter country code, 2 characters',
+  `name` varchar(200) CHARACTER SET utf8 DEFAULT NULL COMMENT 'name of geographical point (utf8) varchar(200)',
+  `asciiname` varchar(200) CHARACTER SET utf8 DEFAULT NULL COMMENT 'name of geographical point in plain ascii characters, varchar(200)',
   `latitude` float DEFAULT NULL COMMENT 'longitude in decimal degrees (wgs84)',
   `longitude` float DEFAULT NULL COMMENT 'latitude in decimal degrees (wgs84)',
-  `feature_class` char(1) DEFAULT NULL COMMENT 'see http://www.geonames.org/export/codes.html, char(1)',
-  `feature_code` varchar(10) DEFAULT NULL COMMENT 'see http://www.geonames.org/export/codes.html, varchar(10)',
-  `subadmin1_code` varchar(80) DEFAULT NULL COMMENT 'fipscode (subject to change to iso code), see exceptions below, see file admin1Codes.txt for display names of this code; varchar(20)',
-  `subadmin2_code` varchar(20) DEFAULT NULL COMMENT 'code for the second administrative division, a county in the US, see file admin2Codes.txt; varchar(80)',
+  `feature_class` char(1) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'see http://www.geonames.org/export/codes.html, char(1)',
+  `feature_code` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'see http://www.geonames.org/export/codes.html, varchar(10)',
+  `subadmin1_code` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'fipscode (subject to change to iso code), see exceptions below, see file admin1Codes.txt for display names of this code; varchar(20)',
+  `subadmin2_code` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'code for the second administrative division, a county in the US, see file admin2Codes.txt; varchar(80)',
   `population` bigint(20) DEFAULT NULL COMMENT 'bigint (4 byte int) ',
-  `time_zone` varchar(100) DEFAULT NULL COMMENT 'the timezone id (see file timeZone.txt)',
+  `time_zone` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'the timezone id (see file timeZone.txt)',
   `active` tinyint(3) unsigned DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `country_code` (`country_code`),
   KEY `name` (`name`)
-) ENGINE=MyISAM AUTO_INCREMENT=1088156 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=1088156 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blcities: 25 rows
+DELETE FROM `blcities`;
 /*!40000 ALTER TABLE `blcities` DISABLE KEYS */;
-INSERT IGNORE INTO `blcities` (`id`, `country_code`, `name`, `asciiname`, `latitude`, `longitude`, `feature_class`, `feature_code`, `subadmin1_code`, `subadmin2_code`, `population`, `time_zone`, `active`, `created_at`, `updated_at`) VALUES
+INSERT INTO `blcities` (`id`, `country_code`, `name`, `asciiname`, `latitude`, `longitude`, `feature_class`, `feature_code`, `subadmin1_code`, `subadmin2_code`, `population`, `time_zone`, `active`, `created_at`, `updated_at`) VALUES
 	(1024552, 'MZ', 'Xai-Xai', 'Xai-Xai', -25.0519, 33.6442, 'P', 'PPLA', 'MZ.02', 'MZ.02.9408663', 127366, 'Africa/Maputo', 1, '2014-09-02 04:30:00', '2014-09-02 04:30:00'),
 	(1024696, 'MZ', 'Dondo', 'Dondo', -19.6094, 34.7431, 'P', 'PPL', 'MZ.05', NULL, 78648, 'Africa/Maputo', 1, '2012-01-19 04:30:00', '2012-01-19 04:30:00'),
 	(1024701, 'MZ', 'Macia', 'Macia', -25.0269, 33.0989, 'P', 'PPL', 'MZ.02', NULL, 23156, 'Africa/Maputo', 1, '2012-01-19 04:30:00', '2012-01-19 04:30:00'),
@@ -294,36 +310,37 @@ INSERT IGNORE INTO `blcities` (`id`, `country_code`, `name`, `asciiname`, `latit
 -- Dumping structure for table boladas.blcountries
 CREATE TABLE IF NOT EXISTS `blcountries` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `code` char(2) DEFAULT NULL,
-  `latitude` varchar(100) DEFAULT NULL,
-  `longitude` varchar(100) DEFAULT NULL,
-  `iso3` char(3) DEFAULT NULL,
+  `code` char(2) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `latitude` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `longitude` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `iso3` char(3) COLLATE utf8_unicode_ci DEFAULT NULL,
   `iso_numeric` int(10) unsigned DEFAULT NULL,
-  `fips` char(2) DEFAULT NULL,
-  `name` varchar(100) DEFAULT NULL,
-  `asciiname` varchar(100) DEFAULT NULL,
-  `capital` varchar(100) DEFAULT NULL,
+  `fips` char(2) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `asciiname` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `capital` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `area` int(10) unsigned DEFAULT NULL,
   `population` int(10) unsigned DEFAULT NULL,
-  `continent_code` char(4) DEFAULT NULL,
-  `tld` char(4) DEFAULT NULL,
-  `currency_code` varchar(3) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL,
-  `postal_code_format` varchar(50) DEFAULT NULL,
-  `postal_code_regex` varchar(200) DEFAULT NULL,
-  `languages` varchar(50) DEFAULT NULL,
-  `neighbours` varchar(50) DEFAULT NULL,
-  `equivalent_fips_code` varchar(100) DEFAULT NULL,
+  `continent_code` char(4) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tld` char(4) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `currency_code` varchar(3) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `postal_code_format` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `postal_code_regex` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `languages` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `neighbours` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `equivalent_fips_code` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `active` tinyint(1) DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `code` (`code`)
-) ENGINE=MyISAM AUTO_INCREMENT=253 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=253 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blcountries: 252 rows
+DELETE FROM `blcountries`;
 /*!40000 ALTER TABLE `blcountries` DISABLE KEYS */;
-INSERT IGNORE INTO `blcountries` (`id`, `code`, `latitude`, `longitude`, `iso3`, `iso_numeric`, `fips`, `name`, `asciiname`, `capital`, `area`, `population`, `continent_code`, `tld`, `currency_code`, `phone`, `postal_code_format`, `postal_code_regex`, `languages`, `neighbours`, `equivalent_fips_code`, `active`, `created_at`, `updated_at`) VALUES
+INSERT INTO `blcountries` (`id`, `code`, `latitude`, `longitude`, `iso3`, `iso_numeric`, `fips`, `name`, `asciiname`, `capital`, `area`, `population`, `continent_code`, `tld`, `currency_code`, `phone`, `postal_code_format`, `postal_code_regex`, `languages`, `neighbours`, `equivalent_fips_code`, `active`, `created_at`, `updated_at`) VALUES
 	(1, 'AD', NULL, NULL, 'AND', 20, 'AN', 'Andorra', 'Andorra', 'Andorra la Vella', 468, 84000, 'EU', '.ad', 'EUR', '376', 'AD###', '^(?:AD)*(d{3})$', 'ca', 'ES,FR', '', 0, NULL, NULL),
 	(2, 'AE', NULL, NULL, 'ARE', 784, 'AE', 'al-Imārāt', 'United Arab Emirates', 'Abu Dhabi', 82880, 4975593, 'AS', '.ae', 'AED', '971', '', '', 'ar-AE,fa,en,hi,ur', 'SA,OM', '', 0, NULL, NULL),
 	(3, 'AF', NULL, NULL, 'AFG', 4, 'AF', 'Afġānistān', 'Afghanistan', 'Kabul', 647500, 29121286, 'AS', '.af', 'AFN', '93', '', '', 'fa-AF,ps,uz-AF,tk', 'TM,CN,IR,TJ,PK,UZ', '', 0, NULL, NULL),
@@ -560,7 +577,8 @@ INSERT IGNORE INTO `blcountries` (`id`, `code`, `latitude`, `longitude`, `iso3`,
 	(234, 'UM', NULL, NULL, 'UMI', 581, '', 'United States Minor Outlying Islands', 'United States Minor Outlying Islands', '', 0, 0, 'OC', '.um', 'USD', '1', '', '', 'en-UM', '', '', 0, NULL, NULL),
 	(235, 'US', NULL, NULL, 'USA', 840, 'US', 'USA', 'United States', 'Washington', 9629091, 310232863, 'NA', '.us', 'USD', '1', '#####-####', '^d{5}(-d{4})?$', 'en-US,es-US,haw,fr', 'CA,MX,CU', '', 0, NULL, NULL),
 	(236, 'UY', NULL, NULL, 'URY', 858, 'UY', 'Uruguay', 'Uruguay', 'Montevideo', 176220, 3477000, 'SA', '.uy', 'UYU', '598', '#####', '^(d{5})$', 'es-UY', 'BR,AR', '', 0, NULL, NULL),
-	(237, 'UZ', NULL, NULL, 'UZB', 860, 'UZ', 'O\'zbekiston', 'Uzbekistan', 'Tashkent', 447400, 27865738, 'AS', '.uz', 'UZS', '998', '######', '^(d{6})$', 'uz,ru,tg', 'TM,AF,KG,TJ,KZ', '', 0, NULL, NULL),
+	(237, 'UZ', NULL, NULL, 'UZB', 860, 'UZ', 'O\'zbekiston', 'Uzbekistan', 'Tashkent', 447400, 27865738, 'AS', '.uz', 'UZS', '998', '######', '^(d{6})$', 'uz,ru,tg', 'TM,AF,KG,TJ,KZ', '', 0, NULL, NULL);
+INSERT INTO `blcountries` (`id`, `code`, `latitude`, `longitude`, `iso3`, `iso_numeric`, `fips`, `name`, `asciiname`, `capital`, `area`, `population`, `continent_code`, `tld`, `currency_code`, `phone`, `postal_code_format`, `postal_code_regex`, `languages`, `neighbours`, `equivalent_fips_code`, `active`, `created_at`, `updated_at`) VALUES
 	(238, 'VA', NULL, NULL, 'VAT', 336, 'VT', 'Vaticanum', 'Vatican', 'Vatican City', 0, 921, 'EU', '.va', 'EUR', '379', '#####', '^(d{5})$', 'la,it,fr', 'IT', '', 0, NULL, NULL),
 	(239, 'VC', NULL, NULL, 'VCT', 670, 'VC', 'Saint Vincent and the Grenadines', 'Saint Vincent and the Grenadines', 'Kingstown', 389, 104217, 'NA', '.vc', 'XCD', '+1-784', '', '', 'en-VC,fr', '', '', 0, NULL, NULL),
 	(240, 'VE', NULL, NULL, 'VEN', 862, 'VE', 'Venezuela', 'Venezuela', 'Caracas', 912050, 27223228, 'SA', '.ve', 'VEF', '58', '####', '^(d{4})$', 'es-VE', 'GY,BR,CO', '', 0, NULL, NULL),
@@ -581,26 +599,27 @@ INSERT IGNORE INTO `blcountries` (`id`, `code`, `latitude`, `longitude`, `iso3`,
 -- Dumping structure for table boladas.blcurrencies
 CREATE TABLE IF NOT EXISTS `blcurrencies` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `code` varchar(3) DEFAULT NULL,
-  `name` varchar(50) DEFAULT NULL,
-  `html_entity` varchar(30) DEFAULT NULL COMMENT 'From Github : An array of currency symbols as HTML entities',
-  `font_arial` varchar(5) DEFAULT NULL,
-  `font_code2000` varchar(5) DEFAULT NULL,
-  `unicode_decimal` varchar(5) DEFAULT NULL,
-  `unicode_hex` varchar(5) DEFAULT NULL,
+  `code` varchar(3) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `html_entity` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'From Github : An array of currency symbols as HTML entities',
+  `font_arial` varchar(5) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `font_code2000` varchar(5) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `unicode_decimal` varchar(5) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `unicode_hex` varchar(5) COLLATE utf8_unicode_ci DEFAULT NULL,
   `in_left` tinyint(1) DEFAULT 0,
   `decimal_places` int(10) unsigned DEFAULT 2 COMMENT 'Currency Decimal Places - ISO 4217',
-  `decimal_separator` varchar(10) DEFAULT '.',
-  `thousand_separator` varchar(10) DEFAULT ',',
+  `decimal_separator` varchar(10) COLLATE utf8_unicode_ci DEFAULT '.',
+  `thousand_separator` varchar(10) COLLATE utf8_unicode_ci DEFAULT ',',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `code` (`code`)
-) ENGINE=MyISAM AUTO_INCREMENT=171 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=171 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blcurrencies: 170 rows
+DELETE FROM `blcurrencies`;
 /*!40000 ALTER TABLE `blcurrencies` DISABLE KEYS */;
-INSERT IGNORE INTO `blcurrencies` (`id`, `code`, `name`, `html_entity`, `font_arial`, `font_code2000`, `unicode_decimal`, `unicode_hex`, `in_left`, `decimal_places`, `decimal_separator`, `thousand_separator`, `created_at`, `updated_at`) VALUES
+INSERT INTO `blcurrencies` (`id`, `code`, `name`, `html_entity`, `font_arial`, `font_code2000`, `unicode_decimal`, `unicode_hex`, `in_left`, `decimal_places`, `decimal_separator`, `thousand_separator`, `created_at`, `updated_at`) VALUES
 	(1, 'AED', 'United Arab Emirates Dirham', '&#1583;.&#1573;', 'د.إ', 'د.إ', NULL, NULL, 0, 2, '.', ',', NULL, '2016-04-03 18:05:01'),
 	(2, 'AFN', 'Afghanistan Afghani', '&#65;&#102;', '؋', '؋', '1547', '60b', 0, 2, '.', ',', NULL, '2016-04-03 18:05:01'),
 	(3, 'ALL', 'Albania Lek', '&#76;&#101;&#107;', 'Lek', 'Lek', '76, 1', '4c, 6', 0, 2, '.', ',', NULL, '2016-04-03 18:05:01'),
@@ -778,14 +797,15 @@ CREATE TABLE IF NOT EXISTS `blcustom_data` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `product_id` int(11) DEFAULT NULL,
   `field_id` int(11) DEFAULT NULL,
-  `field_type` varchar(20) DEFAULT NULL,
-  `field_data` longtext DEFAULT NULL,
+  `field_type` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `field_data` mediumtext CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table boladas.blcustom_data: 21 rows
+DELETE FROM `blcustom_data`;
 /*!40000 ALTER TABLE `blcustom_data` DISABLE KEYS */;
-INSERT IGNORE INTO `blcustom_data` (`id`, `product_id`, `field_id`, `field_type`, `field_data`) VALUES
+INSERT INTO `blcustom_data` (`id`, `product_id`, `field_id`, `field_type`, `field_data`) VALUES
 	(1, 42, 33, 'text-field', 'HB20 PREMIUM 1.6 FLEX 16V AUT.'),
 	(2, 42, 34, 'text-field', 'HYUNDAI '),
 	(3, 42, 35, 'text-field', '2013'),
@@ -813,26 +833,27 @@ INSERT IGNORE INTO `blcustom_data` (`id`, `product_id`, `field_id`, `field_type`
 CREATE TABLE IF NOT EXISTS `blcustom_fields` (
   `custom_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `custom_order` int(10) DEFAULT NULL,
-  `translation_lang` longtext DEFAULT NULL,
-  `translation_name` mediumtext DEFAULT NULL,
-  `custom_anycat` varchar(255) DEFAULT NULL,
-  `custom_catid` varchar(255) DEFAULT NULL,
-  `custom_subcatid` varchar(500) DEFAULT NULL,
-  `custom_title` varchar(100) DEFAULT NULL,
-  `custom_type` varchar(40) DEFAULT NULL,
-  `custom_options` longtext DEFAULT NULL,
+  `translation_lang` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `translation_name` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `custom_anycat` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `custom_catid` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `custom_subcatid` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `custom_title` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `custom_type` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `custom_options` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
   `custom_required` tinyint(1) unsigned NOT NULL DEFAULT 0,
-  `custom_name` varchar(40) DEFAULT NULL,
-  `custom_default` varchar(200) DEFAULT NULL,
+  `custom_name` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `custom_default` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `custom_min` int(11) unsigned NOT NULL DEFAULT 0,
   `custom_max` int(11) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`custom_id`),
   KEY `custom_order` (`custom_order`)
-) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blcustom_fields: 26 rows
+DELETE FROM `blcustom_fields`;
 /*!40000 ALTER TABLE `blcustom_fields` DISABLE KEYS */;
-INSERT IGNORE INTO `blcustom_fields` (`custom_id`, `custom_order`, `translation_lang`, `translation_name`, `custom_anycat`, `custom_catid`, `custom_subcatid`, `custom_title`, `custom_type`, `custom_options`, `custom_required`, `custom_name`, `custom_default`, `custom_min`, `custom_max`) VALUES
+INSERT INTO `blcustom_fields` (`custom_id`, `custom_order`, `translation_lang`, `translation_name`, `custom_anycat`, `custom_catid`, `custom_subcatid`, `custom_title`, `custom_type`, `custom_options`, `custom_required`, `custom_name`, `custom_default`, `custom_min`, `custom_max`) VALUES
 	(1, 1, 'fr,sv,it,gr,es,pl,ja,zh,ar,he,ru,bn,hi,bg,ro,th,tr,ur,vi', 'Área útil (m2),Área útil (m2),Área útil (m2),Área útil (m2),Área útil (m2),Área útil (m2),Área útil (m2),Área útil (m2),Área útil (m2),Área útil (m2),Área útil (m2),Área útil (m2),Área útil (m2),Área útil (m2),Área útil (m2),Área útil (m2),Área útil (m2),Área útil (m2),Área útil (m2)', '', '4', '16,17,18,19,20,21,22', 'Área útil (m2)', 'text-field', '', 0, NULL, NULL, 0, 0),
 	(40, 40, 'fr,sv,it,gr,es,pl,ja,zh,ar,he,ru,bn,hi,bg,ro,th,tr,ur,vi', 'Acessórios,Acessórios,Acessórios,Acessórios,Acessórios,Acessórios,Acessórios,Acessórios,Acessórios,Acessórios,Acessórios,Acessórios,Acessórios,Acessórios,Acessórios,Acessórios,Acessórios,Acessórios,Acessórios', '', '', '2,3,5,50,52', 'Acessórios', 'checkboxes', '74,75,76,77,78,79,80,81,82,83,84', 0, NULL, NULL, 0, 0),
 	(41, 41, 'fr,sv,it,gr,es,pl,ja,zh,ar,he,ru,bn,hi,bg,ro,th,tr,ur,vi', 'Portas,Portas,Portas,Portas,Portas,Portas,Portas,Portas,Portas,Portas,Portas,Portas,Portas,Portas,Portas,Portas,Portas,Portas,Portas', '', '', '2,3,5,50,52', 'Portas', 'radio-buttons', '85,86,87,88', 0, NULL, NULL, 0, 0),
@@ -864,13 +885,14 @@ INSERT IGNORE INTO `blcustom_fields` (`custom_id`, `custom_order`, `translation_
 -- Dumping structure for table boladas.blcustom_options
 CREATE TABLE IF NOT EXISTS `blcustom_options` (
   `option_id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`option_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=89 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table boladas.blcustom_options: 83 rows
+DELETE FROM `blcustom_options`;
 /*!40000 ALTER TABLE `blcustom_options` DISABLE KEYS */;
-INSERT IGNORE INTO `blcustom_options` (`option_id`, `title`) VALUES
+INSERT INTO `blcustom_options` (`option_id`, `title`) VALUES
 	(1, 'Proprietário'),
 	(2, 'Intermediario'),
 	(3, 'Agência Mobilaria'),
@@ -959,35 +981,37 @@ INSERT IGNORE INTO `blcustom_options` (`option_id`, `title`) VALUES
 -- Dumping structure for table boladas.blemailq
 CREATE TABLE IF NOT EXISTS `blemailq` (
   `q_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) DEFAULT NULL,
-  `toname` varchar(255) DEFAULT NULL,
-  `subject` varchar(255) DEFAULT NULL,
-  `body` longtext DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `toname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `subject` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `body` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`q_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blemailq: 0 rows
+DELETE FROM `blemailq`;
 /*!40000 ALTER TABLE `blemailq` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blemailq` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.blfaq_entries
 CREATE TABLE IF NOT EXISTS `blfaq_entries` (
   `faq_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  `translation_lang` varchar(10) DEFAULT NULL,
+  `translation_lang` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `translation_of` int(10) unsigned DEFAULT NULL,
   `parent_id` int(10) unsigned DEFAULT NULL,
   `faq_pid` smallint(4) NOT NULL DEFAULT 0,
   `faq_weight` mediumint(6) NOT NULL DEFAULT 0,
-  `faq_title` varchar(255) DEFAULT NULL,
-  `faq_content` longtext DEFAULT NULL,
+  `faq_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `faq_content` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
   `active` tinyint(1) DEFAULT 1,
   PRIMARY KEY (`faq_id`),
   KEY `translation_lang` (`translation_lang`,`translation_of`,`parent_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blfaq_entries: 23 rows
+DELETE FROM `blfaq_entries`;
 /*!40000 ALTER TABLE `blfaq_entries` DISABLE KEYS */;
-INSERT IGNORE INTO `blfaq_entries` (`faq_id`, `translation_lang`, `translation_of`, `parent_id`, `faq_pid`, `faq_weight`, `faq_title`, `faq_content`, `active`) VALUES
+INSERT INTO `blfaq_entries` (`faq_id`, `translation_lang`, `translation_of`, `parent_id`, `faq_pid`, `faq_weight`, `faq_title`, `faq_content`, `active`) VALUES
 	(2, NULL, NULL, NULL, 2, 0, 'What is Quickad Classified?', 'Quickad Classified Ads Php Script is Premium Classified Php Script with fully responsive Material design. Built to be beautiful, fast and powerful. One click setup User can easily setup this theme and easy to use and customized.\n\n<h3>Features</h3>\n<ul>\n<li>Custom Fields</li>\n<li>Facebook Login</li>\n<li>Google+ Login</li>\n<li>2 Home layout</li>\n<li>Multi Theme Layout</li>\n<li>Material Design</li>\n<li>Fully Responsive</li>\n<li>Unlimited Colors</li>\n<li>Premium Submission</li>\n<li>Custom Widgets</li>\n<li>Paid Listing</li>\n<li>Featured &amp; Urgent Listing</li>\n<li>Grid View</li>\n<li>Listing View</li>\n<li>PayPal Integrated</li>\n<li>SEO optimized</li>\n<li>Google maps integrated</li>\n<li>Unlimited Colors Google Map</li>\n<li>Geo location support</li>\n<li>Bootstrap 3x</li>\n<li>Cross Browser support</li>\n<li>Email Notifications</li>\n<li>Well commented code.</li>\n<li>and much more.</li>\n</ul>', 1),
 	(9, NULL, NULL, NULL, 0, 0, 'How Long It Take To Register?', 'Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ant ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.', 1),
 	(10, NULL, NULL, NULL, 0, 0, 'How Can I Download Full Event Schedule?', 'Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ant ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.', 1),
@@ -1019,9 +1043,10 @@ CREATE TABLE IF NOT EXISTS `blfavads` (
   `user_id` int(11) DEFAULT NULL,
   `product_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- Dumping data for table boladas.blfavads: 0 rows
+DELETE FROM `blfavads`;
 /*!40000 ALTER TABLE `blfavads` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blfavads` ENABLE KEYS */;
 
@@ -1031,29 +1056,31 @@ CREATE TABLE IF NOT EXISTS `blfirebase_device_token` (
   `user_id` int(11) DEFAULT NULL,
   `device_id` varchar(55) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `token` mediumtext DEFAULT NULL,
+  `token` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- Dumping data for table boladas.blfirebase_device_token: 0 rows
+DELETE FROM `blfirebase_device_token`;
 /*!40000 ALTER TABLE `blfirebase_device_token` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blfirebase_device_token` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.bllanguages
 CREATE TABLE IF NOT EXISTS `bllanguages` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `code` varchar(10) DEFAULT NULL,
-  `direction` varchar(3) DEFAULT NULL,
-  `name` varchar(100) DEFAULT NULL,
-  `file_name` varchar(20) DEFAULT NULL,
+  `code` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `direction` varchar(3) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `file_name` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `active` tinyint(1) NOT NULL DEFAULT 1,
   `default` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.bllanguages: 20 rows
+DELETE FROM `bllanguages`;
 /*!40000 ALTER TABLE `bllanguages` DISABLE KEYS */;
-INSERT IGNORE INTO `bllanguages` (`id`, `code`, `direction`, `name`, `file_name`, `active`, `default`) VALUES
+INSERT INTO `bllanguages` (`id`, `code`, `direction`, `name`, `file_name`, `active`, `default`) VALUES
 	(1, 'en', 'ltr', 'English', 'english', 1, 1),
 	(2, 'fr', 'ltr', 'French', 'french', 1, 0),
 	(3, 'sv', 'ltr', 'Swedish', 'swedish', 1, 0),
@@ -1079,12 +1106,13 @@ INSERT IGNORE INTO `bllanguages` (`id`, `code`, `direction`, `name`, `file_name`
 -- Dumping structure for table boladas.bllogin_attempts
 CREATE TABLE IF NOT EXISTS `bllogin_attempts` (
   `user_id` int(11) DEFAULT NULL,
-  `time` varchar(30) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+  `time` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- Dumping data for table boladas.bllogin_attempts: 8 rows
+DELETE FROM `bllogin_attempts`;
 /*!40000 ALTER TABLE `bllogin_attempts` DISABLE KEYS */;
-INSERT IGNORE INTO `bllogin_attempts` (`user_id`, `time`) VALUES
+INSERT INTO `bllogin_attempts` (`user_id`, `time`) VALUES
 	(3, '1601269286'),
 	(3, '1601269301'),
 	(3, '1601269307'),
@@ -1099,14 +1127,15 @@ INSERT IGNORE INTO `bllogin_attempts` (`user_id`, `time`) VALUES
 CREATE TABLE IF NOT EXISTS `bllogs` (
   `log_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `log_date` int(11) unsigned NOT NULL DEFAULT 0,
-  `log_summary` varchar(100) DEFAULT NULL,
-  `log_details` longtext DEFAULT NULL,
+  `log_summary` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `log_details` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`log_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=99 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=106 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table boladas.bllogs: 98 rows
+-- Dumping data for table boladas.bllogs: 103 rows
+DELETE FROM `bllogs`;
 /*!40000 ALTER TABLE `bllogs` DISABLE KEYS */;
-INSERT IGNORE INTO `bllogs` (`log_id`, `log_date`, `log_summary`, `log_details`) VALUES
+INSERT INTO `bllogs` (`log_id`, `log_date`, `log_summary`, `log_details`) VALUES
 	(1, 1600714078, 'Cron Run', 'Ads closed: 0<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
 	(2, 1600715575, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
 	(3, 1600715933, 'Cron Run', 'Ads closed: 1<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
@@ -1204,27 +1233,34 @@ INSERT IGNORE INTO `bllogs` (`log_id`, `log_date`, `log_summary`, `log_details`)
 	(95, 1605805591, 'Cron Run', 'Ads closed: 40<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
 	(96, 1605806397, 'Cron Run', 'Ads closed: 40<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
 	(97, 1605808348, 'Cron Run', 'Ads closed: 40<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
-	(98, 1605894047, 'Cron Run', 'Ads closed: 40<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
-	(99, 1605895395, 'Cron Run', 'Ads closed: 40<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds');
+	(98, 1605819148, 'Cron Run', 'Ads closed: 40<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(99, 1605820478, 'Cron Run', 'Ads closed: 40<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(100, 1605821004, 'Cron Run', 'Ads closed: 40<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(101, 1605821362, 'Cron Run', 'Ads closed: 40<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(102, 1605946826, 'Cron Run', 'Ads closed: 40<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(103, 1605950732, 'Cron Run', 'Ads closed: 40<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(104, 1605961708, 'Cron Run', 'Ads closed: 40<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds'),
+	(105, 1605962385, 'Cron Run', 'Ads closed: 40<br>New ad: 0<br>Expire membership: 0<br>Emails added to the queue: 0<br>Emails sent: 0<br><br>Cron Took: 0 seconds');
 /*!40000 ALTER TABLE `bllogs` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.blmessages
 CREATE TABLE IF NOT EXISTS `blmessages` (
   `message_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `from_id` varchar(40) DEFAULT NULL,
-  `to_id` varchar(50) DEFAULT NULL,
-  `from_uname` varchar(225) DEFAULT NULL,
-  `to_uname` varchar(255) DEFAULT NULL,
-  `message_content` longtext DEFAULT NULL,
+  `from_id` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `to_id` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `from_uname` varchar(225) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `to_uname` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `message_content` mediumtext CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `message_date` datetime DEFAULT NULL,
   `recd` tinyint(1) NOT NULL DEFAULT 0,
-  `seen` enum('0','1') NOT NULL DEFAULT '0',
-  `message_type` varchar(255) DEFAULT NULL,
+  `seen` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `message_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `post_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`message_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- Dumping data for table boladas.blmessages: 0 rows
+DELETE FROM `blmessages`;
 /*!40000 ALTER TABLE `blmessages` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blmessages` ENABLE KEYS */;
 
@@ -1232,26 +1268,28 @@ CREATE TABLE IF NOT EXISTS `blmessages` (
 CREATE TABLE IF NOT EXISTS `blnotification` (
   `user_id` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `cat_id` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `user_email` varchar(255) DEFAULT NULL,
+  `user_email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   KEY `cat_id` (`cat_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blnotification: 0 rows
+DELETE FROM `blnotification`;
 /*!40000 ALTER TABLE `blnotification` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blnotification` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.bloptions
 CREATE TABLE IF NOT EXISTS `bloptions` (
   `option_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `option_name` varchar(191) DEFAULT NULL,
-  `option_value` longtext DEFAULT NULL,
+  `option_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `option_value` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`option_id`),
   UNIQUE KEY `option_name` (`option_name`)
-) ENGINE=MyISAM AUTO_INCREMENT=136 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=138 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table boladas.bloptions: 135 rows
+-- Dumping data for table boladas.bloptions: 137 rows
+DELETE FROM `bloptions`;
 /*!40000 ALTER TABLE `bloptions` DISABLE KEYS */;
-INSERT IGNORE INTO `bloptions` (`option_id`, `option_name`, `option_value`) VALUES
+INSERT INTO `bloptions` (`option_id`, `option_name`, `option_value`) VALUES
 	(1, 'site_logo', 'material-theme_logo.png'),
 	(2, 'site_title', 'CVS'),
 	(3, 'meta_keywords', 'CVS - Compras, Vendas, Serviços'),
@@ -1297,7 +1335,7 @@ INSERT IGNORE INTO `bloptions` (`option_id`, `option_name`, `option_value`) VALU
 	(43, 'smtp_host', 'mail.cvs.co.mz'),
 	(44, 'smtp_port', '587'),
 	(45, 'smtp_username', 'ola@cvs.co.mz'),
-	(46, 'smtp_password', 'G@A~}b?)SD8y'),
+	(46, 'smtp_password', 'XrvH8y9{#Fx1'),
 	(47, 'userlangsel', '0'),
 	(48, 'userthemesel', '0'),
 	(49, 'color_switcher', '0'),
@@ -1354,7 +1392,7 @@ INSERT IGNORE INTO `bloptions` (`option_id`, `option_name`, `option_value`) VALU
 	(100, 'delete_expired', '0'),
 	(101, 'validation_time', '0'),
 	(102, 'cron_exec_time', '300'),
-	(103, 'cron_time', '1605895395'),
+	(103, 'cron_time', '1605962385'),
 	(104, 'external_code', ''),
 	(105, 'blog_enable', '1'),
 	(106, 'blog_banner', '1'),
@@ -1386,20 +1424,22 @@ INSERT IGNORE INTO `bloptions` (`option_id`, `option_name`, `option_value`) VALU
 	(132, 'company_bank_info', ''),
 	(133, 'stripe_publishable_key', ''),
 	(134, 'stripe_secret_key', ''),
-	(135, 'm_pesa_token', 'EAHVm/Fm0GM7o3A//vfDEwx5m+ZBOqZN8xt5NfNEWYwcRouMienUzCUJ7ewy95bfU4dpzy2IeFQ3CSQ1DJYhdvRMbIDnfCTx8rf62CayjpxbKioLTK1Vh85XTry6Y1Nlfs9tAcYpMhU+nByCiCaTvp+Bxjme0WWtDqDxAqOt3YOBd7QGG6BPFRhS/tuh0HN0b9rvcJCqQKyJ7/I2gLVw5iUqFhpR2GrKIE1/hLVTQ7sb8lXTdzZN5AeqLXHXiFAB2Vv/1ZlR0l6R/4vSk4Uac7JufiCjzNheeVytI9K6V2WJ2HpTT+PpAyK2RKMLChIFfeExtZKIuMyXiekoxJ5UQ8QC3LzDiQ/Q3RYXRR3o5hsZg+jNHs0aG6k2QP1YBssXZwEQDLiZ2sb0cF15vMOMQ4GvSFqQrh1/aX8Q1bSNsMzCB7S2pjCV5i8iyKzRxyR/YWVReN3QFwY+9ej6K17SN4aun383zltCvpJWGNIWTLHXrm2eMtYTlZiDlpZG12Opoj6N5ZzrXhz94wWCEpO5Yj3NZt9WF5LDA+ANQyofwtsH47eF2nMXlBoZuammh1OA10M/DMpAQV/yXPCAK5fK+T72HrE1jwgl5CYNT0te1/y1207xmrFxJqAh2CKamfsNqwxY4TPaSaD4iHVipugDQPvLBKcfh4Nk+bUpM9K7Nls=');
+	(135, 'm_pesa_token', 'EAHVm/Fm0GM7o3A//vfDEwx5m+ZBOqZN8xt5NfNEWYwcRouMienUzCUJ7ewy95bfU4dpzy2IeFQ3CSQ1DJYhdvRMbIDnfCTx8rf62CayjpxbKioLTK1Vh85XTry6Y1Nlfs9tAcYpMhU+nByCiCaTvp+Bxjme0WWtDqDxAqOt3YOBd7QGG6BPFRhS/tuh0HN0b9rvcJCqQKyJ7/I2gLVw5iUqFhpR2GrKIE1/hLVTQ7sb8lXTdzZN5AeqLXHXiFAB2Vv/1ZlR0l6R/4vSk4Uac7JufiCjzNheeVytI9K6V2WJ2HpTT+PpAyK2RKMLChIFfeExtZKIuMyXiekoxJ5UQ8QC3LzDiQ/Q3RYXRR3o5hsZg+jNHs0aG6k2QP1YBssXZwEQDLiZ2sb0cF15vMOMQ4GvSFqQrh1/aX8Q1bSNsMzCB7S2pjCV5i8iyKzRxyR/YWVReN3QFwY+9ej6K17SN4aun383zltCvpJWGNIWTLHXrm2eMtYTlZiDlpZG12Opoj6N5ZzrXhz94wWCEpO5Yj3NZt9WF5LDA+ANQyofwtsH47eF2nMXlBoZuammh1OA10M/DMpAQV/yXPCAK5fK+T72HrE1jwgl5CYNT0te1/y1207xmrFxJqAh2CKamfsNqwxY4TPaSaD4iHVipugDQPvLBKcfh4Nk+bUpM9K7Nls='),
+	(136, 'verification_fee', '200'),
+	(137, 'verification_validate_months', '6');
 /*!40000 ALTER TABLE `bloptions` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.blpages
 CREATE TABLE IF NOT EXISTS `blpages` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `translation_lang` varchar(10) DEFAULT NULL,
+  `translation_lang` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `translation_of` int(10) unsigned DEFAULT NULL,
   `parent_id` int(10) unsigned DEFAULT NULL,
-  `type` enum('0','1') NOT NULL DEFAULT '0',
-  `name` varchar(100) DEFAULT NULL,
-  `slug` varchar(100) DEFAULT NULL,
-  `title` varchar(200) DEFAULT NULL,
-  `content` mediumtext DEFAULT NULL,
+  `type` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `active` tinyint(1) DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -1407,9 +1447,10 @@ CREATE TABLE IF NOT EXISTS `blpages` (
   KEY `translation_lang` (`translation_lang`),
   KEY `translation_of` (`translation_of`),
   KEY `parent_id` (`parent_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blpages: 0 rows
+DELETE FROM `blpages`;
 /*!40000 ALTER TABLE `blpages` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blpages` ENABLE KEYS */;
 
@@ -1419,13 +1460,14 @@ CREATE TABLE IF NOT EXISTS `blpayments` (
   `payment_install` enum('0','1') NOT NULL DEFAULT '0',
   `payment_title` varchar(255) DEFAULT NULL,
   `payment_folder` varchar(30) DEFAULT NULL,
-  `payment_desc` varchar(255) DEFAULT NULL,
+  `payment_desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`payment_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table boladas.blpayments: 5 rows
+DELETE FROM `blpayments`;
 /*!40000 ALTER TABLE `blpayments` DISABLE KEYS */;
-INSERT IGNORE INTO `blpayments` (`payment_id`, `payment_install`, `payment_title`, `payment_folder`, `payment_desc`) VALUES
+INSERT INTO `blpayments` (`payment_id`, `payment_install`, `payment_title`, `payment_folder`, `payment_desc`) VALUES
 	(1, '0', 'Paypal', 'paypal', 'You will be redirected to paypal to complete payment.'),
 	(2, '0', 'Credit & Debit Card', 'stripe', 'Make an instant deposit using online payment service Stripe. Pay with your debit or credit card.'),
 	(3, '1', 'M-Pesa', 'wire_transfer', NULL),
@@ -1436,50 +1478,51 @@ INSERT IGNORE INTO `blpayments` (`payment_id`, `payment_install`, `payment_title
 -- Dumping structure for table boladas.blproduct
 CREATE TABLE IF NOT EXISTS `blproduct` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `status` enum('pending','active','rejected','expire') NOT NULL DEFAULT 'pending',
+  `status` enum('pending','active','rejected','expire') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'pending',
   `user_id` int(20) DEFAULT NULL,
-  `featured` enum('0','1') NOT NULL DEFAULT '0',
-  `urgent` enum('0','1') NOT NULL DEFAULT '0',
-  `highlight` enum('0','1') NOT NULL DEFAULT '0',
-  `product_name` varchar(150) DEFAULT NULL,
-  `slug` varchar(150) DEFAULT NULL,
-  `description` longtext DEFAULT NULL,
+  `featured` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `urgent` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `highlight` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `product_name` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `slug` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` mediumtext CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `category` int(11) DEFAULT NULL,
   `sub_category` int(11) DEFAULT NULL,
   `price` int(10) NOT NULL DEFAULT 0,
-  `negotiable` enum('0','1') NOT NULL DEFAULT '0',
-  `phone` varchar(50) DEFAULT NULL,
-  `hide_phone` enum('0','1') DEFAULT NULL,
-  `location` longtext DEFAULT NULL,
-  `city` char(50) DEFAULT NULL,
-  `state` char(50) DEFAULT NULL,
-  `country` char(50) DEFAULT NULL,
-  `latlong` varchar(255) DEFAULT NULL,
-  `screen_shot` longtext DEFAULT NULL,
-  `tag` varchar(225) DEFAULT NULL,
+  `negotiable` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `phone` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `hide_phone` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `location` mediumtext CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `city` char(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `state` char(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `country` char(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `latlong` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `screen_shot` mediumtext CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tag` varchar(225) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `view` int(11) NOT NULL DEFAULT 1,
-  `custom_fields` longtext DEFAULT NULL,
-  `custom_types` longtext DEFAULT NULL,
-  `custom_values` longtext DEFAULT NULL,
+  `custom_fields` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `custom_types` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `custom_values` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `expire_date` int(12) NOT NULL DEFAULT 0,
   `featured_exp_date` int(11) DEFAULT NULL,
   `urgent_exp_date` int(11) DEFAULT NULL,
   `highlight_exp_date` int(11) DEFAULT NULL,
-  `contact_phone` enum('0','1') NOT NULL DEFAULT '0',
-  `contact_email` enum('0','1') NOT NULL DEFAULT '0',
-  `contact_chat` enum('0','1') NOT NULL DEFAULT '0',
-  `admin_seen` enum('0','1') NOT NULL DEFAULT '0',
-  `emailed` enum('0','1') NOT NULL DEFAULT '0',
-  `hide` enum('0','1') NOT NULL DEFAULT '0',
+  `contact_phone` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `contact_email` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `contact_chat` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `admin_seen` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `emailed` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `hide` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=59 DEFAULT CHARSET=latin1;
 
--- Dumping data for table boladas.blproduct: 56 rows
+-- Dumping data for table boladas.blproduct: 57 rows
+DELETE FROM `blproduct`;
 /*!40000 ALTER TABLE `blproduct` DISABLE KEYS */;
-INSERT IGNORE INTO `blproduct` (`id`, `status`, `user_id`, `featured`, `urgent`, `highlight`, `product_name`, `slug`, `description`, `category`, `sub_category`, `price`, `negotiable`, `phone`, `hide_phone`, `location`, `city`, `state`, `country`, `latlong`, `screen_shot`, `tag`, `view`, `custom_fields`, `custom_types`, `custom_values`, `created_at`, `updated_at`, `expire_date`, `featured_exp_date`, `urgent_exp_date`, `highlight_exp_date`, `contact_phone`, `contact_email`, `contact_chat`, `admin_seen`, `emailed`, `hide`) VALUES
+INSERT INTO `blproduct` (`id`, `status`, `user_id`, `featured`, `urgent`, `highlight`, `product_name`, `slug`, `description`, `category`, `sub_category`, `price`, `negotiable`, `phone`, `hide_phone`, `location`, `city`, `state`, `country`, `latlong`, `screen_shot`, `tag`, `view`, `custom_fields`, `custom_types`, `custom_values`, `created_at`, `updated_at`, `expire_date`, `featured_exp_date`, `urgent_exp_date`, `highlight_exp_date`, `contact_phone`, `contact_email`, `contact_chat`, `admin_seen`, `emailed`, `hide`) VALUES
 	(2, 'expire', 3, '0', '0', '0', 'Toyotta Hiace Van', 'toyotta-hiace-van', '<p>Toyota Hiace Van&nbsp;</p><p>15 lugares</p><p>bom estado</p>', 1, 2, 50000, '0', '84822845', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1600883611_toyota.jpg', '', 4, NULL, NULL, NULL, '2020-09-23 19:54:02', '2020-09-23 19:54:02', 1603475642, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
 	(3, 'expire', 3, '0', '0', '0', 'Nissan Sierre', 'nissan-sierre', '<p>Nissan Sierre</p><p>4 Portas</p><p>Cabine</p>', 1, 2, 70000, '0', '846872773', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1600884379_nissan.jpg', '', 4, NULL, NULL, NULL, '2020-09-23 20:06:39', '2020-09-23 20:06:39', 1603476399, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
 	(4, 'expire', 3, '0', '0', '0', 'vending machine', 'vending-machine', '<p>vending machine<br></p>', 3, 12, 2000, '0', '84822845', '0', '', '1039854', 'MZ.04', 'MZ', '28.6139391,77.20902120000005', '1600884516_redboxhiringkioskambassadors1-851x452-2.png', '', 6, NULL, NULL, NULL, '2020-09-23 20:09:11', '2020-09-23 20:09:11', 1603476551, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
@@ -1519,7 +1562,24 @@ INSERT IGNORE INTO `blproduct` (`id`, `status`, `user_id`, `featured`, `urgent`,
 	(38, 'expire', 6, '0', '0', '0', '5464', '5464', '<p>hfghhcfh</p>', 2, 7, 76, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1602670767_download.jpg', '', 1, NULL, NULL, NULL, '2020-10-14 12:19:38', '2020-10-14 12:19:38', 1605262778, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
 	(39, 'expire', 6, '0', '0', '0', 'Asdweef', 'asdweef', '<p>sghdhhdfh</p>', 2, 7, 1234354, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1602671228_download.jpg', '', 1, NULL, NULL, NULL, '2020-10-14 12:27:31', '2020-10-14 12:27:31', 1605263251, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
 	(40, 'expire', 3, '0', '0', '0', 'dgdsfgfdg', 'dgdsfgfdg', '<p>dsfgdxgdgfsdg</p>', 1, 1, 1000, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1602764310_download.jpg', '', 1, NULL, NULL, NULL, '2020-10-15 14:18:58', '2020-10-15 14:18:58', 1605356338, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
-	(41, 'expire', 3, '0', '0', '0', 'hgfjghkjgh545645', 'hgfjghkjgh545645', '<p>gfjgfhjg</p>', 2, 7, 1054, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1602764744_download.jpg', '', 1, NULL, NULL, NULL, '2020-10-15 14:40:30', '2020-10-15 14:40:30', 1605357630, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0');
+	(41, 'expire', 3, '0', '0', '0', 'hgfjghkjgh545645', 'hgfjghkjgh545645', '<p>gfjgfhjg</p>', 2, 7, 1054, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1602764744_download.jpg', '', 1, NULL, NULL, NULL, '2020-10-15 14:40:30', '2020-10-15 14:40:30', 1605357630, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(42, 'active', 3, '0', '0', '0', 'Macaneta', 'macaneta-1', '<p>Abbbb</p>', 1, 1, 1000, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1605558464_g-suite.png', '', 1, NULL, NULL, NULL, '2020-11-16 22:28:25', '2020-11-18 05:08:29', 1608150505, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(43, 'active', 3, '0', '0', '0', 'Maputo', 'maputo-3', '<p>fdgdfg</p>', 1, 2, 5435, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1605629882_images-1.jpg', '', 1, NULL, NULL, NULL, '2020-11-17 18:18:18', '2020-11-17 18:18:18', 1608221898, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(44, 'active', 3, '0', '0', '0', 'Maputo', 'maputo-4', '<p>dfg</p>', 1, 2, 5435, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1605630027_images-1.jpg', '', 1, NULL, NULL, NULL, '2020-11-17 18:20:56', '2020-11-17 18:20:56', 1608222056, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(45, 'active', 3, '0', '0', '0', 'fgfdg', 'fgfdg', '<p>gfdg</p>', 1, 1, 546, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1605630203_images.jpg', '', 2, NULL, NULL, NULL, '2020-11-17 18:23:38', '2020-11-17 18:23:38', 1608222218, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(46, 'active', 3, '0', '0', '0', 'fgfdg', 'fgfdg-1', '<p>gfdg</p>', 1, 2, 546, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1605630236_images.jpg', '', 1, NULL, NULL, NULL, '2020-11-17 18:24:17', '2020-11-17 18:24:17', 1608222257, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(47, 'active', 3, '0', '0', '0', 'fgfdg', 'fgfdg-2', '<p>fgh</p>', 1, 1, 546, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1605630281_images.jpg', '', 1, NULL, NULL, NULL, '2020-11-17 18:25:04', '2020-11-17 18:25:04', 1608222304, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(48, 'active', 3, '0', '0', '0', 'ghgdhgf', 'ghgdhgf', '<p>hfdhdfgh</p>', 1, 1, 6456, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1605630429_maxresdefault.jpg', '', 1, NULL, NULL, NULL, '2020-11-17 18:27:31', '2020-11-17 18:27:31', 1608222451, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(49, 'active', 3, '0', '0', '0', 'hgkjkjghk', 'hgkjkjghk', '<p>hkjhkjhgk</p>', 2, 7, 678, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1605630718_maps.png', '', 1, NULL, NULL, NULL, '2020-11-17 18:32:12', '2020-11-17 18:32:12', 1608222732, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(50, 'active', 3, '0', '0', '0', 'jhkhgjkjh', 'jhkhgjkjh', '<p>hjkjhgkhjgk</p>', 2, 6, 7867, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1605630924_images.jpg', '', 2, NULL, NULL, NULL, '2020-11-17 18:35:40', '2020-11-17 18:35:40', 1608222940, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(51, 'active', 3, '0', '0', '0', 'fjhfgjh', 'fjhfgjh', '<p>djhjh</p>', 2, 6, 6765, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1605631024_images-1.jpg', '', 4, NULL, NULL, NULL, '2020-11-17 18:37:15', '2020-11-17 18:37:15', 1608223035, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(52, 'active', 3, '0', '0', '0', 'fjhfgjh', 'fjhfgjh-1', '<p>uiktyui</p>', 1, 1, 6765, '0', '', '0', '', '1039536', 'MZ.03', 'MZ', '28.6139391,77.20902120000005', '1605631048_images-1.jpg', '', 1, NULL, NULL, NULL, '2020-11-17 18:37:49', '2020-11-17 18:37:49', 1608223069, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(53, 'active', 3, '0', '0', '0', 'fjhfgjh', 'fjhfgjh-2', '<p>kgkj</p>', 1, 1, 6765, '0', '', '0', '', '1024701', 'MZ.02', 'MZ', '28.6139391,77.20902120000005', '1605631082_images-1.jpg', '', 1, NULL, NULL, NULL, '2020-11-17 18:38:40', '2020-11-17 18:38:40', 1608223120, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(54, 'active', 3, '0', '0', '0', 'Maputo', 'maputo-5', '<p>fddfhdfh</p>', 1, 2, 76867, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1605631343_download.jpg', '', 1, NULL, NULL, NULL, '2020-11-17 18:42:36', '2020-11-17 18:42:36', 1608223356, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(55, 'active', 3, '0', '0', '0', 'agsdg', 'agsdg', '<p>hjgjgfj</p>', 1, 3, 46, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1605631562_download.jpg', '', 1, NULL, NULL, NULL, '2020-11-17 18:46:14', '2020-11-17 18:46:14', 1608223574, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(56, 'active', 3, '0', '0', '0', 'ghfghgf', 'ghfghgf', '<p>gfjgfjgfj</p>', 1, 1, 234, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1605631666_g-suite.png', '', 2, NULL, NULL, NULL, '2020-11-17 18:47:58', '2020-11-17 18:47:58', 1608223678, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(57, 'active', 3, '1', '1', '1', 'fjhfghjhgfj', 'fjhfghjhgfj', '<p>fjfgjfg</p>', 2, 6, 567, '0', '', '0', '', '1039536', 'MZ.03', 'MZ', '28.6139391,77.20902120000005', '1605631787_g-suite.png', '', 9, NULL, NULL, NULL, '2020-11-17 00:00:00', '2020-11-18 04:43:13', 1608156000, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0'),
+	(58, 'active', 6, '0', '0', '0', 'fsdafds', 'fsdafds', '<p>sdfsdf</p>', 2, 6, 3434, '0', '', '0', '', '1040652', 'MZ.11', 'MZ', '28.6139391,77.20902120000005', '1605948534_g-suite.png', '', 1, NULL, NULL, NULL, '2020-11-21 10:49:11', '2020-11-21 10:49:11', 1608540551, NULL, NULL, NULL, '0', '0', '0', '0', '0', '0');
 /*!40000 ALTER TABLE `blproduct` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.blproduct_resubmit
@@ -1527,45 +1587,46 @@ CREATE TABLE IF NOT EXISTS `blproduct_resubmit` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `product_id` int(11) DEFAULT NULL,
   `user_id` int(20) DEFAULT NULL,
-  `featured` enum('0','1') NOT NULL DEFAULT '0',
-  `urgent` enum('0','1') NOT NULL DEFAULT '0',
-  `highlight` enum('0','1') NOT NULL DEFAULT '0',
-  `product_name` varchar(100) DEFAULT NULL,
-  `description` longtext DEFAULT NULL,
+  `featured` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `urgent` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `highlight` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `product_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` mediumtext CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `category` int(11) DEFAULT NULL,
   `sub_category` int(11) DEFAULT NULL,
   `price` int(10) DEFAULT NULL,
-  `negotiable` enum('0','1') NOT NULL DEFAULT '0',
-  `phone` varchar(50) DEFAULT NULL,
-  `hide_phone` enum('0','1') DEFAULT NULL,
-  `location` longtext DEFAULT NULL,
-  `city` char(50) DEFAULT NULL,
-  `state` char(50) DEFAULT NULL,
-  `country` char(50) DEFAULT NULL,
-  `latlong` varchar(255) DEFAULT NULL,
-  `screen_shot` longtext DEFAULT NULL,
-  `tag` varchar(225) DEFAULT NULL,
-  `status` enum('pending','active','rejected','softreject') NOT NULL DEFAULT 'pending',
+  `negotiable` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `phone` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `hide_phone` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `location` mediumtext CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `city` char(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `state` char(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `country` char(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `latlong` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `screen_shot` mediumtext CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tag` varchar(225) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` enum('pending','active','rejected','softreject') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'pending',
   `view` int(11) NOT NULL DEFAULT 1,
-  `custom_fields` longtext DEFAULT NULL,
-  `custom_types` longtext DEFAULT NULL,
-  `custom_values` longtext DEFAULT NULL,
+  `custom_fields` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `custom_types` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `custom_values` longtext CHARACTER SET utf8 DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `featured_exp_date` int(11) DEFAULT NULL,
   `urgent_exp_date` int(11) DEFAULT NULL,
   `highlight_exp_date` int(11) DEFAULT NULL,
-  `contact_phone` enum('0','1') NOT NULL DEFAULT '0',
-  `contact_email` enum('0','1') NOT NULL DEFAULT '0',
-  `contact_chat` enum('0','1') NOT NULL DEFAULT '0',
-  `comments` longtext DEFAULT NULL,
-  `admin_seen` enum('0','1') NOT NULL DEFAULT '0',
+  `contact_phone` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `contact_email` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `contact_chat` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `comments` mediumtext CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `admin_seen` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `product_id` (`product_id`),
   KEY `id` (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- Dumping data for table boladas.blproduct_resubmit: 0 rows
+DELETE FROM `blproduct_resubmit`;
 /*!40000 ALTER TABLE `blproduct_resubmit` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blproduct_resubmit` ENABLE KEYS */;
 
@@ -1581,66 +1642,53 @@ CREATE TABLE IF NOT EXISTS `blpush_notification` (
   `type` varchar(255) DEFAULT NULL,
   `message` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table boladas.blpush_notification: 1 rows
+DELETE FROM `blpush_notification`;
 /*!40000 ALTER TABLE `blpush_notification` DISABLE KEYS */;
-INSERT IGNORE INTO `blpush_notification` (`id`, `sender_id`, `sender_name`, `owner_id`, `owner_name`, `product_id`, `product_title`, `type`, `message`) VALUES
-	(1, 0, '', 3, '', 2, 'Toyotta Hiace Van', 'ad_approve', 'Toyotta Hiace Van has been approved, Make it premium for more visibility.'),
-	(2, 0, '', 3, '', 42, 'Macaneta', 'ad_delete', 'Macaneta has been Deleted.'),
-	(3, 0, '', 3, '', 43, 'Maputo', 'ad_delete', 'Maputo has been Deleted.'),
-	(4, 0, '', 3, '', 44, 'Maputo', 'ad_delete', 'Maputo has been Deleted.'),
-	(5, 0, '', 3, '', 45, 'fgfdg', 'ad_delete', 'fgfdg has been Deleted.'),
-	(6, 0, '', 3, '', 46, 'fgfdg', 'ad_delete', 'fgfdg has been Deleted.'),
-	(7, 0, '', 3, '', 47, 'fgfdg', 'ad_delete', 'fgfdg has been Deleted.'),
-	(8, 0, '', 3, '', 48, 'ghgdhgf', 'ad_delete', 'ghgdhgf has been Deleted.'),
-	(9, 0, '', 3, '', 49, 'hgkjkjghk', 'ad_delete', 'hgkjkjghk has been Deleted.'),
-	(10, 0, '', 3, '', 50, 'jhkhgjkjh', 'ad_delete', 'jhkhgjkjh has been Deleted.'),
-	(11, 0, '', 3, '', 51, 'fjhfgjh', 'ad_delete', 'fjhfgjh has been Deleted.'),
-	(12, 0, '', 3, '', 52, 'fjhfgjh', 'ad_delete', 'fjhfgjh has been Deleted.'),
-	(13, 0, '', 3, '', 53, 'fjhfgjh', 'ad_delete', 'fjhfgjh has been Deleted.'),
-	(14, 0, '', 3, '', 54, 'Maputo', 'ad_delete', 'Maputo has been Deleted.'),
-	(15, 0, '', 3, '', 55, 'agsdg', 'ad_delete', 'agsdg has been Deleted.'),
-	(16, 0, '', 3, '', 56, 'ghfghgf', 'ad_delete', 'ghfghgf has been Deleted.'),
-	(17, 0, '', 3, '', 57, 'fjhfghjhgfj', 'ad_delete', 'fjhfghjhgfj has been Deleted.');
+INSERT INTO `blpush_notification` (`id`, `sender_id`, `sender_name`, `owner_id`, `owner_name`, `product_id`, `product_title`, `type`, `message`) VALUES
+	(1, 0, '', 3, '', 2, 'Toyotta Hiace Van', 'ad_approve', 'Toyotta Hiace Van has been approved, Make it premium for more visibility.');
 /*!40000 ALTER TABLE `blpush_notification` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.blreviews
 CREATE TABLE IF NOT EXISTS `blreviews` (
   `reviewID` int(21) NOT NULL AUTO_INCREMENT,
-  `productID` varchar(255) DEFAULT NULL,
+  `productID` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `rating` double DEFAULT NULL,
-  `comments` longtext DEFAULT NULL,
+  `comments` mediumtext CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `date` date DEFAULT NULL,
   `publish` int(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`reviewID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table boladas.blreviews: 1 rows
+DELETE FROM `blreviews`;
 /*!40000 ALTER TABLE `blreviews` DISABLE KEYS */;
-INSERT IGNORE INTO `blreviews` (`reviewID`, `productID`, `user_id`, `rating`, `comments`, `date`, `publish`) VALUES
+INSERT INTO `blreviews` (`reviewID`, `productID`, `user_id`, `rating`, `comments`, `date`, `publish`) VALUES
 	(1, '5', 3, 5, 'Muito bom', '2020-09-28', 1);
 /*!40000 ALTER TABLE `blreviews` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.blsubadmin1
 CREATE TABLE IF NOT EXISTS `blsubadmin1` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `code` varchar(20) DEFAULT NULL,
-  `country_code` varchar(2) DEFAULT NULL,
-  `name` varchar(200) DEFAULT NULL,
-  `asciiname` varchar(200) DEFAULT NULL,
+  `code` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `country_code` varchar(2) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `asciiname` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `active` tinyint(1) unsigned DEFAULT 1,
   PRIMARY KEY (`id`),
   UNIQUE KEY `code` (`code`),
   KEY `country_code` (`country_code`),
   KEY `name` (`name`),
   KEY `active` (`active`)
-) ENGINE=MyISAM AUTO_INCREMENT=2358 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=2358 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blsubadmin1: 11 rows
+DELETE FROM `blsubadmin1`;
 /*!40000 ALTER TABLE `blsubadmin1` DISABLE KEYS */;
-INSERT IGNORE INTO `blsubadmin1` (`id`, `code`, `country_code`, `name`, `asciiname`, `active`) VALUES
+INSERT INTO `blsubadmin1` (`id`, `code`, `country_code`, `name`, `asciiname`, `active`) VALUES
 	(2347, 'MZ.09', 'MZ', 'Zambézia', 'Zambezia', 1),
 	(2348, 'MZ.08', 'MZ', 'Tete', 'Tete', 1),
 	(2349, 'MZ.05', 'MZ', 'Sofala', 'Sofala', 1),
@@ -1657,11 +1705,11 @@ INSERT IGNORE INTO `blsubadmin1` (`id`, `code`, `country_code`, `name`, `asciina
 -- Dumping structure for table boladas.blsubadmin2
 CREATE TABLE IF NOT EXISTS `blsubadmin2` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `code` varchar(20) DEFAULT NULL,
-  `country_code` varchar(2) DEFAULT NULL,
-  `subadmin1_code` varchar(20) DEFAULT NULL,
-  `name` varchar(200) DEFAULT NULL,
-  `asciiname` varchar(200) DEFAULT NULL,
+  `code` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `country_code` varchar(2) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `subadmin1_code` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `asciiname` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `active` tinyint(1) unsigned DEFAULT 1,
   PRIMARY KEY (`id`),
   UNIQUE KEY `code` (`code`),
@@ -1669,11 +1717,12 @@ CREATE TABLE IF NOT EXISTS `blsubadmin2` (
   KEY `subadmin1_code` (`subadmin1_code`),
   KEY `name` (`name`),
   KEY `active` (`active`)
-) ENGINE=MyISAM AUTO_INCREMENT=25543 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=25543 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blsubadmin2: 168 rows
+DELETE FROM `blsubadmin2`;
 /*!40000 ALTER TABLE `blsubadmin2` DISABLE KEYS */;
-INSERT IGNORE INTO `blsubadmin2` (`id`, `code`, `country_code`, `subadmin1_code`, `name`, `asciiname`, `active`) VALUES
+INSERT INTO `blsubadmin2` (`id`, `code`, `country_code`, `subadmin1_code`, `name`, `asciiname`, `active`) VALUES
 	(25375, 'MZ.07.1027397', 'MZ', 'MZ.07', 'Circunscrição de Sanga', 'Circunscricao de Sanga', 1),
 	(25376, 'MZ.01.1028315', 'MZ', 'MZ.01', 'Circunscrição da Quissanga', 'Circunscricao da Quissanga', 1),
 	(25377, 'MZ.09.1028433', 'MZ', 'MZ.09', 'Concelho de Quelimane', 'Concelho de Quelimane', 1),
@@ -1847,21 +1896,22 @@ INSERT IGNORE INTO `blsubadmin2` (`id`, `code`, `country_code`, `subadmin1_code`
 -- Dumping structure for table boladas.blsubscriptions
 CREATE TABLE IF NOT EXISTS `blsubscriptions` (
   `sub_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `sub_title` varchar(100) DEFAULT NULL,
-  `sub_term` varchar(10) NOT NULL DEFAULT 'MONTHLY',
+  `sub_title` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sub_term` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'MONTHLY',
   `sub_amount` double(8,2) NOT NULL DEFAULT 0.00,
-  `sub_image` mediumtext DEFAULT NULL,
+  `sub_image` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `group_id` smallint(10) DEFAULT NULL,
-  `pay_mode` varchar(55) DEFAULT NULL,
+  `pay_mode` varchar(55) COLLATE utf8_unicode_ci DEFAULT NULL,
   `active` tinyint(1) NOT NULL DEFAULT 1,
-  `recommended` enum('yes','no') NOT NULL DEFAULT 'no',
-  `discount_badge` varchar(25) DEFAULT NULL,
+  `recommended` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no',
+  `discount_badge` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`sub_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blsubscriptions: 3 rows
+DELETE FROM `blsubscriptions`;
 /*!40000 ALTER TABLE `blsubscriptions` DISABLE KEYS */;
-INSERT IGNORE INTO `blsubscriptions` (`sub_id`, `sub_title`, `sub_term`, `sub_amount`, `sub_image`, `group_id`, `pay_mode`, `active`, `recommended`, `discount_badge`) VALUES
+INSERT INTO `blsubscriptions` (`sub_id`, `sub_title`, `sub_term`, `sub_amount`, `sub_image`, `group_id`, `pay_mode`, `active`, `recommended`, `discount_badge`) VALUES
 	(4, 'Premium', 'MONTHLY', 250.00, 'https://cdn.iconscout.com/icon/free/png-64/check-verified-successful-accept-tick-yes-success-2516.png', 2, 'one_time', 1, 'yes', ''),
 	(5, 'Standard', 'WEEKLY', 100.00, '', 1, 'one_time', 1, 'no', ''),
 	(6, 'Basic', 'DAILY', 25.00, '', 3, 'recurring', 1, 'yes', '');
@@ -1870,16 +1920,17 @@ INSERT IGNORE INTO `blsubscriptions` (`sub_id`, `sub_title`, `sub_term`, `sub_am
 -- Dumping structure for table boladas.bltestimonials
 CREATE TABLE IF NOT EXISTS `bltestimonials` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) DEFAULT NULL,
-  `designation` varchar(100) DEFAULT NULL,
-  `content` mediumtext NOT NULL,
-  `image` varchar(100) DEFAULT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `designation` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `content` text COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.bltestimonials: ~3 rows (approximately)
+DELETE FROM `bltestimonials`;
 /*!40000 ALTER TABLE `bltestimonials` DISABLE KEYS */;
-INSERT IGNORE INTO `bltestimonials` (`id`, `name`, `designation`, `content`, `image`) VALUES
+INSERT INTO `bltestimonials` (`id`, `name`, `designation`, `content`, `image`) VALUES
 	(1, 'Tony Stark', 'Social Marketing', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla paria tur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', NULL),
 	(2, 'Steve Roger', 'Content Writer', 'Elitsed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip e', NULL),
 	(3, 'Natasha', 'Designer', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo do consequat. Elitsed do eiusmod tempor incididunt ut labore et dolore magna aliqua', NULL);
@@ -1888,19 +1939,20 @@ INSERT IGNORE INTO `bltestimonials` (`id`, `name`, `designation`, `content`, `im
 -- Dumping structure for table boladas.bltime_zones
 CREATE TABLE IF NOT EXISTS `bltime_zones` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `country_code` varchar(2) DEFAULT NULL,
-  `time_zone_id` varchar(40) DEFAULT '',
+  `country_code` varchar(2) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `time_zone_id` varchar(40) COLLATE utf8_unicode_ci DEFAULT '',
   `gmt` float DEFAULT NULL,
   `dst` float DEFAULT NULL,
   `raw` float DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `time_zone_id` (`time_zone_id`),
   KEY `country_code` (`country_code`)
-) ENGINE=MyISAM AUTO_INCREMENT=248 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=248 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.bltime_zones: 247 rows
+DELETE FROM `bltime_zones`;
 /*!40000 ALTER TABLE `bltime_zones` DISABLE KEYS */;
-INSERT IGNORE INTO `bltime_zones` (`id`, `country_code`, `time_zone_id`, `gmt`, `dst`, `raw`) VALUES
+INSERT INTO `bltime_zones` (`id`, `country_code`, `time_zone_id`, `gmt`, `dst`, `raw`) VALUES
 	(1, 'AD', 'Europe/Andorra', 1, 2, 1),
 	(2, 'AE', 'Asia/Dubai', 4, 4, 4),
 	(3, 'AF', 'Asia/Kabul', 4.5, 4.5, 4.5),
@@ -2153,34 +2205,36 @@ INSERT IGNORE INTO `bltime_zones` (`id`, `country_code`, `time_zone_id`, `gmt`, 
 -- Dumping structure for table boladas.bltransaction
 CREATE TABLE IF NOT EXISTS `bltransaction` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_name` varchar(225) DEFAULT NULL,
+  `product_name` varchar(225) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `product_id` int(11) DEFAULT NULL,
   `seller_id` int(11) DEFAULT NULL,
   `amount` double(9,2) DEFAULT NULL,
-  `featured` enum('0','1') DEFAULT '0',
-  `urgent` enum('0','1') DEFAULT '0',
-  `highlight` enum('0','1') DEFAULT '0',
+  `featured` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '0',
+  `urgent` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '0',
+  `highlight` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '0',
   `transaction_time` int(11) DEFAULT NULL,
-  `status` enum('pending','success','failed','cancel') DEFAULT NULL,
-  `transaction_gatway` varchar(255) DEFAULT NULL,
-  `transaction_ip` varchar(15) DEFAULT NULL,
-  `transaction_description` varchar(255) DEFAULT NULL,
-  `transaction_method` varchar(20) DEFAULT NULL,
-  `msisdn` varchar(20) DEFAULT NULL,
-  `mp_transaction_id` varchar(40) DEFAULT NULL,
-  `mp_conversation_id` varchar(40) DEFAULT NULL,
-  `mp_response_desc` varchar(255) DEFAULT NULL,
+  `status` enum('pending','success','failed','cancel') CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `transaction_gatway` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `transaction_ip` varchar(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `transaction_description` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `transaction_method` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `msisdn` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mp_transaction_id` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mp_conversation_id` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mp_response_desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=60 DEFAULT CHARSET=latin1;
 
--- Dumping data for table boladas.bltransaction: 14 rows
+-- Dumping data for table boladas.bltransaction: 21 rows
+DELETE FROM `bltransaction`;
 /*!40000 ALTER TABLE `bltransaction` DISABLE KEYS */;
-INSERT IGNORE INTO `bltransaction` (`id`, `product_name`, `product_id`, `seller_id`, `amount`, `featured`, `urgent`, `highlight`, `transaction_time`, `status`, `transaction_gatway`, `transaction_ip`, `transaction_description`, `transaction_method`, `msisdn`, `mp_transaction_id`, `mp_conversation_id`, `mp_response_desc`) VALUES
+INSERT INTO `bltransaction` (`id`, `product_name`, `product_id`, `seller_id`, `amount`, `featured`, `urgent`, `highlight`, `transaction_time`, `status`, `transaction_gatway`, `transaction_ip`, `transaction_description`, `transaction_method`, `msisdn`, `mp_transaction_id`, `mp_conversation_id`, `mp_response_desc`) VALUES
 	(1, 'VEstido', 5, 3, 60.00, '1', '1', '1', 1601287855, 'success', 'wire_transfer', '::1', 'Pacote Destaque Urgente Realçar', 'Premium Ad', NULL, NULL, NULL, NULL),
 	(2, 'Carro 4x4 Nissan', 6, 3, 60.00, '1', '1', '1', 1601310378, 'success', 'wire_transfer', '::1', 'Pacote Destaque Urgente Realçar', 'Premium Ad', NULL, NULL, NULL, NULL),
 	(4, 'Standard Plano de associação', 5, 4, 100.00, '0', '0', '0', 2020, 'success', 'Admin', '::1', 'Standard Plano de associação', 'Subscription', NULL, NULL, NULL, NULL),
 	(6, 'Standard Plano de associação', 5, 6, 100.00, '0', '0', '0', 2020, 'success', 'Admin', '::1', 'Standard Plano de associação', 'Subscription', NULL, NULL, NULL, NULL),
+	(51, 'fsdafds', 58, 6, 60.00, '1', '1', '1', 1605948619, 'success', 'wire_transfer', '::1', 'Pacote Destaque semanal Destaque mensal Busca Priorizada', 'Premium Ad', '258845567021', 'i4py29s9n3w6', '163971af10cb44ca8c906c765d405e0b', 'Request processed successfully'),
 	(41, 'fgfdg', 47, 3, 10.00, '1', '0', '0', 1605630342, 'success', 'wire_transfer', '::1', 'Pacote Básico', 'Premium Ad', '', '', '', ''),
 	(42, 'ghgdhgf', 48, 3, 50.00, '0', '1', '1', 1605630480, 'success', 'wire_transfer', '::1', 'Pacote Premium Destaque', 'Premium Ad', '', '', '', ''),
 	(43, 'hgkjkjghk', 49, 3, 25.00, '0', '1', '0', 1605630756, 'success', 'wire_transfer', '::1', 'Pacote Premium', 'Premium Ad', 'louco', '', '', ''),
@@ -2190,7 +2244,15 @@ INSERT IGNORE INTO `bltransaction` (`id`, `product_name`, `product_id`, `seller_
 	(47, 'ghfghgf', 56, 3, 10.00, '1', '0', '0', 1605631704, 'success', 'wire_transfer', '::1', 'Pacote Básico', 'Premium Ad', '258844443947', '', '', ''),
 	(48, 'fjhfghjhgfj', 57, 3, 50.00, '0', '1', '1', 1605631825, 'success', 'wire_transfer', '::1', 'Pacote Premium Destaque', 'Premium Ad', '258844443947', '4h4k4rli6h9i', '6faecdfc048a4ba995cd0276e4e32e66', 'Request processed successfully'),
 	(49, 'Standard Plano de associação', 5, 3, 100.00, '0', '0', '0', 2020, 'success', 'Admin', '::1', 'Standard Plano de associação', 'Subscription', NULL, NULL, NULL, NULL),
-	(50, 'Standard Plano de associação', 5, 3, 100.00, '0', '0', '0', 2020, 'success', 'Admin', '::1', 'Standard Plano de associação', 'Subscription', NULL, NULL, NULL, NULL);
+	(50, 'Standard Plano de associação', 5, 3, 100.00, '0', '0', '0', 2020, 'success', 'Admin', '::1', 'Standard Plano de associação', 'Subscription', NULL, NULL, NULL, NULL),
+	(52, 'Verification Fee', 0, 3, 201.00, '0', '0', '0', 1605959218, 'success', 'wire_transfer', '::1', 'Verification Fee', 'Premium Ad', '258', 'ugotlb0w8inr', '8e23b57ec9ec4306953eea405cfe7a90', 'Request processed successfully'),
+	(53, 'Verification Fee', 0, 3, 205.00, '0', '0', '0', 1605959378, 'success', 'wire_transfer', '::1', 'Verification Fee', 'Premium Ad', '258844443947', '40x49h3yl6wp', 'dc4b35ca935e40fc9074ce51965f4574', 'Request processed successfully'),
+	(54, 'Verification Fee', 0, 3, 208.00, '0', '0', '0', 1605959767, 'success', 'wire_transfer', '::1', 'Verification Fee', 'Premium Ad', '258844443947', 'luagoqebjxjf', 'f619ded3e69e4d38995520f3b6adffc8', 'Request processed successfully'),
+	(55, 'Verification Fee', 0, 3, 209.00, '0', '0', '0', 1605959878, 'success', 'wire_transfer', '::1', 'Verification Fee', 'Premium Ad', '258844443947', 'bt860i3ynee3', '92ada606f96e48b3a934143d87e7d2bc', 'Request processed successfully'),
+	(56, 'Verification Fee', 0, 3, 210.00, '0', '0', '0', 1605959980, 'success', 'wire_transfer', '::1', 'Verification Fee', 'Premium Ad', '258844443947', '4qpszulu6vv7', '2395bf7f8b7b448ca5f0ef04d9280173', 'Request processed successfully'),
+	(57, 'Verification Fee', 0, 3, 211.00, '0', '0', '0', 1605960054, 'success', 'wire_transfer', '::1', 'Verification Fee', 'Premium Ad', '258844443947', 'flbebrc57yrq', '20b888108eb0465abcbb2e3ac417ddfd', 'Request processed successfully'),
+	(58, 'Verification Fee', 0, 3, 211.00, '0', '0', '0', 1605961550, 'success', 'wire_transfer', '::1', 'Verification Fee', 'Premium Ad', '258844443947', '9qyz2g72dteg', '3fa4f99ab3f249238b54432e9cd8cf53', 'Request processed successfully'),
+	(59, 'Verification Fee', 0, 3, 200.00, '0', '0', '0', 1605962014, 'success', 'wire_transfer', '::1', 'Verification Fee', 'Premium Ad', '258844443947', '8c9jrxit7mk6', 'daa2588a4a98475a9c5e572bf3e0d221', 'Request processed successfully');
 /*!40000 ALTER TABLE `bltransaction` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.blupgrades
@@ -2200,27 +2262,28 @@ CREATE TABLE IF NOT EXISTS `blupgrades` (
   `user_id` int(11) unsigned NOT NULL DEFAULT 0,
   `upgrade_lasttime` int(11) unsigned NOT NULL DEFAULT 0,
   `upgrade_expires` int(11) unsigned NOT NULL DEFAULT 0,
-  `unique_id` varchar(255) DEFAULT NULL,
-  `invoice_id` varchar(255) DEFAULT NULL,
-  `paypal_subscription_id` varchar(255) DEFAULT NULL,
-  `paypal_profile_id` varchar(255) DEFAULT NULL,
-  `stripe_customer_id` varchar(255) DEFAULT NULL,
-  `stripe_subscription_id` varchar(255) DEFAULT NULL,
-  `authorizenet_subscription_id` varchar(255) DEFAULT NULL,
+  `unique_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `invoice_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `paypal_subscription_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `paypal_profile_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `stripe_customer_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `stripe_subscription_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `authorizenet_subscription_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `billing_day` int(2) DEFAULT NULL,
   `length` int(4) DEFAULT NULL,
   `interval` int(4) DEFAULT NULL,
   `trial_days` int(4) DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `date_trial_ends` date DEFAULT NULL,
   `date_canceled` datetime DEFAULT NULL,
   `date_created` timestamp NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`upgrade_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blupgrades: 1 rows
+DELETE FROM `blupgrades`;
 /*!40000 ALTER TABLE `blupgrades` DISABLE KEYS */;
-INSERT IGNORE INTO `blupgrades` (`upgrade_id`, `sub_id`, `user_id`, `upgrade_lasttime`, `upgrade_expires`, `unique_id`, `invoice_id`, `paypal_subscription_id`, `paypal_profile_id`, `stripe_customer_id`, `stripe_subscription_id`, `authorizenet_subscription_id`, `billing_day`, `length`, `interval`, `trial_days`, `status`, `date_trial_ends`, `date_canceled`, `date_created`) VALUES
+INSERT INTO `blupgrades` (`upgrade_id`, `sub_id`, `user_id`, `upgrade_lasttime`, `upgrade_expires`, `unique_id`, `invoice_id`, `paypal_subscription_id`, `paypal_profile_id`, `stripe_customer_id`, `stripe_subscription_id`, `authorizenet_subscription_id`, `billing_day`, `length`, `interval`, `trial_days`, `status`, `date_trial_ends`, `date_canceled`, `date_created`) VALUES
 	(9, 5, 3, 2020, 1606246927, '5fb42754da5fe', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 'Active', NULL, NULL, '2020-11-18 01:11:08');
 /*!40000 ALTER TABLE `blupgrades` ENABLE KEYS */;
 
@@ -2228,33 +2291,35 @@ INSERT IGNORE INTO `blupgrades` (`upgrade_id`, `sub_id`, `user_id`, `upgrade_las
 CREATE TABLE IF NOT EXISTS `bluser` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `group_id` int(11) NOT NULL DEFAULT 1,
-  `username` varchar(255) DEFAULT NULL,
-  `user_type` enum('user','seller') DEFAULT NULL,
-  `password_hash` varchar(255) DEFAULT NULL,
-  `forgot` varchar(255) DEFAULT NULL,
-  `confirm` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `status` enum('0','1','2') DEFAULT NULL,
-  `bi_doc` varchar(255) DEFAULT NULL,
-  `alvara_doc` varchar(255) DEFAULT NULL,
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_type` enum('user','seller') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password_hash` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `forgot` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `confirm` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('0','1','2') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bi_doc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `alvara_doc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `verify_startdate` date DEFAULT NULL,
+  `verify_enddate` date DEFAULT NULL,
   `view` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `name` varchar(225) DEFAULT NULL,
-  `tagline` varchar(255) DEFAULT NULL,
-  `description` mediumtext DEFAULT NULL,
-  `website` varchar(255) DEFAULT NULL,
-  `sex` enum('Male','Female','Other') DEFAULT NULL,
-  `phone` varchar(255) DEFAULT NULL,
-  `postcode` varchar(255) DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
-  `country` varchar(50) DEFAULT NULL,
-  `city` varchar(225) DEFAULT NULL,
-  `image` varchar(225) NOT NULL DEFAULT 'default_user.png',
+  `name` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tagline` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `website` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sex` enum('Male','Female','Other') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `postcode` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'default_user.png',
   `lastactive` datetime DEFAULT NULL,
-  `facebook` varchar(255) DEFAULT NULL,
-  `twitter` varchar(255) DEFAULT NULL,
-  `googleplus` varchar(255) DEFAULT NULL,
+  `facebook` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `twitter` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `googleplus` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `instagram` varchar(255) DEFAULT NULL,
   `linkedin` varchar(255) DEFAULT NULL,
   `youtube` varchar(255) DEFAULT NULL,
@@ -2265,17 +2330,23 @@ CREATE TABLE IF NOT EXISTS `bluser` (
   `notify` enum('0','1') DEFAULT '0',
   `notify_cat` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table boladas.bluser: 4 rows
+DELETE FROM `bluser`;
 /*!40000 ALTER TABLE `bluser` DISABLE KEYS */;
+INSERT INTO `bluser` (`id`, `group_id`, `username`, `user_type`, `password_hash`, `forgot`, `confirm`, `email`, `status`, `bi_doc`, `alvara_doc`, `verify_startdate`, `verify_enddate`, `view`, `created_at`, `updated_at`, `name`, `tagline`, `description`, `website`, `sex`, `phone`, `postcode`, `address`, `country`, `city`, `image`, `lastactive`, `facebook`, `twitter`, `googleplus`, `instagram`, `linkedin`, `youtube`, `oauth_provider`, `oauth_uid`, `oauth_link`, `online`, `notify`, `notify_cat`) VALUES
+	(3, 1, 'bobo', NULL, '$2y$13$2c05cqSeY0rUObrXJCAZb.Isong7rziRMg2Wd55p8SDXAdD/VUCAe', NULL, NULL, 'derciobob@gmail.com', '0', '1605962014maxresdefault.jpg', '1605949080lightroom.jpg', '2020-11-21', '2021-05-21', NULL, '2020-09-22 15:36:57', '2020-11-19 19:48:27', 'Bobo', '', 'Male', 'http://', 'Male', '', '', '', 'Mozambique', 'Gaza', 'bobo_13380137502.png', '2020-11-21 14:31:39', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, '0', '0', ''),
+	(5, 1, 'bobo1', NULL, '$2y$13$2RgpT0Ot8W0j1BjLo4.dJ.V7YwCJfV2FPSquV1CMZPkgFeqcUK5QO', NULL, '08917796', 'dercio@gmail.com', '0', NULL, NULL, NULL, NULL, NULL, '2020-10-04 11:22:07', '2020-10-04 11:22:07', 'dede', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'India', '', 'default_user.png', '2020-10-04 23:12:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL),
+	(6, 1, 'herve', NULL, '$2y$13$p4O.jLPiGkRzLx6Yb57fmevY.RTHW8XtUU3taeAbCbrT7ENenIJMK', NULL, '04765036', 'herve@gmail.com', '1', NULL, NULL, NULL, NULL, NULL, '2020-10-05 08:37:45', '2020-11-19 19:45:18', 'Herve', '', '', 'http://', 'Male', '', '', '', 'Mozambique', '', 'default_user.png', '2020-11-21 10:48:38', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, '0', '0', ''),
+	(7, 1, 'hjonas', NULL, '$2y$13$/D3T2U9iMxh92FztiX.Qb.ObMEG2J.GRpgQ8IQLpilJplRoC0F2H2', NULL, '82049382', 'hvjonas@gmail.com', '0', NULL, NULL, NULL, NULL, NULL, '2020-10-10 22:31:55', '2020-10-10 22:31:55', 'Helio Jonas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'India', '', 'default_user.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL);
 /*!40000 ALTER TABLE `bluser` ENABLE KEYS */;
 
 -- Dumping structure for table boladas.blusergroups
 CREATE TABLE IF NOT EXISTS `blusergroups` (
   `group_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `group_removable` tinyint(1) unsigned NOT NULL DEFAULT 0,
-  `group_name` varchar(50) DEFAULT NULL,
+  `group_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ad_limit` int(11) DEFAULT NULL,
   `ad_duration` smallint(10) DEFAULT NULL,
   `urgent_project_fee` double(8,2) NOT NULL DEFAULT 0.00,
@@ -2284,15 +2355,16 @@ CREATE TABLE IF NOT EXISTS `blusergroups` (
   `featured_duration` smallint(10) DEFAULT NULL,
   `urgent_duration` smallint(10) DEFAULT NULL,
   `highlight_duration` smallint(10) DEFAULT NULL,
-  `top_search_result` enum('yes','no') NOT NULL DEFAULT 'no',
-  `show_on_home` enum('yes','no') NOT NULL DEFAULT 'no',
-  `show_in_home_search` enum('yes','no') NOT NULL DEFAULT 'no',
+  `top_search_result` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no',
+  `show_on_home` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no',
+  `show_in_home_search` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no',
   PRIMARY KEY (`group_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table boladas.blusergroups: 3 rows
+DELETE FROM `blusergroups`;
 /*!40000 ALTER TABLE `blusergroups` DISABLE KEYS */;
-INSERT IGNORE INTO `blusergroups` (`group_id`, `group_removable`, `group_name`, `ad_limit`, `ad_duration`, `urgent_project_fee`, `featured_project_fee`, `highlight_project_fee`, `featured_duration`, `urgent_duration`, `highlight_duration`, `top_search_result`, `show_on_home`, `show_in_home_search`) VALUES
+INSERT INTO `blusergroups` (`group_id`, `group_removable`, `group_name`, `ad_limit`, `ad_duration`, `urgent_project_fee`, `featured_project_fee`, `highlight_project_fee`, `featured_duration`, `urgent_duration`, `highlight_duration`, `top_search_result`, `show_on_home`, `show_in_home_search`) VALUES
 	(1, 0, 'Registerd users (Free)', 50, 30, 25.00, 10.00, 25.00, 7, 30, 30, 'yes', 'no', 'yes'),
 	(2, 0, 'Premium', 50, 30, 0.00, 100.00, 150.00, 0, 0, 0, 'yes', 'yes', 'yes'),
 	(3, 0, 'Basic', 50, 30, 0.00, 0.00, 0.00, 0, 0, 0, 'yes', 'no', 'no');
