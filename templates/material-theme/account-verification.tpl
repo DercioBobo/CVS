@@ -228,7 +228,7 @@
         $('#showoffline').hide();
         $('#showmpesa').show();
         $('#mpesa').hide();
-        $("#mpesa_numero").prop('required',false);
+        $("#mpesa_numero").prop('required',false).val('');
 
     });
 

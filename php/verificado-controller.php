@@ -17,7 +17,7 @@ date_default_timezone_set("Africa/Maputo");
 if(isset($_FILES['bi_doc']['name'])){
 
 
-    if(isset($_REQUEST['mpesa_numero'])){
+    if(!empty($_REQUEST['mpesa_numero'])){
 
         $amount = get_option("verification_fee");
         $numero = $_REQUEST['mpesa_numero'];
