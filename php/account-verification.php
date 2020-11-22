@@ -145,6 +145,7 @@ if(checkloggedin())
     $page->SetParameter ('AUTHORUNAME', ucfirst($ses_userdata['username']));
     $page->SetParameter ('AUTHORNAME', ucfirst($ses_userdata['name']));
     $page->SetParameter ('USERSTATUS', ucfirst($ses_userdata['status']));
+    $page->SetParameter ('USERDOC', ucfirst($ses_userdata['bi_doc']));
     $page->SetParameter ('DOC1', ucfirst($ses_userdata['bi_doc']));
     $page->SetParameter ('DOC2', ucfirst($ses_userdata['alvara_doc']));
     $page->SetParameter ('VALID', ucfirst($ses_userdata['updated_at']));

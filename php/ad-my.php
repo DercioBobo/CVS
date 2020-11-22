@@ -260,6 +260,7 @@ FROM `".$config['db']['pre']."product`
     $page->SetParameter ('AUTHORUNAME', ucfirst($ses_userdata['username']));
     $page->SetParameter ('AUTHORNAME', ucfirst($ses_userdata['name']));
     $page->SetParameter ('USERSTATUS', ucfirst($ses_userdata['status']));
+    $page->SetParameter ('USERDOC', ucfirst($ses_userdata['bi_doc']));
     $page->SetParameter ('AUTHORIMG', $author_image);
     $page->SetLoop ('HTMLPAGE', get_html_pages());
     $page->SetParameter('COPYRIGHT_TEXT', get_option("copyright_text"));

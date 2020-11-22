@@ -170,14 +170,14 @@
                     <h2>{LANG_LOGIN}</h2>
                 </div>
             </div>
-          <!--  <div class="socialLoginHere">
+           <div class="socialLoginHere">
                 <div class="row text-center">
                     <div class="col-xs-6"><a class="loginBtn loginBtn--facebook" onclick="fblogin()"><i class="fa fa-facebook"></i> <span>Facebook</span></a></div>
                     <div class="col-xs-6"><a class="loginBtn loginBtn--google" onclick="gmlogin()"><i class="fa fa-google-plus"></i> <span>Google+</span></a></div>
                 </div>
                 <div class="clear"></div>
             </div>
-            -->
+
             <div id="login-status" class="info-notice" style="display: none;margin-bottom: 20px">
                 <div class="content-wrapper">
                     <div id="login-detail">
@@ -273,9 +273,13 @@
                         <li><a href="{LINK_INDEX1}">{LANG_HOME}</a></li>
                         <li><a href="{LINK_LISTING}">Anúncios</a></li>
                         <li><a href="{LINK_CONTACT}">{LANG_CONTACT}</a></li>
-                        IF({LOGGED_IN} && "{USERSTATUS}"!="1"){
+                        IF({LOGGED_IN} && "{USERSTATUS}"!="1" && "{USERDOC}"==null){
                         <li><a href="{LINK_ACCOUNT_VERIFICATION}" class="waves-effect pad-lr-10 ">Verificar minha conta</a></li>
                    <!--     <li><a href="{LINK_MEMBERSHIP}">Planos Premium</a></li> -->
+                        {:IF}
+                        IF({LOGGED_IN} && "{USERSTATUS}"!="1" && "{USERDOC}"!=null){
+                        <li><a href="{LINK_ACCOUNT_VERIFICATION_DETAILS}" class="waves-effect pad-lr-10 ">Estado da verificação conta</a></li>
+                        <!--     <li><a href="{LINK_MEMBERSHIP}">Planos Premium</a></li> -->
                         {:IF}
                     </ul>
                 </nav>

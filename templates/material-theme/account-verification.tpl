@@ -68,9 +68,10 @@
                                                 class="fa fa-angle-down"></i></a></h5>
                                 <div id="account" class="panel-collapse collapse in">
                                     <ul class="acc-list">
-                                        IF("{USERSTATUS}"=="0"){
+                                        IF("{USERDOC}"==null){
                                         <li><a href="{LINK_ACCOUNT_VERIFICATION}" class="waves-effect"><i class="fa  fa-check-circle-o"></i> {LANG_ACCOUNT_VERIFICATION}</a></li>
-                                        ELSEIF("{USERSTATUS}"!="0"){
+                                        {:IF}
+                                        IF("{USERDOC}"!=null){
                                         <li><a href="{LINK_ACCOUNT_VERIFICATION_DETAILS}" class="waves-effect"><i class="fa  fa-check-circle-o"></i> {LANG_ACCOUNT_VERIFICATION}</a></li>
                                         {:IF}
                                         <li><a href="{LINK_TRANSACTION}" class="waves-effect"><i

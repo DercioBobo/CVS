@@ -99,6 +99,7 @@ function create_header($page_title='',$meta_desc = '',$meta_image = '',$meta_art
     {
         $get_userdata = get_user_data($_SESSION['user']['username']);
         $page->SetParameter ('USERSTATUS', $get_userdata['status']);
+        $page->SetParameter ('USERDOC', $get_userdata['bi_doc']);
         $page->SetParameter ('USEREMAIL', $get_userdata['email']);
         $page->SetParameter ('FULLNAME', $get_userdata['name']);
         $page->SetParameter ('USERPIC', $get_userdata['image']);
