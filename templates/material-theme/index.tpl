@@ -126,6 +126,7 @@
                                 </div>
                             </div>
                         </a>
+                        -->
 
                     <div class="col-md-3 col-sm-4 col-xs-6 back-category">
                         <a href="{SITE_URL}category/mobiles-tablets">
