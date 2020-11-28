@@ -480,7 +480,7 @@
                                         <div class="col-sm-9">
                                             <div class="input-group custom-input-group">
                                                 <span class="input-group-addon currency-adon">{USER_CURRENCY_SIGN}</span>
-                                                <input type="number" class="form-control" placeholder="ex: 1000" name="price">
+                                                <input type="number" required minlength="2" class="form-control" placeholder="ex: 1000" name="price">
                                             </div>
                                             <label class="btn border-left-zero label-adon">
                                                 <input type="checkbox" name="negotiable" id="negotiable"
@@ -496,7 +496,7 @@
                                                         <span class="input-group-addon" style="padding: 4px 10px;">
                                                             <img src="{SITE_URL}includes/assets/plugins/flags/images/{USER_COUNTRY}.png">
                                                         </span>
-                                                <input type="text" minlength="9" maxlength="9" pattern="^[0-9]+$" class="form-control" placeholder="ex: 848287935" name="phone">
+                                                <input type="text" required minlength="9" maxlength="9" pattern="^[0-9]+$" class="form-control" placeholder="ex: 848287935" name="phone">
                                             </div>
                                             <label class="btn border-left-zero label-adon">
                                                 <input type="checkbox" name="hide_phone" id="phone"

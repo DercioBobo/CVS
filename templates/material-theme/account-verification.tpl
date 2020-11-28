@@ -95,9 +95,7 @@
                                 <li>
                                     1. Os documentos de identificação aceites para cidadãos nacionais são BI, Passaporte
                                     e Carta
-                                    de Condução e para cidadãos estrangeiros Dire. Todos documentos têm que estar dentro
-                                    do
-                                    prazo de validade.
+                                    de Condução e para cidadãos estrangeiros Dire e cartão de refugiado. Todos documentos têm que estar dentro do prazo de validade.
                                 </li>
 
                                 <li>
@@ -158,9 +156,7 @@
                                         <img width="20" src="{SITE_URL}includes/payments/wire_transfer/logo/mpesa.png">
                                     </button>
 
-                                    <button type="button" class="btn btn-info margin-top-20" id="showoffline"> Pagar
-                                        mais
-                                        tarde
+                                    <button type="button" class="btn btn-info margin-top-20" id="showoffline"> Verificar Gratuitamente
                                     </button>
                                 </div>
 
@@ -183,12 +179,15 @@
 
                                 <div class="form-row margin-top-20" id="offline" hidden>
                                     <div class="alert alert-info text-left">
-                                        <p>Os Documentos e comprovativos de pagamentos podem ser enviados também
+                                        <!--<p>Os Documentos e comprovativos de pagamentos podem ser enviados também
                                             por:</p>
                                         <ul>
                                             <li>email: {CONTACT_EMAIL}</li>
                                             <li> Whatsapp: {CONTACT_PHONE}</li>
                                         </ul>
+
+                                        -->
+                                        <p>Aproveita a promoção de lançamento da plataforma e verifique a sua conta de forma gratuita valida até 31 de Dezembro de 2020</p>
 
                                     </div>
 

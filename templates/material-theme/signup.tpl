@@ -24,13 +24,13 @@
                     <div id="post-form" style="padding:10px">
                         <form method="post" action="#" accept-charset="UTF-8">
                             <div class="input-field">
-                                <label for="name">{LANG_FIRST_NAME}</label>
+                                <label for="name">{LANG_FULL_NAME}</label>
                                 <input type="text" value="{NAME_FIELD}" id="name" name="name" onBlur="checkAvailabilityName()">
                             </div>
                             <span id="name-availability-status">IF("{NAME_ERROR}"!=""){ {NAME_ERROR} {:IF}</span>
 
                             <div class="input-field">
-                                <label for="username">{LANG_USERNAME}</label>
+                                <label for="username">{LANG_USERNAME} Ex: mariajoao</label>
                                 <input type="text" value="{USERNAME_FIELD}" id="Rusername" name="username" required>
                                 <span id="user-availability-status">IF("{USERNAME_ERROR}"!=""){ {USERNAME_ERROR} {:IF}</span>
 
