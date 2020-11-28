@@ -13,22 +13,24 @@ if($params['draw'] == 1)
 $columns = array(
     0 =>'id',
     1 =>'name',
-    2 =>'email',
-    2 =>'email',
-    3 =>'sex',
-    4 =>'status',
-    5 =>'created_at'
+    2 =>'bi_doc',
+    3 =>'email',
+    4 =>'sex',
+    5 =>'status',
+    6 =>'created_at'
 );
 
 $where = $sqlTot = $sqlRec = "";
 
 // check search value exist
 if( !empty($params['search']['value']) ) {
+
     $where .=" WHERE ";
     $where .=" ( username LIKE '".$params['search']['value']."%' ";
     $where .=" OR name LIKE '".$params['search']['value']."%' ";
     $where .=" OR email LIKE '".$params['search']['value']."%' ";
     $where .=" OR sex LIKE '".$params['search']['value']."%' )";
+//    $where .=" OR bi_doc LIKE '" .'' .")";
 }
 
 // getting total number records without any search
@@ -61,7 +63,12 @@ foreach ($queryRecords as $row) {
     $sex = $row['sex'];
     $image = $row['image'];
     $status = $row['status'];
+    $doc = $row['bi_doc'];
+    $provincia = $row['city'];
+    $lastactive = $row['lastactive'];
+//    $newDateLastActive = date("d-m-Y", strtotime($lastactive));
     $joined  = date('dS M', strtotime($row['created_at']));
+    $newDateLastActive  = date('dS M', strtotime($lastactive));
     if ($image == "")
         $image = "default_user.png";
     else {
@@ -80,15 +87,23 @@ foreach ($queryRecords as $row) {
     }
 
     if ($status == "0"){
-        $status = '<span class="label label-info">ACTIVE</span>';
+        $status = '<span class="label label-info">ACTIVO</span>';
     }
     elseif($status == "1")
     {
-        $status = '<span class="label label-success">VERIFIED</span>';
+        $status = '<span class="label label-success">VERIFICADO</span>';
     }
     else{
         $status = '<span class="label label-warning">BANNED</span>';
     }
+
+    if($doc != ''){
+        $doc = '<span class="label label-success">Submetido</span>';
+    }
+    else{
+        $doc = '<span class="label label-warning">Sem Documentos</span>';
+    }
+
 
     $row0 = '<td>
                 <label class="css-input css-checkbox css-checkbox-default">
@@ -100,19 +115,24 @@ foreach ($queryRecords as $row) {
                 <p class="font-500 m-b-0"><a href="#" data-url="panel/user_profile.php?id='.$id.'" data-toggle="slidePanel"">'.$name.'</a></p>
                 <p class="text-muted m-b-0">#'.$username.'</p>
             </td>';
-    $row2 = '<td class="hidden-xs">'.$email.'</td>';
-    $row3 = '<td class="hidden-xs">'.$memebership_title.'</td>';
-    $row4 = '<td class="hidden-xs hidden-sm">'.$sex.'</td>';
-    $row5 = '<td class="hidden-xs hidden-sm">'.$status.'</td>';
-    $row6 = '<td class="hidden-xs hidden-sm">'.$joined.'</td>';
+    $row2 = '<td class="hidden-xs hidden-sm">'.$doc.'</td>';
+    $row3 = '<td class="hidden-xs">'.$email.'</td>';
+    $row4 = '<td class="hidden-xs">'.$provincia.'</td>';
+    $row5 = '<td class="hidden-xs hidden-sm">'.$sex.'</td>';
+    $row6 = '<td class="hidden-xs hidden-sm">'.$status.'</td>';
+    $row7 = '<td class="hidden-xs hidden-sm">'.$joined.'</td>';
+    $row8 = '<td class="hidden-xs hidden-sm">'.$newDateLastActive.'</td>';
 
-    $row7 = '<td class="text-center">
+
+    $row9 = '<td class="text-center">
                 <div class="btn-group">
                     <a href="#" data-url="panel/user_profile.php?id='.$id.'" data-toggle="slidePanel" class="btn btn-xs btn-default"> <i class="ion-eye"></i></a>
                     <a href="#" data-url="panel/users_edit.php?id='.$id.'" data-toggle="slidePanel" class="btn btn-xs btn-default"> <i class="ion-edit"></i></a>
                     <a href="javacript:void(0)" class="btn btn-xs btn-default item-js-delete" data-ajax-action="deleteusers"><i class="ion-close"></i></a>
                 </div>
             </td>';
+
+
     $value = array(
         "DT_RowId" => $id,
         0 => $row0,
@@ -122,7 +142,9 @@ foreach ($queryRecords as $row) {
         4 => $row4,
         5 => $row5,
         6 => $row6,
-        7 => $row7
+        7 => $row7,
+        8 => $row8,
+        9 => $row9,
     );
     $data[] = $value;
 }

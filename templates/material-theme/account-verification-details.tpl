@@ -117,7 +117,7 @@
                                             <td class="price-td width-16-per">
                                                 <div>
                                                     IF("{USERSTATUS}"=="0"){ <span
-                                                            class="label label-warning">    gi{LANG_PENDING}</span>{:IF}
+                                                            class="label label-warning">    {LANG_PENDING}</span>{:IF}
                                                     IF("{USERSTATUS}"=="1"){ <span
                                                             class="label label-success">{LANG_APPROVED}</span> {:IF}
                                                 </div>

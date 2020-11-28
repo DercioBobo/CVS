@@ -27,11 +27,14 @@ require_once('includes.php');
                                 </label>
                             </th>
                             <th><i class="ion-image"></i> User</th>
+                            <th class="hidden-xs w-30" style="width: 100px;">Docs</th>
                             <th class="w-10">Email</th>
-                            <th class="w-10">Membership</th>
+                            <th class="w-10">Província</th>
                             <th class="hidden-xs w-30" style="width: 100px;">Sex</th>
                             <th class="hidden-xs hidden-sm" style="width:100px">Status</th>
-                            <th class="hidden-xs w-30" style="width: 100px;">Joined</th>
+                            <th class="hidden-xs w-30" style="width: 100px;">Admissão</th>
+                            <th class="hidden-xs w-30" style="width: 100px;">Último Acesso</th>
+
                             <th style="width: 130px;">Actions</th>
                         </tr>
                         </thead>

@@ -90,17 +90,20 @@ foreach ($queryRecords as $row) {
 
 
         if ($featured == "1") {
-            $premium = $premium . '<span class="label label-warning">Featured</span>';
+            $premium = $premium . '<span class="label label-warning">Semanal</span>';
         }
 
         if ($urgent == "1") {
-            $premium = $premium . '<span class="label label-success">Urgent</span>';
+            $premium = $premium . '<span class="label label-blue">Mensal</span>';
         }
 
         if ($highlight == "1") {
-            $premium = $premium . '<span class="label label-info">Highlight</span>';
+            $premium = $premium . '<span class="label label-info">Priorizada</span>';
         }
+
     }
+
+
 
     $status = '';
     if ($t_status == "success"){
@@ -115,6 +118,13 @@ foreach ($queryRecords as $row) {
         $status = '<span class="label label-danger">cancel</span>';
     }
 
+    if($payment_method == "wire_transfer"){
+        $payment_method  = '<span class="label label-danger">Mpesa</span>';
+    }
+    else{
+        $payment_method = '<span class="label label-info">'. $payment_method . '</span>';
+    }
+
     $row0 = '<td>
                 <label class="css-input css-checkbox css-checkbox-default">
                     <input type="checkbox" class="service-checker" value="'.$id.'" id="row_'.$id.'" name="row_'.$id.'"><span></span>
@@ -125,8 +135,8 @@ foreach ($queryRecords as $row) {
     $row3 = '<td>'.$config['currency_sign'].' '.$amount.'</td>';
     $row4 = '<td>'.$premium.'</td>';
     $row5 = '<td>'.$status.'</td>';
-//    $row6 = '<td>'.$payment_method.'</td>';
-    $row6 = '<td>'.'Mpesa'.'</td>';
+    $row6 = '<td>'.$payment_method.'</td>';
+//    $row6 = '<td>'.'Mpesa'.'</td>';
     $row7 = '<td>'.$transaction_time.'</td>';
     $row8 = '<td>'.$msisdn.'</td>';
     $row9 = '<td>'.$mp_transaction_id.'</td>';

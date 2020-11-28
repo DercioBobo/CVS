@@ -39,6 +39,8 @@ if(isset($_GET['action'])){
     if ($_GET['action'] == "addUser") { addUser(); }
     if ($_GET['action'] == "editUser") { editUser(); }
 
+    if ($_GET['action'] == "addTransaction") { addTransaction(); }
+
     if ($_GET['action'] == "addCountry") { addCountry(); }
     if ($_GET['action'] == "editCountry") { editCountry(); }
     if ($_GET['action'] == "addState") { addState(); }
@@ -352,6 +354,47 @@ function editAdmin(){
 
     echo $json = '{"status" : "' . $status . '","message" : "' . $message . '"}';
     die();
+}
+
+function addTransaction(){
+    global $config,$lang;
+    $errors = array();
+    $response = array();
+
+    if (isset($_POST['submit'])) {
+                    $now = date("Y-m-d H:i:s");
+                    $insert_transaction = ORM::for_table($config['db']['pre'].'transaction')->create();
+                    $insert_transaction->seller_id = 3;
+                    $insert_transaction->product_name = $_POST['product_name'];
+                    $insert_transaction->transaction_description = $_POST['product_name'];
+                    $insert_transaction->transaction_ip = '::1';
+                    $insert_transaction->amount = $_POST['amount'];
+                    $insert_transaction->msisdn = $_POST['msisdn'];
+                    $insert_transaction->status = 'success';
+                    $insert_transaction->transaction_gateway = 'Admin';
+                    $insert_transaction->transaction_method = 'Premium Ad';
+                    $insert_transaction->transaction_time = $now;
+                    $insert_transaction->save();
+
+                    if ($insert_transaction->id()) {
+                        $status = "success";
+                        $message = $lang['SAVED_SUCCESS'];
+                    } else{
+                        $status = "error";
+                        $message = 'Tente depois' . $_POST['msisdn'];
+
+                    }
+                }
+
+            else {
+        $status = "error";
+        $message = $lang['ERROR_TRY_AGAIN'];
+    }
+
+    echo $json = '{"status" : "' . $status . '","message" : "' . $message . '"}';
+    die();
+
+
 }
 
 function addUser(){

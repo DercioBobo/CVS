@@ -12,7 +12,11 @@ require_once('includes.php');
         <div class="card fullw">
             <div class="card-header">
                 <h4>Transactions</h4>
+                <div class="pull-left">
+                    <a href="#"  data-url="panel/manual_transaction"data-toggle="slidePanel" class="btn btn-success waves-effect waves-light m-r-10">Adicionar Manualmente</a>
+                </div>
             </div>
+
             <div class="card-block">
                 <div id="js-table-list">
                     <table id="ajax_datatable" data-jsonfile="transaction.php" class="js-table-checkable table table-vcenter table-hover" data-tablesaw-mode="stack" data-plugin="animateList" data-animate="fade" data-child="tr" data-selectable="selectable">
@@ -23,10 +27,10 @@ require_once('includes.php');
                                     <input type="checkbox" id="check-all" name="check-all"><span></span>
                                 </label>
                             </th>
-                            <th class="sortingNone">Ad Title</th>
+                            <th class="sortingNone">Title</th>
                             <th class="sortingNone">Username</th>
                             <th class="sortingNone">Amount</th>
-                            <th class="sortingNone">Premium</th>
+                            <th class="sortingNone">Destaque</th>
                             <th class="sortingNone">Status</th>
                             <th class="sortingNone">Pay Method</th>
                             <th class="sortingNone">Time</th>

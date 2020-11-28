@@ -1826,6 +1826,50 @@ function get_resubmited_items($userid=false,$status=null,$page=null,$limit=null,
     return $item;
 }
 
+function get_user_list($selected="",$selected_user='selected'){
+    global $config;
+    $countries = array();
+    $count = 0;
+        $result = ORM::for_table($config['db']['pre'].'user')
+            ->select_many('id', 'username','name', 'status')
+            ->order_by_asc('id')
+            ->find_many();
+    foreach ($result as $info)
+    {
+        $users[$count]['id'] = $info['id'];
+        $users[$count]['username'] = $info['username'];
+        $users[$count]['name'] = $info['name'];
+        $users[$count]['status'] = $info['status'];
+        if($selected!="")
+        {
+            if(is_array($selected))
+            {
+                foreach($selected as $select)
+                {
+
+                    $select = strtoupper(str_replace('"','',$select));
+                    if($select == $info['id'])
+                    {
+                        $users[$count]['selected'] = $selected_user;
+                    }
+                }
+            }
+            else{
+                if($selected==$info['id'] or $selected==$info['username'] or $selected==$info['name'])
+                {
+                    $users[$count]['selected'] = $selected_user;
+                }
+                else
+                {
+                    $users[$count]['selected'] = "";
+                }
+            }
+        }
+        $count++;
+    }
+
+    return $users;
+}
 function check_validation_for_subscribePlan(){
     global $config,$lang;
 

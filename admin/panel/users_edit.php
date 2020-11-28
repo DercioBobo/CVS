@@ -46,6 +46,19 @@ if($fetchuserpic == "")
                                         </div>
                                     </div>
                                 </div>
+
+<!--                                <div class="col-md-12">-->
+<!--                                    <div class="form-group">-->
+<!--                                        <div class="col-md-2">-->
+<!--                                            <img src="../storage/docs/--><?php //echo $fetchuser['bi_doc']; ?><!--" alt="--><?php //echo $fetchuser['bi_doc'];?><!--" style="width: 80px; border-radius: 50%">-->
+<!--                                        </div>-->
+<!--                                        <div class="col-md-10">-->
+<!--                                            <label class="control-label">Documento</label>-->
+<!--                                            <input class="form-control input-sm" type="file" id="doc" name="bi_doc" placeholder=".input-sm" />-->
+<!--                                            <span class="help-block"> Trocar Documento</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="exampleInputfullname">Full Name</label>
@@ -56,6 +69,17 @@ if($fetchuserpic == "")
                                         </div>
                                     </div>
                                 </div>
+
+<!--                                <div class="col-md-12">-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label for="city">Província</label>-->
+<!--                                        <div class="input-group">-->
+<!--                                            <div class="input-group-addon"><i class="ion-location"></i></div>-->
+<!--                                            <input type="text" class="form-control" id="city" placeholder="Provincia" name="city" value="--><?php //echo $fetchuser['city'];?><!--">-->
+<!--                                            <span class="help-block"></span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
 
                                 <div class="col-md-12">
                                     <div class="form-group">
