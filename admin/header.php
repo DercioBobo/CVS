@@ -143,7 +143,9 @@ if(isset($_SESSION['admin']['id'])){
                         </li>
 
 
-
+                        <li class="nav-item">
+                            <a href="reports.php"><i class="ion-stats-bars"></i> Relatórios</a>
+                        </li>
 
                         <li class="nav-item">
                             <a href="transactions.php"><i class="ion-arrow-graph-up-right"></i> Transações</a>
