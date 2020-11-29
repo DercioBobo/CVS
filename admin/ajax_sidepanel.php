@@ -362,26 +362,39 @@ function addTransaction(){
     $response = array();
 
     if (isset($_POST['submit'])) {
-                    $now = date("Y-m-d H:i:s");
-                    $insert_transaction = ORM::for_table($config['db']['pre'].'transaction')->create();
-                    $insert_transaction->seller_id = 3;
-                    $insert_transaction->product_name = $_POST['product_name'];
-                    $insert_transaction->transaction_description = $_POST['product_name'];
-                    $insert_transaction->transaction_ip = '::1';
-                    $insert_transaction->amount = $_POST['amount'];
-                    $insert_transaction->msisdn = $_POST['msisdn'];
-                    $insert_transaction->status = 'success';
-                    $insert_transaction->transaction_gateway = 'Admin';
-                    $insert_transaction->transaction_method = 'Premium Ad';
-                    $insert_transaction->transaction_time = $now;
-                    $insert_transaction->save();
 
-                    if ($insert_transaction->id()) {
+        $mysqli = db_connect();
+
+        $query = "INSERT INTO " . $config['db']['pre'] . "transaction set
+                    product_name = '" . validate_input($_POST['product_name']) . "',
+                    product_id = '0',
+                    seller_id = '" . $_POST['user'] . "',
+                    status = 'success',
+                    amount = '" . $_POST['amount'] . "',
+                    featured = '0',
+                    urgent = '0',
+                    highlight = '0',
+                    transaction_gatway = 'Manual',
+                    transaction_ip = '" . encode_ip($_SERVER, $_ENV) . "',
+                    transaction_time = '" . time() . "',
+                    transaction_description = '" . validate_input($_POST['product_name']) . "',
+                    transaction_method = 'Premium Ad',
+                    msisdn = '" . $_POST['msisdn'] . "',
+                mp_transaction_id = '',
+                mp_conversation_id = '',
+                mp_response_desc = ''
+                    ";
+
+
+        $resp = $mysqli->query($query) OR error(mysqli_error($mysqli));
+
+
+                    if ($resp) {
                         $status = "success";
                         $message = $lang['SAVED_SUCCESS'];
                     } else{
                         $status = "error";
-                        $message = 'Tente depois' . $_POST['msisdn'];
+                        $message = 'Tente novamente mais tarde';
 
                     }
                 }
@@ -718,6 +731,13 @@ function editUser(){
         if ($user_update) {
             $status = "success";
             $message = $lang['SAVED_SUCCESS'];
+
+
+            //Mandar email
+            if(strcmp($user_update->get('status'),'verify') == 0){
+
+            }
+
         } else{
             $status = "error";
             $message = $lang['ERROR_TRY_AGAIN'];

@@ -36,7 +36,7 @@ require_once('../datatable-json/includes.php');
                                     <?php
                                     $user = get_user_list();
                                     foreach ($user as $value){
-                                        echo '<option value="'.$value['name'].'">'.$value['name'].'</option>';
+                                        echo '<option value="'.$value['id'].'">'.$value['name'].'</option>';
                                     }
                                     ?>
                                 </select>

@@ -1083,6 +1083,7 @@ function email_template($template,$user_id=null,$password=null,$product_id=null,
         email($_POST['email'],$_POST['name'],$email_subject,$email_body);
         email($config['admin_email'],$config['site_title'],$email_subject,$email_body);
     }
+
     /*SEND REPORT TO ADMIN*/
     if($template == "report"){
         $page = new HtmlTemplate();
