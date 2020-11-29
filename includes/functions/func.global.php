@@ -959,11 +959,36 @@ function email_template($template,$user_id=null,$password=null,$product_id=null,
         $page->SetParameter ('USERNAME', $username);
         $page->SetParameter ('EMAIL', $user_email);
         $page->SetParameter ('USER_FULLNAME', $user_fullname);
-        $page->SetParameter ('CONFIRMATION_LINK', $confirmation_link);
+        //$page->SetParameter ('CONFIRMATION_LINK', $confirmation_link);
         $email_body = $page->CreatePageReturn($lang,$config,$link);
 
         email($user_email,$user_fullname,$email_subject,$email_body);
         return;
+    }
+
+
+    /*SEND EMAIL TO VERIFIED USER*/
+    if($template == "verified_user"){
+        $page = new HtmlTemplate();
+        $page->html = $config['email_sub_verified_seller'];
+        $page->SetParameter ('USER_ID', $user_id);
+        $page->SetParameter ('USERNAME', $username);
+        $page->SetParameter ('EMAIL', $user_email);
+        $page->SetParameter ('USER_FULLNAME', $user_fullname);
+        $email_subject = $page->CreatePageReturn($lang,$config,$link);
+
+        //$confirmation_link = $link['SIGNUP']."?confirm=".$confirm_id."&user=".$user_id;
+        $page = new HtmlTemplate();
+        $page->html = $config['email_message_verified__seller'];
+        $page->SetParameter ('USER_ID', $user_id);
+        $page->SetParameter ('USERNAME', $username);
+        $page->SetParameter ('EMAIL', $user_email);
+        $page->SetParameter ('USER_FULLNAME', $user_fullname);
+        //$page->SetParameter ('CONFIRMATION_LINK', $confirmation_link);
+        $email_body = $page->CreatePageReturn($lang,$config,$link);
+
+        email($user_email,$user_fullname,$email_subject,$email_body);
+        //return;
     }
 
     /*SEND AD APPROVE EMAIL*/

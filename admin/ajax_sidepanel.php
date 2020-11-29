@@ -546,6 +546,7 @@ function editUser(){
         $group_id = $_POST['group_id'];
         $user_id = $_POST['id'];
         $user_update = ORM::for_table($config['db']['pre'].'user')->find_one($_POST['id']);
+        $old_status = $user_update->get('status');
         $user_update->set('group_id', $group_id);
         $user_update->set('name', $_POST['name']);
         $user_update->set('username', $_POST['username']);
@@ -734,8 +735,10 @@ function editUser(){
 
 
             //Mandar email
-            if(strcmp($user_update->get('status'),'verify') == 0){
-
+            if($user_update->get('status') == 1){
+                if($old_status != 1){
+                    email_template("verified_user",$user_id);
+                }
             }
 
         } else{
