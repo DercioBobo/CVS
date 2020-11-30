@@ -142,10 +142,16 @@ if(isset($_SESSION['admin']['id'])){
                             </ul>
                         </li>
 
+                        <li class="nav-item nav-item-has-subnav">
+                            <a href="#"><i class="ion-stats-bars"></i> Relatórios</a>
+                            <ul class="nav nav-subnav">
+                                <li><a href="users_reports.php"> Utilizadores</a></li>
+                                <li><a href="transactions_reports.php"> Transações</a></li>
+                                <li><a href="ads_reports.php"> Anúncios</a></li>
 
-                        <li class="nav-item">
-                            <a href="reports.php"><i class="ion-stats-bars"></i> Relatórios</a>
+                            </ul>
                         </li>
+
 
                         <li class="nav-item">
                             <a href="transactions.php"><i class="ion-arrow-graph-up-right"></i> Transações</a>

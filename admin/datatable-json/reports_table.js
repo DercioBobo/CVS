@@ -40,7 +40,7 @@ $(document).ready(function() {
         "info": true,
         "autoWidth": true,
         "language": idioma,
-        "lengthMenu": [[25,30,40, -1],[10,20,50,100,"Mostrar Todo"]],
+        "lengthMenu": [[25,50,100, -1],[25,50,100,"Mostrar Tudo"]],
         dom: 'Bfrt<"col-md-8 inline"i> <"col-md-8 inline"p>',
 
 
@@ -66,9 +66,6 @@ $(document).ready(function() {
                     title:'Relatório em pdf',
                     titleAttr: 'PDF',
                     className: 'btn btn-app export pdf',
-                    exportOptions: {
-                        columns: [ 0, 1 ]
-                    },
 
                 },
 
@@ -78,9 +75,6 @@ $(document).ready(function() {
                     title:'Relatório em excel',
                     titleAttr: 'Excel',
                     className: 'btn btn-app export excel',
-                    exportOptions: {
-                        columns: [ 0, 1 ]
-                    },
                 },
                 {
                     extend:    'print',
@@ -88,9 +82,6 @@ $(document).ready(function() {
                     title:'Relatório em Impressão',
                     titleAttr: 'Imprimir',
                     className: 'btn btn-app export imprimir',
-                    exportOptions: {
-                        columns: [ 0, 1 ]
-                    }
                 },
                 {
                     extend:    'pageLength',
