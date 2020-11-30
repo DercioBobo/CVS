@@ -11,23 +11,7 @@ require_once('includes.php');
         <!-- Partial Table -->
         <div class="card">
             <div class="card-header">
-                <h4>Relatórios</h4>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label class="control-label">Tipo de Relatório</label>
-                            <select class="form-control" name="user">
-                                <?php
-                                $user = get_user_list();
-                                foreach ($user as $value){
-                                    echo '<option value="'.$value['id'].'">'.$value['name'].'</option>';
-                                }
-                                ?>
-                            </select>
-
-                    </div>
-
-                </div>
-
+                <h4>Relatórios de Utilizadores</h4>
                 <div class="col-md-6">
                     <div class="form-group">
                             <label class="control-label">Periodo</label>
@@ -48,11 +32,14 @@ require_once('includes.php');
                         <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Contacto</th>
+                            <th>Genero</th>
+                            <th>Provincia</th>
+                            <th>Estado</th>
+                            <th>Número de Posts</th>
+                            <th>Último Acesso</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -61,24 +48,11 @@ require_once('includes.php');
                             <td>Regional Director</td>
                             <td>Edinburgh</td>
                             <td>51</td>
+                            <td>51</td>
+                            <td>51</td>
+                            <td>51</td>
                             <td>2008/11/13</td>
                             <td>$183,000</td>
-                        </tr>
-                        <tr>
-                            <td>Michael Bruce</td>
-                            <td>Javascript Developer</td>
-                            <td>Singapore</td>
-                            <td>29</td>
-                            <td>2011/06/27</td>
-                            <td>$183,000</td>
-                        </tr>
-                        <tr>
-                            <td>Donna Snider</td>
-                            <td>Customer Support</td>
-                            <td>New York</td>
-                            <td>27</td>
-                            <td>2011/01/25</td>
-                            <td>$112,000</td>
                         </tr>
                         </tbody>
                     </table>
