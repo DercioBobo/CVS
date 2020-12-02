@@ -56,14 +56,14 @@ if($type == 'transactions'){
         foreach ($result as $res){
             $estado = [];
             if($res['featured'] == 1){
-                array_push($estado,'featured');
+                array_push($estado,'Semanal');
             }
             if($res['urgent'] == 1){
-                array_push($estado,'urgent');
+                array_push($estado,'Mensal');
             }
 
             if($res['highlight'] == 1){
-                array_push($estado,'highlight');
+                array_push($estado,'Priorizada');
             }
 
 

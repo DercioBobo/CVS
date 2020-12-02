@@ -28,8 +28,7 @@ require_once('../datatable-json/includes.php');
                                 <div class="input-group-addon"><i class="ion-cash"></i></div>
                                 <select class="form-control" id="title" name="product_name" >
                                    <option value="Verification Fee">Taxa de Verificação</option>
-                                   <option value="Standard Plano de associação">Standard Plano de associação</option>
-                                   <option value="Anuncio">Pacotes de anúncios (Destaque, Premium, etc)</option>
+                                   <option value="Anuncio">Pacotes de anúncios (Semanal, Mensal, Priorizada)</option>
                                 </select>
                                 <span class="help-block"></span>
                             </div>

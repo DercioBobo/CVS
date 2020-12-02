@@ -187,6 +187,7 @@ $(document).ready(function() {
     });
 
 
+    $('#bt_pesquisar').click();
 
 
 
