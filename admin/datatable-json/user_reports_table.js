@@ -113,19 +113,15 @@ $(document).ready(function() {
             },
             beforeSend: function(){
 
-                console.log("A iniciar");
                 $('#carregamento').css("display","block");
 
             },
             complete: function(){
 
-                console.log("A finalizar");
                 $('#carregamento').css("display","none");
 
             },
             success: function (response) {
-
-                console.log(response);
 
                 var result = JSON.parse(response);
 

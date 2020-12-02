@@ -43,17 +43,7 @@ require_once('includes.php');
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>Shad Decker</td>
-                            <td>Regional Director</td>
-                            <td>Edinburgh</td>
-                            <td>51</td>
-                            <td>51</td>
-                            <td>51</td>
-                            <td>51</td>
-                            <td><span class="btn-warning">Highlight</span></td>
 
-                        </tr>
                         </tbody>
                     </table>
 

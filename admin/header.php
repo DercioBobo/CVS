@@ -147,7 +147,6 @@ if(isset($_SESSION['admin']['id'])){
                             <ul class="nav nav-subnav">
                                 <li><a href="users_reports.php"> Utilizadores</a></li>
                                 <li><a href="transactions_reports.php"> Transações</a></li>
-                                <li><a href="ads_reports.php"> Anúncios</a></li>
 
                             </ul>
                         </li>
