@@ -30,7 +30,6 @@ var idioma=
 
 $(document).ready(function() {
 
-
     var table = $('#example').DataTable( {
 
         "paging": true,
@@ -44,7 +43,7 @@ $(document).ready(function() {
         dom: 'Bfrt<"col-md-8 inline"i> <"col-md-8 inline"p>',
 
 
-        buttons: {
+        /*buttons: {
             dom: {
                 container:{
                     tag:'div',
@@ -53,17 +52,18 @@ $(document).ready(function() {
                 buttonLiner: {
                     tag: null
                 }
-            },
+            },*/
 
 
 
 
             buttons: [
+                // 'copy', 'excel', 'pdf'
 
                 {
                     extend:    'pdfHtml5',
                     text:      '<i class="fa fa-file-pdf-o"></i>PDF',
-                    title:'Relatório em pdf',
+                    title:'Relatório de transações - pdf',
                     titleAttr: 'PDF',
                     className: 'btn btn-app export pdf',
 
@@ -72,14 +72,14 @@ $(document).ready(function() {
                 {
                     extend:    'excelHtml5',
                     text:      '<i class="fa fa-file-excel-o"></i>Excel',
-                    title:'Relatório em excel',
+                    title:'Relatório de transações - excel',
                     titleAttr: 'Excel',
                     className: 'btn btn-app export excel',
                 },
                 {
                     extend:    'print',
                     text:      '<i class="fa fa-print"></i>Imprimir',
-                    title:'Relatório em Impressão',
+                    title:'Relatório de transações - Impressão',
                     titleAttr: 'Imprimir',
                     className: 'btn btn-app export imprimir',
                 },
@@ -91,22 +91,102 @@ $(document).ready(function() {
             ]
 
 
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     });
+
+
+    $('#bt_pesquisar').on('click', function () {
+
+
+        var data_inicio = $('#start_date').val();
+        var data_fim = $('#end_date').val();
+        var type = 'transactions';
+
+        $.ajax({
+            type: "POST",
+            url: 'datatable-json/admin_reports.php',
+            data: {
+                "type": type,
+                "startdate": data_inicio,
+                "enddate": data_fim
+
+            },
+            beforeSend: function(){
+
+                console.log("A iniciar");
+                $('#carregamento').css("display","block");
+
+            },
+            complete: function(){
+
+                console.log("A finalizar");
+                $('#carregamento').css("display","none");
+
+            },
+            success: function (response) {
+
+                console.log(response);
+
+                var result = JSON.parse(response);
+
+                if(result.status){
+
+                    var transactions = result.message;
+
+                    table.clear();
+
+                    for (var i=0; i<transactions.length; i++){
+
+
+                        table.row.add([
+                            transactions[i].produto_nome,
+                            transactions[i].username,
+                            transactions[i].amount,
+                            transactions[i].estado,
+                            transactions[i].metodo,
+                            transactions[i].msisdn,
+                            transactions[i].data,
+                            transactions[i].pacote
+
+                        ]);
+
+
+                    }
+
+                    table.draw(true);
+
+
+
+                }else{
+
+                    swal({
+                        title: "Erro!",
+                        text: "Ocorreu um erro ao gerar o relatório",
+                        icon: "error",
+                        button: "Ok!"
+                    }, function () {
+
+
+                    });
+
+                }
+
+
+
+
+            },
+            error: function () {
+
+                alert("ocorreu um erro");
+
+                return false;
+            }
+        });
+
+    });
+
+
+
 
 
 } );

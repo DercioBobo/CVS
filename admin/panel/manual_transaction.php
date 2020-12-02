@@ -20,10 +20,27 @@ require_once('../datatable-json/includes.php');
         <form name="form2"  class="form form-horizontal" method="post" data-ajax-action="addTransaction" id="sidePanel_form">
             <div class="form-body">
                 <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label">Tipo de Transação</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ion-cash"></i></div>
+                                <select class="form-control" id="title" name="product_name" >
+                                   <option value="Verification Fee">Taxa de Verificação</option>
+                                   <option value="Standard Plano de associação">Standard Plano de associação</option>
+                                   <option value="Anuncio">Pacotes de anúncios (Destaque, Premium, etc)</option>
+                                </select>
+                                <span class="help-block"></span>
+                            </div>
+
+                        </div>
+                    </div>
+
                     <div class="col-md-12">
                         <div class="form-group">
 
-                            <input class="form-control input-sm" type="text" id="title" name="product_name" placeholder="Titulo da Transação" />
+                            <input class="form-control input-sm" type="text" id="description" name="description" placeholder="Descrição da transação" />
                         </div>
                     </div>
 

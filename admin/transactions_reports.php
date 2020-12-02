@@ -15,33 +15,31 @@ require_once('includes.php');
                 <div class="col-md-6">
                     <div class="form-group">
                             <label class="control-label">Periodo</label>
-                            <div class="input-daterange input-group" data-date-format="mm/dd/yyyy">
-                                <input class="form-control" type="text" id="example-daterange1" name="start_date" placeholder="Data de Inicio" value="" autocomplete="off" placeholder="dd/mm/yyyy">
+                            <div class="input-daterange input-group" data-date-format="yyyy-mm-dd">
+                                <input class="form-control" type="text" id="start_date" name="start_date" placeholder="Data de Inicio" value="" autocomplete="off">
                                 <span class="input-group-addon"><i class="ion-chevron-right"></i></span>
-                                <input class="form-control" type="text" id="example-daterange2" name="end_date" placeholder="Data de Fim" value="" autocomplete="off" placeholder="dd/mm/yyyy">
+                                <input class="form-control" type="text" id="end_date" name="end_date" placeholder="Data de Fim" value="" autocomplete="off">
                             </div>
 
                         </div>
                 </div>
                 <div class="col-md-3">
-                    <button class="btn btn-info"><i class="ion-search"> </i> Pesquisar</button>
+                    <button class="btn btn-info" id="bt_pesquisar"><i class="ion-search"> </i> Pesquisar</button>
                 </div>
             </div>
             <div class="card-block">
                     <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                         <tr>
-                            <th >Title</th>
+                            <th >Nome Produto</th>
                             <th >Username</th>
-                            <th >Amount</th>
-                            <th >Destaque</th>
-                            <th >Status</th>
-                            <th >Pay Method</th>
-                            <th>Time</th>
+                            <th >Total</th>
+                            <th >Estado</th>
+                            <th >Método de Pagamento</th>
                             <th >MSISDN</th>
-                            <th >Transaction ID</th>
-                            <th>Conversation ID</th>
-                            <th>Response Desc.</th>
+                            <th>Data</th>
+                            <th >Pacote Pago</th>
+
                         </tr>
                         </thead>
                         <tbody>
@@ -53,10 +51,8 @@ require_once('includes.php');
                             <td>51</td>
                             <td>51</td>
                             <td>51</td>
-                            <td>51</td>
-                            <td>51</td>
-                            <td>2008/11/13</td>
-                            <td>$183,000</td>
+                            <td><span class="btn-warning">Highlight</span></td>
+
                         </tr>
                         </tbody>
                     </table>
@@ -84,7 +80,7 @@ require_once('includes.php');
     {
         // Init page helpers (Table Tools helper)
         App.initHelpers('table-tools');
-        <?php include ("datatable-json/reports_table.js"); ?>
+        <?php include("datatable-json/transaction_reports_table.js"); ?>
     });
 
 </script>

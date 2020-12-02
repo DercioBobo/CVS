@@ -377,7 +377,7 @@ function addTransaction(){
                     transaction_gatway = 'Manual',
                     transaction_ip = '" . encode_ip($_SERVER, $_ENV) . "',
                     transaction_time = '" . time() . "',
-                    transaction_description = '" . validate_input($_POST['product_name']) . "',
+                    transaction_description = '" . validate_input($_POST['description']) . "',
                     transaction_method = 'Premium Ad',
                     msisdn = '" . $_POST['msisdn'] . "',
                 mp_transaction_id = '',

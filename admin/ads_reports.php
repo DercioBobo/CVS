@@ -76,7 +76,7 @@ require_once('includes.php');
     {
         // Init page helpers (Table Tools helper)
         App.initHelpers('table-tools');
-        <?php include ("datatable-json/reports_table.js"); ?>
+        <?php include("datatable-json/user_reports_table.js"); ?>
     });
 
 </script>
