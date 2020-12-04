@@ -293,31 +293,23 @@
                     <a href="{LINK_POST-AD}" class="btn btn-rounded btn-default waves-effect">{LANG_POST_FREE_AD}</a>
                 </div>
                 {:IF}
-                IF(({LOGGED_IN}) && ('{WCHAT_ON_OFF}'=='on' || '{QUICKCHAT_AJAX_ON_OFF}'=='on' || '{QUICKCHAT_SOCKET_ON_OFF}'=='on')){
-                <div class="user">
-                    <a href="{LINK_MESSAGE}" class="waves-effect message-link"><i class="fa fa-envelope"></i> </a>
-                </div>
-                {:IF}
                 IF("{LOGGED_IN}"=="1"){
-                <ul class="account-action">
-
-                    <li class="">
-                        <span class="hidden-sm hidden-xs">{USERNAME} <i class="fa fa-angle-down"></i></span>
+                <div class="dropdown user-drop">
+                    <a href="#" class=" dropdown-toggle " data-toggle="dropdown">
+                        <span class="hidden-sm hidden-xs"> {USERNAME} <i class="fa fa-angle-down"></i></span>
                         <img src="{SITE_URL}storage/profile/{USERPIC}" alt="{USERNAME}" class="user-image" height="22" width="22">
+                    </a>
 
-                        <div class="account-dropdown">
-                            <ul>
-                                <li><a href="{LINK_DASHBOARD}" class="waves-effect"> <i class="fa fa-dashboard"></i>Painel</a></li>
-                                <li><a href="{LINK_PROFILE}/{USERNAME}" class="waves-effect"> <i class="fa fa-user"></i>Meu Perfil</a></li>
-                                <li><a href="{LINK_POST-AD}" class="waves-effect"> <i class="fa fa-plus-circle"></i>{LANG_POST_FREE_AD}</a></li>
-                                <li><a href="{LINK_MYADS}" class="waves-effect"> <i class="fa fa-building"></i>Meus Anúncios</a></li>
-                                <!--<li><a href="{LINK_FAVADS}" class="waves-effect"> <i class="fa fa-heart"></i>Anúncios Favoritos</a></li>-->
-                               <!-- <li><a href="{LINK_PENDINGADS}" class="waves-effect"> <i class="fa fa-clock-o"></i>Pendentes Pendentes</a></li> -->
-                                <li><a href="{LINK_LOGOUT}" class="waves-effect"> <i class="fa fa-sign-out"></i>{LANG_LOGOUT}</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
+                    <ul class="dropdown-menu menu-user-drop">
+                        <li><a href="{LINK_DASHBOARD}" class="waves-effect"> <i class="fa fa-dashboard"></i>Painel</a></li>
+                        <li><a href="{LINK_PROFILE}/{USERNAME}" class="waves-effect"> <i class="fa fa-user"></i>Meu Perfil</a></li>
+                        <li><a href="{LINK_POST-AD}" class="waves-effect"> <i class="fa fa-plus-circle"></i>{LANG_POST_FREE_AD}</a></li>
+                        <li><a href="{LINK_MYADS}" class="waves-effect"> <i class="fa fa-building"></i>Meus Anúncios</a></li>
+                        <!--<li><a href="{LINK_FAVADS}" class="waves-effect"> <i class="fa fa-heart"></i>Anúncios Favoritos</a></li>-->
+                        <!-- <li><a href="{LINK_PENDINGADS}" class="waves-effect"> <i class="fa fa-clock-o"></i>Pendentes Pendentes</a></li> -->
+                        <li><a href="{LINK_LOGOUT}" class="waves-effect"> <i class="fa fa-sign-out"></i>{LANG_LOGOUT}</a></li>
+                    </ul>
+                </div>
 
                 {:IF}
 

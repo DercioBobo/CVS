@@ -178,8 +178,8 @@
                                         <select id="city" name="city" class="meterialselect">
 
                                                 <option value="">IF("{CITY}"==""){ Província {ELSE} {CITY} {:IF} </option>
-                                                <option value="Maputo (Matola)">Maputo (Matola) </option>
-                                                <option value="Maputo (cidade)">Maputo (cidade) </option>
+                                                <option value="Maputo (Matola)">Maputo Província </option>
+                                                <option value="Maputo (cidade)">Maputo Cidade </option>
                                                 <option value="Gaza">Gaza </option>
                                                 <option value="Inhambane">Inhambane </option>
                                                 <option value="Sofala">Sofala </option>

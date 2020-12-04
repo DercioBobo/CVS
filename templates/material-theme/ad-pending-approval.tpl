@@ -75,7 +75,7 @@
                                             <form method="post">
                                                 <div class="input-field">
                                                     <label for="filter" class="active"></label>
-                                                    <input type="text" class="live-search-box" id="filter" name="filter" placeholder="Press enter for search" value="">
+                                                    <input type="text" class="live-search-box" id="filter" name="filter" placeholder="Pressione enter para pesquisar" value="">
                                                 </div>
                                             </form>
                                         </div>

@@ -810,7 +810,7 @@ function pagenav($total,$page,$perpage,$url,$posts=0,$seo_url=false)
 	}
 	if ($page>1)
 	{
-		$page_arr[$arr_count]['title'] = 'Prev';
+		$page_arr[$arr_count]['title'] = 'Anterior';
         if($seo_url)
             $page_arr[$arr_count]['link'] = $url.'/'.($page-1);
         else
@@ -849,7 +849,7 @@ function pagenav($total,$page,$perpage,$url,$posts=0,$seo_url=false)
 	
 	if($page < $total_pages)
 	{
-		$page_arr[$arr_count]['title'] = 'Next';
+		$page_arr[$arr_count]['title'] = 'Próximo';
         if($seo_url)
             $page_arr[$arr_count]['link'] = $url.'/'.($page+1);
         else

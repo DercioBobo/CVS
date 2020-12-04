@@ -150,7 +150,7 @@
         $(document).ready(function() {
             setTimeout(function(){
                 $('body').addClass('loaded');
-            }, 3000);
+            }, 100);
 
         });
     </script>
@@ -306,6 +306,7 @@
                             </div>
 
                             <div id="ad_post_title">
+                                <a class=" pull-right btn btn-info" href="{LINK_INDEX}"> Voltar ao {LANG_HOME} </a>
                                 <h1 class="PagePostProject-header-title">
                                     {HEADER_TEXT}
                                     <span class="label-wrap hidden-sm hidden-xs">

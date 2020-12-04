@@ -49,8 +49,8 @@
                                 <div class="inner">
                                     <div class="range-widget">
                                         <div class="range-inputs">
-                                            <input type="text" name="range1" placeholder="{LANG_FROM}" value="{RANGE1}">
-                                            <input type="text" name="range2" placeholder="{LANG_TO}" value="{RANGE2}">
+                                            <input type="text" name="range1" placeholder="Min" value="{RANGE1}">
+                                            <input type="text" name="range2" placeholder="Max" value="{RANGE2}">
                                         </div>
                                         <!--<button type="submit"  name="Submit"><i class="fa fa-search"></i></button>-->
                                     </div>

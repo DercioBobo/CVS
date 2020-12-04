@@ -51,6 +51,8 @@
                             <ul class="list-unstyled">
                                 <!--<li><i class="fa fa-angle-double-right"></i> <a href="{LINK_FAQ}">Perguntas
                                         Frequentes</a></li> -->
+                                <li><i class="fa fa-angle-double-right"></i> <a href="{SITE_URL}suporte">
+                                        Suporte</a></li>
                                 <li><i class="fa fa-angle-double-right"></i> <a href="{SITE_URL}termos">Termos e
                                         Condições</a></li>
                                 <li><i class="fa fa-angle-double-right"></i> <a href="{SITE_URL}politica">Politica de
@@ -122,10 +124,10 @@
                                     class="fa fa-whatsapp"></i></a>{:IF}
                         IF("{YOUTUBE_LINK}"!=""){ <a href="{YOUTUBE_LINK}" target="_blank"><i
                                     class="fa fa-youtube-square"></i></a>{:IF}
-                        <a href="https://facebook.com/alphabit.lda.77" target="_blank"><i
+                        <a href=https://www.facebook.com/cvs.co.mz" target="_blank"><i
                                     class="fa fa-facebook-square"></i></a>
 
-                        <a href="https://instagram.com/alphabit.lda.77" target="_blank"><i
+                        <a href="https://www.instagram.com/cvs.co.mz/" target="_blank"><i
                                     class="fa fa-instagram"></i></a>
                     </p>
                 </div>
