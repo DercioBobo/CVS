@@ -5,16 +5,16 @@
     <div class="container">
         <ol class="breadcrumb">
             <li><a href="{LINK_INDEX}">{LANG_HOME}</a></li>
-            <li class="active">Suporte Ao Utilizador</li>
+            <li class="active">Suporte ao Utilizador</li>
         </ol>
         <section class="page-title">
-            <h1>Suporte Ao Utilizador</h1>
+            <h1>Suporte ao Utilizador</h1>
 
             <div class="container margin-top-20 ">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="container demo">
-                           Esta Secção servirá para guiar-te em como usar a Plataforma
+                           Esta secção servirá para guiar-te em como usar a plataforma
 
                             <div class="panel-group margin-top-20" id="accordion" role="tablist" aria-multiselectable="true">
 
@@ -23,7 +23,7 @@
                                         <h4 class="panel-title">
                                             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                                 <i class="more-less glyphicon glyphicon-plus"></i>
-                                                1.	Como Verificar a conta
+                                                1.	Como verificar a conta
                                             </a>
                                         </h4>
                                     </div>
@@ -58,7 +58,7 @@
                                         <h4 class="panel-title">
                                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                                 <i class="more-less glyphicon glyphicon-plus"></i>
-                                                3. Como Alterar informação de um artigo
+                                                3. Como alterar informação de um artigo
                                             </a>
                                         </h4>
                                     </div>
