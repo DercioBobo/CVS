@@ -7,6 +7,7 @@
  * @url https://codecanyon.net/item/quickad-classified-native-android-app/23956447
  * @Copyright (c) 2015-20 Devendra Katariya (bylancer.com)
  */
+header('Access-Control-Allow-Origin: *');
 
 // Path to root directory of app.
 define("ROOTPATH", dirname(dirname(__DIR__)));
@@ -2516,6 +2517,7 @@ function categories()
     {
         $cat['id'] = $info['cat_id'];
         $cat['icon'] = $info['icon'];
+        $cat['picture'] = $info['picture'];
 
         if($config['lang_code'] != 'en' && $config['userlangsel'] == '1'){
             $maincat = get_category_translation("main",$info['cat_id']);
