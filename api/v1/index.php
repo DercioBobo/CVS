@@ -38,8 +38,10 @@ if (isset($_REQUEST['action'])){
     if ($_REQUEST['action'] == "register") { register(); }
     if ($_REQUEST['action'] == "get_userdata_by_email") { get_userdata_by_email(); }  //not Using
     if ($_REQUEST['action'] == "featured_urgent_ads") { featured_urgent_ads(); }
+    if ($_REQUEST['action'] == "highlight_ads") { highlight_ads(); }
     if ($_REQUEST['action'] == "home_latest_ads") { home_latest_ads(); }
     if ($_REQUEST['action'] == "home_premium_ads") { home_premium_ads(); }
+    if ($_REQUEST['action'] == "most_viewed") { most_viewedd(); }
     if ($_REQUEST['action'] == "related_ads") { related_ads(); }
     if ($_REQUEST['action'] == "ad_detail") { ad_detail(); }
     if ($_REQUEST['action'] == "ad_delete") { ad_delete(); }
@@ -1309,6 +1311,7 @@ $where ORDER BY $order_by $pagelimit";
             $item['urgent'] = $info['urgent'];
             $item['highlight'] = $info['highlight'];
             $item['highlight_bgClr'] = ($info['highlight'] == 1)? "highlight-premium-ad" : "";
+            $item['view'] = $info['view'];
 
             $cityname = get_cityName_by_id($info['city']);
             $item['location'] = $cityname;
@@ -1367,6 +1370,7 @@ $where ORDER BY $order_by $pagelimit";
             $userinfo = get_user_data("",$info['user_id']);
             $item['username'] = $userinfo['username'];
             $item['user_id'] = $userinfo['id'];
+            $item['phone'] = $userinfo['phone'];
 
 
             if(check_user_upgrades($info['user_id']))
@@ -1475,6 +1479,350 @@ $where ORDER BY $sort $sort_order $pagelimit";
         foreach($result as $info) {
             $item['id'] = $info['id'];
             $item['product_name'] = $info['product_name'];
+            $item['featured'] = $info['featured'];
+            $item['urgent'] = $info['urgent'];
+            $item['highlight'] = $info['highlight'];
+            $item['highlight_bgClr'] = ($info['highlight'] == 1)? "highlight-premium-ad" : "";
+
+            $cityname = get_cityName_by_id($info['city']);
+            $item['location'] = $cityname;
+            $item['city'] = $cityname;
+            $item['status'] = $info['status'];
+            $item['hide'] = $info['hide'];
+
+            $item['created_at'] = timeAgo($info['created_at']);
+            $expire_date_timestamp = $info['expire_date'];
+            $expire_date = date('d-M-y', $expire_date_timestamp);
+            $item['expire_date'] = $expire_date;
+
+            $item['cat_id'] = $info['category'];
+            $item['sub_cat_id'] = $info['sub_category'];
+            $get_main = get_maincat_by_id($info['category']);
+            $get_sub = get_subcat_by_id($info['sub_category']);
+            $item['category'] = $get_main['cat_name'];
+            $item['sub_category'] = $get_sub['sub_cat_name'];
+
+
+            $fav_num_rows = ORM::for_table($config['db']['pre'].'favads')
+                ->where(array(
+                    'product_id' => $info['id'],
+                    'user_id' => $info['user_id']
+                ))
+                ->count();
+            if($fav_num_rows == 1)
+                $product_favorite = true;
+            else
+                $product_favorite = false;
+
+            $item['favorite'] = $product_favorite;
+
+            if($info['tag'] != ''){
+                $item['showtag'] = "1";
+                $item['tag'] = $info['tag'];
+            }else{
+                $item['tag'] = "";
+                $item['showtag'] = "0";
+            }
+
+            $picture = explode(',' ,$info['screen_shot']);
+            $item['pic_count'] = count($picture);
+
+            if($picture[0] != ""){
+                $item['picture'] = $config['site_url']."storage/products/thumb/".$picture[0];
+            }else{
+                $item['picture'] = $config['site_url']."storage/products/thumb/default.png";
+            }
+
+            $currency = set_user_currency($info['country']);
+            $item['price'] = !empty($info['price']) ? $info['price'] : null;
+            $item['currency'] = $currency['html_entity'];
+            $item['currency_in_left'] = $currency['in_left'];
+
+
+            $userinfo = get_user_data("",$info['user_id']);
+            $item['username'] = $userinfo['username'];
+            $item['user_id'] = $userinfo['id'];
+
+
+            if(check_user_upgrades($info['user_id']))
+            {
+                $sub_info = get_user_membership_detail($info['user_id']);
+                $item['subcription_title'] = $sub_info['sub_title'];
+                $item['subcription_image'] = $sub_info['sub_image'];
+            }else{
+                $item['subcription_title'] = '';
+                $item['subcription_image'] = '';
+            }
+
+            $items[] = $item;
+        }
+    }
+    else {
+        //echo "0 results";
+    }
+
+
+    send_json($items);
+    die();
+}
+function highlight_ads(){
+    global $config,$lang,$results;
+
+    $cat_id = isset($_REQUEST['category_id']) ? $_REQUEST['category_id'] : null;
+    $subcat_id = isset($_REQUEST['subcategory_id']) ? $_REQUEST['subcategory_id'] : null;
+
+    $user_id = isset($_REQUEST['user_id']) ? $_REQUEST['user_id'] : null;
+    $location = isset($_REQUEST['location']) ? $_REQUEST['location'] : false;
+    $country_code = isset($_REQUEST['country_code']) ? $_REQUEST['country_code'] : null;
+    $state_code = isset($_REQUEST['state']) ? $_REQUEST['state'] : null;
+    $city = isset($_REQUEST['city']) ? $_REQUEST['city'] : null;
+    $status = isset($_REQUEST['status']) ? $_REQUEST['status'] : null;
+    $premium = isset($_REQUEST['premium']) ? $_REQUEST['premium'] : false;
+    $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : '1';
+    $limit = isset($_REQUEST['limit']) ? $_REQUEST['limit'] : '10';
+    $sorting = isset($_REQUEST['sorting']) ? $_REQUEST['sorting'] : false;
+    $sort = isset($_REQUEST['sort']) ? $_REQUEST['sort'] : "id";
+    $sort_order = isset($_REQUEST['sort_order']) ? $_REQUEST['sort_order'] : "DESC";
+
+    if(isset($_REQUEST['country_code'])){
+        $location = true;
+    }
+
+
+    $where = "where (p.highlight = '1') ";
+
+    if($status != null && $status != "hide"){
+        $where .= " AND p.status = '".$status."'";
+    }
+
+    if($cat_id != null){
+        $where .= " AND p.category = '".$cat_id."'";
+    }
+
+    if($subcat_id != null){
+        $where .= " AND p.sub_category = '".$subcat_id."'";
+    }
+
+    if($status == "hide"){
+        $where .= " AND p.hide = '1'";
+    }else{
+        $where .= " AND p.hide = '0'";
+    }
+
+    if($location){
+        if($country_code == null){
+            $country_code = check_user_country();
+        }
+
+        $where .= " AND p.country = '".$country_code."'";
+
+        if($state_code != null){
+            $where .= " AND p.state = '".$state_code."'";
+        }
+
+        if($city != null){
+            $where .= " AND p.city = '".$city."'";
+        }
+    }
+
+    $order_by = $sort." ".$sort_order;
+
+    $pagelimit = "";
+    if($page != null && $limit != null){
+        $pagelimit = "LIMIT  ".($page-1)*$limit.",".$limit;
+    }
+
+    $pdo = ORM::get_db();
+
+    $query = "SELECT p.id,p.product_name,p.featured,p.urgent,p.highlight,p.price,p.category,p.sub_category,p.tag,p.screen_shot,p.user_id,p.city,p.country,p.status,p.hide,p.created_at,p.expire_date,
+u.group_id, g.show_on_home
+FROM `".$config['db']['pre']."product` as p
+INNER JOIN `".$config['db']['pre']."user` as u ON u.id = p.user_id
+INNER JOIN `".$config['db']['pre']."usergroups` as g ON g.group_id = u.group_id
+$where ORDER BY $sort $sort_order $pagelimit";
+
+    //echo "<pre>". $query."</pre>";
+
+    $result = $pdo->query($query);
+    $rows = $result->rowCount();
+    $items = array();
+    if ($rows > 0) {
+        foreach($result as $info) {
+            $item['id'] = $info['id'];
+            $item['product_name'] = $info['product_name'];
+            $item['view'] = $info['view'];
+            $item['featured'] = $info['featured'];
+            $item['urgent'] = $info['urgent'];
+            $item['highlight'] = $info['highlight'];
+            $item['highlight_bgClr'] = ($info['highlight'] == 1)? "highlight-premium-ad" : "";
+
+            $cityname = get_cityName_by_id($info['city']);
+            $item['location'] = $cityname;
+            $item['city'] = $cityname;
+            $item['status'] = $info['status'];
+            $item['hide'] = $info['hide'];
+
+            $item['created_at'] = timeAgo($info['created_at']);
+            $expire_date_timestamp = $info['expire_date'];
+            $expire_date = date('d-M-y', $expire_date_timestamp);
+            $item['expire_date'] = $expire_date;
+
+            $item['cat_id'] = $info['category'];
+            $item['sub_cat_id'] = $info['sub_category'];
+            $get_main = get_maincat_by_id($info['category']);
+            $get_sub = get_subcat_by_id($info['sub_category']);
+            $item['category'] = $get_main['cat_name'];
+            $item['sub_category'] = $get_sub['sub_cat_name'];
+
+
+            $fav_num_rows = ORM::for_table($config['db']['pre'].'favads')
+                ->where(array(
+                    'product_id' => $info['id'],
+                    'user_id' => $info['user_id']
+                ))
+                ->count();
+            if($fav_num_rows == 1)
+                $product_favorite = true;
+            else
+                $product_favorite = false;
+
+            $item['favorite'] = $product_favorite;
+
+            if($info['tag'] != ''){
+                $item['showtag'] = "1";
+                $item['tag'] = $info['tag'];
+            }else{
+                $item['tag'] = "";
+                $item['showtag'] = "0";
+            }
+
+            $picture = explode(',' ,$info['screen_shot']);
+            $item['pic_count'] = count($picture);
+
+            if($picture[0] != ""){
+                $item['picture'] = $config['site_url']."storage/products/thumb/".$picture[0];
+            }else{
+                $item['picture'] = $config['site_url']."storage/products/thumb/default.png";
+            }
+
+            $currency = set_user_currency($info['country']);
+            $item['price'] = !empty($info['price']) ? $info['price'] : null;
+            $item['currency'] = $currency['html_entity'];
+            $item['currency_in_left'] = $currency['in_left'];
+
+
+            $userinfo = get_user_data("",$info['user_id']);
+            $item['username'] = $userinfo['username'];
+            $item['user_id'] = $userinfo['id'];
+
+
+            if(check_user_upgrades($info['user_id']))
+            {
+                $sub_info = get_user_membership_detail($info['user_id']);
+                $item['subcription_title'] = $sub_info['sub_title'];
+                $item['subcription_image'] = $sub_info['sub_image'];
+            }else{
+                $item['subcription_title'] = '';
+                $item['subcription_image'] = '';
+            }
+
+            $items[] = $item;
+        }
+    }
+    else {
+        //echo "0 results";
+    }
+
+
+    send_json($items);
+    die();
+}
+function most_viewedd(){
+    global $config,$lang,$results;
+
+    $cat_id = isset($_REQUEST['category_id']) ? $_REQUEST['category_id'] : null;
+    $subcat_id = isset($_REQUEST['subcategory_id']) ? $_REQUEST['subcategory_id'] : null;
+
+    $user_id = isset($_REQUEST['user_id']) ? $_REQUEST['user_id'] : null;
+    $location = isset($_REQUEST['location']) ? $_REQUEST['location'] : false;
+    $country_code = isset($_REQUEST['country_code']) ? $_REQUEST['country_code'] : null;
+    $state_code = isset($_REQUEST['state']) ? $_REQUEST['state'] : null;
+    $city = isset($_REQUEST['city']) ? $_REQUEST['city'] : null;
+    $status = isset($_REQUEST['status']) ? $_REQUEST['status'] : null;
+    $premium = isset($_REQUEST['premium']) ? $_REQUEST['premium'] : false;
+    $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : '1';
+    $limit = isset($_REQUEST['limit']) ? $_REQUEST['limit'] : '10';
+    $sorting = isset($_REQUEST['sorting']) ? $_REQUEST['sorting'] : false;
+    $sort = isset($_REQUEST['sort']) ? $_REQUEST['sort'] : "p.view";
+    $sort_order = isset($_REQUEST['sort_order']) ? $_REQUEST['sort_order'] : "DESC";
+
+    if(isset($_REQUEST['country_code'])){
+        $location = true;
+    }
+
+
+    $where = "";
+
+    if($status != null && $status != "hide"){
+        $where .= " AND p.status = '".$status."'";
+    }
+
+    if($cat_id != null){
+        $where .= " AND p.category = '".$cat_id."'";
+    }
+
+    if($subcat_id != null){
+        $where .= " AND p.sub_category = '".$subcat_id."'";
+    }
+
+    if($status == "hide"){
+        $where .= " AND p.hide = '1'";
+    }else{
+        $where .= " AND p.hide = '0'";
+    }
+
+    if($location){
+        if($country_code == null){
+            $country_code = check_user_country();
+        }
+
+        $where .= " AND p.country = '".$country_code."'";
+
+        if($state_code != null){
+            $where .= " AND p.state = '".$state_code."'";
+        }
+
+        if($city != null){
+            $where .= " AND p.city = '".$city."'";
+        }
+    }
+
+    $order_by = $sort." ".$sort_order;
+
+    $pagelimit = "";
+    if($page != null && $limit != null){
+        $pagelimit = "LIMIT  ".($page-1)*$limit.",".$limit;
+    }
+
+    $pdo = ORM::get_db();
+
+    $query = "SELECT p.id,p.product_name,p.featured,p.urgent,p.highlight,p.price,p.category,p.sub_category,p.tag,p.screen_shot,p.user_id,p.city,p.country,p.status,p.hide,p.created_at,p.expire_date,
+u.group_id, g.show_on_home
+FROM `".$config['db']['pre']."product` as p
+INNER JOIN `".$config['db']['pre']."user` as u ON u.id = p.user_id
+INNER JOIN `".$config['db']['pre']."usergroups` as g ON g.group_id = u.group_id
+$where ORDER BY $sort $sort_order $pagelimit";
+
+    //echo "<pre>". $query."</pre>";
+
+    $result = $pdo->query($query);
+    $rows = $result->rowCount();
+    $items = array();
+    if ($rows > 0) {
+        foreach($result as $info) {
+            $item['id'] = $info['id'];
+            $item['product_name'] = $info['product_name'];
+            $item['view'] = $info['view'];
             $item['featured'] = $info['featured'];
             $item['urgent'] = $info['urgent'];
             $item['highlight'] = $info['highlight'];
