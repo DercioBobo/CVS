@@ -196,7 +196,7 @@ if(isset($_POST["submit"])) {
 
         create_user_session($loggedin['id'],$loggedin['username'],$loggedin['password']);
 
-        message($lang['WELCOME'],$lang['WELCOMETOSITE'],'dashboard',false);
+        message($lang['WELCOME'],$lang['WELCOMETOSITE'],'account-verification',false);
         exit;
     }
 }
