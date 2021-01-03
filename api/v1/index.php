@@ -59,6 +59,9 @@ if (isset($_REQUEST['action'])){
     if ($_REQUEST['action'] == "categories") {categories();}
     if ($_REQUEST['action'] == "sub_categories") {sub_categories();}
 
+
+    if ($_REQUEST['action'] == "ad_report") {ad_report();}
+
     if ($_REQUEST['action'] == "favorite_posts") {favorite_posts();}
     if ($_REQUEST['action'] == "add_to_favorite") {add_to_favorite();}
     if ($_REQUEST['action'] == "remove_favorite") {remove_favorite();}
@@ -103,6 +106,22 @@ action = payment_success_saving
 Messages
 1. Success : success
 */
+
+function ad_report(){
+    /*SEND CONTACT EMAIL*/
+
+    $email = $_REQUEST['email'];
+    $name = $_REQUEST['name'];
+    $usernamee = $_REQUEST['username'];
+    $username2 = $_REQUEST['username2'];
+    $violation = $_REQUEST['violation'];
+    $url = $_REQUEST['url'];
+    $details = $_REQUEST['details'];
+
+    email_template("report");
+
+}
+
 function payment_success_saving(){
     global $config,$lang,$link;
     $pdo = ORM::get_db();
@@ -1292,7 +1311,7 @@ function get_products_data($userid=null,$cat_id=null,$subcat_id=null,$location=f
     $pdo = ORM::get_db();
 
     $query = "SELECT p.id,p.product_name,p.featured,p.urgent,p.highlight,p.price,p.category,p.sub_category,p.tag,p.screen_shot,p.user_id,p.city,p.country,p.status,p.hide,p.created_at,p.expire_date,
-u.group_id, g.show_on_home
+u.group_id, g.show_on_home, p.view, p.description,p.phone
 FROM `".$config['db']['pre']."product` as p
 INNER JOIN `".$config['db']['pre']."user` as u ON u.id = p.user_id
 INNER JOIN `".$config['db']['pre']."usergroups` as g ON g.group_id = u.group_id
@@ -1307,11 +1326,14 @@ $where ORDER BY $order_by $pagelimit";
         foreach($result as $info) {
             $item['id'] = $info['id'];
             $item['product_name'] = $info['product_name'];
+            $item['product_description'] = $info['description'];
             $item['featured'] = $info['featured'];
             $item['urgent'] = $info['urgent'];
             $item['highlight'] = $info['highlight'];
             $item['highlight_bgClr'] = ($info['highlight'] == 1)? "highlight-premium-ad" : "";
             $item['view'] = $info['view'];
+            $item['phone'] = $info['phone'];
+
 
             $cityname = get_cityName_by_id($info['city']);
             $item['location'] = $cityname;
@@ -1355,12 +1377,20 @@ $where ORDER BY $order_by $pagelimit";
             $picture = explode(',' ,$info['screen_shot']);
             $item['pic_count'] = count($picture);
 
+            $images = [];
+
             if($picture[0] != ""){
                 $item['picture'] = $config['site_url']."storage/products/thumb/".$picture[0];
+
+                foreach($picture as $pic){
+                    $images[] = array('image'=>$config['site_url']."storage/products/thumb/".$pic);
+                }
+
             }else{
                 $item['picture'] = $config['site_url']."storage/products/thumb/default.png";
             }
 
+            $item['images'] = $images;
             $currency = set_user_currency($info['country']);
             $item['price'] = !empty($info['price']) ? $info['price'] : null;
             $item['currency'] = $currency['html_entity'];
@@ -1370,7 +1400,6 @@ $where ORDER BY $order_by $pagelimit";
             $userinfo = get_user_data("",$info['user_id']);
             $item['username'] = $userinfo['username'];
             $item['user_id'] = $userinfo['id'];
-            $item['phone'] = $userinfo['phone'];
 
 
             if(check_user_upgrades($info['user_id']))
@@ -1985,7 +2014,7 @@ function home_latest_ads(){
         $location = true;
     }
 
-    $results = get_products_data($user_id,$cat_id,$subcat_id,$location,$country_code,$state_code,$city,$status,$premium,$page,$limit,$order=false,$sort="id",$sort_order="DESC");
+    get_products_data($user_id,$cat_id,$subcat_id,$location,$country_code,$state_code,$city,$status,$premium,$page,$limit,$order=false,$sort="id",$sort_order="DESC");
 
 }
 
