@@ -1326,7 +1326,7 @@ $where ORDER BY $order_by $pagelimit";
         foreach($result as $info) {
             $item['id'] = $info['id'];
             $item['product_name'] = $info['product_name'];
-            $item['product_description'] = $info['description'];
+            $item['product_description'] = strip_tags($info['description']);
             $item['featured'] = $info['featured'];
             $item['urgent'] = $info['urgent'];
             $item['highlight'] = $info['highlight'];
@@ -1664,7 +1664,7 @@ function highlight_ads(){
     $pdo = ORM::get_db();
 
     $query = "SELECT p.id,p.product_name,p.featured,p.urgent,p.highlight,p.price,p.category,p.sub_category,p.tag,p.screen_shot,p.user_id,p.city,p.country,p.status,p.hide,p.created_at,p.expire_date,
-u.group_id, g.show_on_home
+u.group_id, g.show_on_home, p.view
 FROM `".$config['db']['pre']."product` as p
 INNER JOIN `".$config['db']['pre']."user` as u ON u.id = p.user_id
 INNER JOIN `".$config['db']['pre']."usergroups` as g ON g.group_id = u.group_id
@@ -1728,11 +1728,20 @@ $where ORDER BY $sort $sort_order $pagelimit";
             $picture = explode(',' ,$info['screen_shot']);
             $item['pic_count'] = count($picture);
 
+            $images = [];
+
             if($picture[0] != ""){
                 $item['picture'] = $config['site_url']."storage/products/thumb/".$picture[0];
+
+                foreach($picture as $pic){
+                    $images[] = array('image'=>$config['site_url']."storage/products/thumb/".$pic);
+                }
+
             }else{
                 $item['picture'] = $config['site_url']."storage/products/thumb/default.png";
             }
+
+            $item['images'] = $images;
 
             $currency = set_user_currency($info['country']);
             $item['price'] = !empty($info['price']) ? $info['price'] : null;
@@ -1836,7 +1845,7 @@ function most_viewedd(){
     $pdo = ORM::get_db();
 
     $query = "SELECT p.id,p.product_name,p.featured,p.urgent,p.highlight,p.price,p.category,p.sub_category,p.tag,p.screen_shot,p.user_id,p.city,p.country,p.status,p.hide,p.created_at,p.expire_date,
-u.group_id, g.show_on_home
+u.group_id, g.show_on_home, p.view
 FROM `".$config['db']['pre']."product` as p
 INNER JOIN `".$config['db']['pre']."user` as u ON u.id = p.user_id
 INNER JOIN `".$config['db']['pre']."usergroups` as g ON g.group_id = u.group_id
@@ -2905,6 +2914,8 @@ function categories()
             $cat['slug'] = $info['slug'];
         }
 
+        $cat['sub_categories']=sub_categories_by_id($info['cat_id']);
+
         $category[] = $cat;
     }
 
@@ -2954,6 +2965,38 @@ function sub_categories()
     $results = $sub_category;
     send_json($results);
     die();
+}
+function sub_categories_by_id($category_id)
+{
+    global $config, $con, $lang, $results;
+    $sub_category = array();
+
+    $rows = ORM::for_table($config['db']['pre'].'catagory_sub')
+        ->where('main_cat_id', $category_id)
+        ->order_by_asc('cat_order')
+        ->find_many();
+
+    foreach ($rows as $info)
+    {
+        $subcat['id'] = $info['sub_cat_id'];
+        $subcat['photo_show'] = $info['photo_show'];
+        $subcat['price_show'] = $info['price_show'];
+
+        if($config['lang_code'] != 'en' && $config['userlangsel'] == '1'){
+            $subcategory = get_category_translation("sub",$info['sub_cat_id']);
+
+            $subcat['name'] = $subcategory['title'];
+            $subcat['slug'] = $subcategory['slug'];
+        }else{
+            $subcat['name'] = $info['sub_cat_name'];
+            $subcat['slug'] =  $info['slug'];
+        }
+
+        $sub_category[] = $subcat;
+    }
+
+    $results = $sub_category;
+    return $results;
 }
 
 /*
