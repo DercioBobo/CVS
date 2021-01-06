@@ -655,6 +655,10 @@ table.uiGrid td {
     text-align: justify;
 }
 
+.panel-body>ul>li{
+    list-style: initial !important;
+    list-style-type: initial;
+}
 
 * {box-sizing: border-box;}
 .mySlides {display: none;}

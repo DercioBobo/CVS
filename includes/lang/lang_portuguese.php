@@ -476,6 +476,7 @@ $lang['SUBMIT'] = 'Enviar';
 $lang['SUBMITREVIEWS'] = 'Enviar Comentário';
 $lang['SUCCESS'] = 'Sucesso';
 $lang['SUPPORT'] = 'Suporte';
+$lang['SEGURANCA'] = 'Segurança';
 $lang['TAGS'] = 'Tags';
 $lang['TAGS_DETAIL'] = 'Digite as tags separadas por vírgulas.';
 $lang['TAG_REQ'] = 'Tags é necessário.';

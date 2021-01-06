@@ -70,6 +70,7 @@ $router->map('GET|POST','/faq/?', 'faq.php');
 $router->map('GET|POST','/termos/?', 'termos.php');
 $router->map('GET|POST','/politica/?', 'politica.php');
 $router->map('GET|POST','/suporte/?', 'suporte.php');
+$router->map('GET|POST','/seguranca/?', 'seguranca.php');
 $router->map('GET|POST','/feedback/?', 'feedback.php');
 $router->map('GET|POST','/test/?', 'test.php');
 $router->map('GET|POST','/mpesa-payment/?', 'mpesa-controller.php');

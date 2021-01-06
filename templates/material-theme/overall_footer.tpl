@@ -51,6 +51,8 @@
                             <ul class="list-unstyled">
                                 <!--<li><i class="fa fa-angle-double-right"></i> <a href="{LINK_FAQ}">Perguntas
                                         Frequentes</a></li> -->
+                                <li><i class="fa fa-angle-double-right"></i> <a href="{SITE_URL}seguranca">
+                                        Dicas de Segurança</a></li>
                                 <li><i class="fa fa-angle-double-right"></i> <a href="{SITE_URL}suporte">
                                         Suporte</a></li>
                                 <li><i class="fa fa-angle-double-right"></i> <a href="{SITE_URL}termos">Termos e
