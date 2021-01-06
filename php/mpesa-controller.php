@@ -38,13 +38,14 @@ echo json_encode($result);
 
 function send_notification_mpesa ($numero,$valor)
 {
-    $url = 'https://api.sandbox.vm.co.mz:18352/ipg/v1x/c2bPayment/singleStage/';
+    //$url = 'https://api.sandbox.vm.co.mz:18352/ipg/v1x/c2bPayment/singleStage/';
+    $url = 'https://api.vm.co.mz:18352/ipg/v1x/c2bPayment/singleStage/';
     $fields = array(
-        'input_TransactionReference'=> 'T'.rand(10000,99999).'C',
+        'input_TransactionReference'=> 'OEUT0'.rand(10000,99999),
         'input_CustomerMSISDN'=> '258'.$numero,
         'input_Amount'=> $valor,
-        'input_ThirdPartyReference'=> 'BI7BA1',
-        'input_ServiceProviderCode'=> '171717'
+        'input_ThirdPartyReference'=> 'COMLEI'.time(),
+        'input_ServiceProviderCode'=> '900415'
     );
 
     $mpesa_token = nl2br(get_option('m_pesa_token'));
