@@ -36,7 +36,7 @@ if(isset($_FILES['bi_doc']['name'])){
             if(strcmp($result["output_ResponseCode"],'INS-10')==0) {
                 $response = array('state' => false, 'message' => 'Transação duplicada, tente mais tarde.');
             }else{
-                $response = array('state' => false, 'message' => 'Transação sem sucesso, tente mais tarde.');
+                $response = array('state' => false, 'message' => 'Transação sem sucesso, tente mais tarde.', 'detail'=>$result);
             }
 
             echo json_encode($response);
@@ -148,17 +148,17 @@ function paymentVerification($user_id, $amount, $folder, $product_id, $title,$tr
 
 function send_notification_mpesa ($numero,$valor)
 {
-    $url = 'https://api.sandbox.vm.co.mz:18352/ipg/v1x/c2bPayment/singleStage/';
+    //$url = 'https://api.sandbox.vm.co.mz:18352/ipg/v1x/c2bPayment/singleStage/';
+    $url = 'https://api.vm.co.mz:18352/ipg/v1x/c2bPayment/singleStage/';
     $fields = array(
-        'input_TransactionReference'=> 'T'.rand(10000,99999).'C',
+        'input_TransactionReference'=> 'OEUT0'.rand(10000,99999),
         'input_CustomerMSISDN'=> '258'.$numero,
         'input_Amount'=> $valor,
-        'input_ThirdPartyReference'=> 'BI7BA1',
-        'input_ServiceProviderCode'=> '171717'
+        'input_ThirdPartyReference'=> 'COMLEI'.time(),
+        'input_ServiceProviderCode'=> '900415'
     );
 
     $mpesa_token = nl2br(get_option('m_pesa_token'));
-
 
     $headers = array(
         'Authorization: Bearer '.$mpesa_token,
