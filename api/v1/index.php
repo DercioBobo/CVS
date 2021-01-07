@@ -2961,6 +2961,7 @@ function sub_categories()
         $subcat['id'] = $info['sub_cat_id'];
         $subcat['photo_show'] = $info['photo_show'];
         $subcat['price_show'] = $info['price_show'];
+        $subcat['picture'] = $info['picture'];
 
         if($config['lang_code'] != 'en' && $config['userlangsel'] == '1'){
             $subcategory = get_category_translation("sub",$info['sub_cat_id']);
@@ -2994,6 +2995,7 @@ function sub_categories_by_id($category_id)
         $subcat['id'] = $info['sub_cat_id'];
         $subcat['photo_show'] = $info['photo_show'];
         $subcat['price_show'] = $info['price_show'];
+        $subcat['picture'] = $info['picture'];
 
         if($config['lang_code'] != 'en' && $config['userlangsel'] == '1'){
             $subcategory = get_category_translation("sub",$info['sub_cat_id']);
