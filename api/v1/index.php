@@ -40,6 +40,7 @@ if (isset($_REQUEST['action'])){
     if ($_REQUEST['action'] == "featured_urgent_ads") { featured_urgent_ads(); }
     if ($_REQUEST['action'] == "highlight_ads") { highlight_ads(); }
     if ($_REQUEST['action'] == "home_latest_ads") { home_latest_ads(); }
+    if ($_REQUEST['action'] == "all_ads") { all_ads(); }
     if ($_REQUEST['action'] == "home_premium_ads") { home_premium_ads(); }
     if ($_REQUEST['action'] == "most_viewed") { most_viewedd(); }
     if ($_REQUEST['action'] == "related_ads") { related_ads(); }
@@ -1209,7 +1210,7 @@ function get_userdata_by_email(){
     die();
 }
 
-function get_products_data($userid=null,$cat_id=null,$subcat_id=null,$location=false,$country_code=null,$state_code=null,$city=null,$status=null,$premium=false,$page=null,$limit=null,$order=false,$sort="id",$sort_order="DESC"){
+function get_products_data($userid=null,$cat_id=null,$subcat_id=null,$location=false,$country_code=null,$state_code=null,$city=null,$status=null,$premium=false,$page=null,$limit=null,$order=true,$sort="id",$sort_order="DESC"){
     global $config,$con,$lang,$results;
     $where = '';
     if($userid != null){
@@ -1311,7 +1312,17 @@ function get_products_data($userid=null,$cat_id=null,$subcat_id=null,$location=f
     $pdo = ORM::get_db();
 
     $query = "SELECT p.id,p.product_name,p.featured,p.urgent,p.highlight,p.price,p.category,p.sub_category,p.tag,p.screen_shot,p.user_id,p.city,p.country,p.status,p.hide,p.created_at,p.expire_date,
-u.group_id, g.show_on_home, p.view, p.description,p.phone
+u.group_id, g.show_on_home, p.view, p.description,p.phone,     (CASE
+        WHEN g.show_on_home = 'yes' and p.featured = '1' and p.urgent = '1' and p.highlight = '1' THEN 1
+        WHEN g.show_on_home = 'yes' and p.urgent = '1' and p.featured = '1' THEN 2
+        WHEN g.show_on_home = 'yes' and p.urgent = '1' and p.highlight = '1' THEN 3
+        WHEN g.show_on_home = 'yes' and p.featured = '1' and p.highlight = '1' THEN 4
+        WHEN g.show_on_home = 'yes' and p.urgent = '1' THEN 5
+        WHEN g.show_on_home = 'yes' and p.featured = '1' THEN 6
+        WHEN g.show_on_home = 'yes' and p.highlight = '1' THEN 7
+        WHEN g.show_on_home = 'yes' THEN 8
+        ELSE 9
+      END) AS 'nivel'
 FROM `".$config['db']['pre']."product` as p
 INNER JOIN `".$config['db']['pre']."user` as u ON u.id = p.user_id
 INNER JOIN `".$config['db']['pre']."usergroups` as g ON g.group_id = u.group_id
@@ -1333,6 +1344,7 @@ $where ORDER BY $order_by $pagelimit";
             $item['highlight_bgClr'] = ($info['highlight'] == 1)? "highlight-premium-ad" : "";
             $item['view'] = $info['view'];
             $item['phone'] = $info['phone'];
+            $item['nivel'] = $info['nivel'];
 
 
             $cityname = get_cityName_by_id($info['city']);
@@ -2037,6 +2049,32 @@ function home_latest_ads(){
     }
 
     get_products_data($user_id,$cat_id,$subcat_id,$location,$country_code,$state_code,$city,$status,$premium,$page,$limit,$order=false,$sort="id",$sort_order="DESC");
+
+}
+function all_ads(){
+    global $results;
+
+    $cat_id = isset($_REQUEST['category_id']) ? $_REQUEST['category_id'] : null;
+    $subcat_id = isset($_REQUEST['subcategory_id']) ? $_REQUEST['subcategory_id'] : null;
+
+    $user_id = isset($_REQUEST['user_id']) ? $_REQUEST['user_id'] : null;
+    $location = isset($_REQUEST['location']) ? $_REQUEST['location'] : false;
+    $country_code = isset($_REQUEST['country_code']) ? $_REQUEST['country_code'] : null;
+    $state_code = isset($_REQUEST['state']) ? $_REQUEST['state'] : null;
+    $city = isset($_REQUEST['city']) ? $_REQUEST['city'] : null;
+    $status = isset($_REQUEST['status']) ? $_REQUEST['status'] : null;
+    $premium = isset($_REQUEST['premium']) ? $_REQUEST['premium'] : false;
+    $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : null;
+    $limit = isset($_REQUEST['limit']) ? $_REQUEST['limit'] : null;
+    $sorting = isset($_REQUEST['sorting']) ? $_REQUEST['sorting'] : false;
+    $sort = isset($_REQUEST['sort']) ? $_REQUEST['sort'] : "id";
+    $sort_order = isset($_REQUEST['sort_order']) ? $_REQUEST['sort_order'] : "DESC";
+
+    if(isset($_REQUEST['country_code'])){
+        $location = true;
+    }
+
+    get_products_data($user_id,$cat_id,$subcat_id,$location,$country_code,$state_code,$city,$status,$premium,$page,$limit,$order=true,$sort="nivel",$sort_order="DESC");
 
 }
 
