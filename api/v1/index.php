@@ -1312,14 +1312,14 @@ function get_products_data($userid=null,$cat_id=null,$subcat_id=null,$location=f
     $pdo = ORM::get_db();
 
     $query = "SELECT p.id,p.product_name,p.featured,p.urgent,p.highlight,p.price,p.category,p.sub_category,p.tag,p.screen_shot,p.user_id,p.city,p.country,p.status,p.hide,p.created_at,p.expire_date,
-u.group_id, g.show_on_home, p.view, p.description,p.phone,     (CASE
-        WHEN g.show_on_home = 'yes' and p.featured = '1' and p.urgent = '1' and p.highlight = '1' THEN 1
-        WHEN g.show_on_home = 'yes' and p.urgent = '1' and p.featured = '1' THEN 2
-        WHEN g.show_on_home = 'yes' and p.urgent = '1' and p.highlight = '1' THEN 3
-        WHEN g.show_on_home = 'yes' and p.featured = '1' and p.highlight = '1' THEN 4
-        WHEN g.show_on_home = 'yes' and p.urgent = '1' THEN 5
-        WHEN g.show_on_home = 'yes' and p.featured = '1' THEN 6
-        WHEN g.show_on_home = 'yes' and p.highlight = '1' THEN 7
+u.group_id, g.show_on_home, p.view, p.description,p.phone,p.created_at AS 'date',     (CASE
+        WHEN p.featured = '1' and p.urgent = '1' and p.highlight = '1' THEN 1
+        WHEN p.urgent = '1' and p.featured = '1' THEN 2
+        WHEN p.urgent = '1' and p.highlight = '1' THEN 3
+        WHEN p.featured = '1' and p.highlight = '1' THEN 4
+        WHEN p.urgent = '1' THEN 5
+        WHEN p.featured = '1' THEN 6
+        WHEN p.highlight = '1' THEN 7
         WHEN g.show_on_home = 'yes' THEN 8
         ELSE 9
       END) AS 'nivel'
@@ -1328,7 +1328,7 @@ INNER JOIN `".$config['db']['pre']."user` as u ON u.id = p.user_id
 INNER JOIN `".$config['db']['pre']."usergroups` as g ON g.group_id = u.group_id
 $where ORDER BY $order_by $pagelimit";
 
-    //echo "<pre>". $query."</pre>";
+    //echo $query;
 
     $result = $pdo->query($query);
     $rows = $result->rowCount();
@@ -1630,7 +1630,7 @@ function highlight_ads(){
     }
 
 
-    $where = "where (p.highlight = '1') ";
+    $where = "where (p.highlight = '1' OR p.featured = '1' OR p.urgent = '1') ";
 
     if($status != null && $status != "hide"){
         $where .= " AND p.status = '".$status."'";
@@ -1803,7 +1803,7 @@ function most_viewedd(){
     $status = isset($_REQUEST['status']) ? $_REQUEST['status'] : null;
     $premium = isset($_REQUEST['premium']) ? $_REQUEST['premium'] : false;
     $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : '1';
-    $limit = isset($_REQUEST['limit']) ? $_REQUEST['limit'] : '10';
+    $limit = isset($_REQUEST['limit']) ? $_REQUEST['limit'] : '20';
     $sorting = isset($_REQUEST['sorting']) ? $_REQUEST['sorting'] : false;
     $sort = isset($_REQUEST['sort']) ? $_REQUEST['sort'] : "p.view";
     $sort_order = isset($_REQUEST['sort_order']) ? $_REQUEST['sort_order'] : "DESC";
@@ -2074,7 +2074,7 @@ function all_ads(){
         $location = true;
     }
 
-    get_products_data($user_id,$cat_id,$subcat_id,$location,$country_code,$state_code,$city,$status,$premium,$page,$limit,$order=true,$sort="nivel",$sort_order="DESC");
+    get_products_data($user_id,$cat_id,$subcat_id,$location,$country_code,$state_code,$city,$status,$premium,$page,$limit,$order=true,$sort="nivel",$sort_order="ASC");
 
 }
 
