@@ -2074,7 +2074,7 @@ function all_ads(){
         $location = true;
     }
 
-    get_products_data($user_id,$cat_id,$subcat_id,$location,$country_code,$state_code,$city,$status,$premium,$page,$limit,$order=true,$sort="nivel",$sort_order="ASC");
+    get_products_data($user_id,$cat_id,$subcat_id,$location,$country_code,$state_code,$city,$status,$premium,$page,$limit,$order=true,$sort="nivel",$sort_order="ASC, p.created_at DESC");
 
 }
 
