@@ -1333,6 +1333,7 @@ $where ORDER BY $order_by $pagelimit";
     $result = $pdo->query($query);
     $rows = $result->rowCount();
     $items = array();
+    $i = 0;
     if ($rows > 0) {
         foreach($result as $info) {
             $item['id'] = $info['id'];
@@ -1412,6 +1413,32 @@ $where ORDER BY $order_by $pagelimit";
             $userinfo = get_user_data("",$info['user_id']);
             $item['username'] = $userinfo['username'];
             $item['user_id'] = $userinfo['id'];
+            $item['user_status'] = $userinfo['status'];
+
+
+            if($userid != null && $i==0){
+                $userinfo = get_user_data("", $userid);
+                $profile['username'] = $userinfo['username'];
+                $profile['user_id'] = $userinfo['id'];
+                $profile['user_status'] = $userinfo['status'];
+                $profile['user_type']  = $userinfo['user_type'];
+                $profile['user_fullname']       = $userinfo['name'];
+                $profile['user_email']      = $userinfo['email'];
+                $profile['facebook']   = $userinfo['facebook'];
+                $profile['twitter']    = $userinfo['twitter'];
+                $profile['googleplus'] = $userinfo['googleplus'];
+                $profile['instagram']  = $userinfo['instagram'];
+                $profile['linkedin']   = $userinfo['linkedin'];
+                $profile['youtube']    = $userinfo['youtube'];
+                $profile['website']    = $userinfo['website'];
+                $profile['user_image']    = STORAGEPATH.'profile/'.$info['image'];
+
+                $item['profile'] = $profile;
+
+            }else{
+                $item['profile'] = null;
+
+            }
 
 
             if(check_user_upgrades($info['user_id']))
@@ -1425,7 +1452,14 @@ $where ORDER BY $order_by $pagelimit";
             }
 
             $items[] = $item;
+            $i++;
+
         }
+
+
+
+
+
     }
     else {
         //echo "0 results";
@@ -1766,6 +1800,7 @@ $where ORDER BY $sort $sort_order $pagelimit";
             $userinfo = get_user_data("",$info['user_id']);
             $item['username'] = $userinfo['username'];
             $item['user_id'] = $userinfo['id'];
+            $item['user_status'] = $userinfo['status'];
 
 
             if(check_user_upgrades($info['user_id']))
@@ -1949,6 +1984,7 @@ $where ORDER BY $sort $sort_order $pagelimit";
             $userinfo = get_user_data("",$info['user_id']);
             $item['username'] = $userinfo['username'];
             $item['user_id'] = $userinfo['id'];
+            $item['user_status'] = $userinfo['status'];
 
 
             if(check_user_upgrades($info['user_id']))
