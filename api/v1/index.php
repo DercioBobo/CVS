@@ -108,6 +108,71 @@ Messages
 1. Success : success
 */
 
+function getCustomFields($product_id){
+    global $config,$lang,$link;
+
+    $item_custom = array();
+    $item_custom_textarea = array();
+    $item_checkbox = array();
+
+    $q_result = ORM::for_table($config['db']['pre'].'custom_data')
+        ->where('product_id', $product_id)
+        ->find_many();
+    $item_custom_field = count($q_result);
+    $haveCustomFields = false;
+    if($item_custom_field > 0){
+        $haveCustomFields = true;
+    }
+
+    foreach($q_result as $customdata){
+        $field_id = $customdata['field_id'];
+        $field_type = $customdata['field_type'];
+        $field_data = $customdata['field_data'];
+
+        $custom_fields_title = get_customField_title_by_id($field_id);
+
+        if($field_type == 'checkboxes'){
+            $checkbox_value2 = array();
+
+            $checkbox_value = explode(",",$field_data);
+
+            foreach ($checkbox_value as $val)
+            {
+                $val = get_customOption_by_id(trim($val));
+                $checkbox_value2[] = $val;
+            }
+            if($custom_fields_title != ""){
+                $item_checkbox['title'] = $custom_fields_title;
+                $item_checkbox['value'] = $checkbox_value2;
+            }
+        }
+
+        if($field_type == 'textarea') {
+            $item_custom_textarea[] = array('title'=>$custom_fields_title,'value'=>stripslashes($field_data));
+        }
+
+        if($field_type == 'radio-buttons' or  $field_type == 'drop-down') {
+            $custom_fields_data = get_customOption_by_id($field_data);
+            $item_custom[] = array('title'=>$custom_fields_title,'value'=>$custom_fields_data);
+        }
+
+        if($field_type == 'text-field') {
+            $custom_fields_data = stripslashes($field_data);
+            $item_custom[] = array('title'=>$custom_fields_title,'value'=>$custom_fields_data);
+        }
+    }
+
+    return array(
+        'extras'=>$haveCustomFields,
+        'custom_data'=>$item_custom,
+        'custom_textarea'=>$item_custom_textarea,
+        'custom_checkboxes'=>$item_checkbox
+    );
+
+
+}
+
+
 function ad_report(){
     /*SEND CONTACT EMAIL*/
 
@@ -1347,6 +1412,8 @@ $where ORDER BY $order_by $pagelimit";
             $item['phone'] = $info['phone'];
             $item['nivel'] = $info['nivel'];
 
+            $item['custom_fields'] = getCustomFields($info['id']);
+
 
             $cityname = get_cityName_by_id($info['city']);
             $item['location'] = $cityname;
@@ -1431,7 +1498,17 @@ $where ORDER BY $order_by $pagelimit";
                 $profile['linkedin']   = $userinfo['linkedin'];
                 $profile['youtube']    = $userinfo['youtube'];
                 $profile['website']    = $userinfo['website'];
-                $profile['user_image']    = STORAGEPATH.'profile/'.$info['image'];
+
+                // Check if SSL enabled
+                $protocol = isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] && $_SERVER["HTTPS"] != "off"
+                    ? "https://" : "http://";
+
+                $site_url = $protocol
+                    . $_SERVER["HTTP_HOST"]
+                    . (dirname($_SERVER["SCRIPT_NAME"]) == DIRECTORY_SEPARATOR ? "" : "/")
+                    . trim(str_replace("\\", "/", dirname($_SERVER["SCRIPT_NAME"])), "/");
+
+                $profile['user_image']    = '/storage/profile/'.$userinfo['image'];
 
                 $item['profile'] = $profile;
 
@@ -1732,6 +1809,7 @@ $where ORDER BY $sort $sort_order $pagelimit";
             $item['urgent'] = $info['urgent'];
             $item['highlight'] = $info['highlight'];
             $item['highlight_bgClr'] = ($info['highlight'] == 1)? "highlight-premium-ad" : "";
+            $item['custom_fields'] = getCustomFields($info['id']);
 
             $cityname = get_cityName_by_id($info['city']);
             $item['location'] = $cityname;
@@ -1916,6 +1994,7 @@ $where ORDER BY $sort $sort_order $pagelimit";
             $item['urgent'] = $info['urgent'];
             $item['highlight'] = $info['highlight'];
             $item['highlight_bgClr'] = ($info['highlight'] == 1)? "highlight-premium-ad" : "";
+            $item['custom_fields'] = getCustomFields($info['id']);
 
             $cityname = get_cityName_by_id($info['city']);
             $item['location'] = $cityname;
