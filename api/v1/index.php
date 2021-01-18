@@ -1499,6 +1499,17 @@ $where ORDER BY $order_by $pagelimit";
                 $profile['youtube']    = $userinfo['youtube'];
                 $profile['website']    = $userinfo['website'];
 
+                $profile['address']    = $userinfo['address'];
+                $profile['country']    = $userinfo['country'];
+                $profile['city']       = $userinfo['city'];
+                $profile['lastactive'] = $userinfo['lastactive'];
+                $profile['email']      = $userinfo['email'];
+                $profile['description'] = $userinfo['description'];
+                $profile['phone']      = $userinfo['phone'];
+
+
+
+
                 // Check if SSL enabled
                 $protocol = isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] && $_SERVER["HTTPS"] != "off"
                     ? "https://" : "http://";
