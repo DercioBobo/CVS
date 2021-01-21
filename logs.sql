@@ -19,7 +19,7 @@ USE `boladas`;
 -- Dumping structure for table boladas.log_pagamento
 CREATE TABLE IF NOT EXISTS `log_pagamento` (
   `id` int(220) NOT NULL AUTO_INCREMENT,
-  `valor` bigint(20) NOT NULL DEFAULT 0,
+  `valor` double NOT NULL DEFAULT 0,
   `tipo` varchar(220) NOT NULL,
   `reference` varchar(50) NOT NULL DEFAULT '',
   `numero_telefone` varchar(220) NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `log_pagamento` (
   KEY `created_by` (`created_by`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table boladas.log_pagamento: ~0 rows (approximately)
+-- Dumping data for table boladas.log_pagamento: ~2 rows (approximately)
 DELETE FROM `log_pagamento`;
 /*!40000 ALTER TABLE `log_pagamento` DISABLE KEYS */;
 INSERT INTO `log_pagamento` (`id`, `valor`, `tipo`, `reference`, `numero_telefone`, `user_id`, `data`, `estado`, `resposta`, `created_by`, `created_on`) VALUES
