@@ -36,6 +36,7 @@ if (isset($_REQUEST['action'])){
     if ($_REQUEST['action'] == "login") { login(); }
     if ($_REQUEST['action'] == "forgot_password") { forgot_password(); }
     if ($_REQUEST['action'] == "register") { register(); }
+    if ($_REQUEST['action'] == "get_userdata_by_id") { get_userdata_by_id(); }  //not Using
     if ($_REQUEST['action'] == "get_userdata_by_email") { get_userdata_by_email(); }  //not Using
     if ($_REQUEST['action'] == "featured_urgent_ads") { featured_urgent_ads(); }
     if ($_REQUEST['action'] == "highlight_ads") { highlight_ads(); }
@@ -1242,6 +1243,55 @@ Messages
 1. Success : success
 2. Error : Email address does not exist
 */
+
+function get_userdata_by_id(){
+    global $config,$lang,$results;
+    $user_id = $_REQUEST['user_id'];
+
+    $userinfo = get_user_data("",$user_id);
+
+
+    $profile['username'] = $userinfo['username'];
+    $profile['user_id'] = $userinfo['id'];
+    $profile['user_status'] = $userinfo['status'];
+    $profile['user_type']  = $userinfo['user_type'];
+    $profile['user_fullname']       = $userinfo['name'];
+    $profile['user_email']      = $userinfo['email'];
+    $profile['facebook']   = $userinfo['facebook'];
+    $profile['twitter']    = $userinfo['twitter'];
+    $profile['googleplus'] = $userinfo['googleplus'];
+    $profile['instagram']  = $userinfo['instagram'];
+    $profile['linkedin']   = $userinfo['linkedin'];
+    $profile['youtube']    = $userinfo['youtube'];
+    $profile['website']    = $userinfo['website'];
+
+    $profile['address']    = $userinfo['address'];
+    $profile['country']    = $userinfo['country'];
+    $profile['city']       = $userinfo['city'];
+    $profile['lastactive'] = $userinfo['lastactive'];
+    $profile['email']      = $userinfo['email'];
+    $profile['description'] = $userinfo['description'];
+    $profile['phone']      = $userinfo['phone'];
+
+    $profile['view']       = $userinfo['view'];
+    $profile['image']      = $userinfo['image'];
+    $profile['tagline']    = $userinfo['tagline'];
+    $profile['sex']        = $userinfo['sex'];
+    $profile['postcode']   = $userinfo['postcode'];
+    $profile['online']     = $userinfo['online'];
+    $profile['updated_at'] = $userinfo['updated_at'];
+    $profile['bi_doc'] = $userinfo['bi_doc'];
+    $profile['alvara_doc'] = $userinfo['alvara_doc'];
+    $profile['verify_enddate'] = $userinfo['verify_enddate'];
+    $profile['verify_startdate'] = $userinfo['verify_startdate'];
+
+    $profile['notify']    = $userinfo['notify'];
+    $profile['notify_cat']    = $userinfo['notify_cat'];
+
+
+    send_json($profile);
+    die();
+}
 
 function get_userdata_by_email(){
     global $config,$lang,$results;
