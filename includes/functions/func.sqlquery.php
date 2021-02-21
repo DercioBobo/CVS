@@ -937,6 +937,238 @@ function get_customFields_by_catid($maincatid=null,$subcatid=null,$require=true,
     return $custom_fields;
 }
 
+function get_customFields_by_catid_mobile($maincatid=null,$subcatid=null,$require=true,$fields=array(),$data=array()){
+
+    global $config,$lang;
+    $custom_fields = array();
+    $pdo = ORM::get_db();
+    if(isset($subcatid) && $subcatid != "" && is_numeric($subcatid)){
+        $query = "SELECT * FROM `".$config['db']['pre']."custom_fields` WHERE find_in_set($subcatid,custom_subcatid) <> 0 order by custom_order ASC";
+    }elseif(isset($maincatid) && $maincatid != "" && is_numeric($maincatid)){
+        $query = "SELECT * FROM `".$config['db']['pre']."custom_fields` WHERE find_in_set($maincatid,custom_catid) <> 0 order by custom_order ASC";
+    }else{
+        $query = "SELECT * FROM `".$config['db']['pre']."custom_fields` WHERE custom_anycat = 'any' order by custom_order ASC";
+    }
+    $result = $pdo->query($query);
+    foreach ($result as $info)
+    {
+        $temp = array();
+
+        $temp['id'] = $info['custom_id'];
+        $temp['type'] = $info['custom_type'];
+        $temp['name'] = $info['custom_name'];
+        $temp['title'] = stripslashes($info['custom_title']);
+        $temp['maxlength'] = $info['custom_max'];
+
+        if($config['lang_code'] != 'en' && $config['userlangsel'] == '1'){
+            if($info['translation_lang'] != '' && $info['translation_name'] != ''){
+                $translation_lang = explode(',',$info['translation_lang']);
+                $translation_name = explode(',',$info['translation_name']);
+
+                $count = 0;
+                foreach($translation_lang as $key=>$value) {
+                    if($value != '')
+                    {
+                        $translation[$translation_lang[$key]] = $translation_name[$key];
+
+                        $count++;
+                    }
+                }
+
+                $trans_name = (isset($translation[$config['lang_code']]))? $translation[$config['lang_code']] : '';
+
+                if($trans_name != ''){
+                    $temp['title'] = stripslashes($trans_name);
+                }else{
+                    $temp['title'] = stripslashes($info['custom_title']);
+                }
+            }
+        }
+
+        $required = "0";
+        if($require){
+            $required = ($info['custom_required'] == 1)?  '1' : '0';
+        }
+        $temp['required'] = $required;
+
+        if(isset($_REQUEST['custom'][$info['custom_id']]))
+        {
+            if($temp['type'] == "checkboxes"){
+                $checkbox1=$_REQUEST['custom'][$info['custom_id']];
+                if(is_array($checkbox1)){
+                    $chk="";
+                    $chkCount = 0;
+                    foreach($checkbox1 as $chk1)
+                    {
+                        if($chkCount == 0)
+                            $chk .= $chk1;
+                        else
+                            $chk .= ",".$chk1;
+
+                        $chkCount++;
+                    }
+                    $temp['default'] = $chk;
+                }
+                else{
+                    $temp['default'] = $_REQUEST['custom'][$info['custom_id']];
+                }
+
+            }
+            else{
+                //$custom_fields[$info['custom_id']]['default'] = substr(strip_tags($_REQUEST['custom'][$info['custom_id']]),0,$info['custom_max']);
+                $temp['default'] = $_REQUEST['custom'][$info['custom_id']];
+            }
+
+            $temp['userent'] = 1;
+        }
+        else
+        {
+            $temp['default'] = $info['custom_default'];
+            $temp['userent'] = 0;
+        }
+
+        foreach($fields as $key=>$value)
+        {
+            if($value != '')
+            {
+                if($value == $info['custom_id']){
+                    $temp['default'] = $data[$key];
+                    break;
+                }
+
+            }
+        }
+
+       /* //Text-field
+        if($info['custom_type'] == 'text-field'){
+            $textbox = '<input name="custom['.$info['custom_id'].']" id="custom['.$info['custom_id'].']" class="form-control with-border quick-text"  type="text" value="'.$custom_fields[$info['custom_id']]['default'].'" placeholder="'.$custom_fields[$info['custom_id']]['title'].'" data-name="'.$info['custom_id'].'" data-req="'.$required.'"/><div class="quick-error">'.$lang['FIELD_REQUIRED'].'</div>';
+            $temp['textbox'] = $textbox;
+        }
+        else{
+            $custom_fields[$info['custom_id']]['textbox'] = '';
+        }*/
+
+        //Textarea
+        /*if($info['custom_type'] == 'textarea'){
+            $textarea= '<textarea class="materialize-textarea form-control with-border quick-textArea" name="custom['.$info['custom_id'].']" id="custom['.$info['custom_id'].']" placeholder="'.$custom_fields[$info['custom_id']]['title'].'" data-name="'.$info['custom_id'].'" data-req="'.$required.'">'.$custom_fields[$info['custom_id']]['default'].'</textarea><div class="quick-error">'.$lang['FIELD_REQUIRED'].'</div><p class="help-block">Html tags are allow.</p>';
+            $custom_fields[$info['custom_id']]['textarea'] = $textarea;
+        }
+        else{
+            $custom_fields[$info['custom_id']]['textarea'] = '';
+        }*/
+
+        //SelectList
+        if($info['custom_type'] == 'drop-down')
+        {
+            $options = explode(',',stripslashes($info['custom_options']));
+
+            //$selectbox = '<select class="meterialselect" name="custom['.$info['custom_id'].']" '.$required.'><option value="" selected>'.$info['custom_title'].'</option>';
+            $selectbox = array();
+            foreach($options as $key3=>$value3)
+            {
+                $option_title = get_customOption_by_id($value3);
+                if($value3 == $temp['default'])
+                {
+                    $selectbox[] = array('id'=>$value3,'title'=>$option_title);
+                }
+                else
+                {
+                    $selectbox[] = array('id'=>$value3,'title'=>$option_title);
+                }
+            }
+            //$selectbox.= '</select>';
+
+            $temp['selectbox'] = $selectbox;
+        }
+        else
+        {
+            $temp['selectbox'] = '';
+        }
+
+        //RadioButton
+        if($info['custom_type'] == 'radio-buttons')
+        {
+            $options = explode(',',stripslashes($info['custom_options']));
+            $radiobtn = array();
+            $i = 0;
+            foreach($options as $key3=>$value3)
+            {
+                $checked = "";
+                $option_title = get_customOption_by_id($value3);
+                if($value3 == $temp['default']) {
+                    $checked = "checked";
+                }
+
+                if($config['tpl_name'] == 'thenext-theme'){
+
+                    $radiobtn[] = array('id'=>$value3.$i,'title'=>$option_title);
+
+                }
+                else{
+
+                    $radiobtn[] = array('id'=>$value3.$i,'title'=>$option_title);
+
+                }
+
+                $i++;
+            }
+            $temp['radio'] = $radiobtn;
+        }
+        else {
+            $temp['radio'] = '';
+        }
+
+        //Checkbox
+        if($info['custom_type'] == 'checkboxes') {
+            $options = explode(',',stripslashes($info['custom_options']));
+            $Checkbox = array();
+            $j = 0;
+            $selected = '';
+            foreach($options as $key4=>$value4)
+            {
+                $default_checkbox = $custom_fields[$info['custom_id']]['default'];
+                if(is_array($default_checkbox)){
+                    $checked = $temp['default'];
+                }else{
+                    $checked = explode(',',$temp['default']);
+                }
+
+                foreach ($checked as $val) {
+                    if($value4 == $val) {
+                        $selected = "checked";
+                        break;
+                    }
+                    else{
+                        $selected = "";
+                    }
+                }
+
+                $option_title = get_customOption_by_id($value4);
+
+                if($config['tpl_name'] == 'thenext-theme'){
+                    $Checkbox [] = array('id'=>$value4.$j, 'title'=>$option_title);
+                }
+                else{
+                    $Checkbox [] = array('id'=>$value4.$j, 'title'=>$option_title);
+
+                }
+                $j++;
+            }
+            $temp['checkbox'] = $Checkbox;
+        }
+        else
+        {
+            $temp['checkbox'] = '';
+
+        }
+
+
+      $custom_fields[] = $temp;
+    }
+
+    return $custom_fields;
+}
+
 function create_slug($string){
     return slugify($string);
 }

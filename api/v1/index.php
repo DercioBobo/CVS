@@ -984,6 +984,7 @@ function login(){
     $userdata = get_user_data($username);
     $results['email'] = $userdata['email'];
     $results['name'] = $userdata['name'];
+    $results['phone'] = $userdata['phone'];
     $results['picture'] = $config['site_url']."storage/profile/small_".$userdata['image'];
 
     send_json($results);
@@ -3146,7 +3147,8 @@ function categories()
         $category[] = $cat;
     }
 
-    $results = $category;
+    $results['categorias'] = $category;
+
     send_json($results);
     die();
 }
@@ -3221,7 +3223,10 @@ function sub_categories_by_id($category_id)
             $subcat['slug'] =  $info['slug'];
         }
 
+        $subcat['custom_fields'] = get_customFields_by_catid_mobile($category_id, $info['sub_cat_id']);
+
         $sub_category[] = $subcat;
+
     }
 
     $results = $sub_category;
@@ -3335,6 +3340,134 @@ function save_post_customField_data($custom_fields=array(),$product_id){
                     }
                 }
             }
+        }
+    }
+}
+
+function save_post_customField_data_mobile($custom_fields=array(), $checkboxes=array(),$product_id){
+
+    global $config;
+
+    if(count($custom_fields) > 0){
+
+        $index = 0;
+
+
+        foreach ($custom_fields as $key => $value) {
+
+            if($value != null){
+
+                $field_id = $index;
+
+                // Get usergroup details
+                $custom_info = ORM::for_table($config['db']['pre'].'custom_fields')
+                    ->select('custom_type')
+                    ->where('custom_id', $field_id)
+                    ->find_one();
+
+                $field_type = $custom_info->custom_type;
+
+                if($field_type == "textarea")
+                    $field_data = validate_input($value,true);
+                else
+                    $field_data = validate_input($value);
+
+                if(isset($product_id)){
+                    $exist = 0;
+                    //Checking Data exist
+                    $exist = ORM::for_table($config['db']['pre'].'custom_data')
+                        ->where(array(
+                            'product_id' => $product_id,
+                            'field_id' => $field_id
+                        ))
+                        ->count();
+
+                    if($exist > 0){
+                        //Update here
+                        $pdo = ORM::get_db();
+                        $query = "UPDATE `".$config['db']['pre']."custom_data` set field_type = '".$field_type."', field_data = '".$field_data."' where product_id = '".$product_id."' and field_id = '".$field_id."' LIMIT 1";
+                        $pdo->query($query);
+
+                    }else{
+                        //Insert here
+                        if($field_data != "") {
+                            $field_insert = ORM::for_table($config['db']['pre'].'custom_data')->create();
+                            $field_insert->product_id = $product_id;
+                            $field_insert->field_id = $field_id;
+                            $field_insert->field_type = $field_type;
+                            $field_insert->field_data = $field_data;
+                            $field_insert->save();
+                        }
+                    }
+                }
+
+            }
+
+
+            $index++;
+        }
+    }
+
+    if(count($checkboxes) > 0){
+
+        $index = 0;
+
+
+        foreach ($custom_fields as $key => $value) {
+
+            if($value != null){
+
+                $field_id = $index;
+
+                // Get usergroup details
+                $custom_info = ORM::for_table($config['db']['pre'].'custom_fields')
+                    ->select('custom_type')
+                    ->where('custom_id', $field_id)
+                    ->find_one();
+
+                $field_type = $custom_info->custom_type;
+
+                foreach ($value as $key1 => $value1) {
+
+                    if($field_type == "textarea")
+                    $field_data = validate_input($value1,true);
+                else
+                    $field_data = validate_input($value1);
+
+                if(isset($product_id)){
+                    $exist = 0;
+                    //Checking Data exist
+                    $exist = ORM::for_table($config['db']['pre'].'custom_data')
+                        ->where(array(
+                            'product_id' => $product_id,
+                            'field_id' => $field_id
+                        ))
+                        ->count();
+
+                    if($exist > 0){
+                        //Update here
+                        $pdo = ORM::get_db();
+                        $query = "UPDATE `".$config['db']['pre']."custom_data` set field_type = '".$field_type."', field_data = '".$field_data."' where product_id = '".$product_id."' and field_id = '".$field_id."' LIMIT 1";
+                        $pdo->query($query);
+
+                    }else{
+                        //Insert here
+                        if($field_data != "") {
+                            $field_insert = ORM::for_table($config['db']['pre'].'custom_data')->create();
+                            $field_insert->product_id = $product_id;
+                            $field_insert->field_id = $field_id;
+                            $field_insert->field_type = $field_type;
+                            $field_insert->field_data = $field_data;
+                            $field_insert->save();
+                        }
+                    }
+                }
+
+            }
+            }
+
+
+            $index++;
         }
     }
 }
@@ -3540,10 +3673,16 @@ function save_post(){
     $price = isset($_REQUEST['price']) ? $_REQUEST['price'] : 0;
     $phone = isset($_REQUEST['phone']) ? $_REQUEST['phone'] : 0;
     $tags = isset($_REQUEST['tags']) ? $_REQUEST['tags'] : null;
-    $additionalinfo = isset($_REQUEST['additionalinfo']) ? $_REQUEST['additionalinfo'] : null;
+    $additionalinfo = isset($_REQUEST['custom_fields']) ? $_REQUEST['custom_fields'] : null;
+    $additionalinfo_checkboxes = isset($_REQUEST['checkboxes']) ? $_REQUEST['checkboxes'] : null;
     $custom_fields = array();
+    $custom_checkboxes = array();
     if($additionalinfo != null){
         $custom_fields = json_decode($additionalinfo, true);
+    }
+
+    if($additionalinfo_checkboxes != null){
+        $custom_checkboxes = json_decode($additionalinfo_checkboxes, true);
     }
 
     $mapLat = $_REQUEST['latitude'];
@@ -3577,12 +3716,21 @@ function save_post(){
         $status = "pending";
     }
 
-    if (isset($_REQUEST['item_screen'])) {
+    if (isset($_FILES['imagem1'])) {
         $valid_formats = array("jpg", "jpeg", "png"); // Valid image formats
         $countScreen = 0;
         $picture = explode(',',$_REQUEST['item_screen']);
-        foreach ($picture as $name) {
-            $filename = stripslashes($name);
+        foreach ($_FILES as $name) {
+
+            $imagename = $name['name'];
+            //Stores the filetype e.g image/jpeg
+            $imagetype = $name['type'];
+            //Stores any error codes from the upload.
+            $imageerror = $name['error'];
+            //Stores the tempname as it is given by the host when uploaded.
+            $imagetemp = $name['tmp_name'];
+
+            $filename = stripslashes($imagename);
             $ext = getExtension($filename);
             $ext = strtolower($ext);
             if (!empty($filename)) {
@@ -3590,14 +3738,28 @@ function save_post(){
                 if (in_array($ext, $valid_formats)) {
                     //Valid File extension check
 
+                    //The path you wish to upload the image to
+                    $imagePath = "../../storage/products/thumb/";
+
+
+                    if(is_uploaded_file($imagetemp)) {
+                        if(move_uploaded_file($imagetemp, $imagePath . $imagename)) {
+
+                            if ($countScreen == 0)
+                                $item_screen = $filename;
+                            elseif ($countScreen >= 1)
+                                $item_screen = $item_screen . "," . $filename;
+                            $countScreen++;
+
+                        }
+
+                    }
+
+
                 } else {
                     $errors[]['message'] = $lang['ONLY_JPG_ALLOW'];
                 }
-                if ($countScreen == 0)
-                    $item_screen = $filename;
-                elseif ($countScreen >= 1)
-                    $item_screen = $item_screen . "," . $filename;
-                $countScreen++;
+
             }
         }
     }
@@ -3625,11 +3787,12 @@ function save_post(){
     $item_insrt->expire_date = $expire_timestamp;
     $item_insrt->save();
 
-    echo ORM::get_last_query();
+    //echo ORM::get_last_query();
     $product_id = $item_insrt->id();
-    save_post_customField_data($custom_fields,$product_id);
+    save_post_customField_data_mobile($custom_fields,$custom_checkboxes,$product_id);
     $results['status'] = "success";
     $results['id'] = $product_id;
+    $results['test'] = json_encode(json_decode($_REQUEST["checkboxes"],true));
     send_json($results);
     die();
 }
