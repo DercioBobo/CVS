@@ -36,6 +36,7 @@ if (isset($_REQUEST['action'])){
     if ($_REQUEST['action'] == "login") { login(); }
     if ($_REQUEST['action'] == "forgot_password") { forgot_password(); }
     if ($_REQUEST['action'] == "register") { register(); }
+    if ($_REQUEST['action'] == "update_profile") { update_profile(); }
     if ($_REQUEST['action'] == "get_userdata_by_id") { get_userdata_by_id(); }  //not Using
     if ($_REQUEST['action'] == "get_userdata_by_email") { get_userdata_by_email(); }  //not Using
     if ($_REQUEST['action'] == "featured_urgent_ads") { featured_urgent_ads(); }
@@ -1233,6 +1234,172 @@ function register(){
     $results['message'] = "Something wrong.";
 
     send_json($results);
+}
+
+function update_profile(){
+
+    global $config,$con,$lang,$results;
+
+    $name_length = strlen(utf8_decode($_REQUEST['name']));
+
+    $status = "";
+    $message = "";
+
+    if(empty($_REQUEST["name"])) {
+        $status = "error";
+        $message = $lang['ENTER_FULL_NAME'];
+    }
+   /* elseif(empty($_REQUEST["username"]))
+    {
+        $status = "error";
+        $message = $lang['ENTERUNAME'];
+    }
+    elseif( strlen($_REQUEST['username']) < 4 )
+    {
+        $status = "error";
+        $message = $lang['USERLEN'];
+    }*/
+    else{
+        if(isset($_REQUEST['fb_login']) && $_REQUEST['fb_login'] == 1){
+
+        }else{
+            $user_count = check_username_exists($_REQUEST["username"]);
+            if($user_count>0) {
+                $status = "error";
+                $message = $lang['USERUNAV'];
+            }
+        }
+    }
+
+
+    /*// Check if this is an Email availability check from signup page using ajax
+    $_REQUEST["email"] = strtolower($_REQUEST["email"]);
+    $regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
+
+    if(empty($_REQUEST["email"])) {
+        $status = "error";
+        $message = $lang['ENTEREMAIL'];
+    }
+    elseif(!preg_match($regex, $_REQUEST['email'])) {
+        $status = "error";
+        $message = $lang['EMAILINV'];
+    }*/
+
+
+    if($status != "error") {
+
+        $errors = array();
+        if(!isset($_POST['heading']))
+            $_POST['heading'] = "";
+        if(!isset($_POST['content']))
+            $_POST['content'] = "";
+        if(!isset($_POST['postcode']))
+            $_POST['postcode'] = "";
+        if(!isset($_POST['city']))
+            $_POST['city'] = "";
+        if(!isset($_POST['country']))
+            $_POST['country'] = "";
+
+        /*
+        $valid_formats = array("jpg","jpeg","png"); // Valid image formats
+
+        if(!empty($_FILES['avatar']['tmp_name'])) {
+            $filename = stripslashes($_FILES['avatar']['name']);
+            $ext = getExtension($filename);
+            $ext = strtolower($ext);
+            //File extension check
+            if (in_array($ext, $valid_formats)) {
+                $file_avatar = $_FILES["avatar"];
+                $path_avatar = "storage/profile/";
+                $first_title = $_SESSION['user']['username'];
+
+                if ($author_image != "default_user.png"){
+                    $unlink = $author_image;
+                    $getAvatar = fileUpload($path_avatar, $file_avatar, "image", $first_title, 225, 225,true, $unlink);
+                }
+                else{
+                    $getAvatar = fileUpload($path_avatar, $file_avatar, "image", $first_title,225, 225,true);
+                }
+
+                if ($getAvatar != "") {
+                    $avatarName = $getAvatar;
+                } else {
+                    $errors[]['message'] = "Avatar error: Required JPEG 150x150px image.";
+                }
+            }
+            else {
+                $errors[]['message'] = $lang['ONLY_JPG_ALLOW'];
+            }
+        }
+        else{
+            $avatarName = $author_image;
+        }
+
+        */
+
+            $notify = isset($_POST['notify']) ? '1' : '0';
+
+            if (isset($_POST['choice']) && is_array($_POST['choice'])) {
+                $choice = validate_input(implode(',', $_POST['choice']));
+            }else{
+                $choice = '';
+            }
+
+            $description = addslashes($_POST['content']);
+
+            $website_link = addhttp($_POST['website']);
+            $now = date("Y-m-d H:i:s");
+            $user_update = ORM::for_table($config['db']['pre'].'user')->find_one($_POST['user_id']);
+            $user_update->set('name', $_POST['name']);
+            $user_update->set('image', $avatarName='');
+            $user_update->set('tagline', $_POST['heading']);
+            $user_update->set('description', $description);
+            $user_update->set('phone', $_POST['phone']);
+            $user_update->set('postcode', $_POST['postcode']);
+            $user_update->set('address', $_POST['address']);
+            $user_update->set('city', $_POST['city']);
+            $user_update->set('country', $_POST['country']);
+            $user_update->set('facebook', $_POST['facebook']);
+            $user_update->set('twitter', $_POST['twitter']);
+            $user_update->set('googleplus', $_POST['googleplus']);
+            $user_update->set('instagram', $_POST['instagram']);
+            $user_update->set('linkedin', $_POST['linkedin']);
+            $user_update->set('youtube', $_POST['youtube']);
+            $user_update->set('website', $website_link);
+            $user_update->set('notify', $notify);
+            $user_update->set('notify_cat', $choice);
+            $user_update->set('updated_at', $now);
+            $update = $user_update->save();
+
+
+            if($update){
+
+                $results['status'] = "success";
+                $results['message'] = "Profile Account Updated";
+
+                send_json($results);
+            }else{
+
+                $results['status'] = "error";
+                $results['message'] = "Something wrong.";
+
+                send_json($results);
+            }
+
+            ORM::for_table($config['db']['pre'].'notification')
+                ->where_equal('user_id',$_POST['user_id'])
+                ->delete_many();
+
+
+
+        }else{
+        $results['status'] = "error";
+        $results['message'] = $message;
+
+        send_json($results);
+    }
+
+
 }
 
 /*
@@ -4170,46 +4337,80 @@ function upload_product_picture(){
 }
 
 function upload_profile_picture(){
-    global $config,$results;
+    global $config,$results,$lang;
 
     $user_id = $_REQUEST['user_id'];
-    $file_avatar = $_FILES["fileToUpload"];
     $path_avatar = "../../storage/profile/";
     $first_title = uniqid();
 
 
-    // receive image as POST Parameter
-    $image = str_replace('data:image/png;base64,', '', $_POST['image']);
-    $image = str_replace(' ', '+', $image);
-    // Decode the Base64 encoded Image
-    $data = base64_decode($image);
-    // Create Image path with Image name and Extension
-    $file = '../images/' . "MyImage" . '.jpg';
-    // Save Image in the Image Directory
-    $success = file_put_contents($file, $data);
+    if (isset($_FILES)) {
+        $valid_formats = array("jpg", "jpeg", "png"); // Valid image formats
 
-    $getAvatar = fileUpload($path_avatar, $file_avatar, "image", $first_title, 800, 800,true);
+        foreach ($_FILES as $name) {
 
-    if($getAvatar != ""){
-        if($user_id){
-            $user_update = ORM::for_table($config['db']['pre'].'user')->find_one($user_id);
-            $user_update->set('image', $getAvatar);
-            $user_update->save();
-        }
-        $picture_url = $config['site_url'].'storage/profile/small_' . $getAvatar;
+            $imagename = $name['name'];
+            //Stores the filetype e.g image/jpeg
+            $imagetype = $name['type'];
+            //Stores any error codes from the upload.
+            $imageerror = $name['error'];
+            //Stores the tempname as it is given by the host when uploaded.
+            $imagetemp = $name['tmp_name'];
 
-        $results['status'] = "success";
-        $results['url'] = $picture_url;
-        send_json($results);
+            $filename = stripslashes($imagename);
+            $ext = getExtension($filename);
+            $ext = strtolower($ext);
+            if (!empty($filename)) {
+                //File extension check
+                if (in_array($ext, $valid_formats)) {
+                    //Valid File extension check
 
-    }else{
-        $results['status'] = "failed";
-        $results['url'] = "";
-        send_json($results);
+                    //The path you wish to upload the image to
+
+
+                    if(is_uploaded_file($imagetemp)) {
+                        if(move_uploaded_file($imagetemp, $path_avatar . $imagename)) {
+
+                            if($user_id){
+                                    $user_update = ORM::for_table($config['db']['pre'].'user')->find_one($user_id);
+                                    $user_update->set('image', $imagename);
+                                    $user_update->save();
+                                }
+                                $picture_url = $config['site_url'].'storage/profile/' . $imagename;
+
+                                $results['status'] = "success";
+                                $results['url'] = $picture_url;
+                                $results['message'] = "Profile Pic Updated";
+                                send_json($results);
+
+                            }
+
+                            send_json($results);
+                            die();
+
+                        }else{
+                        $results['status'] = "failed";
+                        $results['url'] = "";
+                        send_json($results);
+                        die();
+
+                    }
+
+                    }
+
+
+                } else {
+                    $errors[]['message'] = $lang['ONLY_JPG_ALLOW'];
+                }
+
+            }
+
     }
 
+    $results['status'] = "Testing something";
+    $results['url'] = "";
     send_json($results);
-    die();
+
 }
 
 function payumoney_create_hash(){
