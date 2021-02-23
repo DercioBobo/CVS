@@ -986,7 +986,7 @@ function login(){
     $results['email'] = $userdata['email'];
     $results['name'] = $userdata['name'];
     $results['phone'] = $userdata['phone'];
-    $results['picture'] = $config['site_url']."storage/profile/small_".$userdata['image'];
+    $results['picture'] = $config['site_url']."storage/profile/".$userdata['image'];
 
     send_json($results);
 }
@@ -1442,7 +1442,7 @@ function get_userdata_by_id(){
     $profile['phone']      = $userinfo['phone'];
 
     $profile['view']       = $userinfo['view'];
-    $profile['image']      = $userinfo['image'];
+    $profile['image']      = $config['site_url']."storage/profile/".$userinfo['image'];
     $profile['tagline']    = $userinfo['tagline'];
     $profile['sex']        = $userinfo['sex'];
     $profile['postcode']   = $userinfo['postcode'];
