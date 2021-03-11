@@ -582,11 +582,21 @@ function update_lastactive(){
     }
 }
 
-function update_verificado_docs($bi){
+function update_verificado_docs($bi, $user_id = null){
 
     global $config;
 
-    if(isset($_SESSION['user']['id']))
+    if($user_id != null){
+        $verification_validate_months = get_option("verification_validate_months");
+        $data_actual= date("Y-m-d");
+        $end_date = date('Y-m-d', strtotime('+'.$verification_validate_months.' months', strtotime($data_actual)));
+
+        $person = ORM::for_table($config['db']['pre'].'user')->find_one($user_id);
+        $person->set_expr('bi_doc', "'$bi'");
+        $person->set_expr('verify_startdate', "'$data_actual'");
+        $person->set_expr('verify_enddate', "'$end_date'");
+        $state = $person->save();
+    }else if(isset($_SESSION['user']['id']))
     {
 
         $verification_validate_months = get_option("verification_validate_months");

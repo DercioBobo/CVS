@@ -85,6 +85,7 @@ if (isset($_REQUEST['action'])){
     if ($_REQUEST['action'] == "custom_fields_json") { custom_fields_json(); }
     if ($_REQUEST['action'] == "upload_product_picture") { upload_product_picture(); }
     if ($_REQUEST['action'] == "upload_profile_picture") { upload_profile_picture(); }
+    if ($_REQUEST['action'] == "renew_verification") { renew_verification(); }
     if ($_REQUEST['action'] == "save_post") { save_post(); }
     if ($_REQUEST['action'] == "search_post") { search_post(); }
     if ($_REQUEST['action'] == "payumoney_create_hash") { payumoney_create_hash(); }
@@ -1459,6 +1460,8 @@ function get_userdata_by_id(){
 
     $profile['notify']    = $userinfo['notify'];
     $profile['notify_cat']    = $userinfo['notify_cat'];
+
+    $profile['verification_fee'] = $config['verification_fee'];
 
 
     send_json($profile);
@@ -4619,6 +4622,85 @@ function upload_profile_picture(){
     $results['url'] = "";
     send_json($results);
 
+}
+
+function renew_verification(){
+    global $config,$results,$lang;
+
+    include_once ('../../php/verificado-api.php');
+
+    /*$user_id = $_REQUEST['user_id'];
+    $path_avatar = "../../storage/profile/";
+    $first_title = uniqid();
+
+
+    if (isset($_FILES)) {
+        $valid_formats = array("jpg", "jpeg", "png"); // Valid image formats
+
+        foreach ($_FILES as $name) {
+
+            $imagename = $name['name'];
+            //Stores the filetype e.g image/jpeg
+            $imagetype = $name['type'];
+            //Stores any error codes from the upload.
+            $imageerror = $name['error'];
+            //Stores the tempname as it is given by the host when uploaded.
+            $imagetemp = $name['tmp_name'];
+
+            $filename = stripslashes($imagename);
+            $ext = getExtension($filename);
+            $ext = strtolower($ext);
+            if (!empty($filename)) {
+                //File extension check
+                if (in_array($ext, $valid_formats)) {
+                    //Valid File extension check
+
+                    //The path you wish to upload the image to
+
+
+                    if(is_uploaded_file($imagetemp)) {
+                        if(move_uploaded_file($imagetemp, $path_avatar . $imagename)) {
+
+                            if($user_id){
+                                    $user_update = ORM::for_table($config['db']['pre'].'user')->find_one($user_id);
+                                    $user_update->set('image', $imagename);
+                                    $user_update->save();
+                                }
+                                $picture_url = $config['site_url'].'storage/profile/' . $imagename;
+
+                                $results['status'] = "success";
+                                $results['url'] = $picture_url;
+                                $results['message'] = "Profile Pic Updated";
+                                send_json($results);
+
+                            }
+
+                            send_json($results);
+                            die();
+
+                        }else{
+                        $results['status'] = "failed";
+                        $results['url'] = "";
+                        send_json($results);
+                        die();
+
+                    }
+
+                    }
+
+
+                } else {
+                    $errors[]['message'] = $lang['ONLY_JPG_ALLOW'];
+                }
+
+            }
+
+    }
+
+    $results['status'] = "Testing something";
+    $results['url'] = "";
+    send_json($results);
+*/
 }
 
 function payumoney_create_hash(){
