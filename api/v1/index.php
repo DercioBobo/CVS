@@ -68,6 +68,8 @@ if (isset($_REQUEST['action'])){
 
 
     if ($_REQUEST['action'] == "ad_report") {ad_report();}
+    if ($_REQUEST['action'] == "ad_report_list") {ad_report_list();}
+    if ($_REQUEST['action'] == "user_group_settings") {user_group_settings();}
 
     if ($_REQUEST['action'] == "favorite_posts") {favorite_posts();}
     if ($_REQUEST['action'] == "add_to_favorite") {add_to_favorite();}
@@ -87,6 +89,7 @@ if (isset($_REQUEST['action'])){
     if ($_REQUEST['action'] == "upload_profile_picture") { upload_profile_picture(); }
     if ($_REQUEST['action'] == "renew_verification") { renew_verification(); }
     if ($_REQUEST['action'] == "save_post") { save_post(); }
+    if ($_REQUEST['action'] == "pay_premium") { pay_premium(); }
     if ($_REQUEST['action'] == "search_post") { search_post(); }
     if ($_REQUEST['action'] == "payumoney_create_hash") { payumoney_create_hash(); }
 }
@@ -179,6 +182,23 @@ function getCustomFields($product_id){
 
 }
 
+function user_group_settings(){
+    global $config,$lang,$link;
+
+    $user_id = $_REQUEST['user_id'];
+
+    $person = ORM::for_table($config['db']['pre'].'user')->find_one($user_id);
+
+
+    $pacotes = ORM::raw_execute('SELECT p.* FROM blusergroups p WHERE p.group_id = '.$person->group_id);
+    $statement = ORM::get_last_statement();
+    $rows = array();
+
+    echo json_encode(['status'=>true, 'data'=>$statement->fetch(PDO::FETCH_ASSOC), 'message'=>'Submetido com sucesso']);
+
+
+}
+
 
 function ad_report(){
     /*SEND CONTACT EMAIL*/
@@ -192,6 +212,29 @@ function ad_report(){
     $details = $_REQUEST['details'];
 
     email_template("report");
+
+    echo json_encode(['status'=>true, 'message'=>'Submetido com sucesso']);
+
+}
+
+function ad_report_list(){
+    /*SEND CONTACT EMAIL*/
+    global $config,$lang,$link;
+
+    $motivo = array();
+
+    $motivo[] = 'Produto já foi vendido.';
+    $motivo[] = 'Localização não corresponde.';
+    $motivo[] = 'Preço enganoso ou errado.';
+    $motivo[] = 'Anúncio indevido ou brincadeira.';
+    $motivo[] = 'Categoria incorrecta.';
+    $motivo[] = 'Anúncio duplicado.';
+    $motivo[] = 'Produto proibido, ilegal ou ofensivo.';
+    $motivo[] = 'Suspeita de golpe (Fraude).';
+    $motivo[] = 'Outros';
+
+    echo json_encode(array('status'=>true, 'data'=>$motivo, 'base_url'=>$config['site_url']));
+
 
 }
 
@@ -4171,9 +4214,74 @@ function save_post(){
     $results['status'] = "success";
     $results['id'] = $product_id;
     $results['message'] = 'Produto submetido com sucesso';
+    $results['product_id'] = $product_id;
+    $results['product_name'] = $item_insrt->product_name;
     send_json($results);
     die();
 }
+
+function pay_premium(){
+
+
+    global $config,$lang,$results;
+
+    include_once ('mpesa_api.php');
+
+    $result = send_notification_mpesa($_REQUEST['mpesa_numero'],$_REQUEST['total']);
+    $result = json_decode($result, TRUE);
+
+    if(strcmp($result["output_ResponseCode"],'INS-0')==0){
+
+        $item_insrt = ORM::for_table($config['db']['pre'].'transaction')->create();
+        $item_insrt->product_name = $_REQUEST['product_name'];
+        $item_insrt->product_id = $_REQUEST['product_id'];
+        $item_insrt->seller_id = $_REQUEST['user_id'];
+        $item_insrt->status = 1;
+        $item_insrt->amount = $_REQUEST['total'];
+        $item_insrt->featured = strcmp($_REQUEST['featured'] , "true") ? 1 : 0;
+        $item_insrt->urgent = strcmp($_REQUEST['urgent'] , "true") ? 1 : 0;
+        $item_insrt->highlight = strcmp($_REQUEST['highlight'] , "true") ? 1 : 0;
+        $item_insrt->transaction_gatway = "wire_transfer";
+        $item_insrt->transaction_ip = encode_ip($_SERVER, $_ENV);
+        $item_insrt->transaction_time = time();
+        $item_insrt->transaction_description = "Pacote Premium";
+        $item_insrt->transaction_method = "Premium Ad";
+        $item_insrt->msisdn = $_REQUEST['mpesa_numero'];
+        $item_insrt->mp_transaction_id = $result["output_TransactionID"];
+        $item_insrt->mp_conversation_id = $result["output_ConversationID"];
+        $item_insrt->mp_response_desc = $result["output_ResponseCode"];
+
+        $item_insrt->save();
+
+
+        $person = ORM::for_table($config['db']['pre'].'product')->find_one($_REQUEST['product_id']);
+        $person->set_expr('featured', (strcmp($_REQUEST['featured'],"true")) ? 1 : 0);
+        $person->set_expr('urgent', (strcmp($_REQUEST['urgent'],"true")) ? 1 : 0);
+        $person->set_expr('highlight', (strcmp($_REQUEST['highlight'],"true")) ? 1 : 0);
+        $state = $person->save();
+
+        $response = array('status' => true, 'message' => 'Pagamento feito com sucesso.');
+
+        echo json_encode($response);
+
+    }else{
+
+        if(strcmp($result["output_ResponseCode"],'INS-10')==0) {
+            $response = array('status' => false, 'message' => 'Transação duplicada, tente mais tarde.');
+        }else{
+            $response = array('status' => false, 'message' => 'Transação sem sucesso, tente mais tarde.', 'detail'=>$result);
+        }
+
+        echo json_encode($response);
+
+
+    }
+
+
+
+
+}
+
 
 
 /*

@@ -393,6 +393,12 @@ function ajax_post_advertise(){
                     echo json_encode($response, JSON_UNESCAPED_SLASHES);
                     die();
                 } else {
+
+                    $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+                    $txt = json_encode($_REQUEST);
+                    fwrite($myfile, $txt);
+                    fclose($myfile);
+
                     unset($_POST);
                     $ad_link = $link['POST-DETAIL'] . "/" . $product_id;
 
