@@ -41,7 +41,7 @@ $router->setBasePath($bp ? "/".$bp : "");
 
 /* Setup the URL routing. This is production ready. */
 // Main routes that non-customers see
-$router->map('GET|POST','/', 'home.php');
+$router->map('GET|POST','/', 'listing.php');
 $router->map('GET|POST','/home/[a:lang]?/?', 'home.php');
 $router->map('GET|POST','/home/[a:lang]?/[a:country]?/?', 'home.php');
 $router->map('GET|POST','/signup/?', 'signup.php');
