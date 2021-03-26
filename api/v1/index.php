@@ -35,6 +35,7 @@ if (isset($_REQUEST['action'])){
     if ($_REQUEST['action'] == "payment_api_detail_config") { payment_api_detail_config(); }
     if ($_REQUEST['action'] == "login") { login(); }
     if ($_REQUEST['action'] == "forgot_password") { forgot_password(); }
+    if ($_REQUEST['action'] == "change_password") { change_password(); }
     if ($_REQUEST['action'] == "register") { register(); }
     if ($_REQUEST['action'] == "update_profile") { update_profile(); }
     if ($_REQUEST['action'] == "get_userdata_by_id") { get_userdata_by_id(); }  //not Using
@@ -47,6 +48,9 @@ if (isset($_REQUEST['action'])){
     if ($_REQUEST['action'] == "most_viewed") { most_viewedd(); }
     if ($_REQUEST['action'] == "related_ads") { related_ads(); }
     if ($_REQUEST['action'] == "ad_detail") { ad_detail(); }
+    if ($_REQUEST['action'] == "ad_reactive") { ad_reactive(); }
+    if ($_REQUEST['action'] == "ad_reshow") { ad_reshow(); }
+    if ($_REQUEST['action'] == "ad_hide") { ad_hide(); }
     if ($_REQUEST['action'] == "ad_delete") { ad_delete(); }
     if ($_REQUEST['action'] == "installed_countries") { installed_countries(); }
     if ($_REQUEST['action'] == "getStateByCountryCode") {getStateByCountryCode();}
@@ -64,6 +68,8 @@ if (isset($_REQUEST['action'])){
 
 
     if ($_REQUEST['action'] == "ad_report") {ad_report();}
+    if ($_REQUEST['action'] == "ad_report_list") {ad_report_list();}
+    if ($_REQUEST['action'] == "user_group_settings") {user_group_settings();}
 
     if ($_REQUEST['action'] == "favorite_posts") {favorite_posts();}
     if ($_REQUEST['action'] == "add_to_favorite") {add_to_favorite();}
@@ -81,7 +87,9 @@ if (isset($_REQUEST['action'])){
     if ($_REQUEST['action'] == "custom_fields_json") { custom_fields_json(); }
     if ($_REQUEST['action'] == "upload_product_picture") { upload_product_picture(); }
     if ($_REQUEST['action'] == "upload_profile_picture") { upload_profile_picture(); }
+    if ($_REQUEST['action'] == "renew_verification") { renew_verification(); }
     if ($_REQUEST['action'] == "save_post") { save_post(); }
+    if ($_REQUEST['action'] == "pay_premium") { pay_premium(); }
     if ($_REQUEST['action'] == "search_post") { search_post(); }
     if ($_REQUEST['action'] == "payumoney_create_hash") { payumoney_create_hash(); }
 }
@@ -174,6 +182,23 @@ function getCustomFields($product_id){
 
 }
 
+function user_group_settings(){
+    global $config,$lang,$link;
+
+    $user_id = $_REQUEST['user_id'];
+
+    $person = ORM::for_table($config['db']['pre'].'user')->find_one($user_id);
+
+
+    $pacotes = ORM::raw_execute('SELECT p.* FROM blusergroups p WHERE p.group_id = '.$person->group_id);
+    $statement = ORM::get_last_statement();
+    $rows = array();
+
+    echo json_encode(['status'=>true, 'data'=>$statement->fetch(PDO::FETCH_ASSOC), 'message'=>'Submetido com sucesso']);
+
+
+}
+
 
 function ad_report(){
     /*SEND CONTACT EMAIL*/
@@ -187,6 +212,29 @@ function ad_report(){
     $details = $_REQUEST['details'];
 
     email_template("report");
+
+    echo json_encode(['status'=>true, 'message'=>'Submetido com sucesso']);
+
+}
+
+function ad_report_list(){
+    /*SEND CONTACT EMAIL*/
+    global $config,$lang,$link;
+
+    $motivo = array();
+
+    $motivo[] = 'Produto já foi vendido.';
+    $motivo[] = 'Localização não corresponde.';
+    $motivo[] = 'Preço enganoso ou errado.';
+    $motivo[] = 'Anúncio indevido ou brincadeira.';
+    $motivo[] = 'Categoria incorrecta.';
+    $motivo[] = 'Anúncio duplicado.';
+    $motivo[] = 'Produto proibido, ilegal ou ofensivo.';
+    $motivo[] = 'Suspeita de golpe (Fraude).';
+    $motivo[] = 'Outros';
+
+    echo json_encode(array('status'=>true, 'data'=>$motivo, 'base_url'=>$config['site_url']));
+
 
 }
 
@@ -1456,6 +1504,8 @@ function get_userdata_by_id(){
     $profile['notify']    = $userinfo['notify'];
     $profile['notify_cat']    = $userinfo['notify_cat'];
 
+    $profile['verification_fee'] = $config['verification_fee'];
+
 
     send_json($profile);
     die();
@@ -1737,7 +1787,7 @@ $where ORDER BY $order_by $pagelimit";
                     . (dirname($_SERVER["SCRIPT_NAME"]) == DIRECTORY_SEPARATOR ? "" : "/")
                     . trim(str_replace("\\", "/", dirname($_SERVER["SCRIPT_NAME"])), "/");
 
-                $profile['user_image']    = '/storage/profile/'.$userinfo['image'];
+                $profile['user_image']    = $config['site_url'].'storage/profile/'.$userinfo['image'];
 
                 $item['profile'] = $profile;
 
@@ -2631,11 +2681,13 @@ Messages
 
 function ad_delete()
 {
+
+
     global $config,$results;
     if(isset($_REQUEST['item_id']))
     {
         $row = ORM::for_table($config['db']['pre'].'product')
-            ->select('screen_shot')
+            // ->select('screen_shot')
             ->where(array(
                 'id' => $_REQUEST['item_id'],
                 'user_id' => $_REQUEST['user_id'],
@@ -2667,6 +2719,208 @@ function ad_delete()
         }
 
         $results['status'] = "success";
+        $results['message'] = "Produto apagado com sucesso";
+    }else {
+        $results['status'] = "error";
+        $results['message'] = "Houve um erro ao apagar o produto";
+    }
+    send_json($results);
+    die();
+}
+
+
+function ad_reactive()
+{
+    global $config,$results;
+    if(isset($_REQUEST['item_id']))
+    {
+        $row = ORM::for_table($config['db']['pre'].'product')
+            //->select('screen_shot')
+            ->where(array(
+                'id' => $_REQUEST['item_id'],
+                'user_id' => $_REQUEST['user_id'],
+            ))
+            ->find_one();
+
+        if (!empty($row)) {
+
+            // Get usergroup details
+            $user_info = ORM::for_table($config['db']['pre'].'user')
+                ->select('group_id')
+                ->find_one($_REQUEST['user_id']);
+
+            $group_id = isset($user_info['group_id'])? $user_info['group_id'] : 0;
+
+            // Get membership details
+            $group_get_info = get_usergroup_settings($group_id);
+
+            $urgent_project_fee = $group_get_info['urgent_project_fee'];
+            $featured_project_fee = $group_get_info['featured_project_fee'];
+            $highlight_project_fee = $group_get_info['highlight_project_fee'];
+
+            $ad_duration = $group_get_info['ad_duration'];
+            $timenow = date('Y-m-d H:i:s');
+            $expire_time = date('Y-m-d H:i:s', strtotime($timenow . ' +'.$ad_duration.' day'));
+            $expire_timestamp = strtotime($expire_time);
+
+
+            $now = date("Y-m-d H:i:s");
+
+            $row->set('status','active');
+            $row->set('updated_at',$now);
+            $row->set('expire_date',$expire_timestamp);
+
+            $update = $row->save();
+
+            if($update){
+                $results['status'] = "success";
+                $results['message'] = "Produto renovado com sucesso";
+
+            }else{
+                $results['status'] = "error";
+            }
+
+        }else{
+            $results['status'] = "error";
+        }
+
+    }else {
+        $results['status'] = "error";
+    }
+    send_json($results);
+    die();
+}
+function change_password()
+{
+    global $config,$results;
+    if(isset($_REQUEST['user_id']))
+    {
+
+
+        $user_update = ORM::for_table($config['db']['pre'].'user')->find_one($_POST['user_id']);
+
+
+
+
+        if (!empty($user_update)) {
+
+
+            if(password_verify($_REQUEST['old_password'], $user_update['password_hash'])){
+
+                $now = date("Y-m-d H:i:s");
+
+                $pass_hash = password_hash($_REQUEST['password'], PASSWORD_DEFAULT, ['cost' => 13]);
+
+
+                $user_update->set('password_hash', $pass_hash);
+                $user_update->set('updated_at', $now);
+                $update = $user_update->save();
+
+
+                if($update){
+                    $results['status'] = "success";
+                    $results['message'] = "Senha alterada com sucesso";
+
+                }else{
+                    $results['status'] = "error";
+                    $results['message'] = "Ocorreu um erro ao alterar a senha";
+
+                }
+
+            }else{
+                $results['status'] = "error";
+                $results['message'] = "A senha antiga não está correcta";
+
+            }
+
+
+
+        }else{
+            $results['status'] = "error";
+        }
+
+    }else {
+        $results['status'] = "error";
+    }
+    send_json($results);
+    die();
+}
+
+function ad_reshow()
+{
+    global $config,$results;
+    if(isset($_REQUEST['item_id']))
+    {
+        $row = ORM::for_table($config['db']['pre'].'product')
+            //->select('screen_shot')
+            ->where(array(
+                'id' => $_REQUEST['item_id'],
+                'user_id' => $_REQUEST['user_id'],
+            ))
+            ->find_one();
+
+        if (!empty($row)) {
+
+            $now = date("Y-m-d H:i:s");
+
+            $row->set('hide','0');
+            $row->set('updated_at',$now);
+
+            $update = $row->save();
+
+            if($update){
+                $results['status'] = "success";
+                $results['message'] = "Produto tornado visível com sucesso";
+
+            }else{
+                $results['status'] = "error";
+            }
+
+        }else{
+            $results['status'] = "error";
+        }
+
+    }else {
+        $results['status'] = "error";
+    }
+    send_json($results);
+    die();
+}
+
+function ad_hide()
+{
+    global $config,$results;
+    if(isset($_REQUEST['item_id']))
+    {
+        $row = ORM::for_table($config['db']['pre'].'product')
+            //->select('screen_shot')
+            ->where(array(
+                'id' => $_REQUEST['item_id'],
+                'user_id' => $_REQUEST['user_id'],
+            ))
+            ->find_one();
+
+        if (!empty($row)) {
+
+            $now = date("Y-m-d H:i:s");
+
+            $row->set('hide','1');
+            $row->set('updated_at',$now);
+
+            $update = $row->save();
+
+            if($update){
+                $results['status'] = "success";
+                $results['message'] = "Produto ocultado com sucesso";
+
+            }else{
+                $results['status'] = "error";
+            }
+
+        }else{
+            $results['status'] = "error";
+        }
+
     }else {
         $results['status'] = "error";
     }
@@ -3959,10 +4213,75 @@ function save_post(){
     save_post_customField_data_mobile($custom_fields,$custom_checkboxes,$product_id);
     $results['status'] = "success";
     $results['id'] = $product_id;
-    $results['test'] = json_encode(json_decode($_REQUEST["checkboxes"],true));
+    $results['message'] = 'Produto submetido com sucesso';
+    $results['product_id'] = $product_id;
+    $results['product_name'] = $item_insrt->product_name;
     send_json($results);
     die();
 }
+
+function pay_premium(){
+
+
+    global $config,$lang,$results;
+
+    include_once ('mpesa_api.php');
+
+    $result = send_notification_mpesa($_REQUEST['mpesa_numero'],$_REQUEST['total']);
+    $result = json_decode($result, TRUE);
+
+    if(strcmp($result["output_ResponseCode"],'INS-0')==0){
+
+        $item_insrt = ORM::for_table($config['db']['pre'].'transaction')->create();
+        $item_insrt->product_name = $_REQUEST['product_name'];
+        $item_insrt->product_id = $_REQUEST['product_id'];
+        $item_insrt->seller_id = $_REQUEST['user_id'];
+        $item_insrt->status = 1;
+        $item_insrt->amount = $_REQUEST['total'];
+        $item_insrt->featured = strcmp($_REQUEST['featured'] , "true") ? 1 : 0;
+        $item_insrt->urgent = strcmp($_REQUEST['urgent'] , "true") ? 1 : 0;
+        $item_insrt->highlight = strcmp($_REQUEST['highlight'] , "true") ? 1 : 0;
+        $item_insrt->transaction_gatway = "wire_transfer";
+        $item_insrt->transaction_ip = encode_ip($_SERVER, $_ENV);
+        $item_insrt->transaction_time = time();
+        $item_insrt->transaction_description = "Pacote Premium";
+        $item_insrt->transaction_method = "Premium Ad";
+        $item_insrt->msisdn = $_REQUEST['mpesa_numero'];
+        $item_insrt->mp_transaction_id = $result["output_TransactionID"];
+        $item_insrt->mp_conversation_id = $result["output_ConversationID"];
+        $item_insrt->mp_response_desc = $result["output_ResponseCode"];
+
+        $item_insrt->save();
+
+
+        $person = ORM::for_table($config['db']['pre'].'product')->find_one($_REQUEST['product_id']);
+        $person->set_expr('featured', (strcmp($_REQUEST['featured'],"true")) ? 1 : 0);
+        $person->set_expr('urgent', (strcmp($_REQUEST['urgent'],"true")) ? 1 : 0);
+        $person->set_expr('highlight', (strcmp($_REQUEST['highlight'],"true")) ? 1 : 0);
+        $state = $person->save();
+
+        $response = array('status' => true, 'message' => 'Pagamento feito com sucesso.');
+
+        echo json_encode($response);
+
+    }else{
+
+        if(strcmp($result["output_ResponseCode"],'INS-10')==0) {
+            $response = array('status' => false, 'message' => 'Transação duplicada, tente mais tarde.');
+        }else{
+            $response = array('status' => false, 'message' => 'Transação sem sucesso, tente mais tarde.', 'detail'=>$result);
+        }
+
+        echo json_encode($response);
+
+
+    }
+
+
+
+
+}
+
 
 
 /*
@@ -4411,6 +4730,85 @@ function upload_profile_picture(){
     $results['url'] = "";
     send_json($results);
 
+}
+
+function renew_verification(){
+    global $config,$results,$lang;
+
+    include_once ('../../php/verificado-api.php');
+
+    /*$user_id = $_REQUEST['user_id'];
+    $path_avatar = "../../storage/profile/";
+    $first_title = uniqid();
+
+
+    if (isset($_FILES)) {
+        $valid_formats = array("jpg", "jpeg", "png"); // Valid image formats
+
+        foreach ($_FILES as $name) {
+
+            $imagename = $name['name'];
+            //Stores the filetype e.g image/jpeg
+            $imagetype = $name['type'];
+            //Stores any error codes from the upload.
+            $imageerror = $name['error'];
+            //Stores the tempname as it is given by the host when uploaded.
+            $imagetemp = $name['tmp_name'];
+
+            $filename = stripslashes($imagename);
+            $ext = getExtension($filename);
+            $ext = strtolower($ext);
+            if (!empty($filename)) {
+                //File extension check
+                if (in_array($ext, $valid_formats)) {
+                    //Valid File extension check
+
+                    //The path you wish to upload the image to
+
+
+                    if(is_uploaded_file($imagetemp)) {
+                        if(move_uploaded_file($imagetemp, $path_avatar . $imagename)) {
+
+                            if($user_id){
+                                    $user_update = ORM::for_table($config['db']['pre'].'user')->find_one($user_id);
+                                    $user_update->set('image', $imagename);
+                                    $user_update->save();
+                                }
+                                $picture_url = $config['site_url'].'storage/profile/' . $imagename;
+
+                                $results['status'] = "success";
+                                $results['url'] = $picture_url;
+                                $results['message'] = "Profile Pic Updated";
+                                send_json($results);
+
+                            }
+
+                            send_json($results);
+                            die();
+
+                        }else{
+                        $results['status'] = "failed";
+                        $results['url'] = "";
+                        send_json($results);
+                        die();
+
+                    }
+
+                    }
+
+
+                } else {
+                    $errors[]['message'] = $lang['ONLY_JPG_ALLOW'];
+                }
+
+            }
+
+    }
+
+    $results['status'] = "Testing something";
+    $results['url'] = "";
+    send_json($results);
+*/
 }
 
 function payumoney_create_hash(){

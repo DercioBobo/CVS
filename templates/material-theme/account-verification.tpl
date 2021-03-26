@@ -266,7 +266,7 @@
 
                     },
                     success: function (response) {
-
+console.log(response);
                         var result = JSON.parse(response);
 
                         if (result.state) {

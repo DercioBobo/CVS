@@ -1130,6 +1130,8 @@ function email_template($template,$user_id=null,$password=null,$product_id=null,
         $page->SetParameter ('DETAILS', $_POST['details']);
         $email_body = $page->CreatePageReturn($lang,$config,$link);
 
+        //echo $email_subject."  ".$email_body;
+
         email($_POST['email'],$_POST['name'],$email_subject,$email_body);
         email($config['admin_email'],$config['site_title'],$lang['REPORTVIO'],$email_body);
     }
