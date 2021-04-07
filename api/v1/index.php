@@ -89,6 +89,7 @@ if (isset($_REQUEST['action'])){
     if ($_REQUEST['action'] == "upload_profile_picture") { upload_profile_picture(); }
     if ($_REQUEST['action'] == "renew_verification") { renew_verification(); }
     if ($_REQUEST['action'] == "save_post") { save_post(); }
+    if ($_REQUEST['action'] == "edit_post") { save_post(); }
     if ($_REQUEST['action'] == "pay_premium") { pay_premium(); }
     if ($_REQUEST['action'] == "search_post") { search_post(); }
     if ($_REQUEST['action'] == "payumoney_create_hash") { payumoney_create_hash(); }
@@ -154,21 +155,23 @@ function getCustomFields($product_id){
             if($custom_fields_title != ""){
                 $item_checkbox['title'] = $custom_fields_title;
                 $item_checkbox['value'] = $checkbox_value2;
+                $item_checkbox['field_id'] = $field_id;
+                $item_checkbox['field_type'] = $field_type;
             }
         }
 
         if($field_type == 'textarea') {
-            $item_custom_textarea[] = array('title'=>$custom_fields_title,'value'=>stripslashes($field_data));
+            $item_custom_textarea[] = array('title'=>$custom_fields_title,'value'=>stripslashes($field_data), 'field_id'=>$field_id, 'field_type'=>$field_type);
         }
 
         if($field_type == 'radio-buttons' or  $field_type == 'drop-down') {
             $custom_fields_data = get_customOption_by_id($field_data);
-            $item_custom[] = array('title'=>$custom_fields_title,'value'=>$custom_fields_data);
+            $item_custom[] = array('title'=>$custom_fields_title,'value'=>$custom_fields_data, 'field_id'=>$field_id, 'field_type'=>$field_type, 'option_id'=>$field_data);
         }
 
         if($field_type == 'text-field') {
             $custom_fields_data = stripslashes($field_data);
-            $item_custom[] = array('title'=>$custom_fields_title,'value'=>$custom_fields_data);
+            $item_custom[] = array('title'=>$custom_fields_title,'value'=>$custom_fields_data, 'field_id'=>$field_id, 'field_type'=>$field_type);
         }
     }
 
@@ -1645,7 +1648,7 @@ function get_products_data($userid=null,$cat_id=null,$subcat_id=null,$location=f
     $pdo = ORM::get_db();
 
     $query = "SELECT p.id,p.product_name,p.featured,p.urgent,p.highlight,p.price,p.category,p.sub_category,p.tag,p.screen_shot,p.user_id,p.city,p.country,p.status,p.hide,p.created_at,p.expire_date,
-u.group_id, g.show_on_home, p.view, p.description,p.phone,p.created_at AS 'date',     (CASE
+u.group_id, g.show_on_home, p.view, p.negotiable, p.description,p.phone,p.created_at AS 'date',     (CASE
         WHEN p.featured = '1' and p.urgent = '1' and p.highlight = '1' THEN 1
         WHEN p.urgent = '1' and p.featured = '1' THEN 2
         WHEN p.urgent = '1' and p.highlight = '1' THEN 3
@@ -1679,6 +1682,7 @@ $where ORDER BY $order_by $pagelimit";
             $item['view'] = $info['view'];
             $item['phone'] = $info['phone'];
             $item['nivel'] = $info['nivel'];
+            $item['negotiable'] = $info['negotiable'];
 
             $item['custom_fields'] = getCustomFields($info['id']);
 
@@ -3834,7 +3838,7 @@ function save_post_customField_data_mobile($custom_fields=array(), $checkboxes=a
         $index = 0;
 
 
-        foreach ($custom_fields as $key => $value) {
+        foreach ($checkboxes as $key => $value) {
 
             if($value != null){
 
@@ -3848,12 +3852,16 @@ function save_post_customField_data_mobile($custom_fields=array(), $checkboxes=a
 
                 $field_type = $custom_info->custom_type;
 
+                $field_data_temp = [];
+
                 foreach ($value as $key1 => $value1) {
 
-                    if($field_type == "textarea")
-                    $field_data = validate_input($value1,true);
-                else
-                    $field_data = validate_input($value1);
+                    $field_data_temp[] = $value1;
+
+                }
+
+                $field_data = implode(', ', $field_data_temp);
+
 
                 if(isset($product_id)){
                     $exist = 0;
@@ -3884,7 +3892,6 @@ function save_post_customField_data_mobile($custom_fields=array(), $checkboxes=a
                     }
                 }
 
-            }
             }
 
 
@@ -4143,7 +4150,7 @@ function save_post(){
         $picture = explode(',',$_REQUEST['item_screen']);
         foreach ($_FILES as $name) {
 
-            $imagename = $name['name'];
+            $imagename = time().$name['name'];
             //Stores the filetype e.g image/jpeg
             $imagetype = $name['type'];
             //Stores any error codes from the upload.
@@ -4216,6 +4223,193 @@ function save_post(){
     $results['message'] = 'Produto submetido com sucesso';
     $results['product_id'] = $product_id;
     $results['product_name'] = $item_insrt->product_name;
+    send_json($results);
+    die();
+}
+function edit_post(){
+    global $config,$lang,$results;
+
+
+    $item_screen = "";
+
+    $product_id = isset($_REQUEST['product_id']) ? $_REQUEST['product_id'] : null;
+    $user_id = isset($_REQUEST['user_id']) ? $_REQUEST['user_id'] : null;
+    $cat_id = isset($_REQUEST['category_id']) ? $_REQUEST['category_id'] : null;
+    $subcat_id = isset($_REQUEST['subcategory_id']) ? $_REQUEST['subcategory_id'] : null;
+    $country = isset($_REQUEST['country_code']) ? $_REQUEST['country_code'] : null;
+    $state = isset($_REQUEST['state']) ? $_REQUEST['state'] : null;
+    $city = isset($_REQUEST['city']) ? $_REQUEST['city'] : null;
+    $description = isset($_REQUEST['description']) ? $_REQUEST['description'] : null;
+    $location = isset($_REQUEST['location']) ? $_REQUEST['location'] : null;
+    $hide_phone = isset($_REQUEST['hide_phone']) ? $_REQUEST['hide_phone'] : null;
+    $negotiable = isset($_REQUEST['negotiable']) ? $_REQUEST['negotiable'] : null;
+    $price = isset($_REQUEST['price']) ? $_REQUEST['price'] : 0;
+    $phone = isset($_REQUEST['phone']) ? $_REQUEST['phone'] : 0;
+    $tags = isset($_REQUEST['tags']) ? $_REQUEST['tags'] : null;
+    $additionalinfo = isset($_REQUEST['custom_fields']) ? $_REQUEST['custom_fields'] : null;
+    $additionalinfo_checkboxes = isset($_REQUEST['checkboxes']) ? $_REQUEST['checkboxes'] : null;
+    $custom_fields = array();
+    $custom_checkboxes = array();
+    if($additionalinfo != null){
+        $custom_fields = json_decode($additionalinfo, true);
+    }
+
+    if($additionalinfo_checkboxes != null){
+        $custom_checkboxes = json_decode($additionalinfo_checkboxes, true);
+    }
+
+    $mapLat = $_REQUEST['latitude'];
+    $mapLong = $_REQUEST['longitude'];
+    $latlong = $mapLat . "," . $mapLong;
+    $slug = create_post_slug($_REQUEST['title']);
+    $description = addslashes($description);
+
+    // Get usergroup details
+    $user_info = ORM::for_table($config['db']['pre'].'user')
+        ->select('group_id')
+        ->find_one($user_id);
+
+    $group_id = isset($user_info['group_id'])? $user_info['group_id'] : 0;
+
+    // Get membership details
+    $group_get_info = get_usergroup_settings($group_id);
+
+    $urgent_project_fee = $group_get_info['urgent_project_fee'];
+    $featured_project_fee = $group_get_info['featured_project_fee'];
+    $highlight_project_fee = $group_get_info['highlight_project_fee'];
+
+    $ad_duration = $group_get_info['ad_duration'];
+    $timenow = date('Y-m-d H:i:s');
+    $expire_time = date('Y-m-d H:i:s', strtotime($timenow . ' +'.$ad_duration.' day'));
+    $expire_timestamp = strtotime($expire_time);
+
+    if($config['post_auto_approve'] == 1){
+        $status = "active";
+    }else{
+        $status = "pending";
+    }
+
+    if (isset($_FILES['imagem1'])) {
+        $valid_formats = array("jpg", "jpeg", "png"); // Valid image formats
+        $countScreen = 0;
+        $picture = explode(',',$_REQUEST['item_screen']);
+        foreach ($_FILES as $name) {
+
+            $imagename = time().$name['name'];
+            //Stores the filetype e.g image/jpeg
+            $imagetype = $name['type'];
+            //Stores any error codes from the upload.
+            $imageerror = $name['error'];
+            //Stores the tempname as it is given by the host when uploaded.
+            $imagetemp = $name['tmp_name'];
+
+            $filename = stripslashes($imagename);
+            $ext = getExtension($filename);
+            $ext = strtolower($ext);
+            if (!empty($filename)) {
+                //File extension check
+                if (in_array($ext, $valid_formats)) {
+                    //Valid File extension check
+
+                    //The path you wish to upload the image to
+                    $imagePath = "../../storage/products/thumb/";
+
+
+                    if(is_uploaded_file($imagetemp)) {
+                        if(move_uploaded_file($imagetemp, $imagePath . $imagename)) {
+
+                            if ($countScreen == 0)
+                                $item_screen = $filename;
+                            elseif ($countScreen >= 1)
+                                $item_screen = $item_screen . "," . $filename;
+                            $countScreen++;
+
+                        }
+
+                    }
+
+
+                } else {
+                    $errors[]['message'] = $lang['ONLY_JPG_ALLOW'];
+                }
+
+            }
+        }
+    }
+
+    $info = ORM::for_table($config['db']['pre'].'product')
+        ->select_many('status', 'screen_shot')
+        ->find_one($_POST['product_id']);
+
+    $item_status = $info['status'];
+    $screen_shot = $info['screen_shot'];
+
+    if($item_status == "pending" or $config['post_auto_approve'] == 1)
+    {
+        $item_edit = ORM::for_table($config['db']['pre'].'product')->find_one($_POST['product_id']);
+        $item_edit->set('user_id', $_REQUEST['user_id']);
+        $item_edit->set('product_name', $_REQUEST['title']);
+        $item_edit->set('slug', $slug);
+        $item_edit->set('status', $status);
+        $item_edit->set('category', $cat_id);
+        $item_edit->set('sub_category', $subcat_id);
+        $item_edit->set('description', $description);
+        $item_edit->set('price', $price);
+        $item_edit->set('negotiable', $negotiable);
+        $item_edit->set('phone', $phone);
+        $item_edit->set('hide_phone', $hide_phone);
+        $item_edit->set('location', $location);
+        $item_edit->set('city', $_REQUEST['city']);
+        $item_edit->set('state', $state);
+        $item_edit->set('country', $country);
+        $item_edit->set('latlong', $latlong);
+
+        if(isset($_FILES['imagem1'])){
+            $item_edit->set('screen_shot', $item_screen);
+        }
+
+
+        $item_edit->set('created_at', $timenow);
+        $item_edit->set('updated_at', $timenow);
+        $item_edit->set('expire_date', $expire_timestamp);
+        $item_edit->save();
+
+
+    }
+    elseif($item_status == "active" or $item_status == "softreject" or $item_status == "expire")
+    {
+        $item_insrt = ORM::for_table($config['db']['pre'].'product')->create();
+        $item_insrt->user_id = $_REQUEST['user_id'];
+        $item_insrt->product_name = $_REQUEST['title'];
+        $item_insrt->slug = $slug;
+        $item_insrt->status = $status;
+        $item_insrt->category = $cat_id;
+        $item_insrt->sub_category = $subcat_id;
+        $item_insrt->description = $description;
+        $item_insrt->price = $price;
+        $item_insrt->negotiable = $negotiable;
+        $item_insrt->phone = $phone;
+        $item_insrt->hide_phone = $hide_phone;
+        $item_insrt->location = $location;
+        $item_insrt->city = $_REQUEST['city'];
+        $item_insrt->state = $state;
+        $item_insrt->country = $country;
+        $item_insrt->latlong = $latlong;
+        $item_insrt->screen_shot = $item_screen;
+        $item_insrt->created_at = $timenow;
+        $item_insrt->updated_at = $timenow;
+        $item_insrt->expire_date = $expire_timestamp;
+        $item_insrt->save();
+    }
+
+
+    //echo ORM::get_last_query();
+    save_post_customField_data_mobile($custom_fields,$custom_checkboxes,$product_id);
+    $results['status'] = "success";
+    $results['id'] = $product_id;
+    $results['message'] = 'Produto submetido com sucesso';
+    $results['product_id'] = $product_id;
+    $results['product_name'] = $_REQUEST['title'];
     send_json($results);
     die();
 }

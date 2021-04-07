@@ -1101,12 +1101,12 @@ function get_customFields_by_catid_mobile($maincatid=null,$subcatid=null,$requir
 
                 if($config['tpl_name'] == 'thenext-theme'){
 
-                    $radiobtn[] = array('id'=>$value3.$i,'title'=>$option_title);
+                    $radiobtn[] = array('id'=>$value3,'title'=>$option_title);
 
                 }
                 else{
 
-                    $radiobtn[] = array('id'=>$value3.$i,'title'=>$option_title);
+                    $radiobtn[] = array('id'=>$value3,'title'=>$option_title);
 
                 }
 
@@ -1146,10 +1146,10 @@ function get_customFields_by_catid_mobile($maincatid=null,$subcatid=null,$requir
                 $option_title = get_customOption_by_id($value4);
 
                 if($config['tpl_name'] == 'thenext-theme'){
-                    $Checkbox [] = array('id'=>$value4.$j, 'title'=>$option_title);
+                    $Checkbox [] = array('id'=>$value4, 'title'=>$option_title);
                 }
                 else{
-                    $Checkbox [] = array('id'=>$value4.$j, 'title'=>$option_title);
+                    $Checkbox [] = array('id'=>$value4, 'title'=>$option_title);
 
                 }
                 $j++;
